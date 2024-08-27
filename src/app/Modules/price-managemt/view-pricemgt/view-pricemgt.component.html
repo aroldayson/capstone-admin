@@ -1,73 +1,113 @@
-
 <!-- <h1 class="mt-3">Price Management <p class="btn btn-primary mt-2" [routerLink]="['/main/pricemanagementpage/pricemgtmain/pricemgtview/add']" class="fa fa-plus-circle"></p></h1> -->
 <div class="row">
-    <div class="col-md-5 mt-2">
-        <h3 class="mt-3">Price Management </h3>
-    </div>
-    <div class="col-md-3 mt-4 mb-2">
-        <input type="search" class="form-control" name="search" id="search" placeholder="search">
-    </div>
+  <div class="col-md-5 mt-2">
+    <h3 class="mt-3 fw-bold">PRICE MANAGEMENT</h3>
+  </div>
+  <div class="col-md-3 mt-4 mb-2">
+    <input
+      type="search"
+      class="form-control"
+      name="search"
+      id="search"
+      placeholder="Search"
+    />
+  </div>
 </div>
 <div class="row">
-    <div class="col-md-8">
-        <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                    <th>Laundry Item No.</th>
-                    <th>Laundry Category</th>
-                    <th>Rate</th>
-                    <th>Perkilogram</th>
-                    <th class="text-center">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                    <td>LA001421</td>
-                    <td>Assoreted Clothes</td>
-                    <td>30 Pesos</td>
-                    <td>1 kilograms</td>
-                    <td class="text-center">
-                        <button class="btn bg-primary mx-2 " [routerLink]="['/main/pricemanagementpage/pricemgtmain/pricemgtview/update']"><i class='fas fa-pencil-alt'></i></button>
-                        <button class="btn bg-danger"><i class="fa fa-trash-o" (click)="dltbtn()"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>LA001422</td>
-                    <td>Maong/ Jacket</td>
-                    <td>40 Pesos</td>
-                    <td>1 kilograms</td>
-                    <td class="text-center">
-                        <button class="btn bg-primary mx-2" [routerLink]="['/main/pricemanagementpage/pricemgtmain/pricemgtview/update']"><i class='fas fa-pencil-alt'></i></button>
-                        <button class="btn bg-danger"><i class="fa fa-trash-o" (click)="dltbtn()"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>LA001422</td>
-                    <td>Maong/ Jacket</td>
-                    <td>40 Pesos</td>
-                    <td>1 kilograms</td>
-                    <td class="text-center">
-                        <button class="btn bg-primary mx-2" [routerLink]="['/main/pricemanagementpage/pricemgtmain/pricemgtview/update']"><i class='fas fa-pencil-alt'></i></button>
-                        <button class="btn bg-danger"><i class="fa fa-trash-o" (click)="dltbtn()"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>LA001422</td>
-                    <td>Maong/ Jacket</td>
-                    <td>40 Pesos</td>
-                    <td>1 kilograms</td>
-                    <td class="text-center">
-                        <button class="btn bg-primary mx-2" [routerLink]="['/main/pricemanagementpage/pricemgtmain/pricemgtview/update']"><i class='fas fa-pencil-alt'></i></button>
-                        <button class="btn bg-danger"><i class="fa fa-trash-o" (click)="dltbtn()"></i></button>
-                    </td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
+  <div class="col-md-8">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Laundry Item No.</th>
+            <th>Laundry Category</th>
+            <th>Price</th>
+            <th>Kilo</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LA001421</td>
+            <td>Assoreted Clothes</td>
+            <td>30 PHP</td>
+            <td>1</td>
+            <td class="text-center">
+              <button
+                class="btn bg-primary mx-2 text-light"
+                [routerLink]="[
+                  '/main/pricemanagementpage/pricemgtmain/pricemgtview/update'
+                ]"
+              >
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button class="btn bg-danger text-light">
+                <i class="fa fa-trash-o" (click)="dltbtn()"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>LA001422</td>
+            <td>Maong/ Jacket</td>
+            <td>40 PHP</td>
+            <td>1</td>
+            <td class="text-center">
+              <button
+                class="btn bg-primary mx-2 text-light"
+                [routerLink]="[
+                  '/main/pricemanagementpage/pricemgtmain/pricemgtview/update'
+                ]"
+              >
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button class="btn bg-danger text-light">
+                <i class="fa fa-trash-o" (click)="dltbtn()"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>LA001422</td>
+            <td>Maong/ Jacket</td>
+            <td>40 PHP</td>
+            <td>1</td>
+            <td class="text-center">
+              <button
+                class="btn bg-primary mx-2 text-light"
+                [routerLink]="[
+                  '/main/pricemanagementpage/pricemgtmain/pricemgtview/update'
+                ]"
+              >
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button class="btn bg-danger text-light">
+                <i class="fa fa-trash-o" (click)="dltbtn()"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>LA001422</td>
+            <td>Maong/ Jacket</td>
+            <td>40 PHP</td>
+            <td>1</td>
+            <td class="text-center">
+              <button
+                class="btn bg-primary mx-2 text-light"
+                [routerLink]="[
+                  '/main/pricemanagementpage/pricemgtmain/pricemgtview/update'
+                ]"
+              >
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button class="btn bg-danger text-light">
+                <i class="fa fa-trash-o" (click)="dltbtn()"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="col-md-4">
-        <router-outlet/>
-    </div>
+  </div>
+  <div class="col-md-4">
+    <router-outlet />
+  </div>
 </div>
- 

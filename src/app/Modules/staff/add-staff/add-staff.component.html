@@ -1,35 +1,45 @@
-<div class="bg-white p-3 rounded">
-    <h4 class="text-center"><b>ADD STAFF</b></h4>
-    <div class="">
-        <div class="form-outline mb-2">
-            <input type="text" id="form7Example1" class="form-control" />
-            <label class="form-label" for="form7Example1">Staff Name</label>
-        </div>
-        
-        <div class="form-outline mb-2">
-            <input type="number" id="form7Example2" class="form-control" />
-            <label class="form-label" for="form7Example2">Address</label>
-        </div>
-    
-        <div class="form-outline mb-2">
-            <input type="number" id="form7Example2" class="form-control" />
-            <label class="form-label" for="form7Example2">Phone Number</label>
-        </div>
-        <div class="form-outline mb-2">
-            <input type="number" id="form7Example2" class="form-control" />
-            <label class="form-label" for="form7Example2">Email</label>
-        </div>
-        <div class="form-outline mb-2">
-            <input type="number" id="form7Example2" class="form-control" />
-            <label class="form-label" for="form7Example2">Password</label>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <button type="button" class="btn btn-primary btn-block mb-3 " [routerLink]="['/main/staffpage/staffmain']">Cancel</button>
-            </div>
-            <div class="col-md-6">
-                <button type="button" class="btn btn-primary btn-block mb-3">Saves</button>
-            </div>
-        </div>
+<div class="container bg-white p-4 rounded shadow-sm">
+  <h4 class="text-center mb-4"><b>ADD STAFF</b></h4>
+  <form action="" method="post">
+    <div class="form-outline mb-3">
+      <input type="text" id="staffName" class="form-control" placeholder="" />
+      <label class="form-label" for="staffName">Staff Name</label>
     </div>
+
+    <div class="form-outline mb-3">
+      <input type="text" id="address" class="form-control" placeholder="" />
+      <label class="form-label" for="address">Address</label>
+    </div>
+
+    <div class="form-outline mb-3">
+      <input type="tel" id="phoneNumber" class="form-control" placeholder="" />
+      <label class="form-label" for="phoneNumber">Phone Number</label>
+    </div>
+
+    <div class="form-outline mb-3">
+      <input type="email" id="email" class="form-control" placeholder="" />
+      <label class="form-label" for="email">Email</label>
+    </div>
+
+    <div class="form-outline mb-3">
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        placeholder=""
+      />
+      <label class="form-label" for="password">Password</label>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <button type="button" class="btn btn-secondary btn-block">
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-6 mb-3">
+        <button type="submit" class="btn btn-primary btn-block">Save</button>
+      </div>
+    </div>
+  </form>
 </div>
