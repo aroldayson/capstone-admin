@@ -1,35 +1,44 @@
-<div class="bg-white p-3 rounded">
-    <h4 class="text-center"><b>UPDATE STAFF</b></h4>
-    <div class="">
-        <div class="form-outline mb-2">
-            <input type="text" id="form7Example1" class="form-control" />
-            <label class="form-label" for="form7Example1">Staff Name</label>
-        </div>
-        
-        <div class="form-outline mb-2">
-            <input type="text" id="form7Example2" class="form-control" />
-            <label class="form-label" for="form7Example2">Address</label>
-        </div>
-    
-        <div class="form-outline mb-2">
-            <input type="number" id="form7Example2" class="form-control" />
-            <label class="form-label" for="form7Example2">Phone Number</label>
-        </div>
-        <div class="form-outline mb-2">
-            <input type="text" id="form7Example2" class="form-control" />
-            <label class="form-label" for="form7Example2">Email</label>
-        </div>
-        <div class="form-outline mb-2">
-            <input type="text" id="form7Example2" class="form-control" />
-            <label class="form-label" for="form7Example2">Password</label>
-        </div>
-        <div class="row opt">
-            <div class="col-md-6">
-                <button type="button" class="btn btn-primary btn-block mb-3" [routerLink]="['/main/staffpage/staffmain']">Cancel</button>
-            </div>
-            <div class="col-md-6">
-                <button type="button" class="btn btn-primary btn-block mb-3">Update</button>
-            </div>
-        </div>
+<div class="bg-white p-3 rounded shadow-sm">
+  <h4 class="text-center mb-3"><b>EDIT STAFF</b></h4>
+  <form>
+    <div class="form-outline mb-3">
+      <input type="text" id="staffName" class="form-control" />
+      <label class="form-label" for="staffName">Staff Name</label>
     </div>
+
+    <div class="form-outline mb-3">
+      <input type="text" id="address" class="form-control" />
+      <label class="form-label" for="address">Address</label>
+    </div>
+
+    <div class="form-outline mb-3">
+      <input type="tel" id="phoneNumber" class="form-control" />
+      <label class="form-label" for="phoneNumber">Phone Number</label>
+    </div>
+
+    <div class="form-outline mb-3">
+      <input type="email" id="email" class="form-control" />
+      <label class="form-label" for="email">Email</label>
+    </div>
+
+    <div class="form-outline mb-3">
+      <input type="password" id="password" class="form-control" />
+      <label class="form-label" for="password">Password</label>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-2">
+        <button
+          type="button"
+          class="btn btn-secondary btn-block"
+          [routerLink]="['/main/staffpage/staffmain']"
+        >
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-6 mb-2">
+        <button type="submit" class="btn btn-primary btn-block">Update</button>
+      </div>
+    </div>
+  </form>
 </div>

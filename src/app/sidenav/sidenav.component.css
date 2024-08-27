@@ -99,7 +99,7 @@
 /* Main Content Styling */
 .main-content {
   transition: margin-left 0.3s ease;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 /* Navbar Header Styling */
