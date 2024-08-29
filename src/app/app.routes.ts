@@ -7,6 +7,7 @@ import { pricemanagementRoute } from './Modules/price-managemt/pricemanagement.r
 import { reportRoute } from './Modules/report/report.routes';
 import { staffRoute } from './Modules/staff/staff.routes';
 import { transactionRoute } from './Modules/transaction/transaction.routes';
+import { customerRoute } from './Modules/customer/customer.routes';
 
 export const routes: Routes = [
     {path: 'main', component: SidenavComponent,
@@ -26,6 +27,10 @@ export const routes: Routes = [
             {
                 path: 'reportpage',
                 loadChildren: () => import('./Modules/report/report.routes').then(r=>reportRoute)
+            },
+            {
+                path: 'customertpage',
+                loadChildren: () => import('./Modules/customer/customer.routes').then(r=>customerRoute)
             },
             {
                 path: 'staffpage',

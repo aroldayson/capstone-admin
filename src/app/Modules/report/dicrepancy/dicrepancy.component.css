@@ -23,3 +23,6 @@
       overflow-x: auto;
     }
   }
+  .search{
+    float: right;
+  }
