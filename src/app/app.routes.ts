@@ -6,6 +6,7 @@ import { dashboardRoute } from './Modules/dashboard/dashboard.routes';
 import { pricemanagementRoute } from './Modules/price-managemt/pricemanagement.routes';
 import { reportRoute } from './Modules/report/report.routes';
 import { staffRoute } from './Modules/staff/staff.routes';
+import { transactionRoute } from './Modules/transaction/transaction.routes';
 
 export const routes: Routes = [
     {path: 'main', component: SidenavComponent,
@@ -13,6 +14,10 @@ export const routes: Routes = [
             {
                 path: 'dashboardpage',
                 loadChildren: () => import('./Modules/dashboard/dashboard.routes').then(r=>dashboardRoute)
+            },
+            {
+                path: 'tansactionpage',
+                loadChildren: () => import('./Modules/transaction/transaction.routes').then(r=>transactionRoute)
             },
             {
                 path: 'pricemanagementpage',
