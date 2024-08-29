@@ -1,31 +1,32 @@
-<div class="bg-white p-3 rounded">
+<form [formGroup]="categoryForm" (submit)="save()">
+  <div class="bg-white p-3 rounded" >
     <h4 class="text-center"><b>ADD CATEGORY</b></h4>
-    <div class="">
+    <div>
       <div class="row">
         <div class="col-md">
           <div class="form-outline mb-2">
-            <input type="text" id="form7Example1" class="form-control" />
+            <input type="text" id="form7Example1" class="form-control" formControlName="laundryname"/>
             <label class="form-label" for="form7Example1">Laundry Name</label>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md mb-2">
-          <input type="number" id="form7Example2" class="form-control" />
+          <input type="number" id="form7Example2" class="form-control" formControlName="price"/>
           <label class="form-label" for="form7Example2">Rate</label>
         </div>
   
         <div class="col-md mb-2">
-          <input type="number" id="form7Example2" class="form-control" />
-          <label class="form-label" for="form7Example2">Kilograms</label>
+          <input type="number" id="form7Example3" class="form-control" formControlName="kilograms"/>
+          <label class="form-label" for="form7Example3">Kilograms</label>
         </div>
       </div>
       <div class="row opt">
         <div class="col-md-6">
           <button
-            type="submit"
+            type="button"
             class="btn btn-secondary btn-block mb-3"
-            [routerLink]="['/main/pricemanagementpage/pricemgtmain/pricemgtview']"
+            (click)="clear()"
           >
             Clear
           </button>
@@ -34,7 +35,7 @@
           <button
             type="submit"
             class="btn btn-primary btn-block mb-3"
-            (click)="save()"
+           
           >
             Save
           </button>
@@ -42,3 +43,4 @@
       </div>
     </div>
   </div>
+</form>

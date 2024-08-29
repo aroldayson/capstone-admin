@@ -111,7 +111,7 @@
 
 .nav-title {
   flex-grow: 1;
-  /* text-align: center; */
+  text-align: center;
   color: #ffffff;
   font-size: calc(1rem + 1vw);
 }
