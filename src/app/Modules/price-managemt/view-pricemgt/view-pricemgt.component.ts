@@ -29,10 +29,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class ViewPricemgtComponent implements OnInit {
   ngOnInit(): void {
     // this.useid = localStorage.getItem('result');
-    this.admin.displayitem().subscribe((result: any) => {
-      this.categ = result;
-      console.log(this.categ);
-    });
+    // this.admin.displayitem().subscribe((result: any) => {
+    //   this.categ = result;
+    //   console.log(this.categ);
+    // });
   }
 
   constructor(private admin: AdminService, private http: HttpClient, private route: Router) {}
@@ -71,10 +71,10 @@ export class ViewPricemgtComponent implements OnInit {
             text: 'Your file has been deleted.',
             icon: 'success',
           });
-          this.admin.deleteprice(id).subscribe((result: any) => {
-            console.log('User Deleted!', result);
-            this.categ = result.data;
-          });
+          // this.admin.deleteprice(id).subscribe((result: any) => {
+          //   console.log('User Deleted!', result);
+          //   this.categ = result.data;
+          // });
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel

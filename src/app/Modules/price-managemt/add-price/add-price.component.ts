@@ -45,19 +45,16 @@ export class AddPriceComponent implements OnInit{
   // }
 
   save(): void {
-    console.log(this.categoryForm.value)
-    this.admin.savecateg(this.categoryForm.value)
-    .subscribe((result:any)=>{
-      if (result.message === 'Success') {
-        // location.reload();
-        this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview']);
-      } else {
-        // Handle error
-        console.error('Error occurred during signup:', result);
-      }
-      location.reload();
-      // console.log(result)
-    })
+    // console.log(this.categoryForm.value)
+    // this.admin.savecateg(this.categoryForm.value)
+    // .subscribe((result:any)=>{
+    //   if (result.message === 'Success') {
+    //     this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview']);
+    //   } else {
+    //     console.error('Error occurred during signup:', result);
+    //   }
+    //   location.reload();
+    // })
   }
 
   clear(): void {
