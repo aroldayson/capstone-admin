@@ -1,9 +1,9 @@
-<h3 class="mt-3 fw-bold">LIST OF STAFF MEMBERS</h3>
+<h3 class="mt-3 mx-3 fw-bold">LIST OF STAFF MEMBERS</h3>
 <div class="row">
   <div class="col-md-9">
-    <div class="table-responsive">
+    <div class="table-responsive table-wrapper">
       <table class="table table-bordered table-hover">
-        <thead>
+        <thead class="sticky-thead">
           <tr>
             <th>Staff No.</th>
             <th>Image</th>
@@ -15,7 +15,9 @@
           </tr>
         </thead>
         <tbody>
+          @for(c of staff; track c.admin_id){
           <tr>
+            <!-- <td>{{$index +1}}</td> -->
             <td>LA001421</td>
             <td>
               <img
@@ -46,8 +48,8 @@
               </button>
             </td>
           </tr>
-          <!-- Additional rows for demo -->
-          <tr>
+        }
+          <!-- <tr>
             <td>LA001422</td>
             <td>
               <img
@@ -139,12 +141,12 @@
                 <i class="fa fa-trash-o"></i>
               </button>
             </td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 mt-3">
     <router-outlet></router-outlet>
   </div>
 </div>

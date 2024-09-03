@@ -42,7 +42,8 @@ export class ViewPricemgtComponent implements OnInit {
 
   updatebtn(item:any) {
     console.log(item)
-    localStorage.setItem('category', item)
+    localStorage.setItem('id', item)
+    // localStorage.setItem("categoty",categ)
     this.route.navigate(["/main/pricemanagementpage/pricemgtmain/pricemgtview/update"])
   }
 
