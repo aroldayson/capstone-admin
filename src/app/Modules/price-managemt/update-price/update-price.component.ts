@@ -11,13 +11,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class UpdatePriceComponent implements OnInit {
   
-  category = {item:localStorage.getItem('category')}
+  id = {id:localStorage.getItem('id')}
+  category = {category:localStorage.getItem('category')}
 
   ngOnInit(): void {
     console.log(this.category)
   }
   categoryForm = new FormGroup({
-    laundryname: new FormControl('', Validators.required),
+    laundryname: new FormControl(this.id.id, Validators.required),
     price: new FormControl(0.0),
     kilograms: new FormControl(0.0)
   })

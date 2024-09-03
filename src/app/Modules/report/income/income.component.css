@@ -23,3 +23,7 @@
       overflow-x: auto;
     }
   }
+  .dateflick{
+    float: right;
+    padding-right: 100px;
+  }
