@@ -1,0 +1,492 @@
+[33mcommit cf9ba22249faceef60e1579c6315922e3ea461b9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 2e496ca a318b4d
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Wed Sep 4 10:23:13 2024 +0800
+
+    sana pls
+
+[33mcommit a318b4db6c87684d5135e514e4b6f9c66bf76fac[m
+Merge: d36f3bc 05da756
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Wed Sep 4 10:08:56 2024 +0800
+
+    Merge pull request #31 from aroldayson/carl
+    
+    Carl
+
+[33mcommit 05da756707d74ecb6fe0458bdfade3fcb63f3ed0[m[33m ([m[1;31morigin/carl[m[33m)[m
+Merge: ae2b30a d36f3bc
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Wed Sep 4 09:54:07 2024 +0800
+
+    updates merge
+
+[33mcommit ae2b30a7cff154703e457ff0d08e019fe9e87897[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Wed Sep 4 09:19:14 2024 +0800
+
+    das
+
+[33mcommit d36f3bc939a94c8c59aafcd7c2518d87bcc2c496[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Wed Sep 4 07:25:28 2024 +0800
+
+    update login
+
+[33mcommit e62ddca4c54b346e918ffe24a6c79f67038e54f8[m
+Merge: 5c62d2c b49dad4
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Wed Sep 4 07:15:41 2024 +0800
+
+    Merge pull request #30 from aroldayson/arold
+    
+    Arold
+
+[33mcommit b49dad4fe94d2fe4ac49dbb9df11c34d76c9dd86[m[33m ([m[1;31morigin/arold[m[33m, [m[1;32marold[m[33m)[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 11:24:48 2024 +0800
+
+    fghsf
+
+[33mcommit 2e496caa2dd40dfe7e8f580f6e9719abe2fef82b[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 11:16:33 2024 +0800
+
+    nnnn
+
+[33mcommit 5c62d2c3fd71767e8bd0aae11ed67037c337126f[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 11:10:01 2024 +0800
+
+    updateds
+
+[33mcommit 1618f6d6827a1870fd73af77b2ffa403a1c4e0ba[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 11:08:51 2024 +0800
+
+    Revert "nice one"
+    
+    This reverts commit c841e870b1395ccc8a6425c018d51a824a3f0145.
+
+[33mcommit 8a2c13ac125810260561a6a122efa5594e29fad4[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 09:46:04 2024 +0800
+
+    asdasd
+
+[33mcommit 9cca773f8c3ff50e96359cc3ecb6e6dedfb8bb0c[m
+Merge: c841e87 a54d03e
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Tue Sep 3 09:33:49 2024 +0800
+
+    Merge pull request #26 from aroldayson/arold
+    
+    Arold
+
+[33mcommit c841e870b1395ccc8a6425c018d51a824a3f0145[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 09:30:30 2024 +0800
+
+    nice one
+
+[33mcommit abbd8e9173cc3b55da6e913294e4614b0ebbf19b[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 09:27:10 2024 +0800
+
+    newtrac
+
+[33mcommit a54d03e8eb2ed40610c5987917857f51bc249c9b[m
+Merge: 91ce0fd 66f89fd
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 09:21:45 2024 +0800
+
+    newtransac
+
+[33mcommit 91ce0fd600a9da6e107ad2811d30ed402b4e9acf[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Sep 3 09:12:36 2024 +0800
+
+    update transac
+
+[33mcommit 66f89fde02d4510e57376878ec1de51b3137f0f6[m
+Merge: 9559ac1 2d73fcc
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Thu Aug 29 11:28:40 2024 +0800
+
+    Merge pull request #25 from aroldayson/arold
+    
+    add menu
+
+[33mcommit 2d73fcce5c44d5674b78683da038635c23064699[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Thu Aug 29 11:27:53 2024 +0800
+
+    add menu
+
+[33mcommit 9559ac1399979158a7b2955a62b5b7b7f7209464[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Thu Aug 29 09:41:23 2024 +0800
+
+    renamebackend
+
+[33mcommit a4437be32b004db6c24870ea7a3ff8aeba131468[m
+Merge: adc952f 83dbff8
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Thu Aug 29 09:36:11 2024 +0800
+
+    Merge pull request #24 from aroldayson/arold
+    
+    updated UI
+
+[33mcommit 83dbff82f511d011b5b5cba423f1cc54308432e5[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Thu Aug 29 09:34:07 2024 +0800
+
+    updated UI
+
+[33mcommit 3cc5433736b3c806de6a9ae7d363e69ca18419fd[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Tue Aug 27 11:07:56 2024 +0800
+
+    hahaha
+
+[33mcommit bb0a0382e1a93b4ebe5535747a61df644c03994a[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Tue Aug 27 11:03:02 2024 +0800
+
+    UI
+
+[33mcommit adc952f6683ae4409d24eb33d9a10e69f0ad88d3[m
+Merge: 17b8e45 42a872f
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Mon Aug 26 19:53:46 2024 -0700
+
+    Merge pull request #22 from aroldayson/arold
+    
+    update UI
+
+[33mcommit 42a872fdb61befa14ebeb57c8be8303c16aae2b0[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Mon Aug 26 19:52:56 2024 -0700
+
+    update UI
+
+[33mcommit 17b8e45647d89ab21c8c8cb3b69f5ef964d3ecdb[m
+Merge: 0899d25 7da3237
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Mon Aug 26 19:38:54 2024 -0700
+
+    Merge pull request #21 from aroldayson/arold
+    
+    Arold
+
+[33mcommit 7da3237d88d8f4f087d1fac04ffcdeb18006cede[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Mon Aug 26 19:38:08 2024 -0700
+
+    asdasda
+
+[33mcommit c182c35100d41cc0dea74e07013d4509797851b2[m
+Merge: c6d5449 0899d25
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Mon Aug 26 19:37:19 2024 -0700
+
+    update
+
+[33mcommit c6d54492c510d36b21410b3e9d92b986d90cd442[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Aug 27 09:54:24 2024 -0700
+
+    all update
+
+[33mcommit b2747a7e34b2ea7820eac6dc39ab9358478d3396[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Tue Aug 27 10:21:39 2024 +0800
+
+    allgoods
+
+[33mcommit 90908ab921c8a90bd16aeaf69d9a598cf0b9d36c[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Tue Aug 27 10:11:48 2024 +0800
+
+    already
+
+[33mcommit 0899d256f5b399f5c143f6268cdd5129084bcf21[m
+Merge: 9e35019 cb7cbd4
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Mon Aug 26 19:08:36 2024 -0700
+
+    Merge pull request #20 from aroldayson/arold
+    
+    updatetodate
+
+[33mcommit 9e350190c0f424a828bfe7bef0760d7ef8db242d[m
+Merge: 66c41c6 8856a79
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Mon Aug 26 19:07:09 2024 -0700
+
+    Merge pull request #19 from aroldayson/carl
+    
+    Carl
+
+[33mcommit 8856a796161ef15366b9b4bdd8c275c67eacad83[m
+Merge: 414f864 66c41c6
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Tue Aug 27 10:05:26 2024 +0800
+
+    new update
+
+[33mcommit cb7cbd49693e70bf5b2fa4f983a74c61e227ed24[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Mon Aug 26 18:51:31 2024 -0700
+
+    updatetodate
+
+[33mcommit 414f864d14b74c89883ef6b8756f36f1b951db62[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Tue Aug 27 09:41:29 2024 +0800
+
+    updates
+
+[33mcommit 66c41c6fb43d7e1b0d8e8e1ebb2c3014968c3090[m
+Merge: 1ab8cf9 3f5d64f
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Sun Aug 25 19:17:33 2024 -0700
+
+    Merge pull request #15 from aroldayson/arold
+    
+    login update
+
+[33mcommit 3f5d64f5a1c5a55d16903d2e0f6c9c8de5be9911[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Sun Aug 25 19:16:57 2024 -0700
+
+    login update
+
+[33mcommit 1ab8cf912adcea114a04f73b141ee34f19d71de0[m
+Merge: 94c6399 bae0bf6
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Thu Aug 22 00:13:16 2024 -0700
+
+    Merge pull request #14 from aroldayson/carls
+    
+    new login
+
+[33mcommit bae0bf627bfe9c8de8a7179db1d3e5ac11b0a35f[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Thu Aug 22 13:22:13 2024 +0800
+
+    new login
+
+[33mcommit 94c63996ccdae9039e132502106748731f619bff[m
+Merge: fac3d67 8d24a1b
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Tue Aug 20 19:27:26 2024 -0700
+
+    Merge pull request #13 from aroldayson/carls
+    
+    side nav
+
+[33mcommit 8d24a1bed4aceb43adbb795d5d25bcad765597ac[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Wed Aug 21 10:26:41 2024 +0800
+
+    side nav
+
+[33mcommit fac3d67e8fe428616c3c1315d9a197843f078617[m
+Merge: b26551d 0a8edaf
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Tue Aug 20 19:23:32 2024 -0700
+
+    Merge pull request #12 from aroldayson/carls
+    
+    carlss
+
+[33mcommit 0a8edaf692237f114b390b5ef311b8c4d686a35a[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Wed Aug 21 10:22:01 2024 +0800
+
+    carlss
+
+[33mcommit b26551d8b4235493406200e8678423aa5d2155bf[m
+Merge: 4021c2b 4ad36f8
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Tue Aug 20 19:16:50 2024 -0700
+
+    Merge pull request #11 from aroldayson/carls
+    
+    updatedddd
+
+[33mcommit 4ad36f8d7aab905ff2d04ccc2386c4238df4da11[m
+Author: imcqrl <ninalgacarljustine203@gmail.com>
+Date:   Wed Aug 21 10:13:42 2024 +0800
+
+    updatedddd
+
+[33mcommit 4021c2b33dd0826c29e173b8143064735e1604b6[m
+Merge: dc477b0 4308fe1
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Mon Aug 19 07:41:25 2024 -0700
+
+    Merge pull request #10 from aroldayson/arold
+    
+    UI updates
+
+[33mcommit 4308fe129936cdac963af8fa2a53aefb6a21a1ed[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Mon Aug 19 07:40:46 2024 -0700
+
+    UI updates
+
+[33mcommit 2cc16d1c90530e11edcd46d9c34f037ae97f1cd7[m[33m ([m[1;31mkhkh/arold[m[33m)[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Sat Aug 17 12:09:51 2024 -0700
+
+    updated dashboard
+
+[33mcommit dc477b0a80a9f81bbfc74527d07f9ec57cafa05c[m[33m ([m[1;31mkhkh/main[m[33m)[m
+Merge: e039c2b 2cc16d1
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Sat Aug 17 09:11:21 2024 -0700
+
+    Merge pull request #9 from aroldayson/arold
+    
+    updated dashboard
+
+[33mcommit e039c2b8e1e304b9ef899f6080ad07398b02fc48[m
+Merge: cf1e9f4 fc32d93
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Sun Aug 11 19:43:43 2024 -0700
+
+    Merge pull request #8 from aroldayson/arold
+    
+    update graph
+
+[33mcommit fc32d93de31e2d50ca67d4cd24d7bea4e6c789b2[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Sun Aug 11 19:42:58 2024 -0700
+
+    update graph
+
+[33mcommit cf1e9f41f2321af4c32bf370317da417e3043643[m
+Merge: e64f4a9 79871f3
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Thu Aug 8 00:05:26 2024 -0700
+
+    Merge pull request #7 from aroldayson/arold
+    
+    update grid
+
+[33mcommit 79871f3c11099c2fb89715f1b1f3aaa20a13d232[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Wed Aug 7 15:04:21 2024 -0700
+
+    update grid
+
+[33mcommit e64f4a98a28943b7d65d757fed352ec8aa7f0451[m
+Merge: e07c02f 9848c01
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Tue Aug 6 18:21:54 2024 -0700
+
+    Merge pull request #6 from aroldayson/arold
+    
+    btn align
+
+[33mcommit 9848c01f23a29064ae8f09bcc0c70efc5b0da84b[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Aug 6 18:21:24 2024 -0700
+
+    btn align
+
+[33mcommit e07c02f319b205a6792bc9d0c24c2e298bc339dd[m
+Merge: 9e8883a f88b0d3
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Tue Aug 6 18:15:20 2024 -0700
+
+    Merge pull request #5 from aroldayson/arold
+    
+    import sweetalert
+
+[33mcommit f88b0d3e8a20d2bbb89367f0edc81a7f16414414[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Aug 6 18:14:35 2024 -0700
+
+    import sweetalert
+
+[33mcommit 9e8883ae9e13d1edbb227b124afa3c1271bb1432[m
+Merge: 6a92fb0 4cd979b
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Sun Aug 4 02:38:15 2024 -0700
+
+    Merge pull request #4 from aroldayson/arold
+    
+    update all route
+
+[33mcommit 4cd979bb1c92c964e779fdccae18ae686cf0486e[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Sun Aug 4 02:37:19 2024 -0700
+
+    update all route
+
+[33mcommit 6a92fb0c44a8f032e43ebb5e6afc71cfc7541314[m
+Merge: 1f4e26e 16e241d
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Thu Aug 1 18:15:45 2024 -0700
+
+    Merge pull request #3 from aroldayson/arold
+    
+    update report route
+
+[33mcommit 16e241d9d4e70cca7295d83f020eef1eb4b21b9f[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Thu Aug 1 18:15:03 2024 -0700
+
+    update report route
+
+[33mcommit 1f4e26e5f6ccdf3c9a3323e392fa5315c37a378c[m
+Merge: 86ceea6 3b89ddc
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Thu Aug 1 07:20:58 2024 -0700
+
+    Merge pull request #2 from aroldayson/arold
+    
+    Arold
+
+[33mcommit 3b89ddc539ca5c3db80e7d5eb2cde99e40422ac8[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Thu Aug 1 07:19:54 2024 -0700
+
+    update price/report
+
+[33mcommit 60362c2c05d8eb4cb95c2d523f0a2776d3823a64[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Thu Aug 1 05:37:12 2024 -0700
+
+    update
+
+[33mcommit 86ceea6160af8ceb1ec776e87d25f9c994aee6e0[m
+Merge: b7ab308 8069858
+Author: aroldayson <157470202+aroldayson@users.noreply.github.com>
+Date:   Thu Aug 1 03:16:18 2024 -0700
+
+    Merge pull request #1 from aroldayson/arold
+    
+    update pricemanagement
+
+[33mcommit 80698585a66c978e1d1b29702b56db506c0b0a96[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Thu Aug 1 03:11:43 2024 -0700
+
+    update pricemanagement
+
+[33mcommit b7ab308b71495d7f3fbb1974440e53ac82be194b[m[33m ([m[1;31mkhkh/carl[m[33m)[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Jul 30 09:15:23 2024 -0700
+
+    first commit
+
+[33mcommit 53124fda5777c510b7293754df98db369ec8b7e0[m
+Author: Arold Ayson <aroldayson3@gmail.com>
+Date:   Tue Jul 30 07:07:09 2024 -0700
+
+    initial commit
