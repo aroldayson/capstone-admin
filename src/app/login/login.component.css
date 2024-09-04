@@ -63,6 +63,7 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
+  padding: 5%;
   border-bottom: 2px solid #3e5e89;
 }
 
@@ -283,3 +284,4 @@ input[type=password]:placeholder {
 * {
   box-sizing: border-box;
 }
+

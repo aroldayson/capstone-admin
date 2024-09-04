@@ -1,82 +1,97 @@
 <div class="mt-4">
-  <div class="row">
-    <div class="col-md-12 mb-4">
-      <h3 class="text-start fw-bold">Hello, Welcome to Admin.</h3>
-    </div>
-    <div class="col-lg-9 col-md-12 mb-4">
-      <div class="card p-3">
-        <div class="row">
-          <div class="col-md-7 mb-4">
-            <div class="border-primary p-3 h-100">
-              <div class="table-responsive">
-                <h3 class="text-center fw-bold mb-3">RECEIVED PAYMENT</h3>
-                <h4 class="text-center mb-4">{{ currentDate }}</h4>
-                <table class="table table-striped text-center">
-                  <thead>
-                    <tr>
-                      <th>Mode of Payment</th>
-                      <th>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="text-primary">GCash</td>
-                      <td>₱ 1000</td>
-                    </tr>
-                    <tr>
-                      <td class="text-danger">BPI</td>
-                      <td>₱ 550</td>
-                    </tr>
-                    <tr>
-                      <td class="text-success">Cash</td>
-                      <td>₱ 850</td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Total</th>
-                      <th>₱ 2400</th>
-                    </tr>
-                  </tfoot>
-                </table>
+    <div class="row w-100">
+      <div class="col-md">
+          <div class="card  p-3">
+              <div class="text-black text-center mt-3"><h4>Today's Income</h4></div>
+              <div class=" text-center mt-2"><h1>₱ 2,400.00</h1></div>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="card  p-3">
+              <div class="text-center mt-3"><h4>Today's Received Transactions</h4></div>
+              <div class=" text-center mt-2"><h1>5</h1></div>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="card p-3">
+              <div class="text-black text-center mt-3"><h4>Today's Expenses</h4></div>
+              <div class="text-black text-center mt-2"><h1>₱ 50.00</h1></div>
+          </div>
+      </div>
+      <div class="col-lg-9 col-md-1">
+        <div class="card p-3">
+          <div class="row">
+            <div class="col-md-7 mb-1">
+              <div class="border-primary p-3 h-100">
+                <div class="table-responsive">
+                  <h3 class="text-center fw-bold mb-3">RECEIVED PAYMENT</h3>
+                  <h4 class="text-center mb-4">{{ currentDate }}</h4>
+                  <table class="table table-striped text-center">
+                    <thead>
+                      <tr>
+                        <th>Method of Payment</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-primary">GCash</td>
+                        <td>₱ 1,000.00</td>
+                      </tr>
+                      <tr>
+                        <td class="text-danger">BPI</td>
+                        <td>₱ 550.00</td>
+                      </tr>
+                      <tr>
+                        <td class="text-success">Cash</td>
+                        <td>₱ 850.00</td>
+                      </tr>
+                    </tbody>
+                    <!-- <tfoot>
+                      <tr>
+                        <th>Total</th>
+                        <th>₱ 2400</th>
+                      </tr>
+                    </tfoot> -->
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-5">
-            <div class="p-3 h-100">
-              <h3 class="text-center mb-4 fw-bold">INCOME</h3>
-              <div class="chart-container">
-                <canvas id="MyChart"></canvas>
+            <div class="col-md-5">
+              <div class="h-100">
+                <!-- <h3 class="text-center fw-bold">INCOME</h3> -->
+                <div class="chart-container">
+                  <canvas id="MyChart"></canvas>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3 col-md-12 mb-4">
-      <div class="card p-3">
-        <h3 class="text-center mb-4 fw-bold">CASH DETAILS</h3>
-        <form>
-          <div class="form-group mb-3">
-            <label for="changeFundInput">Initial Amount</label>
-            <input type="text" id="changeFundInput" class="form-control" />
-          </div>
-          <div class="form-group mb-3">
-            <label for="cashCountInput">Cash Count</label>
-            <input type="text" id="cashCountInput" class="form-control" />
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <button type="button" class="btn btn-primary w-100">
-                Update
-              </button>
+      <div class="col-lg-3 col-md-12 mb-4">
+        <div class="card p-3">
+          <h3 class="text-center mb-4 fw-bold">CASH DETAILS</h3>
+          <form>
+            <div class="form-group mb-3">
+              <label for="changeFundInput">Initial Amount</label>
+              <input type="text" id="changeFundInput" class="form-control" />
             </div>
-            <div class="col-6">
-              <button type="button" class="btn btn-success w-100">Add</button>
+            <div class="form-group mb-3">
+              <label for="cashCountInput">Cash Count</label>
+              <input type="text" id="cashCountInput" class="form-control" />
             </div>
-          </div>
-        </form>
+            <div class="row">
+              <div class="col-6">
+                <button type="button" class="btn btn-primary w-100">
+                  Update
+                </button>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-success w-100">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
