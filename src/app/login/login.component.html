@@ -1,78 +1,33 @@
-<section>
-  <div class="login">
-    <div class="container d-flex justify-content-center align-items-center">
-      <div class="card">
-        <div class="card-body">
-          <div class="logo text-center">
-            <img src="./sk2logo.png" alt="Logo" />
-          </div>
-          <div class="h4 text-center fw-bolder mb-4" style="color: #000080">
-            ADMIN LOGIN
-          </div>
-          <!-- <form> -->
-            <div class="mb-3">
-              <label for="validationDefault01" class="form-label"
-                >Email address</label
-              >
-              <input
-                type="text"
-                id="validationDefault01"
-                class="form-control form-control-lg"
-                formControlName="email"
-                placeholder="Enter your email"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="typePasswordX" class="form-label">Password</label>
-              <input
-                type="password"
-                id="typePasswordX"
-                class="form-control form-control-lg"
-                formControlName="pw"
-                placeholder="Enter your password"
-              />
-            </div>
-            <p class="small pb-lg-2 text-end">
-              <a href="#" class="text-black-50">Forgot password?</a>
-            </p>
-            <div class="mt-3 text-end">
-              <button class="btn btn-primary fw-bold" routerLink="/main">
-                LOGIN
-              </button>
-            </div>
-          <!-- </form> -->
+<section style="background-image: url(/image/bg.png); height: 48.5rem; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-color: #F8FAFD;">
+  <div class="wrapper fadeInDown">
+      <div id="formContent">
+          <!-- Tabs Titles -->
+          <h2 class="active"> Staff Log In</h2>
 
-          <!-- FIRST MODAL -->
-          <div class="modal" tabindex="-1" id="warningmodal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h3 class="modal-title text-danger fw-bolder">WARNING!!!</h3>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <p class="text-dark h5">Please fill the form correctly!</p>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
+          <!-- Icon -->
+          <div class="fadeIn first">
+              <img src="" id="icon" alt="" style="width: 30%" />
           </div>
-          <!-- end modal -->
-        </div>
+
+          <!-- Login Form -->
+          <form>
+              <div id="wrong" class="text-center text-danger mx-4 rounded mb-3" style="display: none; background-color: rgba(251, 198, 198, 0.896); color: rgb(247, 76, 76); font-size: 14px;">Either the Username or Password you've entered is incorrect!</div>
+          
+              <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username" required />
+
+              <div id="nousername" class="text-danger mt-2 mb-3" style="display: none;">
+                  <small>Please input a username</small>
+              </div>
+
+
+              <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required />
+              <div id="nopassword" class="text-danger mt-2 mb-3" style="display: none;">
+                  <small>Please input a password</small>
+              </div>
+
+              <input type="submit" class="fadeIn fourth" routerLink="/main"  value="Log In">
+          </form>
+
       </div>
-    </div>
   </div>
 </section>
