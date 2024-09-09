@@ -25,7 +25,7 @@ export class ViewTransactionComponent {
       // text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, Approved it!",
       cancelButtonText: "No, cancel!",
       reverseButtons: true
     }).then((result) => {

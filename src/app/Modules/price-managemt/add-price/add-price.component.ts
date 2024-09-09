@@ -27,34 +27,17 @@ export class AddPriceComponent implements OnInit{
 
   }
 
-  // save(){
-  //   Swal.fire({
-  //     title: "Are you sure to add categoty?",
-  //     showDenyButton: true,
-  //     // showCancelButton: true,
-  //     confirmButtonText: "Save",
-  //     denyButtonText: `Don't save`
-  //   }).then((result) => {
-  //     /* Read more about isConfirmed, isDenied below */
-  //     if (result.isConfirmed) {
-  //       Swal.fire("Saved!", "", "success");
-  //     } else if (result.isDenied) {
-  //       Swal.fire("Changes are not saved", "", "info");
-  //     }
-  //   });
-  // }
-
   save(): void {
-    // console.log(this.categoryForm.value)
-    // this.admin.savecateg(this.categoryForm.value)
-    // .subscribe((result:any)=>{
-    //   if (result.message === 'Success') {
-    //     this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview']);
-    //   } else {
-    //     console.error('Error occurred during signup:', result);
-    //   }
-    //   location.reload();
-    // })
+    console.log(this.categoryForm.value)
+    this.admin.savecateg(this.categoryForm.value)
+    .subscribe((result:any)=>{
+      if (result.message === 'Success') {
+        this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview']);
+      } else {
+        console.error('Error occurred during signup:', result);
+      }
+      location.reload();
+    })
   }
 
   clear(): void {

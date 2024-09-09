@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Chart, registerables } from  'chart.js';
 
 Chart.register(...registerables);
 @Component({
   selector: 'app-view-dash',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './view-dash.component.html',
   styleUrl: './view-dash.component.css'
 })
@@ -49,7 +50,7 @@ export class ViewDashComponent implements OnInit{
       plugins: {
         title: {
           display: true,
-          text: 'Daily Income Data for 2024'
+          text: 'Montly Income Data for 2024',
         },
         legend: {
           labels: {

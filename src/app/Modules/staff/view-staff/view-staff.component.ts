@@ -13,10 +13,10 @@ export class ViewStaffComponent implements OnInit{
   staff:any
 
   ngOnInit(): void {
-    // this.admin.displayitem().subscribe((result: any) => {
-    //   this.staff = result;
-    //   console.log(this.staff);
-    // });
+    this.admin.displayitem().subscribe((result: any) => {
+      this.staff = result;
+      console.log(this.staff);
+    });
   }
   constructor(
     private admin: AdminService
