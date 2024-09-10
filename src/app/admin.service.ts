@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AdminService {
-  url = 'http://localhost/admin/';
+  url = 'http://localhost/backend/';
 
   constructor(private http: HttpClient) {}
 
@@ -18,11 +18,10 @@ export class AdminService {
   deleteprice(id: any) {
     return this.http.delete(this.url + 'deleteCateg.php?id=' + id);
   }
-  getcateg(id: any){
+  getcateg(id: any) {
     return this.http.get(this.url + 'getitemedit.php?id=' + id);
   }
-  updateCateg(data:any){
-    return this.http.post(this.url + 'updateitem.php',JSON.stringify(data));
+  updateCateg(data: any) {
+    return this.http.post(this.url + 'updateitem.php', JSON.stringify(data));
   }
-
 }

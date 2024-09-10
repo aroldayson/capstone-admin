@@ -1,115 +1,99 @@
 <div class="container mt-5">
-    <div class="row">
-      <!-- My Account Section -->
-      <div class="col-md-12 col-lg-6 mb-4">
-        <div class="account-section">
-          <p class="h2 text-center fw-bold">MY ACCOUNT</p>
-          <form action="" method="post">
-            <div class="preview text-center mb-4 mt-4 position-relative">
-              <img
-                class="preview-img"
-                src="http://simpleicon.com/wp-content/uploads/account.png"
-                alt="Preview Image"
+  <div class="row">
+    <!-- My Account Section -->
+    <div class="col-md-12 col-lg-6 mb-4">
+      <div class="account-section">
+        <p class="h2 text-center fw-bold">MY ACCOUNT</p>
+        <form action="" method="post">
+          <div class="preview text-center mb-4 mt-4 position-relative">
+            <img
+              class="preview-img"
+              src="http://simpleicon.com/wp-content/uploads/account.png"
+              alt="Preview Image"
+            />
+            <div class="browse-button">
+              <i class="fa fa-pencil-alt"></i>
+              <input
+                class="browse-input"
+                type="file"
+                required
+                name="UploadedFile"
+                id="UploadedFile"
               />
-              <div class="browse-button">
-                <i class="fa fa-pencil-alt"></i>
-                <input
-                  class="browse-input"
-                  type="file"
-                  required
-                  name="UploadedFile"
-                  id="UploadedFile"
-                />
-              </div>
-              <span class="Error"></span>
             </div>
-            <div class="form-group mt-5">
-              <label>Full Name:</label><br />
-              <h4>Carl Ninalga</h4>
-            </div>
-            <div class="form-group">
-              <label>Email:</label><br />
-              <h4>ninalgacarlgmail.com</h4>
-            </div>
-            <div class="form-group">
-              <label>Description:</label><br />
-              <h4>OWNER OF THE LAUNDRY</h4>
-            </div>
-          </form>
-        </div>
+            <span class="Error"></span>
+          </div>
+          <div class="form-group mt-5">
+            <label>Full Name:</label><br />
+            <h4>Carl Ninalga</h4>
+          </div>
+          <div class="form-group">
+            <label>Email:</label><br />
+            <h4>ninalgacarlgmail.com</h4>
+          </div>
+        </form>
       </div>
-      <!-- Personal Details Section -->
-      <div class="col-md-12 col-lg-6 mb-4">
-        <div class="account-section personal-details">
-          <p class="h2 text-center fw-bold">PERSONAL DETAILS</p>
-          <form action="" method="post">
-            <div class="form-group">
-              <label><b>Full Name:</b></label>
-              <input
-                class="form-control"
-                type="text"
-                name="fullname"
-                required
-                placeholder="Enter Your Full Name"
-              />
+    </div>
+    <!-- Personal Details Section -->
+    <div class="col-md-12 col-lg-6 mb-4">
+      <div class="account-section personal-details">
+        <p class="h2 text-center fw-bold">EDIT ACCOUNT</p>
+        <form action="" method="post">
+          <div class="form-group">
+            <label><b>Email:</b></label>
+            <input
+              class="form-control"
+              type="text"
+              name="email"
+              required
+              placeholder="Enter Your Email"
+            />
+          </div>
+          <div class="form-group">
+            <label><b>Current Password:</b></label>
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              required
+              placeholder="Enter Your Password"
+            />
+          </div>
+          <div class="form-group">
+            <label><b>New Password:</b></label>
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              required
+              placeholder="Enter Your Password"
+            />
+          </div>
+          <div class="form-group">
+            <label><b>Confirm Password:</b></label>
+            <input
+              class="form-control"
+              type="password"
+              name="confirm_password"
+              required
+              placeholder="Re-enter Your Password"
+            />
+          </div>
+          <!-- Buttons inside Personal Details -->
+          <div class="row opt mt-4">
+            <div class="col-md-6 mb-3">
+              <button type="button" class="btn btn-danger btn-small btn-block">
+                Clear
+              </button>
             </div>
-            <div class="form-group">
-              <label><b>Add About This Account:</b></label>
-              <input
-                class="form-control"
-                type="text"
-                name="description"
-                required
-                placeholder="Enter Your Description"
-              />
+            <div class="col-md-6 mb-3">
+              <button type="button" class="btn btn-primary btn-small btn-block">
+                Save
+              </button>
             </div>
-            <div class="form-group">
-              <label><b>Email:</b></label>
-              <input
-                class="form-control"
-                type="text"
-                name="email"
-                required
-                placeholder="Enter Your Email"
-              />
-            </div>
-            <div class="form-group">
-              <label><b>Password:</b></label>
-              <input
-                class="form-control"
-                type="password"
-                name="password"
-                required
-                placeholder="Enter Your Password"
-              />
-            </div>
-            <div class="form-group">
-              <label><b>Re-enter Password:</b></label>
-              <input
-                class="form-control"
-                type="password"
-                name="confirm_password"
-                required
-                placeholder="Re-enter Your Password"
-              />
-            </div>
-  
-            <!-- Buttons inside Personal Details -->
-            <div class="row opt mt-4">
-              <div class="col-md-6 mb-3">
-                <button type="button" class="btn btn-danger btn-small btn-block">
-                  Clear
-                </button>
-              </div>
-              <div class="col-md-6 mb-3">
-                <button type="button" class="btn btn-primary btn-small btn-block">
-                  Save
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-
+</div>
