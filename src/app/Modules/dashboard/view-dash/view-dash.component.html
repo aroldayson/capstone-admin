@@ -12,7 +12,7 @@
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-exchange-alt fa-2x mb-2 text-success"></i>
         <h4>Today's Received Transactions</h4>
-        <h1>5</h1>
+        <h1>2</h1>
       </div>
     </div>
     <div class="col-md-4 mb-3">
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Received Payment and Chart Section -->
-    <div class="col-lg-9 col-md-12 mb-3">
+    <div class="col-lg-9 col-md-12">
       <div class="card p-3">
         <div class="row">
           <div class="col-md-7 mb-3">
@@ -41,16 +41,16 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="text-primary">GCash</td>
-                      <td>₱ 1,000.00</td>
+                      <td class="text-primar">GCash</td>
+                      <td class="text-right">₱ 1,000.00</td>
                     </tr>
                     <tr>
                       <td class="text-danger">BPI</td>
-                      <td>₱ 550.00</td>
+                      <td class="text-right">₱ 550.00</td>
                     </tr>
                     <tr>
                       <td class="text-success">Cash</td>
-                      <td>₱ 850.00</td>
+                      <td class="text-right">₱ 850.00</td>
                     </tr>
                   </tbody>
                 </table>
@@ -72,12 +72,29 @@
         <h3 class="mb-4 fw-bold">CASH DETAILS</h3>
         <form>
           <div class="form-group mb-3">
+            <label for="changeFundSelect">Cashier in Charge</label>
+            <select
+              id="changeFundSelect"
+              class="form-control"
+              [(ngModel)]="selectedCashier"
+            >
+              <option value="">Select Cashier</option>
+              <option value="cashier1">Juan Dela Cruz</option>
+              <option value="cashier2">Carl Katigbak</option>
+            </select>
+          </div>
+          <div class="form-group mb-3">
             <label for="changeFundInput">Initial Amount</label>
             <input type="text" id="changeFundInput" class="form-control" />
           </div>
           <div class="form-group mb-3">
             <label for="cashCountInput">Cash Count</label>
-            <input type="text" id="cashCountInput" class="form-control" />
+            <input
+              type="text"
+              id="cashCountInput"
+              class="form-control"
+              [disabled]="!selectedCashier"
+            />
           </div>
           <div class="row">
             <div class="col-6">

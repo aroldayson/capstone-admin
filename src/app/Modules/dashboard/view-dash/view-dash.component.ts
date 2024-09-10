@@ -1,51 +1,57 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Chart, registerables } from  'chart.js';
+import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 @Component({
   selector: 'app-view-dash',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './view-dash.component.html',
-  styleUrl: './view-dash.component.css'
+  styleUrl: './view-dash.component.css',
 })
-export class ViewDashComponent implements OnInit{
+export class ViewDashComponent implements OnInit {
   currentDate: any;
+  selectedCashier: string = '';
   formatDate(date: Date): string {
-    const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' };
+    const options: Intl.DateTimeFormatOptions = {
+      month: 'short',
+      day: '2-digit',
+      year: 'numeric',
+    };
     return date.toLocaleDateString('en-US', options);
   }
   public config: any = {
     type: 'bar',
     data: {
-      labels: ['GCASH', 'BPI', 'CASH'], 
+      labels: ['GCASH', 'BPI', 'CASH'],
       datasets: [
         {
-          label: 'Income', 
+          label: 'Income',
           data: ['1000', '550', '850'],
           backgroundColor: ['#2986cc', '#da1b1b', '#89c76e'],
           borderColor: ['#ff6384', '#36a2eb', '#cc65fe'],
-          fill: false, 
-          tension: 0.1 
-        }
-      ]
+          fill: false,
+          tension: 0.1,
+        },
+      ],
     },
     options: {
       scales: {
         x: {
           title: {
             display: true,
-            text: 'Method of Payment'
-          }
+            text: 'Method of Payment',
+          },
         },
         y: {
           title: {
             display: true,
-            text: 'Amount'
+            text: 'Amount',
           },
-          beginAtZero: true
-        }
+          beginAtZero: true,
+        },
       },
       plugins: {
         title: {
@@ -54,19 +60,18 @@ export class ViewDashComponent implements OnInit{
         },
         legend: {
           labels: {
-            color: '#333' // Color of the legend text
-          }
-        }
+            color: '#333', // Color of the legend text
+          },
+        },
       },
       responsive: true,
-      maintainAspectRatio: false 
-    }
+      maintainAspectRatio: false,
+    },
   };
-  
+
   chart: any;
   ngOnInit(): void {
-    this.chart = new  Chart('MyChart',this.config);
+    this.chart = new Chart('MyChart', this.config);
     this.currentDate = this.formatDate(new Date());
   }
-
 }
