@@ -1,0 +1,108 @@
+<div class="container my-3" id="print-section">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <h3 class="fw-bold">HISTORY OF TRANSACTIONS</h3>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-end">
+                <!-- <button
+                    class="btn btn-success pri mb-3"
+                    [useExistingCss]="true"
+                    printSectionId="print-section"
+                    ngxPrint
+                  >
+                    <i class="fas fa-print"></i> Print
+                  </button> -->
+              </div>
+            </div>
+          </div>
+          <h3 class="mb-2">Name of Customer: Juan Dela Cruz</h3>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr class="text-center">
+                  <th>No.</th>
+                  <th>Transaction No.</th>
+                  <th>Qty</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="text-center"
+                  routerLink="/main/customertpage/main/view-listtransac"
+                >
+                  <td>1</td>
+                  <td>SDGS5234</td>
+                  <td>2</td>
+                  <th>500.00</th>
+                  <th>Delivered</th>
+                </tr>
+                <tr
+                  class="text-center"
+                  routerLink="/main/customertpage/main/view-listtransac"
+                >
+                  <td>2</td>
+                  <td>SDGS5234</td>
+                  <td>2</td>
+                  <th>500.00</th>
+                  <th>Delivered</th>
+                </tr>
+                <tr
+                  class="text-center"
+                  routerLink="/main/customertpage/main/view-listtransac"
+                >
+                  <td>3</td>
+                  <td>SDGS5234</td>
+                  <td>2</td>
+                  <th>500.00</th>
+                  <th>Delivered</th>
+                </tr>
+                <tr
+                  class="text-center"
+                  routerLink="/main/customertpage/main/view-listtransac"
+                >
+                  <td>4</td>
+                  <td>SDGS5234</td>
+                  <td>2</td>
+                  <th>500.00</th>
+                  <th>Delivered</th>
+                </tr>
+                <tr
+                  class="text-center"
+                  routerLink="/main/customertpage/main/view-listtransac"
+                >
+                  <td>5</td>
+                  <td>SDGS5234</td>
+                  <td>2</td>
+                  <th>500.00</th>
+                  <th>Delivered</th>
+                </tr>
+              </tbody>
+              <!-- <tfoot class="text-center">
+                  <tr>
+                    <th>Total</th>
+                    <th></th>
+                    <th id="total-amount">₱ 15000</th>
+                    <th id="total-amount">₱ 15000</th>
+                    <th id="total-amount">₱ 100</th>
+                  </tr>
+                </tfoot> -->
+            </table>
+          </div>
+        </div>
+      </div>
+      <button
+        class="end btn btn-primary"
+        routerLink="/main/customertpage/main/view"
+      >
+        Back
+      </button>
+    </div>
+  </div>
+</div>
