@@ -56,7 +56,7 @@ export class ViewDashComponent implements OnInit {
       plugins: {
         title: {
           display: true,
-          text: 'Montly Income Data for 2024',
+          text: 'Montly Income Data for September 2024',
         },
         legend: {
           labels: {
