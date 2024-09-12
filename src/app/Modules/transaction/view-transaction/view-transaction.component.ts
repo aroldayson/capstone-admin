@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgxPrintModule } from 'ngx-print';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-transaction',
   standalone: true,
-  imports: [NgxPrintModule, RouterOutlet],
+  imports: [NgxPrintModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './view-transaction.component.html',
   styleUrl: './view-transaction.component.css',
 })

@@ -1,25 +1,61 @@
-.pri {
-    margin-left: auto;
+/* Button Styles */
+.btn-nav {
+  font-size: calc(0.85rem + 0.5vw);
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Active Button Styles */
+.btn-nav.active {
+  background-color: #0056b3; /* Darker blue to indicate active */
+  border: 2px solid #004085; /* Border to highlight active state */
+  color: #fff; /* Ensure text remains readable */
+  transform: none; /* Remove hover transform for active state */
+  box-shadow: none; /* Remove shadow to keep the active button distinct */
+}
+
+/* Responsive Text */
+.text-responsive {
+  font-size: calc(0.75rem + 0.5vw); /* Base responsive font size */
+}
+
+@media (max-width: 576px) {
+  .text-responsive {
+    font-size: 0.65rem; /* Smaller text for mobile screens */
   }
-  
-  .table-responsive {
-    margin-top: 20px;
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .text-responsive {
+    font-size: 0.85rem; /* Medium text size for tablet screens */
   }
-  
-  thead th:first-child,
-  tfoot th:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+}
+
+@media (min-width: 993px) {
+  .text-responsive {
+    font-size: 1rem; /* Larger text for desktop screens */
   }
-  
-  thead th:last-child,
-  tfoot th:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .table-responsive {
-      overflow-x: auto;
-    }
-  }
+}
+
+/* Centering Buttons */
+.navbar-container .row {
+  justify-content: center;
+}
+
+/* Ensure buttons are consistent in size across devices */
+.btn-block {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}

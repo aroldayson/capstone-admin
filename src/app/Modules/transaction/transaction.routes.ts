@@ -4,7 +4,8 @@ import { ViewTransactionComponent } from './view-transaction/view-transaction.co
 import { TransacPaidComponent } from './transac-paid/transac-paid.component';
 import { TransacUnpaidComponent } from './transac-unpaid/transac-unpaid.component';
 import { ViewReceiptComponent } from './view-receipt/view-receipt.component';
-
+import { ViewExpenseComponent } from './view-expense/view-expense.component';
+import { ViewRemitComponent } from './view-remit/view-remit.component';
 export const transactionRoute: Routes = [
   {
     path: 'main',
@@ -17,6 +18,8 @@ export const transactionRoute: Routes = [
           { path: 'view-paid', component: TransacPaidComponent },
           { path: 'view-unpaid', component: TransacUnpaidComponent },
           { path: 'view-receipt', component: ViewReceiptComponent },
+          { path: 'expensesview', component: ViewExpenseComponent },
+          { path: 'remittanceview', component: ViewRemitComponent },
           { path: '', redirectTo: 'view-paid', pathMatch: 'full' },
         ],
       },

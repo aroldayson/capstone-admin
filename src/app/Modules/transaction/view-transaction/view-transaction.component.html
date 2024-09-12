@@ -1,7 +1,53 @@
-<div class="container my-3" id="print-section">
-  <div class="row">
-    <div class="col-md-12">
-      <router-outlet></router-outlet>
+<div class="mt-4 mb-4">
+  <div class="row justify-content-start">
+    <div class="col-6 col-sm-4 col-md-2 mb-3">
+      <button
+        type="submit"
+        class="btn btn-nav btn-block active"
+        [routerLink]="['/main/tansactionpage/main/view-tran/view-paid']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        PAID
+      </button>
     </div>
+    <div class="col-6 col-sm-4 col-md-2 mb-3">
+      <button
+        type="submit"
+        class="btn btn-nav btn-block"
+        [routerLink]="['/main/tansactionpage/main/view-tran/view-unpaid']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        UNPAID
+      </button>
+    </div>
+    <div class="col-6 col-sm-4 col-md-2 mb-3">
+      <button
+        type="submit"
+        class="btn btn-nav btn-block"
+        [routerLink]="['/main/tansactionpage/main/view-tran/remittanceview']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        REMITTANCE
+      </button>
+    </div>
+    <div class="col-6 col-sm-4 col-md-2 mb-3">
+      <button
+        type="submit"
+        class="btn btn-nav btn-block"
+        [routerLink]="['/main/tansactionpage/main/view-tran/expensesview']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        EXPENSES
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
   </div>
 </div>
