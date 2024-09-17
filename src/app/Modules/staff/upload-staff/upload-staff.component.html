@@ -3,8 +3,20 @@
         <div class="row">
             <div class="field" text-align="left">
                 <h4 class="text-center"><b>UPLOAD IMAGE</b></h4>
-                <input type="file" class="files" name="files[]" />
-            </div>
+                <input type="file" (click)="toggleImage()"class="files" name="files[]" (change)="onFileSelected($event)" />
+                
+              
+                <!-- Button to toggle image collapse -->
+                <!-- <button class="btn btn-primary mt-2" (click)="toggleImage()">
+                  {{ isCollapsed ? 'Show Image' : 'Hide Image' }}
+                </button> -->
+              
+                <!-- Collapsible Image Section -->
+                <div [ngClass]="{ 'collapse': isCollapsed }" class="mt-3">
+                  <img [src]="url" width="200" height="200" *ngIf="url" />
+                </div>
+              </div>
+              
         </div>
         <div class="row mt-5">
             <div class="col-md-6">

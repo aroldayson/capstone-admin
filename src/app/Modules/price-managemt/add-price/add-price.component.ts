@@ -28,18 +28,30 @@ export class AddPriceComponent implements OnInit{
   }
 
   save(): void {
-    console.log(this.categoryForm.value)
-    this.admin.savecateg(this.categoryForm.value)
-    .subscribe((result:any)=>{
-      if (result.message === 'Success') {
-        this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview']);
-      } else {
-        console.error('Error occurred during signup:', result);
+    console.log(this.categoryForm.value);
+  
+    this.admin.savecateg(this.categoryForm.value).subscribe(
+      (result: any) => {
+        if (result.message === 'Success') {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: true, 
+          }).then(() => {
+            location.reload();
+          });
+          this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview']);
+        } else {
+          console.error('Error occurred during save:', result);
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
       }
-      location.reload();
-    })
+    );
   }
-
+  
   clear(): void {
     this.categoryForm.reset();
   }

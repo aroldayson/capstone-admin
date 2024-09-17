@@ -1,10 +1,7 @@
 <div class="mt-4">
   <div class="row w-100">
     <!-- Top Cards with Hover Effect -->
-    <div
-      class="col-md-4 mb-3"
-      routerLink="/main/tansactionpage/main/view-tran/remittanceview"
-    >
+    <div class="col-md-4 mb-3" routerLink="/main/dashboardpage/dashboardmain/remittanceview">
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-wallet fa-2x mb-2 text-primary"></i>
         <h4>Today's Income</h4>
@@ -18,10 +15,7 @@
         <h1>2</h1>
       </div>
     </div>
-    <div
-      class="col-md-4 mb-3"
-      routerLink="/main/tansactionpage/main/view-tran/expensesview"
-    >
+    <div class="col-md-4 mb-3" routerLink="/main/dashboardpage/dashboardmain/expensesview">
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-money-bill-wave fa-2x mb-2 text-danger"></i>
         <h4>Today's Expenses</h4>
@@ -30,8 +24,8 @@
     </div>
 
     <!-- Received Payment and Chart Section -->
-    <div class="col-lg-9 col-md-12 d-flex flex-column mb-3">
-      <div class="card p-3 flex-fill">
+    <div class="col-lg-9 col-md-12">
+      <div class="card p-3">
         <div class="row">
           <div class="col-md-7 mb-3">
             <div class="p-3 h-100">
@@ -72,44 +66,63 @@
       </div>
     </div>
 
-    <!-- Cash Details Section -->
-    <div class="col-lg-3 col-md-12 d-flex flex-column mb-3">
-      <div class="card p-3 text-center flex-fill">
+    <div class="col-lg-3 col-md-12 mb-3">
+      <div class="card p-3 text-center">
         <h3 class="mb-4 fw-bold">CASH DETAILS</h3>
-        <form>
-          <div class="form-group mb-3">
-            <label for="changeFundSelect">Cashier in Charge</label>
-            <select
-              id="changeFundSelect"
-              class="form-control"
-              [(ngModel)]="selectedCashier"
-            >
-              <option value="">Select Cashier</option>
-              <option value="cashier1">Juan Dela Cruz</option>
-              <option value="cashier2">Carl Katigbak</option>
-            </select>
-          </div>
-          <div class="form-group mb-3">
-            <label for="changeFundInput">Initial Amount</label>
-            <input type="text" id="changeFundInput" class="form-control" />
-          </div>
-          <div class="form-group mb-3">
-            <label for="cashCountInput">Cash Count</label>
-            <input
-              type="text"
-              id="cashCountInput"
-              class="form-control"
-              [disabled]="!selectedCashier"
-            />
-          </div>
+          <form>
+            <div class="form-group mb-3">
+              <label for="cashierSelect">Select Cashier</label>
+              <select
+                id="cashierSelect"
+                class="form-control"
+                [(ngModel)]="selectedCashier"
+                name="cashier"
+              >
+                <option value="">Select Cashier</option>
+                <option *ngFor="let cashier of cashiers" [value]="cashier.value">
+                  {{ cashier.name }}
+                </option>
+              </select>
+            </div>
+            <div *ngIf="selectedCashier">
+              <div class="form-group mb-3">
+                <label for="changeFundInput">Initial Amount</label>
+                <input
+                  type="number"
+                  id="changeFundInput"
+                  class="form-control"
+                  [(ngModel)]="initialAmount"
+                  name="initialAmount"
+                  placeholder="2,400.00"
+                />
+              </div>
+              
+              <div class="form-group mb-3">
+                <label for="cashCountInput">Cash Count</label>
+                <input
+                  (click)="openForm()"
+                  type="text"
+                  id="cashCountInput"
+                  class="form-control"
+                  [(ngModel)]="cashCount"
+                  name="cashCount"
+                />
+              </div>
+            </div>
+            <!-- <div *ngIf="selectedCashier">
+              <h4>Selected Cashier: {{ getSelectedCashierName() }}</h4>
+              <p>Initial Amount: {{ initialAmount }}</p>
+              <p>Cash Count: {{ cashCount }}</p>
+            </div> -->
+
           <div class="row">
             <div class="col-6">
               <button type="button" class="btn btn-primary w-100">
-                Update
+                CLEAR
               </button>
             </div>
             <div class="col-6">
-              <button type="button" class="btn btn-success w-100">Add</button>
+              <button type="button" class="btn btn-success w-100" [disabled]="!isFormValid()">SUBMIT</button>
             </div>
           </div>
         </form>

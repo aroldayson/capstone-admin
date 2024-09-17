@@ -5,7 +5,7 @@
       <table class="table table-bordered table-hover rounded">
         <thead class="sticky-thead">
           <tr>
-            <th class="text-center">Item No.</th>
+            <th class="text-center  col-md-1">Item No.</th>
             <th>Laundry Category</th>
             <th>Price</th>
             <th class="text-center">Kilograms</th>
@@ -15,9 +15,10 @@
         <tbody>
             @for(c of categ; track c.categ_id){
               <tr>
-                <td class="text-center">{{$index +1}}</td>
+                <td class="text-center col-md-1">{{$index +1}}</td>
                 <td>{{c.category}}</td>
-                <td>{{c.price | currency: 'PHP'}}</td>
+                <!-- <td>{{c.price | currency: 'PHP'}}</td> -->
+                <td>{{c.price }}</td>
                 <td class="text-center">{{c.kilo}}</td>
                 <td class="text-center">
                   <button

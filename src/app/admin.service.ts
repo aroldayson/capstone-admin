@@ -1,13 +1,25 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
-  url = 'http://localhost/backend/';
+  url = 'http://localhost/admin/';
+  Apiurl = 'http://localhost:8000/api/';
 
   constructor(private http: HttpClient) {}
+
+  logins(data:any): Observable<any> {
+    return this.http.post(this.Apiurl + 'login', data);
+  }
+
+  logout(): Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`);
+    return this.http.post(this.Apiurl + 'logout', {}, { headers });
+  }
 
   savecateg(data: any) {
     return this.http.post(this.url + 'saveitem.php', JSON.stringify(data));

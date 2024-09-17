@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-price',
@@ -45,6 +46,14 @@ export class UpdatePriceComponent implements OnInit {
       console.log(result);
 
       if (result.message === 'Success') {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: true, 
+        }).then(() => {
+          location.reload();
+        });
         this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview/add']);
       } else {
         // Handle error
