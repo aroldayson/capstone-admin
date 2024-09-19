@@ -15,9 +15,9 @@
           </tr>
         </thead>
         <tbody>
-          @for(c of staff; track c.admin_id){
+          @for(c of staff; track c.id){
           <tr>
-            <td>LA001421</td>
+            <td>{{c.id}}</td>
             <td>
               <img
                 src="http://placehold.it/50x50"
@@ -25,11 +25,11 @@
                 class="img-thumbnail"
               />
             </td>
-            <td>Marie Dela Cruz</td>
-            <td>Artacho, Sison</td>
-            <td>09123456789</td>
-            <td>marie.dela.cruzgmail.com</td>
-            <td class="text-center">
+            <td>{{c.admin_fname}} {{c.admin_mname}} {{c.admin_lname}}</td>
+            <td>{{c.address}}</td>
+            <td>{{c.phone_no}}</td>
+            <td>{{c.email}}</td>
+            <td class="text-center col-md-2">
               <button
                 class="btn btn-primary btn-custom-sm"
                 [routerLink]="['/main/staffpage/staffmain/staffview/update']"

@@ -20,6 +20,13 @@ export class AdminService {
     const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`);
     return this.http.post(this.Apiurl + 'logout', {}, { headers });
   }
+  getData(){
+    return this.http.get(this.Apiurl + 'display');
+  }
+  insertData(data: any) {
+    return this.http.post(this.Apiurl + 'addstaff', data); 
+  }
+
 
   savecateg(data: any) {
     return this.http.post(this.url + 'saveitem.php', JSON.stringify(data));

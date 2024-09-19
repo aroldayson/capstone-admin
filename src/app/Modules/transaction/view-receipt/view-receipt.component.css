@@ -4,9 +4,11 @@ body {
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  max-width: 100%;
+  width: 150%;
+  /* justify-content: center; */
+  /* align-items: center; */
   /* min-height: 100vh; */
 }
 

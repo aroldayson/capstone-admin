@@ -5,15 +5,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
 import Swal from 'sweetalert2';
 
-Chart.register(...registerables);
 @Component({
-  selector: 'app-view-dash',
+  selector: 'app-cashdetails',
   standalone: true,
   imports: [RouterLink, FormsModule,CommonModule, RouterOutlet],
-  templateUrl: './view-dash.component.html',
-  styleUrl: './view-dash.component.css',
+  templateUrl: './cashdetails.component.html',
+  styleUrl: './cashdetails.component.css'
 })
-export class ViewDashComponent implements OnInit {
+export class CashdetailsComponent {
   selectedCashier: string = ''; 
   selectedAdmin: string = ''; 
   initialAmount: string = ""; 
@@ -29,9 +28,10 @@ export class ViewDashComponent implements OnInit {
   ];
 
   cashiers = [
-    { name: 'Juan Dela Cruz', value: 'cashier1' },
-    { name: 'Carl Katigbak', value: 'cashier2' },
-    { name: 'Maria Santos', value: 'cashier3' }
+    { name: 'Admin', value: 'cashier1' },
+    { name: 'Staff 1', value: 'cashier2' },
+    { name: 'Staff 2', value: 'cashier3' },
+    { name: 'Staff 3', value: 'cashier4' }
   ];
 
   onRoleChange(event: any) {
@@ -326,4 +326,5 @@ export class ViewDashComponent implements OnInit {
       }
     });
   }
+
 }

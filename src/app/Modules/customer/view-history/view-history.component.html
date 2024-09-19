@@ -4,8 +4,35 @@
       <div class="card">
         <div class="card-body">
           <div class="row mb-4">
-            <div class="col-md-6">
-              <h3 class="fw-bold">HISTORY OF TRANSACTIONS</h3>
+            <div class="col-md-12">
+              <h3 class="fw-bold">Customer Transactions Record</h3>
+              <div class="row">
+                <div class="col-md-4">
+                  <img
+                    class="img-responsive img-fluid"
+                    alt="logo"
+                    src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                  />
+                </div>
+                <div class="col-md">
+                  <div class="row mt-5">
+                    <h5>Customer Name:</h5>
+                    <h2 class="mt-4">Juan Dela Cruz</h2>
+                    <div class="col-md mt-1">
+                      <p class="mt-4"><b>Phone Number:</b></p>
+                      <p>09123456789</p>
+                    </div>
+                    <div class="col-md mt-1">
+                      <p class="mt-4"><b>Customer Address:</b></p>
+                      <p>Artacho, Sison, Pangasinan</p>
+                    </div>
+                    <div class="col-md mt-1">
+                      <p class="mt-4"><b>Customer Email:</b></p>
+                      <p>Sample.gmail.com</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="col-md-6">
               <div class="d-flex justify-content-end">
@@ -20,18 +47,20 @@
               </div>
             </div>
           </div>
-          <h3 class="mb-2">Name of Customer: Juan Dela Cruz</h3>
+          <h3 class="mb-2 text-center">Transaction History</h3>
           <div class="table-responsive">
             <table class="table table-bordered table-hover">
               <thead class="table-light">
                 <tr class="text-center">
                   <th>No.</th>
-                  <th>Date Received</th>
-                  <th>Transaction No.</th>
-                  <th>Qty</th>
+                  <th>Transaction Number</th>
+                  <th>Received Date</th>
+                  <th>Staff Received</th>
+                  <th>Laundry Deatils</th>
                   <th>Amount</th>
-                  <th>Date Released</th>
                   <th>Status</th>
+                  <th>Date Delivered</th>
+                  <th>Staff-in-charge</th>
                 </tr>
               </thead>
               <tbody>
@@ -40,60 +69,29 @@
                   routerLink="/main/customertpage/main/view-listtransac"
                 >
                   <td>1</td>
-                  <td>11/20/2024</td>
                   <td>SDGS5234</td>
-                  <td>2</td>
-                  <th>500.00</th>
                   <td>11/20/2024</td>
-                  <th>Delivered</th>
+                  <th>Marie De Leon</th>
+                  <td>3kl Assorted Clothes, 2kl Carpet</td>
+                  <td>500.00</td>
+                  <td>Paid and Picked-up</td>
+                  <td>11/20/2024</td>
+                  <th>Carlo Katigbak</th>
                 </tr>
+                
                 <tr
                   class="text-center"
                   routerLink="/main/customertpage/main/view-listtransac"
                 >
                   <td>2</td>
-                  <td>11/20/2024</td>
                   <td>SDGS5234</td>
-                  <td>2</td>
-                  <th>500.00</th>
                   <td>11/20/2024</td>
-                  <th>Delivered</th>
-                </tr>
-                <tr
-                  class="text-center"
-                  routerLink="/main/customertpage/main/view-listtransac"
-                >
-                  <td>3</td>
-                  <td>11/20/2024</td>
-                  <td>SDGS5234</td>
-                  <td>2</td>
-                  <th>500.00</th>
-                  <td>11/20/2024</td>
-                  <th>Delivered</th>
-                </tr>
-                <tr
-                  class="text-center"
-                  routerLink="/main/customertpage/main/view-listtransac"
-                >
-                  <td>4</td>
-                  <td>11/20/2024</td>
-                  <td>SDGS5234</td>
-                  <td>2</td>
-                  <th>500.00</th>
-                  <td>11/20/2024</td>
-                  <th>Delivered</th>
-                </tr>
-                <tr
-                  class="text-center"
-                  routerLink="/main/customertpage/main/view-listtransac"
-                >
-                  <td>5</td>
-                  <td>11/20/2024</td>
-                  <td>SDGS5234</td>
-                  <td>2</td>
-                  <th>500.00</th>
+                  <th>Marie De Leon</th>
+                  <td>3kl Assorted Clothes, 2kl Carpet</td>
+                  <td>500.00</td>
+                  <td>Paid and Picked-up</td>
                   <td></td>
-                  <th>Pending</th>
+                  <th></th>
                 </tr>
               </tbody>
               <!-- <tfoot class="text-center">

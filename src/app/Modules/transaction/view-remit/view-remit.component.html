@@ -8,7 +8,7 @@
               <h3 class="fw-bold">LIST OF REMITTANCE</h3>
             </div>
           </div>
-          <div class="row mb-4">
+          <!-- <div class="row mb-4">
             <div class="col-md-6 col-lg-3">
               <div class="form-group">
                 <div class="row">
@@ -43,7 +43,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="table-responsive">
             <table class="table table-bordered table-hover">
               <thead class="table-light">
@@ -58,39 +58,39 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-center">
+                <tr class="text-center" routerLink="/main/tansactionpage/main/view-tran/viewremit-his">
                   <td>07/18/2024 - 18:03:23</td>
                   <td>Juan Dela Cruz</td>
                   <td>2,400.00</td>
                   <td class="text-success">2,400.00</td>
-                  <td class="text-danger">- 270.00</td>
+                  <td class="text-danger">270.00</td>
                   <td class="text-primary">2,130.00</td>
-                  <td class="text-danger">
+                  <!-- <td class="text-danger">
                     <button class="btn btn-primary" (click)="approved()">Approved</button>
-                  </td>
+                  </td> -->
                 </tr>
-                <tr class="text-center">
+                <tr class="text-center" routerLink="/main/tansactionpage/main/view-tran/viewremit-his">
                   <td>07/19/2024 - 18:03:23</td>
                   <td>Carlo Katigbak</td>
                   <td>10,000.00</td>
                   <td class="text-success">10,000.00</td>
                   <td class="text-danger">70.00</td>
                   <td class="text-primary">9,930.00</td>
-                  <td class="text-danger">
+                  <!-- <td class="text-danger">
                     <button class="btn btn-primary" (click)="approved()">Approved</button>
-                  </td>
+                  </td> -->
                 </tr>
               </tbody>
-              <tfoot class="text-center">
+              <!-- <tfoot class="text-center">
                 <tr>
                   <th>Total</th>
                   <th></th>
                   <th id="total-amount">12,400.00</th>
                   <th id="total-amount" class="text-success">12,400.00</th>
-                  <th id="total-amount" class="text-danger">- 340.00</th>
+                  <th id="total-amount" class="text-danger">340.00</th>
                   <th id="total-amount" class="text-primary">12,060.00</th>
                 </tr>
-              </tfoot>
+              </tfoot> -->
             </table>
           </div>
         </div>
