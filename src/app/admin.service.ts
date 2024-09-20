@@ -6,19 +6,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AdminService {
-  url = 'http://localhost/admin/';
+  url = 'http://localhost/backend/';
   Apiurl = 'http://localhost:8000/api/';
 
   constructor(private http: HttpClient) {}
 
-  logins(data:any): Observable<any> {
+  logins(data: any): Observable<any> {
     return this.http.post(this.Apiurl + 'login', data);
   }
 
-  logout(): Observable<any>{
+  logout(): Observable<any> {
     const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(this.Apiurl + 'logout', {}, { headers });
+  }
+  getData() {
+    return this.http.get(this.Apiurl + 'display');
+  }
+  insertData(data: any) {
+    return this.http.post(this.Apiurl + 'addstaff', data);
   }
 
   savecateg(data: any) {

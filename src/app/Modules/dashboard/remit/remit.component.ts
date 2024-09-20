@@ -5,15 +5,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
 import Swal from 'sweetalert2';
 
-Chart.register(...registerables);
 @Component({
-  selector: 'app-view-dash',
+  selector: 'app-remit',
   standalone: true,
   imports: [RouterLink, FormsModule,CommonModule, RouterOutlet],
-  templateUrl: './view-dash.component.html',
-  styleUrl: './view-dash.component.css',
+  templateUrl: './remit.component.html',
+  styleUrl: './remit.component.css'
 })
-export class ViewDashComponent implements OnInit {
+export class RemitComponent {
   selectedCashier: string = ''; 
   selectedAdmin: string = ''; 
   initialAmount: string = ""; 

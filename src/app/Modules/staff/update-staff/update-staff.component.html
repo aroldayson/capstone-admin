@@ -2,42 +2,53 @@
     <h4 class="text-center mb-3"><b>EDIT STAFF</b></h4>
     <form>
       <div class="form-outline mb-3">
-        <input type="text" id="staffName" class="form-control" />
-        <label class="form-label" for="staffName">Staff Name</label>
+        <input type="text" id="admin_lname" formControlName="admin_lname" class="form-control"  placeholder=""/>
+        <label class="form-label" for="admin_lname">Last Name</label>
       </div>
-  
+      
       <div class="form-outline mb-3">
-        <input type="text" id="address" class="form-control" />
+        <input type="text" id="admin_fname" formControlName="admin_fname" class="form-control"  placeholder=""/>
+        <label class="form-label" for="admin_fname">First Name</label>
+      </div>
+      
+      <div class="form-outline mb-3">
+        <input type="text" id="admin_mname" formControlName="admin_mname" class="form-control"  placeholder=""/>
+        <label class="form-label" for="admin_mname">Middle Name</label>
+      </div>
+      
+      <div class="form-outline mb-3">
+        <input type="text" id="address" formControlName="address" class="form-control"  placeholder=""/>
         <label class="form-label" for="address">Address</label>
       </div>
   
       <div class="form-outline mb-3">
-        <input type="tel" id="phoneNumber" class="form-control" />
-        <label class="form-label" for="phoneNumber">Phone Number</label>
+        <input type="tel" id="phone_no" formControlName="phone_no" class="form-control"  placeholder=""/>
+        <label class="form-label" for="phone_no">Phone Number</label>
       </div>
   
       <div class="form-outline mb-3">
-        <input type="email" id="email" class="form-control" />
+        <input type="email" id="email" formControlName="email" class="form-control"  placeholder=""/>
         <label class="form-label" for="email">Email</label>
       </div>
   
       <div class="form-outline mb-3">
-        <input type="password" id="password" class="form-control" />
+        <input type="password" id="password" formControlName="password" class="form-control"  placeholder=""/>
         <label class="form-label" for="password">Password</label>
       </div>
   
+      <div class="form-outline mb-3">
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="" />
+        <label class="form-label" for="confirmPassword">Confirm Password</label>
+      </div>
+  
       <div class="row">
-        <div class="col-md-6 mb-2">
-          <button
-            type="button"
-            class="btn btn-secondary btn-block"
-            [routerLink]="['/main/staffpage/staffmain']"
-          >
+        <div class="col-md-6 mb-3">
+          <button type="button" class="btn btn-secondary btn-block">
             Cancel
           </button>
         </div>
-        <div class="col-md-6 mb-2">
-          <button type="submit" class="btn btn-primary btn-block">Update</button>
+        <div class="col-md-6 mb-3">
+          <button type="submit" class="btn btn-primary">Update</button>
         </div>
       </div>
     </form>

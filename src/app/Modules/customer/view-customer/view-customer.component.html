@@ -4,30 +4,46 @@
       <div class="card">
         <div class="card-body">
           <div class="row mb-4">
-            <div class="col-md-6">
+            <div class="col">
               <h3 class="fw-bold">LIST OF CUSTOMER</h3>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-3 mt-2">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col">
+                    <input
+                      type="search"
+                      class="form-control"
+                      id="search-from"
+                      name="search-from"
+                      placeholder="Search"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-6">
               <div class="d-flex justify-content-end">
-                <!-- <button
+                <button
                     class="btn btn-success pri mb-3"
                     [useExistingCss]="true"
                     printSectionId="print-section"
                     ngxPrint
                   >
                     <i class="fas fa-print"></i> Print
-                  </button> -->
+                  </button>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="table-responsive">
             <table class="table table-bordered table-hover">
               <thead class="table-light">
                 <tr class="text-center">
                   <th>No.</th>
-                  <th>Image</th>
+                  <th>Customer Image</th>
                   <th>Customer Name</th>
-                  <th>Contact No</th>
+                  <th>Contact Phone #</th>
                   <th>Address</th>
                   <th>Email</th>
                 </tr>
