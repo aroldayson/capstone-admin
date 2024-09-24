@@ -1,11 +1,31 @@
-<h3 class="mt-3 fw-bold mx-3">PRICE MANAGEMENT</h3>
+<!-- <h3 class="mt-3 fw-bold mx-3">PRICE MANAGEMENT</h3> -->
+<div class="row mt-3">
+  <div class="col-6">
+    <h3 class="fw-bold mx-3">PRICE MANAGEMENT</h3>
+  </div>
+  <div class="col-md-6 col-lg-3 mt-2">
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <input
+            type="search"
+            class="form-control"
+            id="search-from"
+            name="search-from"
+            placeholder="Search"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-9">
     <div class="table-responsive table-wrapper">
       <table class="table table-bordered table-hover rounded">
         <thead class="sticky-thead">
           <tr>
-            <th class="text-center  col-md-1">No.</th>
+            <th class="text-center col-md-1">No.</th>
             <th>Laundry Category</th>
             <th>Price</th>
             <th class="text-center">Kilograms</th>
@@ -13,26 +33,29 @@
           </tr>
         </thead>
         <tbody>
-            @for(c of categ; track c.categ_id){
-              <tr>
-                <td class="text-center col-md-1">{{$index +1}}</td>
-                <td>{{c.category}}</td>
-                <!-- <td>{{c.price | currency: 'PHP'}}</td> -->
-                <td>{{c.price }}</td>
-                <td class="text-center">{{c.kilo}}</td>
-                <td class="text-center">
-                  <button
-                    class="btn bg-primary mx-2 text-light btn-custom-sm"
-                    (click)="updatebtn(c.categ_id)"
-                  >
-                    <i class="fas fa-pencil-alt"></i>
-                  </button>
-                  <button class="btn bg-danger text-light btn-custom-sm" (click)="dltbtn(c.categ_id)">
-                    <i class="fa fa-trash-o"></i>
-                  </button>
-                </td>
-              </tr>
-              }
+          @for(c of categ; track c.categ_id){
+          <tr>
+            <td class="text-center col-md-1">{{ $index + 1 }}</td>
+            <td>{{ c.category }}</td>
+            <!-- <td>{{c.price | currency: 'PHP'}}</td> -->
+            <td>{{ c.price }}</td>
+            <td class="text-center">{{ c.kilo }}</td>
+            <td class="text-center">
+              <button
+                class="btn bg-primary mx-2 text-light btn-custom-sm"
+                (click)="updatebtn(c.categ_id)"
+              >
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button
+                class="btn bg-danger text-light btn-custom-sm"
+                (click)="dltbtn(c.categ_id)"
+              >
+                <i class="fa fa-trash-o"></i>
+              </button>
+            </td>
+          </tr>
+          }
         </tbody>
       </table>
     </div>
@@ -42,4 +65,3 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-
