@@ -17,7 +17,7 @@
         <tbody>
           @for(c of staff; track c.id){
           <tr>
-            <td>{{c.id}}</td>
+            <td>{{$index +1}}</td>
             <td>
               <img
                 src="http://placehold.it/50x50"
@@ -32,7 +32,7 @@
             <td class="text-center col-md-2">
               <button
                 class="btn btn-primary btn-custom-sm"
-                [routerLink]="['/main/staffpage/staffmain/staffview/update']"
+                (click)="update(c.id)"
               >
                 <i class="fas fa-pencil-alt"></i>
               </button>
@@ -42,7 +42,7 @@
               >
                 <i class="fa fa-upload"></i>
               </button>
-              <button class="btn btn-danger btn-custom-sm" (click)="dltbtn()">
+              <button class="btn btn-danger btn-custom-sm" (click)="dltbtn(c.id)">
                 <i class="fa fa-trash-o"></i>
               </button>
             </td>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AdminService } from '../../../admin.service';
 @Component({
@@ -11,6 +11,7 @@ import { AdminService } from '../../../admin.service';
 })
 export class ViewStaffComponent implements OnInit{
   staff:any
+  id: any;
 
   ngOnInit(): void {
     this.admin.getData().subscribe((result: any) => {
@@ -19,42 +20,100 @@ export class ViewStaffComponent implements OnInit{
     });
   }
   constructor(
-    private admin: AdminService
+    private admin: AdminService,
+    private route: Router
   ){}
 
-  dltbtn(): void {
+  dltbtn(id: any): void {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: "btn btn-success mx-2",
-        cancelButton: "btn btn-danger"
+        confirmButton: 'btn btn-success mx-2',
+        cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false
     });
+  
     swalWithBootstrapButtons.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText:"Yes, delete it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
+        this.admin.deletestaff(id).subscribe(
+          response => {
+            swalWithBootstrapButtons.fire({
+              title: 'Deleted!',
+              text: 'Your file has been deleted.',
+              icon: 'success'
+            });
+            this.route.navigate(["/main/staffpage/staffmain/staffview/addstaff"])
+            this.staff = this.staff.filter((staff: any) => staff.id !== id);
+          },
+          error => {
+            console.error('Delete failed', error);
+            swalWithBootstrapButtons.fire({
+              title: 'Error!',
+              text: 'There was an error deleting the staff member.',
+              icon: 'error'
+            });
+          }
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
-        });
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelled",
-          text: "Your imaginary file is safe :)",
-          icon: "error"
+          title: 'Cancelled',
+          text: 'Your imaginary file is safe :)',
+          icon: 'error'
         });
       }
     });
   }
+
+  update(id: any){
+    console.log(id)
+    localStorage.setItem('id', id)
+    this.route.navigate(["/main/staffpage/staffmain/staffview/update"])
+  }
+  
+
+
+
+  // dltbtn(): void {
+  //   const swalWithBootstrapButtons = Swal.mixin({
+  //     customClass: {
+  //       confirmButton: "btn btn-success mx-2",
+  //       cancelButton: "btn btn-danger"
+  //     },
+  //     buttonsStyling: false
+  //   });
+  //   swalWithBootstrapButtons.fire({
+  //     title: "Are you sure?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonText:"Yes, delete it!",
+  //     cancelButtonText: "No, cancel!",
+  //     reverseButtons: true
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       swalWithBootstrapButtons.fire({
+  //         title: "Deleted!",
+  //         text: "Your file has been deleted.",
+  //         icon: "success"
+  //       });
+  //     } else if (
+  //       /* Read more about handling dismissals below */
+  //       result.dismiss === Swal.DismissReason.cancel
+  //     ) {
+  //       swalWithBootstrapButtons.fire({
+  //         title: "Cancelled",
+  //         text: "Your imaginary file is safe :)",
+  //         icon: "error"
+  //       });
+  //     }
+  //   });
+  // }
 }

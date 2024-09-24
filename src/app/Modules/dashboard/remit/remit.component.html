@@ -8,8 +8,9 @@
 </div>
           <form>
             <div class="form-group">
+              <label for="">Admin</label>
               <!-- <label for="userSelect">Select Cashier</label> -->
-              <select id="userSelect" class="form-control" [(ngModel)]="selectedRole" (change)="onRoleChange($event)">
+              <select id="userSelect" class="form-control" placeholder="dasd" [(ngModel)]="selectedRole" (change)="onRoleChange($event)">
                 <!-- <option value="" selected>Select Role</option> -->
                 <option value="admin" selected>Admin</option>
               </select>

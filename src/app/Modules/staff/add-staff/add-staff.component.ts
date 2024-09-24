@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
@@ -15,8 +15,30 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 export class AddStaffComponent implements OnInit{
   
   staff: any;
+  showPassword: boolean = false;
+  showConPassword: boolean = false;
+  passwordsMatch = true;
 
-  // Reactive form initialization with password confirmation
+
+  
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword; // Toggle the password visibility
+  }
+
+  togglePasswordVisibilitys() {
+    this.showConPassword = !this.showConPassword; // Toggle the password visibility
+  }
+
+  // form = this.fb.group({
+  //   password: ['', Validators.required],
+  //   confirmPassword: ['', Validators.required]
+  // });
+  checkPasswords() {
+    const password = this.addstaff.get('password')?.value;
+    const confirmPassword = this.addstaff.get('confirmPassword')?.value;
+    this.passwordsMatch = password === confirmPassword;
+  }
+
   addstaff = new FormGroup({
     admin_lname: new FormControl(null, [Validators.required]), // Required validator
     admin_fname: new FormControl(null, [Validators.required]), // Required validator
@@ -34,10 +56,15 @@ export class AddStaffComponent implements OnInit{
 
   constructor(
     private admin: AdminService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ){}
   ngOnInit(): void {
     this.admin.getData();
+
+    this.addstaff.valueChanges.subscribe(() => {
+      this.checkPasswords();
+    });
   }
 
   // Custom validator to check if passwords match

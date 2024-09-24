@@ -1,6 +1,6 @@
 <div class="bg-white p-3 rounded shadow-sm">
     <h4 class="text-center mb-3"><b>EDIT STAFF</b></h4>
-    <form>
+    <form [formGroup]="updatestaff" (submit)="update()">
       <div class="form-outline mb-3">
         <input type="text" id="admin_lname" formControlName="admin_lname" class="form-control"  placeholder=""/>
         <label class="form-label" for="admin_lname">Last Name</label>
@@ -30,20 +30,43 @@
         <input type="email" id="email" formControlName="email" class="form-control"  placeholder=""/>
         <label class="form-label" for="email">Email</label>
       </div>
+
+      <div class="form-outline mb-3 position-relative">
+        <input [type]="showOldPassword ? 'text' : 'password'" id="oldpassword" formControlName="oldpassword" class="form-control" placeholder=""/>
+        <label class="form-label" for="oldpassword">Current Password</label>
+        
+        <!-- Show/Hide Icon -->
+        <i (click)="togglePasswordVisibility()"
+           class="fa {{ showOldPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+           style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+      </div>
+      
   
       <div class="form-outline mb-3">
-        <input type="password" id="password" formControlName="password" class="form-control"  placeholder=""/>
-        <label class="form-label" for="password">Password</label>
+        <input  [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control"  placeholder=""/>
+        <label class="form-label" for="password">New Password</label>
+
+        <i (click)="togglePasswordVisibilitys()"
+          class="fa {{ showPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+          style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+      </div>
+
+      <div *ngIf="!passwordsMatch" class="alert alert-danger">
+        Passwords do not match.
       </div>
   
       <div class="form-outline mb-3">
-        <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="" />
-        <label class="form-label" for="confirmPassword">Confirm Password</label>
+        <input  [type]="showConPassword ? 'text' : 'password'" formControlName="confirmPassword" class="form-control"  placeholder=""/>
+        <label class="form-label" for="password">Confirm Password</label>
+
+        <i (click)="togglePasswordVisibilityy()"
+          class="fa {{ showConPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+          style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
       </div>
   
       <div class="row">
         <div class="col-md-6 mb-3">
-          <button type="button" class="btn btn-secondary btn-block">
+          <button type="button" class="btn btn-secondary" [routerLink]="['/main/staffpage/staffmain/staffview/addstaff']">
             Cancel
           </button>
         </div>

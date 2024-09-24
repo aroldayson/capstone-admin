@@ -93,3 +93,13 @@
       padding: 15px;
     }
   }
+
+  .password-toggle-icon {
+    font-size: .8rem;
+    color: #555;
+    cursor: pointer;
+  }
+  
+  .password-toggle-icon:hover {
+    color: #000;
+  }

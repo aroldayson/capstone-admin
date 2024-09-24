@@ -26,6 +26,19 @@ export class AdminService {
   insertData(data: any) {
     return this.http.post(this.Apiurl + 'addstaff', data); 
   }
+  deletestaff(id: any) {
+    return this.http.delete(`${this.Apiurl}deletestaff/${id}`); 
+  }
+
+  findstaff(id: any) {
+    return this.http.get(`${this.Apiurl}findstaff/${id}`); 
+  }
+
+  updateStaff(data: any) {
+    return this.http.put(`${this.Apiurl}updatestaff/${data.id}`,data);
+  }
+  
+  
 
 
   savecateg(data: any) {

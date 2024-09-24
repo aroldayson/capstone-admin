@@ -33,14 +33,33 @@
     </div>
 
     <div class="form-outline mb-3">
-      <input type="password" id="password" formControlName="password" class="form-control"  placeholder=""/>
+      <input  [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder=""/>
       <label class="form-label" for="password">Password</label>
+      
+      <i (click)="togglePasswordVisibility()" 
+        class="fa {{ showPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
     </div>
-
+    
     <div class="form-outline mb-3">
-      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="" />
+      <input  [type]="showConPassword ? 'text' : 'password'" formControlName="confirmPassword" class="form-control" placeholder=""/>
       <label class="form-label" for="confirmPassword">Confirm Password</label>
+      
+      <i (click)="togglePasswordVisibilitys()" 
+        class="fa {{ showConPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
     </div>
+    
+    <!-- Display error message if passwords do not match -->
+    <div *ngIf="!passwordsMatch" class="alert alert-danger">
+      Passwords do not match.
+    </div>
+    
+
+    <!-- <div class="form-outline mb-3">
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="" />
+      <label class="form-label" for="confirmPassword"></label>
+    </div> -->
 
     <div class="row">
       <div class="col-md-6 mb-3">
