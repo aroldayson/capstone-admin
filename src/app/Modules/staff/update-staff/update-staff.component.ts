@@ -68,7 +68,7 @@ export class UpdateStaffComponent implements OnInit{
       this.updatestaff.controls['address'].setValue(this.staff.address);
       this.updatestaff.controls['phone_no'].setValue(this.staff.phone_no);
       this.updatestaff.controls['oldpassword'].setValue(this.staff.password);
-      this.updatestaff.controls['password'].setValue(this.staff.password);
+      // this.updatestaff.controls['password'].setValue(this.staff.password);
       this.updatestaff.controls['email'].setValue(this.staff.email);
     });
 
