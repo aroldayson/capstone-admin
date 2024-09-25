@@ -5,7 +5,7 @@
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-wallet fa-2x mb-2 text-primary"></i>
         <h4>Today's Income</h4>
-        <h1>₱ 2,400.00</h1>
+        <h1>{{ totalAmount | currency: 'PHP':'symbol' }}</h1>
       </div>
     </div>
     <div class="col-md-4 mb-3" routerLink="/main/tansactionpage/main/view-tran">
@@ -19,7 +19,7 @@
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-money-bill-wave fa-2x mb-2 text-danger"></i>
         <h4>Today's Expenses</h4>
-        <h1>₱ 50.00</h1>
+        <h1>{{ expenses.total_amount | currency: 'PHP':'symbol' }}</h1>
       </div>
     </div>
 
@@ -42,15 +42,15 @@
                   <tbody>
                     <tr>
                       <td class="text-primary">GCash</td>
-                      <td class="text-right">₱ 1,000.00</td>
+                      <td class="text-right">{{ totals.gcash | currency: 'PHP':'symbol' }}</td>
                     </tr>
                     <tr>
                       <td class="text-danger">BPI</td>
-                      <td class="text-right">₱ 550.00</td>
+                      <td class="text-right">{{ totals.bpi | currency: 'PHP':'symbol' }}</td>
                     </tr>
                     <tr>
                       <td class="text-success">Cash</td>
-                      <td class="text-right">₱ 850.00</td>
+                      <td class="text-right">{{ totals.cash | currency: 'PHP':'symbol' }}</td>
                     </tr>
                   </tbody>
                 </table>

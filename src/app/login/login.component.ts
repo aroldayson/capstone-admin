@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit{
   ){ }
 
   loginform = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    Email: new FormControl(''),
+    Password: new FormControl('')
   })
 
   login() {

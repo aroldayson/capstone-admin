@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 export class AddStaffComponent implements OnInit{
   
   staff: any;
+  showOldPassword: boolean = false;
   showPassword: boolean = false;
   showConPassword: boolean = false;
   passwordsMatch = true;
@@ -22,35 +24,35 @@ export class AddStaffComponent implements OnInit{
 
   
   togglePasswordVisibility() {
-    this.showPassword = !this.showPassword; // Toggle the password visibility
+    this.showOldPassword = !this.showOldPassword; 
   }
 
   togglePasswordVisibilitys() {
-    this.showConPassword = !this.showConPassword; // Toggle the password visibility
+    this.showPassword = !this.showPassword;
   }
 
-  // form = this.fb.group({
-  //   password: ['', Validators.required],
-  //   confirmPassword: ['', Validators.required]
-  // });
+  togglePasswordVisibilityy() {
+    this.showConPassword = !this.showConPassword;
+  }
+
   checkPasswords() {
-    const password = this.addstaff.get('password')?.value;
-    const confirmPassword = this.addstaff.get('confirmPassword')?.value;
-    this.passwordsMatch = password === confirmPassword;
+    const password = this.addstaff.get('Password')?.value;
+    const confirmPassword = this.addstaff.get('ConfirmPassword')?.value;
+    this.passwordsMatch = password === confirmPassword; 
   }
 
   addstaff = new FormGroup({
-    admin_lname: new FormControl(null, [Validators.required]), // Required validator
-    admin_fname: new FormControl(null, [Validators.required]), // Required validator
-    admin_mname: new FormControl(null),
-    address: new FormControl(null, [Validators.required]), // Required validator
-    role: new FormControl('staff'), // Default role
-    admin_image: new FormControl('staff.jpeg'), // Default image
-    birthdate: new FormControl('2001-10-20'), // Default birthdate
-    phone_no: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{10,15}$')]), // Phone number validation
-    email: new FormControl(null, [Validators.required, Validators.email]), // Email validation
-    password: new FormControl(null, [Validators.required, Validators.minLength(6)]), // Password validation
-    confirmPassword: new FormControl(null, [Validators.required])
+    Admin_lname: new FormControl(null, [Validators.required]), 
+    Admin_fname: new FormControl(null, [Validators.required]), 
+    Admin_mname: new FormControl(null),
+    Address: new FormControl(null, [Validators.required]), 
+    Role: new FormControl('staff'), 
+    Admin_image: new FormControl('staff.jpeg'), 
+    Birthdate: new FormControl('2001-10-20'), 
+    Phone_no: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{10,15}$')]),
+    Email: new FormControl(null, [Validators.required, Validators.email]), 
+    Password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    ConfirmPassword: new FormControl(null, [Validators.required])
     
   })
 
@@ -69,8 +71,8 @@ export class AddStaffComponent implements OnInit{
 
   // Custom validator to check if passwords match
   passwordMatchValidator(form: FormGroup) {
-    const pass = form.get('password')?.value;
-    const confirmPass = form.get('confirmPassword')?.value;
+    const pass = form.get('Password')?.value;
+    const confirmPass = form.get('ConfirmPassword')?.value;
     return pass === confirmPass ? null : { 'mismatch': true };
   }
 
@@ -78,10 +80,18 @@ export class AddStaffComponent implements OnInit{
     if (this.addstaff.valid) {
       const formValue = this.addstaff.value;
   
-      // Ensure `password_confirmation` is sent with the correct field name
+      this.checkPasswords(); // Check passwords for match
+  
+      // If passwords do not match, show an error message and return early
+      if (!this.passwordsMatch) {
+        Swal.fire('Error!', 'Passwords do not match. Please check your entries.', 'error');
+        return; // Exit the function to prevent submission
+      }
+  
+      // Ensure `Password_confirmation` is sent with the correct field name
       const payload = {
         ...formValue,
-        password_confirmation: formValue.confirmPassword
+        Password_confirmation: formValue.ConfirmPassword,
       };
   
       this.admin.insertData(payload).subscribe(
@@ -91,8 +101,7 @@ export class AddStaffComponent implements OnInit{
           this.router.navigate(['/main/staffpage/staffmain/']).then(success => {
             if (success) {
               console.log('Navigation successful');
-              this.router.navigate(['/main/staffpage/staffmain/'])
-              location.reload();
+              location.reload(); // Reload the page after successful navigation
             } else {
               console.error('Navigation failed');
             }
@@ -100,11 +109,12 @@ export class AddStaffComponent implements OnInit{
         },
         (error) => {
           console.error('Error adding staff:', error);
+          Swal.fire('Error!', 'There was an issue adding the staff. Please try again.', 'error');
         }
       );
     } else {
       console.log('Form is invalid');
+      Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
     }
   }
-  
 }

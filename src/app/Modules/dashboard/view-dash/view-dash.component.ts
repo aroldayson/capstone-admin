@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
 import Swal from 'sweetalert2';
+import { AdminService } from '../../../admin.service';
 
 Chart.register(...registerables);
 @Component({
@@ -23,6 +24,14 @@ export class ViewDashComponent implements OnInit {
   isCollapsed: boolean = false;
 
   selectedRole: string = '';
+  cash: any;
+  expenses: any;
+  totalAmount: any;
+  totals: any;
+
+  constructor(
+    private admin: AdminService
+  ){}
 
   admins = [
     { names: 'Admin', value: 'cashier4' },
@@ -52,15 +61,7 @@ export class ViewDashComponent implements OnInit {
     return selected ? selected.name : 'No Cashier Selected';
   }
 
-  // getSelectedAdmin(): string {
-  //   const selected = this.admins.find(admins => admins.value === this.selectedAdmin);
-  //   return selected ? selected.names : 'No Cashier Selected';
-  // }
 
-  // getSelectedCashierName(): string {
-  //   const selected = this.cashiers.find(cashier => cashier.value === this.selectedCashier);
-  //   return selected ? selected.name : 'No Cashier Selected';
-  // }
   
   formatDate(date: Date): string {
     const options: Intl.DateTimeFormatOptions = {
@@ -122,6 +123,27 @@ export class ViewDashComponent implements OnInit {
   ngOnInit(): void {
     this.chart = new Chart('MyChart', this.config);
     this.currentDate = this.formatDate(new Date());
+
+    this.admin.paymentDisplay().subscribe(
+      (result: any) => {
+        this.cash = result.payments; // Store payments
+        this.totalAmount = result.total_amount; // Store total amount
+        this.totals = result.totals;
+        console.log(this.cash, this.totalAmount); // Log for debugging
+      },
+      (error) => {
+        console.error('Error fetching payment data:', error);
+      }
+    );
+    this.admin.expensesDisplay().subscribe(
+      (result: any) => {
+        this.expenses = result; // Store payments
+        console.log(this.expenses); // Log for debugging
+      },
+      (error) => {
+        console.error('Error fetching payment data:', error);
+      }
+    );
   }
 
   isFormValid(): boolean {

@@ -15,9 +15,9 @@
           </tr>
         </thead>
         <tbody>
-          @for(c of staff; track c.id){
+          @for(c of staff; track c.Admin_ID){
           <tr>
-            <td>{{$index +1}}</td>
+            <td class="text-center">{{$index +1}}</td>
             <td>
               <img
                 src="http://placehold.it/50x50"
@@ -25,14 +25,14 @@
                 class="img-thumbnail"
               />
             </td>
-            <td>{{c.admin_fname}} {{c.admin_mname}} {{c.admin_lname}}</td>
-            <td>{{c.address}}</td>
-            <td>{{c.phone_no}}</td>
-            <td>{{c.email}}</td>
+            <td>{{c.Admin_fname}} {{c.Admin_mname}} {{c.Admin_lname}}</td>
+            <td>{{c.Address}}</td>
+            <td>{{c.Phone_no}}</td>
+            <td>{{c.Email}}</td>
             <td class="text-center col-md-2">
               <button
                 class="btn btn-primary btn-custom-sm"
-                (click)="update(c.id)"
+                (click)="update(c.Admin_ID)"
               >
                 <i class="fas fa-pencil-alt"></i>
               </button>
@@ -42,7 +42,7 @@
               >
                 <i class="fa fa-upload"></i>
               </button>
-              <button class="btn btn-danger btn-custom-sm" (click)="dltbtn(c.id)">
+              <button class="btn btn-danger btn-custom-sm" (click)="dltbtn(c.Admin_ID)">
                 <i class="fa fa-trash-o"></i>
               </button>
             </td>

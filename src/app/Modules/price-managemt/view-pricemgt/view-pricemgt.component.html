@@ -6,28 +6,26 @@
         <thead class="sticky-thead">
           <tr>
             <th class="text-center  col-md-1">No.</th>
-            <th>Laundry Category</th>
-            <th>Price</th>
-            <th class="text-center">Kilograms</th>
+            <th class="text-center">Laundry Category</th>
+            <th class="text-center">Per Kilograms</th>
             <th class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
-            @for(c of categ; track c.categ_id){
+            @for(c of categ; track c.Categ_ID){
               <tr>
                 <td class="text-center col-md-1">{{$index +1}}</td>
-                <td>{{c.category}}</td>
+                <td class="text-center">{{c.Category}}</td>
                 <!-- <td>{{c.price | currency: 'PHP'}}</td> -->
-                <td>{{c.price }}</td>
-                <td class="text-center">{{c.kilo}}</td>
+                <td class="text-center">{{c.Per_kilograms }}</td>
                 <td class="text-center">
                   <button
                     class="btn bg-primary mx-2 text-light btn-custom-sm"
-                    (click)="updatebtn(c.categ_id)"
+                    (click)="updatebtn(c.Categ_ID)"
                   >
                     <i class="fas fa-pencil-alt"></i>
                   </button>
-                  <button class="btn bg-danger text-light btn-custom-sm" (click)="dltbtn(c.categ_id)">
+                  <button class="btn bg-danger text-light btn-custom-sm" (click)="dltbtn(c.Categ_ID)">
                     <i class="fa fa-trash-o"></i>
                   </button>
                 </td>

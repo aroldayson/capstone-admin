@@ -51,7 +51,7 @@ export class ViewStaffComponent implements OnInit{
               icon: 'success'
             });
             this.route.navigate(["/main/staffpage/staffmain/staffview/addstaff"])
-            this.staff = this.staff.filter((staff: any) => staff.id !== id);
+            this.staff = this.staff.filter((staff: any) => staff.Admin_ID !== id);
           },
           error => {
             console.error('Delete failed', error);
@@ -74,7 +74,7 @@ export class ViewStaffComponent implements OnInit{
 
   update(id: any){
     console.log(id)
-    localStorage.setItem('id', id)
+    localStorage.setItem('Admin_ID', id)
     this.route.navigate(["/main/staffpage/staffmain/staffview/update"])
   }
   

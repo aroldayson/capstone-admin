@@ -49,30 +49,20 @@
                 </tr>
               </thead>
               <tbody>
+              @for(c of cust; track c.Cust_ID){
                 <tr
                   class="text-center"
-                  routerLink="/main/customertpage/main/view-history"
+                  (click)="history(c.Cust_ID)"
                 >
-                  <td>1</td>
-                  <td>sample.jpg</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>09071245678</td>
-                  <td>Sagunto, Sison, Pangasinan</td>
-                  <td>Juandelacruz.gmail.com</td>
+                  <td>{{$index+1}}</td>
+                  <td>{{c.Cust_image}}</td>
+                  <td>{{c.Cust_fname}} {{c.Cust_mname}} {{c.Cust_lname}}</td>
+                  <td>{{c.Cust_phoneno}}</td>
+                  <td>{{c.Cust_address}}</td>
+                  <td>{{c.Cust_email}}</td>
                   <!-- <td><button class="btn btn-success" (click)="Approved()">View</button></td> -->
                 </tr>
-                <tr
-                  class="text-center"
-                  routerLink="/main/customertpage/main/view-history"
-                >
-                  <td>2</td>
-                  <td>sample.jpg</td>
-                  <td>Carl Dela Cruz</td>
-                  <td>09071245678</td>
-                  <td>Artacho, Sison, Pangasinan</td>
-                  <td>Juandelacruz.gmail.com</td>
-                  <!-- <td><button class="btn btn-success" (click)="Approved()">View</button></td> -->
-                </tr>
+              }
               </tbody>
               <!-- <tfoot class="text-center">
                   <tr>

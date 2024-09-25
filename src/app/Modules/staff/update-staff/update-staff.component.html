@@ -2,37 +2,38 @@
     <h4 class="text-center mb-3"><b>EDIT STAFF</b></h4>
     <form [formGroup]="updatestaff" (submit)="update()">
       <div class="form-outline mb-3">
-        <input type="text" id="admin_lname" formControlName="admin_lname" class="form-control"  placeholder=""/>
+        <input type="text" id="admin_lname" formControlName="Admin_lname" class="form-control"  placeholder=""/>
         <label class="form-label" for="admin_lname">Last Name</label>
       </div>
       
       <div class="form-outline mb-3">
-        <input type="text" id="admin_fname" formControlName="admin_fname" class="form-control"  placeholder=""/>
+        <input type="text" id="admin_fname" formControlName="Admin_fname" class="form-control"  placeholder=""/>
         <label class="form-label" for="admin_fname">First Name</label>
       </div>
       
       <div class="form-outline mb-3">
-        <input type="text" id="admin_mname" formControlName="admin_mname" class="form-control"  placeholder=""/>
+        <input type="text" id="admin_mname" formControlName="Admin_mname" class="form-control"  placeholder=""/>
         <label class="form-label" for="admin_mname">Middle Name</label>
       </div>
       
       <div class="form-outline mb-3">
-        <input type="text" id="address" formControlName="address" class="form-control"  placeholder=""/>
+        <input type="text" id="address" formControlName="Address" class="form-control"  placeholder=""/>
         <label class="form-label" for="address">Address</label>
       </div>
   
       <div class="form-outline mb-3">
-        <input type="tel" id="phone_no" formControlName="phone_no" class="form-control"  placeholder=""/>
+        <input type="tel" id="phone_no" formControlName="Phone_no" class="form-control"  placeholder=""/>
         <label class="form-label" for="phone_no">Phone Number</label>
       </div>
   
       <div class="form-outline mb-3">
-        <input type="email" id="email" formControlName="email" class="form-control"  placeholder=""/>
+        <input type="email" id="email" formControlName="Email" class="form-control"  placeholder=""/>
         <label class="form-label" for="email">Email</label>
       </div>
-
+      
+  
       <div class="form-outline mb-3 position-relative">
-        <input [type]="showOldPassword ? 'text' : 'password'" id="oldpassword" formControlName="oldpassword" class="form-control" placeholder=""/>
+        <input [type]="showOldPassword ? 'text' : 'password'" id="oldpassword" formControlName="Oldpassword" class="form-control" placeholder=""/>
         <label class="form-label" for="oldpassword">Current Password</label>
         
         <!-- Show/Hide Icon -->
@@ -43,25 +44,25 @@
       
   
       <div class="form-outline mb-3">
-        <input  [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control"  placeholder=""/>
+        <input  [type]="showPassword ? 'text' : 'password'" formControlName="Password" class="form-control"  placeholder=""/>
         <label class="form-label" for="password">New Password</label>
 
         <i (click)="togglePasswordVisibilitys()"
           class="fa {{ showPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
           style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
       </div>
-
-      <div *ngIf="!passwordsMatch" class="alert alert-danger">
-        Passwords do not match.
-      </div>
   
       <div class="form-outline mb-3">
-        <input  [type]="showConPassword ? 'text' : 'password'" formControlName="confirmPassword" class="form-control"  placeholder=""/>
+        <input  [type]="showConPassword ? 'text' : 'password'" formControlName="ConfirmPassword" class="form-control"  placeholder=""/>
         <label class="form-label" for="password">Confirm Password</label>
 
         <i (click)="togglePasswordVisibilityy()"
           class="fa {{ showConPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
           style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+      </div>
+
+      <div *ngIf="!passwordsMatch" class="alert alert-danger">
+        Passwords do not match.
       </div>
   
       <div class="row">

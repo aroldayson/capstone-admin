@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class UpdatePriceComponent implements OnInit {
   
-  category_id = {id:localStorage.getItem('categ_id')}
+  category_id = {id: localStorage.getItem('Categ_ID')};
   categ: any;
   // category = {category:localStorage.getItem('category')}
   constructor(
@@ -23,43 +23,47 @@ export class UpdatePriceComponent implements OnInit {
   ){
 
   }
+  categoryForm = new FormGroup({
+    Category: new FormControl(null, Validators.required),
+    Per_kilograms: new FormControl(0.0, Validators.required),
+  });
 
   ngOnInit(): void {
-    console.log(this.category_id.id)
-    this.admin.getcateg(this.category_id.id).subscribe((result: any) =>{
-      this.categ = result;
-      console.log(result);
-      this.categoryForm.controls['laundryname'].setValue(this.categ[0].category);
-      this.categoryForm.controls['price'].setValue(this.categ[0].price);
-      this.categoryForm.controls['kilograms'].setValue(this.categ[0].kilo);
-    })
+    console.log(this.category_id.id);
+    this.findCategory();
   } 
-  categoryForm = new FormGroup({
-    laundryname: new FormControl(null),
-    price: new FormControl(null),
-    kilograms: new FormControl(null)
-  })
-  update(){
-    console.log(this.categoryForm.value);
 
-    this.admin.updateCateg({...this.categoryForm.value, categ_id: this.category_id.id }).subscribe((result: any) => {
-      console.log(result);
-
-      if (result.message === 'Success') {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your work has been saved",
-          showConfirmButton: true, 
-        }).then(() => {
-          location.reload();
-        });
-        this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview/add']);
-      } else {
-        // Handle error
-        console.error('Error occurred during update:', result.message);
+  findCategory(): void {
+    this.admin.findprice(this.category_id.id).subscribe((result: any) => {
+      this.categ = result;
+      if (this.categ) {
+        this.categoryForm.controls['Category'].setValue(this.categ.Category);
+        this.categoryForm.controls['Per_kilograms'].setValue(this.categ.Per_kilograms);
       }
     });
   }
+  
+  update(){
+    console.log(this.categoryForm.value);
 
+    if (this.categoryForm.valid) {
+      const updatedData = { id: this.category_id.id, ...this.categoryForm.value };
+      this.admin.updateprice(updatedData).subscribe(
+        (response: any) => {
+          // location.reload();
+          console.log('Update successful', response);
+          Swal.fire('Success!', 'Laundry Category Price details updated successfully.', 'success').then(() => {
+            location.reload(); // Reload the page after the alert is closed
+          });
+          this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview/add']);
+        },
+        error => {
+          console.error('Update failed', error);
+          Swal.fire('Error!', 'There was an error updating the category.', 'error');
+        }
+      );
+    } else {
+      Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
+    }
+  }
 }

@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrl: './update-staff.component.css'
 })
 export class UpdateStaffComponent implements OnInit{
-  staff_id = {id:localStorage.getItem('id')}
+  staff_id = {id:localStorage.getItem('Admin_ID')}
   staff: any
   showOldPassword: boolean = false;
   showPassword: boolean = false;
@@ -38,21 +38,22 @@ export class UpdateStaffComponent implements OnInit{
   }
 
   checkPasswords() {
-    const password = this.updatestaff.get('password')?.value;
-    const confirmPassword = this.updatestaff.get('confirmPassword')?.value;
+    const password = this.updatestaff.get('Password')?.value;
+    const confirmPassword = this.updatestaff.get('ConfirmPassword')?.value;
     this.passwordsMatch = password === confirmPassword;
   }
 
+
   updatestaff = new FormGroup({
-    admin_lname: new FormControl(null),
-    admin_fname: new FormControl(null),
-    admin_mname: new FormControl(null),
-    address: new FormControl(null),
-    phone_no: new FormControl(null),
-    email: new FormControl(null),
-    oldpassword: new FormControl(null),
-    password: new FormControl(null),
-    confirmPassword: new FormControl(null)
+    Admin_lname: new FormControl(null),
+    Admin_fname: new FormControl(null),
+    Admin_mname: new FormControl(""),
+    Address: new FormControl(null),
+    Phone_no: new FormControl(null),
+    Email: new FormControl(null),
+    Oldpassword: new FormControl(null),
+    Password: new FormControl(null),
+    ConfirmPassword: new FormControl(null)
   });
 
 
@@ -62,39 +63,48 @@ export class UpdateStaffComponent implements OnInit{
       this.staff = result;
       console.log(result);
 
-      this.updatestaff.controls['admin_lname'].setValue(this.staff.admin_lname);
-      this.updatestaff.controls['admin_fname'].setValue(this.staff.admin_fname);
-      this.updatestaff.controls['admin_mname'].setValue(this.staff.admin_mname);
-      this.updatestaff.controls['address'].setValue(this.staff.address);
-      this.updatestaff.controls['phone_no'].setValue(this.staff.phone_no);
-      this.updatestaff.controls['oldpassword'].setValue(this.staff.password);
-      this.updatestaff.controls['password'].setValue(this.staff.password);
-      this.updatestaff.controls['email'].setValue(this.staff.email);
+      this.updatestaff.controls['Admin_lname'].setValue(this.staff.Admin_lname);
+      this.updatestaff.controls['Admin_fname'].setValue(this.staff.Admin_fname);
+      this.updatestaff.controls['Admin_mname'].setValue(this.staff.Admin_mname);
+      this.updatestaff.controls['Address'].setValue(this.staff.Address);
+      this.updatestaff.controls['Phone_no'].setValue(this.staff.Phone_no);
+      this.updatestaff.controls['Oldpassword'].setValue(this.staff.Password);
+      // this.updatestaff.controls['Password'].setValue(this.staff.Password);
+      this.updatestaff.controls['Email'].setValue(this.staff.Email);
     });
 
-    this.updatestaff.valueChanges.subscribe(() => {
-      this.checkPasswords();
-    });
+    // this.updatestaff.valueChanges.subscribe(() => {
+    //   this.checkPasswords();
+    // });
   }
 
 
   update(): void {
     if (this.updatestaff.valid) {
+      this.checkPasswords();
+  
       const updatedData = { id: this.staff_id.id, ...this.updatestaff.value };
-      console.log('Data to be sent:', updatedData); // Debugging line
-      this.admin.updateStaff(updatedData).subscribe(
-        response => {
-          console.log('Update successful', response);
-          location.reload();
-          Swal.fire('Success!', 'Staff details updated successfully.', 'success');
-          this.route.navigate(['/main/staffpage/staffmain/staffview/'])
+      console.log('Data to be sent:', updatedData);
 
-        },
-        error => {
-          console.error('Update failed', error);
-          Swal.fire('Error!', 'There was an error updating the staff details. Check console for more information.', 'error');
+      if (this.passwordsMatch) {
+        this.admin.updateStaff(updatedData).subscribe(
+          response => {
+            console.log('Update successful', response);
+            Swal.fire('Success!', 'Staff details updated successfully.', 'success').then(() => {
+              location.reload(); 
+            });
+            this.route.navigate(['/main/staffpage/staffmain/staffview/']);
+          },
+          error => {
+            console.error('Update failed', error);
+            Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
+          }
+        );
+      } else {
+        if (!this.passwordsMatch) {
+          Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
         }
-      );
+      }
     } else {
       console.error('Form is invalid');
       Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');

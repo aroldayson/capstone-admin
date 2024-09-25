@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminService } from '../../../admin.service';
 
 @Component({
   selector: 'app-add-price',
   standalone: true,
-  imports: [RouterLink,ReactiveFormsModule],
+  imports: [RouterLink,ReactiveFormsModule,FormsModule],
   templateUrl: './add-price.component.html',
   styleUrl: './add-price.component.css'
 })
 export class AddPriceComponent implements OnInit{
 
   categoryForm = new FormGroup({
-      laundryname: new FormControl('', Validators.required),
-      price: new FormControl(0.0),
-      kilograms: new FormControl(0.0)
+    Category: new FormControl(null),
+    Per_kilograms: new FormControl(0.0),
   })
 
   constructor(
@@ -29,8 +28,14 @@ export class AddPriceComponent implements OnInit{
 
   save(): void {
     console.log(this.categoryForm.value);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Your work has been saved",
+      showConfirmButton: true, 
+    })
   
-    this.admin.savecateg(this.categoryForm.value).subscribe(
+    this.admin.addprice(this.categoryForm.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {
           Swal.fire({
