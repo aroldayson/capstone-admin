@@ -15,19 +15,20 @@
         <p>USA <i class="fa fa-location-arrow"></i></p>
       </div>
     </div>
-
+    
     <div class="receipt-header-mid">
       <div class="">
-        <h5>Juan Dela Cruz</h5>
-        <p><b>Mobile :</b> +1 12345-4569</p>
-        <p><b>Email :</b> customergmail.com</p>
-        <p><b>Address :</b> New York, USA</p>
+        <h5>{{cust.Cust_fname}} {{cust.Cust_mname}} {{cust.Cust_lname}}</h5>
+        <p><b>Mobile :</b> {{cust.Cust_phoneno}}</p>
+        <p><b>Email :</b> {{cust.Cust_email}}</p>
+        <p><b>Address :</b> {{cust.Cust_address}}</p>
       </div>
       <div class="receipt-left">
-        <h3>TRANSACTION # 763YGSAJGFz</h3>
+        <p><b>TRANSACTION #</b></p>
+        <h3> {{ trans_id }}</h3>
       </div>
     </div>
-
+    <!-- } -->
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -38,24 +39,14 @@
         </tr>
       </thead>
       <tbody>
+        @for(c of histo; track c.trans){
         <tr>
-          <td>1</td>
-          <td>Assorted</td>
-          <td>5</td>
-          <td>700.00</td>
+          <td>{{$index+1}}</td>
+          <td>{{c.Category}}</td>
+          <td>{{c.Qty}}</td>
+          <td>{{c.Price}}</td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Pants</td>
-          <td>4</td>
-          <td>500.00</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Jacket</td>
-          <td>3</td>
-          <td>500.00</td>
-        </tr>
+        }
         <tr>
           <td></td>
           <td></td>
@@ -65,16 +56,20 @@
             <p><strong>Balance: </strong></p>
           </td>
           <td>
-            <p>
-              <strong>1,700.00</strong>
-            </p>
-            <p>
-              <strong>2,000.00</strong>
-            </p>
-            <p>
-              <strong>300.00</strong>
-            </p>
+                <div class="transaction-item">
+                  <p>
+                   {{ totalAmount }}
+                  </p>
+                  <p>
+                    {{  totalpayment  }} 
+                  </p>
+                  <p>
+                    {{ balance }}
+                     
+                  </p>
+                </div>
           </td>
+          
         </tr>
         <tr>
           <td></td>
@@ -82,11 +77,13 @@
           <td class="text-right">
             <h2><strong>Total: </strong></h2>
           </td>
-          <td class="text-left text-danger">
-            <h2>
-              <strong>1,700.00</strong>
-            </h2>
-          </td>
+          @for(ct of totalAmount; track ct.trans){
+            <td class="text-left text-danger">
+              <h2>
+                <strong>{{ct.totalPrice}}</strong>
+              </h2>
+            </td>
+          }
         </tr>
       </tbody>
     </table>
@@ -99,7 +96,7 @@
       <div class="footer-right">
         <button
           class="end btn btn-primary mx-2"
-          routerLink="/main/customertpage/main/view"
+          routerLink="/main/customertpage/main/view-history"
         >
           Back
         </button>

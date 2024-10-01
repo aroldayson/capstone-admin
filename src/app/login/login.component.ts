@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { AdminService } from '../admin.service';
 import Swal from 'sweetalert2';
+import { resourceUsage } from 'node:process';
 
 @Component({
   selector: 'app-login',
@@ -43,7 +44,8 @@ export class LoginComponent implements OnInit{
             });
   
             // Store the token in localStorage
-            localStorage.setItem('token', result.token);
+            localStorage.setItem('Admin_ID', result.user.Admin_ID);
+            console.log('Token stored:', result.user.Admin_ID);
   
             // Navigate to the main page
             this.router.navigate(['/main']);

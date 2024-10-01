@@ -5,7 +5,7 @@
       <table class="table table-bordered table-hover">
         <thead class="sticky-thead">
           <tr>
-            <th>Staff No.</th>
+            <th>No.</th>
             <th>Image</th>
             <th>Staff Name</th>
             <th>Address</th>
@@ -20,10 +20,13 @@
             <td class="text-center">{{$index +1}}</td>
             <td>
               <img
-                src="http://placehold.it/50x50"
-                alt="Marie Dela Cruz"
-                class="img-thumbnail"
-              />
+              [src]="c.Admin_image ? 'http://localhost/admin/profile_images/' + c.Admin_image : 'http://placehold.it/50x50'"
+              alt="{{ c.Admin_name }}"
+              class="img-thumbnail"
+              height="100"
+              width="100"
+            />
+            
             </td>
             <td>{{c.Admin_fname}} {{c.Admin_mname}} {{c.Admin_lname}}</td>
             <td>{{c.Address}}</td>
@@ -38,7 +41,7 @@
               </button>
               <button
                 class="btn btn-success btn-custom-sm mx-1"
-                [routerLink]="['/main/staffpage/staffmain/staffview/upload']"
+                (click)="upload(c.Admin_ID)"
               >
                 <i class="fa fa-upload"></i>
               </button>

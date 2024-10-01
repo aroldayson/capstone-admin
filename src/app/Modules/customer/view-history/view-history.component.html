@@ -56,7 +56,7 @@
                   <th>Transaction Number</th>
                   <th>Received Date</th>
                   <th>Staff Received</th>
-                  <th>Laundry Deatils</th>
+                  <th>Laundry Details</th>
                   <th>Amount</th>
                   <th>Status</th>
                   <th>Date Delivered</th>
@@ -64,35 +64,22 @@
                 </tr>
               </thead>
               <tbody>
+                @for(c of histo; track c.trans){
                 <tr
                   class="text-center"
-                  routerLink="/main/customertpage/main/view-listtransac"
+                   (click)="history(c.Transac_ID)"
                 >
-                  <td>1</td>
-                  <td>SDGS5234</td>
-                  <td>11/20/2024</td>
-                  <th>Marie De Leon</th>
-                  <td>3kl Assorted Clothes, 2kl Carpet</td>
-                  <td>500.00</td>
-                  <td>Paid and Picked-up</td>
-                  <td>11/20/2024</td>
-                  <th>Carlo Katigbak</th>
+                  <td>{{$index+1}}</td>
+                  <td>{{c.Tracking_number}}</td>
+                  <td>{{c.Transac_date}}</td>
+                  <td>{{c.Admin_fname}} {{c.Admin_mname}} {{c.Admin_lname}}</td>
+                  <td>{{c.Category}}</td>
+                  <td>{{c.totalprice}}</td>
+                  <td>{{c.Transac_status}}</td>
+                  <td>{{c.Delivery_datetime}}</td>
+                  <td>{{c.Staffincharge}}</td>
                 </tr>
-                
-                <tr
-                  class="text-center"
-                  routerLink="/main/customertpage/main/view-listtransac"
-                >
-                  <td>2</td>
-                  <td>SDGS5234</td>
-                  <td>11/20/2024</td>
-                  <th>Marie De Leon</th>
-                  <td>3kl Assorted Clothes, 2kl Carpet</td>
-                  <td>500.00</td>
-                  <td>Paid and Picked-up</td>
-                  <td></td>
-                  <th></th>
-                </tr>
+              }
               </tbody>
               <!-- <tfoot class="text-center">
                   <tr>

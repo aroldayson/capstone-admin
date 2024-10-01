@@ -40,7 +40,9 @@ export class AdminService {
   updateStaff(data: any) {
     return this.http.put(`${this.Apiurl}updatestaff/${data.id}`,data);
   }
-  
+  uploadAdmin(data: any){
+    return this.http.put(`${this.Apiurl}upload/${data.Admin_ID}`, data);
+  }
   // PRICEMANAGEMENT
   displayprice(){
     return this.http.get(this.Apiurl + 'pricedisplay');
@@ -74,6 +76,19 @@ export class AdminService {
   findcustomer(id: any) {
     return this.http.get(`${this.Apiurl}findcustomer/${id}`); 
   }
+
+  // TRANSACTION
+  findtransaction(id: any) {
+    return this.http.get(`${this.Apiurl}findtrans/${id}`); 
+  }
+  findtransactionprint(id: any) {
+    return this.http.get(`${this.Apiurl}printtrans/${id}`); 
+  }
+  getprint(id: any) {
+    return this.http.get(`${this.Apiurl}calculateBalance/${id}`); 
+  }
+
+
   
 
 

@@ -22,6 +22,7 @@ export class ViewDashComponent implements OnInit {
   isDisabled: boolean = true;
   currentDate: any;
   isCollapsed: boolean = false;
+  users:any
 
   selectedRole: string = '';
   cash: any;
@@ -144,12 +145,13 @@ export class ViewDashComponent implements OnInit {
         console.error('Error fetching payment data:', error);
       }
     );
+    
   }
 
   isFormValid(): boolean {
     return this.initialAmount !== null && this.cashCount !== '';
   }
-
+  
 
   openForms() {
     this.isDisabled = true;

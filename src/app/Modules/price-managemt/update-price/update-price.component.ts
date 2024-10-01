@@ -14,8 +14,9 @@ import Swal from 'sweetalert2';
 })
 export class UpdatePriceComponent implements OnInit {
   
-  category_id = {id: localStorage.getItem('Categ_ID')};
+  category_id: { id: string | null } = {id: localStorage.getItem('Categ_ID')};
   categ: any;
+  intervalId: any;
   // category = {category:localStorage.getItem('category')}
   constructor(
     private admin: AdminService,
@@ -31,8 +32,19 @@ export class UpdatePriceComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.category_id.id);
     this.findCategory();
+    this.startPolling();
   } 
 
+  startPolling() {
+    this.intervalId = setInterval(async () => {
+      const latestAdminId = localStorage.getItem('Categ_ID');
+      if (latestAdminId !== this.category_id.id) {
+        this.category_id.id = latestAdminId;
+        this.findCategory();
+      }
+    }, 100); // Check every second
+  }
+  
   findCategory(): void {
     this.admin.findprice(this.category_id.id).subscribe((result: any) => {
       this.categ = result;

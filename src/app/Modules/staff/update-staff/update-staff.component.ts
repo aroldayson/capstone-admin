@@ -13,12 +13,14 @@ import Swal from 'sweetalert2';
   styleUrl: './update-staff.component.css'
 })
 export class UpdateStaffComponent implements OnInit{
-  staff_id = {id:localStorage.getItem('Admin_ID')}
+  staff_id:{ id: string | null } = {id:localStorage.getItem('Admin_ID')}
+
   staff: any
   showOldPassword: boolean = false;
   showPassword: boolean = false;
   showConPassword: boolean = false;
   passwordsMatch = true;
+  intervalId: any;
 
   constructor(
     private admin: AdminService,
@@ -59,6 +61,16 @@ export class UpdateStaffComponent implements OnInit{
 
   ngOnInit(): void {
     console.log(this.staff_id.id);
+    
+
+    this.startPolling();
+    this.get();
+
+    // this.updatestaff.valueChanges.subscribe(() => {
+    //   this.checkPasswords();
+    // });
+  }
+  get(){
     this.admin.findstaff(this.staff_id.id).subscribe((result: any) => {
       this.staff = result;
       console.log(result);
@@ -72,11 +84,18 @@ export class UpdateStaffComponent implements OnInit{
       // this.updatestaff.controls['Password'].setValue(this.staff.Password);
       this.updatestaff.controls['Email'].setValue(this.staff.Email);
     });
-
-    // this.updatestaff.valueChanges.subscribe(() => {
-    //   this.checkPasswords();
-    // });
   }
+
+  startPolling() {
+    this.intervalId = setInterval(async () => {
+      const latestAdminId = localStorage.getItem('Admin_ID');
+      if (latestAdminId !== this.staff_id.id) {
+        this.staff_id.id = latestAdminId;
+        this.get();
+      }
+    }, 100); // Check every second
+  }
+
 
 
   update(): void {
