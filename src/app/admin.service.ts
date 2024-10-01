@@ -16,9 +16,9 @@ export class AdminService {
     return this.http.post(this.Apiurl + 'login', data);
   }
 
-  logout(): Observable<any>{
+  logout(): Observable<any> {
     const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(this.Apiurl + 'logout', {}, { headers });
   }
 
@@ -27,7 +27,7 @@ export class AdminService {
     return this.http.get(this.Apiurl + 'display');
   }
   insertData(data: any) {
-    return this.http.post(this.Apiurl + 'addstaff', data); 
+    return this.http.post(this.Apiurl + 'addstaff', data);
   }
   deletestaff(id: any) {
     return this.http.delete(`${this.Apiurl}deletestaff/${id}`); 

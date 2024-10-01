@@ -8,38 +8,22 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule,FormsModule],
   templateUrl: './view-account.component.html',
-  styleUrl: './view-account.component.css'
+  styleUrls: ['./view-account.component.css'],
 })
-export class ViewAccountComponent implements OnInit{
+export class ViewAccountComponent {
+  // Default image
+  previewImageSrc: string =
+    'http://simpleicon.com/wp-content/uploads/account.png';
 
-  admin_id = {id:localStorage.getItem('Admin_ID')}
-  log: any;
-  userId: any
-  userData: any;
-  users: any;
-
-  constructor(
-    private admin: AdminService
-  ){}
-  updateaccount = new FormGroup({
-    Admin_Email: new FormControl(null),
-    Admin_Password: new FormControl(null)
-  })
-  ngOnInit(): void {
-    this.users = { id: localStorage.getItem('Admin_ID') };
-    console.log('Admin_ID:', this.users.id);
-    this.get();
+  // Method to handle file input change
+  onFileSelected(event: any): void {
+    const file = event.target.files[0]; // Get the selected file
+    if (file) {
+      const reader = new FileReader(); // FileReader to read the image
+      reader.onload = (e: any) => {
+        this.previewImageSrc = e.target.result; // Set the preview image to the file content
+      };
+      reader.readAsDataURL(file); // Read the image file as a data URL
+    }
   }
-  get(){
-    this.admin.findstaff(this.users.id).subscribe((result: any) => {
-      this.users = result;
-      console.log(result);
-      this.updateaccount.controls['Admin_Email'].setValue(this.users.Email);
-      this.updateaccount.controls['Admin_Password'].setValue(this.users.Password);
-    });
-  }
-  update(){
-
-  }
-
 }

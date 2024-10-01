@@ -75,14 +75,14 @@ export class UpdateStaffComponent implements OnInit{
       this.staff = result;
       console.log(result);
 
-      this.updatestaff.controls['Admin_lname'].setValue(this.staff.Admin_lname);
-      this.updatestaff.controls['Admin_fname'].setValue(this.staff.Admin_fname);
-      this.updatestaff.controls['Admin_mname'].setValue(this.staff.Admin_mname);
-      this.updatestaff.controls['Address'].setValue(this.staff.Address);
-      this.updatestaff.controls['Phone_no'].setValue(this.staff.Phone_no);
-      this.updatestaff.controls['Oldpassword'].setValue(this.staff.Password);
-      // this.updatestaff.controls['Password'].setValue(this.staff.Password);
-      this.updatestaff.controls['Email'].setValue(this.staff.Email);
+      this.updatestaff.controls['Admin_lname'].setValue(this.staff.admin_lname);
+      this.updatestaff.controls['Admin_fname'].setValue(this.staff.admin_fname);
+      this.updatestaff.controls['Admin_mname'].setValue(this.staff.admin_mname);
+      this.updatestaff.controls['Address'].setValue(this.staff.address);
+      this.updatestaff.controls['Phone_no'].setValue(this.staff.phone_no);
+      this.updatestaff.controls['Oldpassword'].setValue(this.staff.password);
+      this.updatestaff.controls['Password'].setValue(this.staff.password);
+      this.updatestaff.controls['Email'].setValue(this.staff.email);
     });
   }
 

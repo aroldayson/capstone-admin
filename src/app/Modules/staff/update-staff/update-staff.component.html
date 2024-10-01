@@ -41,16 +41,18 @@
            class="fa {{ showOldPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
       </div>
-      
   
       <div class="form-outline mb-3">
         <input  [type]="showPassword ? 'text' : 'password'" formControlName="Password" class="form-control"  placeholder=""/>
         <label class="form-label" for="password">New Password</label>
+        <input  [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control"  placeholder=""/>
+        <label class="form-label" for="password">New Passwords</label>
 
         <i (click)="togglePasswordVisibilitys()"
           class="fa {{ showPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
           style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
       </div>
+
   
       <div class="form-outline mb-3">
         <input  [type]="showConPassword ? 'text' : 'password'" formControlName="ConfirmPassword" class="form-control"  placeholder=""/>
@@ -59,6 +61,10 @@
         <i (click)="togglePasswordVisibilityy()"
           class="fa {{ showConPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
           style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+      </div>
+
+      <div *ngIf="!passwordsMatch" class="alert alert-danger">
+        Passwords do not match.
       </div>
 
       <div *ngIf="!passwordsMatch" class="alert alert-danger">
