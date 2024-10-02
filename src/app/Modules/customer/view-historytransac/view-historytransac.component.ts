@@ -35,7 +35,7 @@ export class ViewHistorytransacComponent implements OnInit{
         console.log(result);
       }
     );
-    this.admin.findtransactionprint(this. his_id.id).subscribe(
+    this.admin.findtransactionprint(this.his_id.id).subscribe(
       (result: any) => {
         this.custs = result;
         this.histo = result.trans; 

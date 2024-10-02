@@ -23,32 +23,21 @@
                 </tr>
               </thead>
               <tbody>
+                @for(t of trans; track t.Transac_ID){
                 <tr
                   class="text-center"
                   routerLink="/main/tansactionpage/main/view-tran/view-receipt"
                 >
-                  <td>763YGSAJGFz</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>07/18/2024 - 18:03:23</td>
-                  <td>3kl Assorted Clothes, 2kl Kumot</td>
-                  <td class="">230.00</td>
-                  <td class="">Paid and Pick-up</td>
-                  <td class="">Misebas Niyw</td>
+                  <td>{{t.Tracking_number}}</td>
+                  <td>{{t.Cust_fname}} {{t.Cust_lname}}</td>
+                  <td>{{t.Transac_date}}</td>
+                  <td>{{t.Category}}</td>
+                  <td class="">{{t.totalprice}}</td>
+                  <td class="">{{t.Transac_status}}</td>
+                  <td class="">{{t.Admin_fname}} {{t.Admin_lname}}</td>
                   <!-- <td><button class="btn btn-primary" (click)="Approved()">Approved</button></td> -->
                 </tr>
-                <tr
-                  class="text-center"
-                  routerLink="/main/tansactionpage/main/view-tran/view-receipt"
-                >
-                  <td>123GHSY71</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>07/19/2024 - 18:20:20</td>
-                  <td>2KL Assorted Clothes</td>
-                  <td>100.00</td>
-                  <td class="">Paid and Received</td>
-                  <td class="">Bierna Iyeo</td>
-                  <!-- <td><button class="btn btn-primary" (click)="Approved()">Approved</button></td> -->
-                </tr>
+              }
               </tbody>
             </table>
           </div>

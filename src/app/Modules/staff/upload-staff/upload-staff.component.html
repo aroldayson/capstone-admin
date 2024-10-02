@@ -29,7 +29,7 @@
           
           <div class="image-preview">
             <img *ngIf="imagePreview" [src]="imagePreview" alt="Image preview" class="preview-image" style="width: auto; height: 180px;">
-            <img *ngIf="!imagePreview" src="assets/placeholder-image.png" alt="Placeholder" class="preview-image" style="width: 150p; height: 180px;">
+            <!-- <img *ngIf="!imagePreview" src="assets/placeholder-image.png" alt="Placeholder" class="preview-image" style="width: 150p; height: 180px;"> -->
           </div>
 
           <p *ngIf="message" [ngClass]="{'success': message.includes('successfully'), 'error': message.includes('Error')}">

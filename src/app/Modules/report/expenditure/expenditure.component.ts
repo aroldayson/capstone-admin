@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgxPrintModule } from 'ngx-print';
+import { AdminService } from '../../../admin.service';
 
 @Component({
   selector: 'app-expenditure',
@@ -9,6 +10,18 @@ import { NgxPrintModule } from 'ngx-print';
   templateUrl: './expenditure.component.html',
   styleUrl: './expenditure.component.css'
 })
-export class ExpenditureComponent {
+export class ExpenditureComponent implements OnInit{
+  expen: any;
+
+
+  constructor(
+    private admin: AdminService
+  ){}
+  ngOnInit(): void {
+    this.admin.displayexpenses().subscribe((result: any) => {
+      this.expen = result;
+      console.log(this.expen);
+    });
+  }
 
 }

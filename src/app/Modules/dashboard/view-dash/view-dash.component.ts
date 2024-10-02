@@ -29,6 +29,7 @@ export class ViewDashComponent implements OnInit {
   expenses: any;
   totalAmount: any;
   totals: any;
+  count: any;
 
   constructor(
     private admin: AdminService
@@ -140,6 +141,15 @@ export class ViewDashComponent implements OnInit {
       (result: any) => {
         this.expenses = result; // Store payments
         console.log(this.expenses); // Log for debugging
+      },
+      (error) => {
+        console.error('Error fetching payment data:', error);
+      }
+    );
+    this.admin.CountDisplay().subscribe(
+      (result: any) => {
+        this.count = result.total_count; // Store payments
+        console.log(this.count); // Log for debugging
       },
       (error) => {
         console.error('Error fetching payment data:', error);

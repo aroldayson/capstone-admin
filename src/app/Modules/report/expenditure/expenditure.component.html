@@ -61,27 +61,22 @@
               <thead class="table-light">
                 <tr class="text-center">
                   <th>Date</th>
-                  <th>Order Receipt</th>
+                  <th>Proof of Purchased</th>
                   <th>Cashier in Charge</th>
                   <th>Description</th>
                   <th>Total Purchased</th>
                 </tr>
               </thead>
               <tbody>
+                @for(e of expen; track e.Expense_ID){
                 <tr class="text-center">
-                  <td>07/18/2024</td>
-                  <td>096SDFS172883</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>Zonrox, Surf Powder</td>
-                  <td class="text-danger">270.00</td>
+                  <td>{{e.Datetime_taken}}</td>
+                  <td>{{e.Receipt_filenameimg}}</td>
+                  <td>{{e.Admin_fname}} {{e.Admin_lname}}</td>
+                  <td>{{e.Desc_reason}}</td>
+                  <td class="text-danger">{{e.Amount}}</td>
                 </tr>
-                <tr class="text-center">
-                  <td>07/19/2024</td>
-                  <td>076SGD172883</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>Zonrox</td>
-                  <td class="text-danger">70.00</td>
-                </tr>
+              }
               </tbody>
               <tfoot class="text-center">
                 <tr>

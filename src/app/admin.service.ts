@@ -68,6 +68,9 @@ export class AdminService {
   expensesDisplay() {
     return this.http.get(this.Apiurl + 'expensendisplays');
   }
+  CountDisplay(){
+    return this.http.get(this.Apiurl + 'CountDisplay');
+  }
 
   //CUSTOMER
   customerdisplay() {
@@ -87,7 +90,14 @@ export class AdminService {
   getprint(id: any) {
     return this.http.get(`${this.Apiurl}calculateBalance/${id}`); 
   }
+  Transadisplay() {
+    return this.http.get(this.Apiurl + 'Transadisplay');
+  }
 
+  // EXPENSES
+  displayexpenses() {
+    return this.http.get(this.Apiurl + 'displayexpenses');
+  }
 
   
 
