@@ -46,7 +46,7 @@
           <td>{{c.Category}}</td>
           <td>{{c.Qty}}</td>
           <td>{{c.Weight}}</td>
-          <td>{{c.Price}}</td>
+          <td class="text-right">{{c.Price}}</td>
         </tr>
         }
         <tr>
@@ -56,19 +56,22 @@
           <td class="text-right">
             <p><strong>Total Amount: </strong></p>
             <p><strong>Amount Received: </strong></p>
+            <p><strong>Change: </strong></p>
             <p><strong>Balance: </strong></p>
           </td>
           <td>
-                <div class="transaction-item">
+                <div class="transaction-item text-right">
                   <p>
-                   {{ totalAmount }}
+                   - {{ totalAmount }}
                   </p>
                   <p>
                     {{  totalpayment  }} 
                   </p>
                   <p>
                     {{ balance }}
-                     
+                  </p>
+                  <p>
+                    0
                   </p>
                 </div>
           </td>
@@ -81,13 +84,11 @@
           <td class="text-right">
             <h2><strong>Total: </strong></h2>
           </td>
-          @for(ct of totalAmount; track ct.trans){
-            <td class="text-left text-danger">
+            <td class="text-right text-danger">
               <h2>
-                <strong>{{ct.totalPrice}}</strong>
+                <strong>{{ totalAmount }}</strong>
               </h2>
             </td>
-          }
         </tr>
       </tbody>
     </table>

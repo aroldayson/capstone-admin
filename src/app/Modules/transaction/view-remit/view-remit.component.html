@@ -54,32 +54,28 @@
                   <th>Total Collection</th>
                   <th>Expenditure</th>
                   <th>Remittance</th>
-                  <th></th>
+                  <th>Net Profit/Loss</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-center" routerLink="/main/tansactionpage/main/view-tran/viewremit-his">
-                  <td>07/18/2024 - 18:03:23</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>2,400.00</td>
-                  <td class="text-success">2,400.00</td>
-                  <td class="text-danger">270.00</td>
-                  <td class="text-primary">2,130.00</td>
-                  <!-- <td class="text-danger">
-                    <button class="btn btn-primary" (click)="approved()">Approved</button>
-                  </td> -->
-                </tr>
-                <tr class="text-center" routerLink="/main/tansactionpage/main/view-tran/viewremit-his">
-                  <td>07/19/2024 - 18:03:23</td>
-                  <td>Carlo Katigbak</td>
-                  <td>10,000.00</td>
-                  <td class="text-success">10,000.00</td>
-                  <td class="text-danger">70.00</td>
-                  <td class="text-primary">9,930.00</td>
-                  <!-- <td class="text-danger">
-                    <button class="btn btn-primary" (click)="approved()">Approved</button>
-                  </td> -->
-                </tr>
+                @for(d of remit; track d.Staff_ID){
+                  <tr class="text-center" (click)="print(d.Staff_ID)">
+                    <td>{{d.Datetime_Changefund}}  - {{d.Datetime_Remitance}}</td>
+                    <td>{{d.Admin_lname}} {{d.Admin_fname}} {{d.Admin_mname}}</td>
+                    <td>{{d.Initial_amount}}</td>
+                    <td class="text-success">{{d.totalpayment }}</td>
+                    <td class="text-danger">{{d.totalexpense}}</td>
+                    <td class="text-primary">{{d.Remitance}}</td>
+                    <!-- <td class="text-primary">{{ (d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance}}</td> -->
+                    <td class="" 
+                        [ngClass]="((d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance) > 0 ? 'text-success' : 'text-danger'">
+                        {{ (d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance}}
+                    </td>
+                    <!-- <td class="text-danger">
+                      <button class="btn btn-primary" (click)="approved()">Approved</button>
+                    </td> -->
+                  </tr>
+                }
               </tbody>
               <!-- <tfoot class="text-center">
                 <tr>

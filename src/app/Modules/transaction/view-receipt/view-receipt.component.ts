@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,6 +8,13 @@ import { RouterLink } from '@angular/router';
   templateUrl: './view-receipt.component.html',
   styleUrl: './view-receipt.component.css'
 })
-export class ViewReceiptComponent {
+export class ViewReceiptComponent implements OnInit{
+
+  Transac = {id: localStorage.getItem('Staff_ID')}
+
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
 }

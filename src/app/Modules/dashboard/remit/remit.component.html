@@ -6,63 +6,34 @@
         <button class="btn btn-primary" routerLink="/main/dashboardpage/dashboardmain/dashboardview/cashdetails">BACK</button>
     </div>
 </div>
-          <form>
-              <div class="row">
-                <div class="col-md">
-                  <div class="form-group mb-3">
-                    <label for="changeFundInput">Cash Count</label>
-                    <input
-                      type="number"
-                      id="changeFundInput"
-                      class="form-control"
-                      [(ngModel)]="initialAmount"
-                      name="initialAmount"
-                    />
-                  </div>
-                </div>
-              </div>
-
-            <div *ngIf="selectedRole === 'admin'">
-              <div class="row">            
-                  <div class="form-group mb-3" [ngClass]="{'collapse': !isCollapsed}">
-                    <label for="cashCountInput">Cash Count</label>
-                    <input
-                      type="text"
-                      id="cashCountInput"
-                      class="form-control"
-                      [(ngModel)]="cashCount"
-                      name="cashCount"
-                      
-                    />
-                  </div>
-              </div>
-            </div>
-            <div *ngIf="selectedCashier  === 'cashier'">
-              <div class="row">
-                <div class="col-md">
-                  <div class="form-group mb-3">
-                    <label for="cashCountInput">Cash Count</label>
-                    <input
-                      (click)="openForm()"
-                      type="text"
-                      id="cashCountInput"
-                      class="form-control"
-                      [(ngModel)]="cashCount"
-                      name="cashCount"
-            
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          <div class="row">
-            <div class="col-6">
-              <button type="button" class="btn btn-primary w-100">
-                CLEAR
-              </button>
-            </div>
-            <div class="col-6">
-              <button type="button" class="btn btn-success w-100">REMIT</button>
-            </div>
-          </div>
-          </form>
+<form [formGroup]="cashout" (submit)="save()">
+  <div class="row">
+    <div class="col-md">
+      <div class="form-group mb-3">
+        <input
+          type="hidden"
+          id="changeFundInput"
+          class="form-control"
+          formControlName="Admin_ID"
+        />
+        <label for="changeFundInput">Cash Count</label>
+        <input
+          type="number"
+          id="changeFundInput"
+          class="form-control"
+          formControlName="Remitance"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button type="button" class="btn btn-primary w-100">
+        CLEAR
+      </button>
+    </div>
+    <div class="col-6">
+      <button type="submit" class="btn btn-success w-100">REMIT</button>
+    </div>
+  </div>
+</form>

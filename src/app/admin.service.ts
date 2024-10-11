@@ -24,7 +24,7 @@ export class AdminService {
 
   // STAFF
   getData(){
-    return this.http.get(this.Apiurl + 'display');
+    return this.http.get(this.Apiurl + 'displaystaff');
   }
   insertData(data: any) {
     return this.http.post(this.Apiurl + 'addstaff', data);
@@ -71,6 +71,15 @@ export class AdminService {
   CountDisplay(){
     return this.http.get(this.Apiurl + 'CountDisplay');
   }
+  Staffinitail(){
+    return this.http.get(this.Apiurl + 'displaystaffs');
+  }
+  cashinitial(data: any) {
+    return this.http.post(this.Apiurl + 'cashinitial', data); 
+  }
+  remit(data: any) {
+    return this.http.post(this.Apiurl + 'remittance', data); 
+  }
 
   //CUSTOMER
   customerdisplay() {
@@ -93,6 +102,16 @@ export class AdminService {
   Transadisplay() {
     return this.http.get(this.Apiurl + 'Transadisplay');
   }
+  approvetrans(id: any) {
+    return this.http.get(`${this.Apiurl}approvedtrans/${id}`); 
+  }
+  remittanceapproved() {
+    return this.http.get(this.Apiurl + 'remittanceapproved');
+  }
+  printTransac(id: any){
+    return this.http.get(`${this.Apiurl}printTransac/${id}`); 
+  }
+
 
   // EXPENSES
   displayexpenses() {

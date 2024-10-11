@@ -11,26 +11,60 @@
         </div>
         <div class="receipt-right text-right">
           <h5>S2K LAUNDRY SERVICES</h5>
-          <h5>07/18/2024 - 18:03:23</h5>
-          <!-- <p>+1 3649-6589 <i class="fa fa-phone"></i></p>
+          <h5>{{ currentDate }}</h5>
+          <p>+1 3649-6589 <i class="fa fa-phone"></i></p>
           <p>companygmail.com <i class="fa fa-envelope-o"></i></p>
-          <p>USA <i class="fa fa-location-arrow"></i></p> -->
+          <p>USA <i class="fa fa-location-arrow"></i></p>
         </div>
       </div>
   
       <div class="receipt-header-mid">
         <div class="">
-          <h5>Juan Dela Cruz</h5>
+          <h5>{{ Initial.Admin_fname }} {{ Initial.Admin_mname }}  {{ Initial.Admin_lname }} </h5>
         </div>
-        <!-- <div class="receipt-left">
-          <h3>INITIAL AMOUNT: 800</h3>
-        </div> -->
       </div>
-      <h2><u>Initail Amount</u></h2>
-      <table class="table table-bordered">
+
+      <div class="row">
+        <div class="m-2 col">
+          <h2 class="m-2">Initial Amount</h2>
+          <h2 class="m-2 table-hover" (click)="Transaction()">Transaction</h2>
+          <h2 class="m-2">Expenses</h2>
+        </div>
+        <div class="m-2 col">
+          <h2 class="m-2 text-right">{{Initial.Initial_amount}}</h2>
+          <h2 class="m-2 text-right">{{Totalprice}}</h2>
+          <h2 class="m-2 text-right">-</h2>
+          <hr>
+          <h2 class="m-2 text-right">{{Totalreceive }}</h2>
+          <!-- <br> 
+          <br> -->
+          <h5 class="mt-5 text-right">TOTAL COLLECTION: </h5>
+          <h5 class="mt-3 text-right">REMITTANCE: </h5>
+          <h5 class="mt-3 text-right">NET PROFIT: </h5>
+
+        </div>
+        <div class="m-2 col">
+          <h2 class="m-2 text-right">-</h2>
+          <h2 class="m-2 text-right">-</h2>
+          <h2 class="m-2 text-right">{{Expenses.totalexpenses}}</h2>
+          <hr>
+          <h2 class="m-2 text-right">{{Expenses.totalexpenses}}</h2>
+          <h3></h3>
+          <h2 class="m-2 mt-5 text-right">{{Totalreceive - Expenses.totalexpenses}}</h2>
+          <h2 class="m-2 text-right">{{Remit.Remitance}}</h2>
+          <h2 class="m-2 text-right" 
+              [ngClass]="(Remit.totalremit - (Totalreceive - Expenses.totalexpenses)) > 0 ? 'text-success' : 'text-danger'">
+            {{ Remit.Remitance - (Totalreceive - Expenses.totalexpenses) }}
+          </h2>
+      
+          <hr>
+        </div>
+      </div>
+      <!-- <h2><u>Initail Amount</u></h2> -->
+      <!-- <table class="table table-bordered">
         <thead>
           <tr>
-            <th>No.</th>
+            <th></th>
             <th>Cashier in Charge</th>
             <th>initial Amount</th>
             <th style="color: #414143;">Total Expenses</th>
@@ -41,8 +75,8 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td>Juan Dela Cruz</td>
-            <td>700.00</td>
+            <td>{{ Initial.Admin_fname }} {{ Initial.Admin_mname }}  {{ Initial.Admin_lname }} </td>
+            <td>{{ Initial.Initial_amount }}</td>
             <td></td>
             <td></td>
           </tr>
@@ -53,17 +87,17 @@
             <td></td>
             <td class="text-left text-primary">
               <h2>
-                <strong>700.00</strong>
+                <strong>{{ Initial.Initial_amount }}</strong>
               </h2>
             </td>
             <td></td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
 
-      <h2><u>Transaction</u></h2>
+      <!-- <h2><u>Transaction</u></h2> -->
   
-      <table class="table table-bordered">
+      <!-- <table class="table table-bordered">
         <thead>
           <tr>
             <th>No.</th>
@@ -75,45 +109,21 @@
           </tr>
         </thead>
         <tbody>
+          @for(t of Transacs; track t.Cust_ID){
           <tr>
-            <td>1</td>
-            <td>Juan Dela Cruz</td>
+            <td>{{t.Tracking_number}}</td>
+            <td>{{t.Cust_fname}} {{t.Cust_mname}} {{t.Cust_lname}}</td>
             <td></td>
-            <td>700.00</td>
+            <td>{{t.totalprice}}</td>
             <td></td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Marie De Leon</td>
-            <td></td>
-            <td>500.00</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Carlo Katigbak</td>
-            <td></td>
-            <td>500.00</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="text-right">
-                <h2><strong>Total: </strong></h2>
-            </td>
-            <td></td>
-            <td></td>
-            <td class="text-left text-primary">
-              <h2>
-                <strong>1,700.00</strong>
-              </h2>
-            </td>
-          </tr>
+        }
         </tbody>
-      </table>
+      </table> -->
 
-      <h2><u>Expenses</u></h2>
+      <!-- <h2><u>Expenses</u></h2> -->
 
-      <table class="table table-bordered">
+      <!-- <table class="table table-bordered">
         <thead>
           <tr>
             <th>No.</th>
@@ -176,7 +186,7 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
   
      
   

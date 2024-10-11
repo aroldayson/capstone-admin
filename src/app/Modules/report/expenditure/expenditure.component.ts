@@ -12,6 +12,7 @@ import { AdminService } from '../../../admin.service';
 })
 export class ExpenditureComponent implements OnInit{
   expen: any;
+  amount: any;
 
 
   constructor(
@@ -19,8 +20,9 @@ export class ExpenditureComponent implements OnInit{
   ){}
   ngOnInit(): void {
     this.admin.displayexpenses().subscribe((result: any) => {
-      this.expen = result;
-      console.log(this.expen);
+      this.expen = result.price;
+      this.amount = result.totalAmount;
+      console.log(this.expen,this.amount);
     });
   }
 

@@ -56,10 +56,10 @@
     </a>
     <a
       class="menu-item nav-link"
-      [routerLink]="['/login']"
       routerLinkActive="active"
+      (click)="logout()"
     >
-      <i class="fas fa-sign-out mx-2"></i> Sign Out
+      <i class="fas fa-sign-out mx-2" ></i> Sign Out
     </a>
   </div>
 </div>
@@ -69,9 +69,9 @@
     <span class="nav-toggle" (click)="toggleNav()">
       <i class="fa fa-bars"></i>
     </span>
-    <span class="nav-title text-responsive fw-bold">
+    <!-- <span class="nav-title text-responsive fw-bold">
       S2K LAUNDRY <span class="text-black-50 fw-bolder">ADMIN</span>
-    </span>
+    </span> -->
   </div>
   <div class="container mt-2">
     <div class="row">

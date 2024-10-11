@@ -64,10 +64,10 @@
                 </tr>
               </thead>
               <tbody>
-                @for(c of histo; track c.trans){
+                @for(c of histo; track c.Tracking_number){
                 <tr
                   class="text-center"
-                   (click)="history(c.Transac_ID)"
+                   (click)="history(c.Tracking_number)"
                 >
                   <td>{{$index+1}}</td>
                   <td>{{c.Tracking_number}}</td>

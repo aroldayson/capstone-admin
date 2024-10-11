@@ -41,7 +41,7 @@ export class ViewHistoryComponent implements OnInit{
   }
   history(id:any){
     console.log(id)
-    localStorage.setItem('Transac_ID', id)
+    localStorage.setItem('Tracking_number', id)
     this.route.navigate(["/main/customertpage/main/view-listtransac"])
   }
 }

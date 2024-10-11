@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class ViewHistorytransacComponent implements OnInit{
   cust_id = {id:localStorage.getItem('Cust_ID')}
-  his_id = {id:localStorage.getItem('Transac_ID')}
+  his_id = {id:localStorage.getItem('Tracking_number')}
   custs:any;
   histo: any;
   totalAmount: any;
@@ -40,13 +40,13 @@ export class ViewHistorytransacComponent implements OnInit{
         this.custs = result;
         this.histo = result.trans; 
         this.totalAmount = result.totalprice;
-        this.histoss = result.trans.Tracking_number;  
+        // this.histoss = result.trans.Tracking_number;  
         // this.totalpayment = result.amount; 
         // this.balance = result.balance; 
-        console.log( this.histoss.value);
+        console.log( this.custs);
       }
     );
-    this.admin.getprint(this.cust_id.id).subscribe(
+    this.admin.getprint(this.his_id.id).subscribe(
       (result: any) => {
         this.data = result.trans; // Assign transactions to 'data'
         this.trans_id = result.trans[0].Tracking_number

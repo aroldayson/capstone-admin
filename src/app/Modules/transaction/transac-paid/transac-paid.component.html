@@ -22,11 +22,11 @@
                   <th>Cashier in Charge</th>
                 </tr>
               </thead>
+              <!-- routerLink="/main/tansactionpage/main/view-tran/view-receipt" -->
               <tbody>
                 @for(t of trans; track t.Transac_ID){
                 <tr
                   class="text-center"
-                  routerLink="/main/tansactionpage/main/view-tran/view-receipt"
                 >
                   <td>{{t.Tracking_number}}</td>
                   <td>{{t.Cust_fname}} {{t.Cust_lname}}</td>

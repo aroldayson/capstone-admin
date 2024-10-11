@@ -30,20 +30,21 @@ export class ViewDashComponent implements OnInit {
   totalAmount: any;
   totals: any;
   count: any;
+  staff: any;
 
   constructor(
     private admin: AdminService
   ){}
 
-  admins = [
-    { names: 'Admin', value: 'cashier4' },
-  ];
+  // admins = [
+  //   { names: 'Admin', value: 'cashier4' },
+  // ];
 
-  cashiers = [
-    { name: 'Juan Dela Cruz', value: 'cashier1' },
-    { name: 'Carl Katigbak', value: 'cashier2' },
-    { name: 'Maria Santos', value: 'cashier3' }
-  ];
+  // cashiers = [
+  //   { name: 'Juan Dela Cruz', value: 'cashier1' },
+  //   { name: 'Carl Katigbak', value: 'cashier2' },
+  //   { name: 'Maria Santos', value: 'cashier3' }
+  // ];
 
   onRoleChange(event: any) {
     this.selectedRole = event.target.value;
@@ -53,15 +54,15 @@ export class ViewDashComponent implements OnInit {
     this.isCollapsed = !this.isCollapsed;
   }
 
-  getSelectedAdmin(): string {
-    const selected = this.admins.find(admin => admin.value === this.selectedRole);
-    return selected ? selected.names : 'No Admin Selected';
-  }
+  // getSelectedAdmin(): string {
+  //   const selected = this.admins.find(admin => admin.value === this.selectedRole);
+  //   return selected ? selected.names : 'No Admin Selected';
+  // }
 
-  getSelectedCashierName(): string {
-    const selected = this.cashiers.find(cashier => cashier.value === this.selectedRole);
-    return selected ? selected.name : 'No Cashier Selected';
-  }
+  // getSelectedCashierName(): string {
+  //   const selected = this.cashiers.find(cashier => cashier.value === this.selectedRole);
+  //   return selected ? selected.name : 'No Cashier Selected';
+  // }
 
 
   
@@ -155,6 +156,7 @@ export class ViewDashComponent implements OnInit {
         console.error('Error fetching payment data:', error);
       }
     );
+    
     
   }
 
