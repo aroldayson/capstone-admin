@@ -28,18 +28,18 @@ export class AddPriceComponent implements OnInit{
 
   save(): void {
     console.log(this.categoryForm.value);
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Your work has been saved",
-      showConfirmButton: true, 
-    })
+    // Swal.fire({
+    //   position: "top-end",
+    //   icon: "success",
+    //   title: "Your work has been saved",
+    //   showConfirmButton: true, 
+    // })
   
     this.admin.addprice(this.categoryForm.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Your work has been saved",
             showConfirmButton: true, 

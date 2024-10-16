@@ -63,33 +63,31 @@
                   <th>Date</th>
                   <th>Cashier in Charge</th>
                   <th>Total Payment</th>
+                  <!-- <th>Initial Amount</th> -->
                   <th>Total Expenses</th>
                   <th>Total Income</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-center">
-                  <td>07/18/2024</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>5000</td>
-                  <td class="text-danger">400</td>
-                  <td class="text-success">4600</td>
-                </tr>
-                <tr class="text-center">
-                  <td>07/19/2024</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>10000</td>
-                  <td class="text-danger">700</td>
-                  <td class="text-success">9300</td>
-                </tr>
+                @for(i of income; track i.id){
+                  <tr class="text-center">
+                    <td>{{i.date}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.paymentsAmount}}</td>
+                    <!-- <td>{{i.initialAmount}}</td> -->
+                    <td class="text-danger">{{i.expenseAmount}}</td>
+                    <td class="text-success">{{i.netIncome}}</td>
+                  </tr>
+                }
               </tbody>
               <tfoot class="table-light">
                 <tr class="text-center">
                   <th>Total</th>
                   <th></th>
-                  <th id="total-amount">15000</th>
-                  <th id="total-amount" class="text-danger">1100</th>
-                  <th id="total-amount" class="text-success">13900</th>
+                  <th id="total-amount">{{totalpayment}}</th>
+                  <!--  <th>{{totalcash}}</th> -->
+                  <th id="total-amount" class="text-danger">{{totalexpense}}</th>
+                  <th id="total-amount" class="text-success">{{totalincome}}</th>
                 </tr>
               </tfoot>
             </table>

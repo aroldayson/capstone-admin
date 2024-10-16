@@ -25,7 +25,7 @@
       </div>
       <div class="receipt-left">
         <p><b>TRANSACTION #</b></p>
-        <h3> {{ trans_id }}</h3>
+        <h3> {{ trackingnumber }}</h3>
       </div>
     </div>
     <!-- } -->
@@ -40,10 +40,10 @@
         </tr>
       </thead>
       <tbody>
-        @for(c of histo; track c.trans){
+        @for(c of histo; track c.Categ_ID){
         <tr>
           <td>{{$index+1}}</td>
-          <td>{{c.Category}}</td>
+          <td>{{c.Categories}}</td>
           <td>{{c.Qty}}</td>
           <td>{{c.Weight}}</td>
           <td class="text-right">{{c.Price}}</td>
@@ -60,20 +60,20 @@
             <p><strong>Balance: </strong></p>
           </td>
           <td>
-                <div class="transaction-item text-right">
-                  <p>
-                   - {{ totalAmount }}
-                  </p>
-                  <p>
-                    {{  totalpayment  }} 
-                  </p>
-                  <p>
-                    {{ balance }}
-                  </p>
-                  <p>
-                    0
-                  </p>
-                </div>
+              <div class="transaction-item text-right">
+                <p>
+                    {{ totalpayment }}
+                </p>
+                <p>
+                    {{ payment >= 0 ? payment : 0 }} <!-- Display payment or 0 -->
+                </p>                
+                <p>
+                    {{ balance >= 0 ? balance : 0 }} <!-- Display change or 0 -->
+                </p>
+                <p class="text-danger">
+                    {{ (payment - totalpayment) < 0 ? 0 - (payment - totalpayment) : 0 }} <!-- Display balance or 0 -->
+                </p>
+              </div>          
           </td>
           
         </tr>
@@ -84,9 +84,11 @@
           <td class="text-right">
             <h2><strong>Total: </strong></h2>
           </td>
-            <td class="text-right text-danger">
+            <td class="text-right">
               <h2>
-                <strong>{{ totalAmount }}</strong>
+                <strong>
+                  {{ totalpayment }}
+                </strong>
               </h2>
             </td>
         </tr>

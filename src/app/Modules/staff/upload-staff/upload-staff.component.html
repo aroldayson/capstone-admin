@@ -1,33 +1,11 @@
 <div class="bg-white p-3 rounded">
-    <!-- <form [formGroup]="upload" (ngSubmit)="onUpload()" enctype="multipart/form-data">
-      <div class="container">
-        <div class="row">
-          <div class="field" text-align="left">
-            <h4 class="text-center"><b>UPLOAD IMAGE</b></h4>
-            <input type="file" (click)="toggleImage()" class="files" formControlName="Admin_image" (change)="onFileSelected($event)" />
-            
-            <div [ngClass]="{ 'collapse': isCollapsed }" class="mt-3">
-              <img [src]="url" width="200" height="200" *ngIf="url" />
-            </div>
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col-md-6">
-            <button type="button" class="btn btn-primary btn-block mb-3" [routerLink]="['/main/staffpage/staffmain']">Cancel</button>
-          </div>
-          <div class="col-md-6">
-            <button type="submit" class="btn btn-success btn-block mb-3">Upload</button>
-          </div>
-        </div>
-      </div>
-    </form> -->
     <div class="container">
       <div class="row">
         <div class="field" text-align="left">
           <h4 class="text-center"><b>UPLOAD IMAGE</b></h4>
           <input type="file" (change)="onFileSelected($event)" accept="image/*">
           
-          <div class="image-preview">
+          <div class="image-preview img-fluid">
             <img *ngIf="imagePreview" [src]="imagePreview" alt="Image preview" class="preview-image" style="width: auto; height: 180px;">
             <!-- <img *ngIf="!imagePreview" src="assets/placeholder-image.png" alt="Placeholder" class="preview-image" style="width: 150p; height: 180px;"> -->
           </div>
@@ -47,21 +25,5 @@
         </div>
       </div>
     </div>
-    <!-- <div class="container">
-      <h2>Upload Profile Image</h2>
-      
-      <div class="image-preview">
-        <img *ngIf="imagePreview" [src]="imagePreview" alt="Image preview" class="preview-image" style="width: auto; height: 180px;">
-        <img *ngIf="!imagePreview" src="assets/placeholder-image.png" alt="Placeholder" class="preview-image" style="width: 150p; height: 180px;">
-      </div>
-    
-      <input type="file" (change)="onFileSelected($event)" accept="image/*">
-      
-      <button (click)="onUpload()">Upload Image</button>
-      
-      <p *ngIf="message" [ngClass]="{'success': message.includes('successfully'), 'error': message.includes('Error')}">
-        {{ message }}
-      </p>
-    </div> -->
   </div>
   

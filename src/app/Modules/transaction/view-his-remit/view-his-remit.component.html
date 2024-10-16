@@ -18,178 +18,47 @@
         </div>
       </div>
   
-      <div class="receipt-header-mid">
+      <div class="receipt-header-mid mb-3">
         <div class="">
-          <h5>{{ Initial.Admin_fname }} {{ Initial.Admin_mname }}  {{ Initial.Admin_lname }} </h5>
+          <h5>{{data.name}}</h5>
         </div>
       </div>
 
       <div class="row">
-        <div class="m-2 col">
-          <h2 class="m-2">Initial Amount</h2>
-          <h2 class="m-2 table-hover" (click)="Transaction()">Transaction</h2>
-          <h2 class="m-2">Expenses</h2>
+        <div class="m- col">
+          <h2 class="m-">Initial Amount</h2>
+          <h2 class="m- table-hover" (click)="Transaction()">Transaction</h2>
+          <h2 class="m-">Expenses</h2>
         </div>
         <div class="m-2 col">
-          <h2 class="m-2 text-right">{{Initial.Initial_amount}}</h2>
-          <h2 class="m-2 text-right">{{Totalprice}}</h2>
-          <h2 class="m-2 text-right">-</h2>
+          <h2 class="text-right">{{data.initialAmount}}</h2>
+          <h2 class="text-right">{{data.paymentsAmount}}</h2>
+          <h2 class="text-right">-</h2>
           <hr>
-          <h2 class="m-2 text-right">{{Totalreceive }}</h2>
-          <!-- <br> 
-          <br> -->
-          <h5 class="mt-5 text-right">TOTAL COLLECTION: </h5>
-          <h5 class="mt-3 text-right">REMITTANCE: </h5>
-          <h5 class="mt-3 text-right">NET PROFIT: </h5>
+          <h2 class="text-right">{{data.totaltransac}}</h2>
+          <hr>
+          <h5 class="mt-3 text-right">TOTAL COLLECTION: </h5>
+          <h5 class="mt-1 text-right">REMITTANCE: </h5>
+          <h5 class="mt-1 text-right">NET PROFIT: </h5>
+          <h5 class="mt-1 text-right">LOSS: </h5>
+
 
         </div>
         <div class="m-2 col">
-          <h2 class="m-2 text-right">-</h2>
-          <h2 class="m-2 text-right">-</h2>
-          <h2 class="m-2 text-right">{{Expenses.totalexpenses}}</h2>
+          <h2 class="text-right">-</h2>
+          <h2 class="text-right">-</h2>
+          <h2 class="text-right">{{data.expenseAmount}}</h2>
           <hr>
-          <h2 class="m-2 text-right">{{Expenses.totalexpenses}}</h2>
+          <h2 class="text-right">{{data.expenseAmount}}</h2>
+          <hr>
           <h3></h3>
-          <h2 class="m-2 mt-5 text-right">{{Totalreceive - Expenses.totalexpenses}}</h2>
-          <h2 class="m-2 text-right">{{Remit.Remitance}}</h2>
-          <h2 class="m-2 text-right" 
-              [ngClass]="(Remit.totalremit - (Totalreceive - Expenses.totalexpenses)) > 0 ? 'text-success' : 'text-danger'">
-            {{ Remit.Remitance - (Totalreceive - Expenses.totalexpenses) }}
-          </h2>
-      
+          <h2 class="mt-3 text-right">{{data.totalcollec}}</h2>
+          <h2 class="text-right">{{data.remitamount}}</h2>
+          <h2 class="text-right" [ngClass]="data.totalprofit > 0 ? 'text-success' : 'text-danger'">{{ (data.totalprofit ?? 0) > 0 ?  (data.totalprofit ?? 0) : 0 }} </h2>
+          <h2 class="text-right" [ngClass]="data.totalprofit > 0 ? 'text-success' : 'text-danger'">{{ (data.totalprofit ?? 0) < 0 ?  (data.totalprofit ?? 0) : 0 }} </h2>
           <hr>
         </div>
       </div>
-      <!-- <h2><u>Initail Amount</u></h2> -->
-      <!-- <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Cashier in Charge</th>
-            <th>initial Amount</th>
-            <th style="color: #414143;">Total Expenses</th>
-            <th style="color: #414143;">Total Expenses</th>
-            <th>Total Income</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>{{ Initial.Admin_fname }} {{ Initial.Admin_mname }}  {{ Initial.Admin_lname }} </td>
-            <td>{{ Initial.Initial_amount }}</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="text-right">
-                <h2><strong>Total: </strong></h2>
-            </td>
-            <td></td>
-            <td class="text-left text-primary">
-              <h2>
-                <strong>{{ Initial.Initial_amount }}</strong>
-              </h2>
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table> -->
-
-      <!-- <h2><u>Transaction</u></h2> -->
-  
-      <!-- <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Cashier in Charge</th>
-            <th style="color: #414143;">Total Expenses</th>
-            <th>Total Amount</th>
-            <th style="color: #414143;">Total Expenses</th>
-            <th style="color: #414143;">Total Expenses</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for(t of Transacs; track t.Cust_ID){
-          <tr>
-            <td>{{t.Tracking_number}}</td>
-            <td>{{t.Cust_fname}} {{t.Cust_mname}} {{t.Cust_lname}}</td>
-            <td></td>
-            <td>{{t.totalprice}}</td>
-            <td></td>
-          </tr>
-        }
-        </tbody>
-      </table> -->
-
-      <!-- <h2><u>Expenses</u></h2> -->
-
-      <!-- <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Description</th>
-            <th style="color: #414143;">Total Amount</th>
-            <th style="color: #414143;">Total Expenses</th>
-            <th >Total Expenses</th>
-            <th style="color: #414143;">Total Income</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Zonrox, Tide Bar</td>
-            <td></td>
-            <td></td>
-            <td>70.00</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Zonrox, Tide Bar</td>
-            <td></td>
-            <td></td>
-            <td>50.00</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Zonrox, Tide Bar</td>
-            <td></td>
-            <td></td>
-            <td>30.00</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="text-right">
-                <h2><strong>Total: </strong></h2>
-            </td>
-            <td></td>
-            <td class="text-left text-primary">
-                <h2>
-                  <strong>700.00</strong>
-                </h2>
-              </td>
-            <td class="text-left text-primary">
-              <h2>
-                <strong>1,700.00</strong>
-              </h2>
-            </td>
-            <td class="text-left text-danger">
-                <h2>
-                <strong>150.00</strong>
-                </h2>
-            </td>
-            <td class="text-left text-success">
-                <h2>
-                <strong>2,250.00</strong>
-                </h2>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
-  
-     
-  
       <div class="receipt-footer">
         <div class="footer-left">
           <p><b>Date :</b> 15 Aug 2016</p>
@@ -198,7 +67,7 @@
         <div class="footer-right">
           <button
             class="end btn btn-primary mx-2"
-            routerLink="/main/tansactionpage/main/view-tran/remittanceview"
+            (click)="approve(data.Cash_ID)"
           >
             APPROVE
           </button>

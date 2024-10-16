@@ -16,11 +16,7 @@ export class AdminService {
     return this.http.post(this.Apiurl + 'login', data);
   }
 
-  logout(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(this.Apiurl + 'logout', {}, { headers });
-  }
+  // logo
 
   // STAFF
   getData(){
@@ -43,6 +39,7 @@ export class AdminService {
   uploadAdmin(data: any){
     return this.http.put(`${this.Apiurl}upload/${data.Admin_ID}`, data);
   }
+
   // PRICEMANAGEMENT
   displayprice(){
     return this.http.get(this.Apiurl + 'pricedisplay');
@@ -111,12 +108,21 @@ export class AdminService {
   printTransac(id: any){
     return this.http.get(`${this.Apiurl}printTransac/${id}`); 
   }
+  approveremit(id: any){
+    return this.http.get(`${this.Apiurl}approveremit/${id}`); 
+  }
 
 
   // EXPENSES
   displayexpenses() {
     return this.http.get(this.Apiurl + 'displayexpenses');
   }
+
+  //REPORT
+  displayincome() {
+    return this.http.get(this.Apiurl + 'displayincome');
+  }
+   
 
   
 

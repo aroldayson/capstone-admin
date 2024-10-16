@@ -28,12 +28,21 @@ export class ViewRemitComponent implements OnInit{
 
   ngOnInit(): void {
     this.admin.remittanceapproved().subscribe((result: any) => {
-      this.remit = result.Data;
-      this.expenses = result.Expenses;
-      this.initial = result.Initial;
-      this.payment = result.Payment;
-      this.remittance = result.Remit;
-      this.totalprice = result.totalprice;
+      this.remit = result.combinedData;
+      if (this.remit && this.remit.length > 0) {
+          const pendingTransactions = this.remit.filter((transaction: any) => transaction.Fund_status === 'Pending');
+
+          if (pendingTransactions.length > 0) {
+              // console.log('Pending Transactions:', pendingTransactions);
+              this.remit = pendingTransactions;
+          } else {
+              console.log('No pending transactions found');
+              this.remit = [];
+          }
+      } else {
+          console.log('No transactions available');
+          this.remit = [];
+      }
       console.log(this.remit,this.expenses,this.initial,this.payment,this.totalprice);
     });
   }
@@ -42,7 +51,6 @@ export class ViewRemitComponent implements OnInit{
     console.log(id);
     localStorage.setItem('Staff_ID', id);
     this.route.navigate(['/main/tansactionpage/main/view-tran/viewremit-his'])
-    // routerLink=""
   }
   approved(){
     Swal.fire({

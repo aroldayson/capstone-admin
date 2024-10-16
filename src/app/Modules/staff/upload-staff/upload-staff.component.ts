@@ -24,10 +24,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
   constructor(private http: HttpClient, private adminService: AdminService, private route: Router) {}
 
   ngOnInit() {
-    // Load existing image on component initialization
     this.loadExistingImage();
-
-    // Start polling for localStorage changes
     this.startPolling();
   }
 
@@ -94,10 +91,12 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
               icon: 'success',
               confirmButtonText: 'OK'
             }).then(() => {
-              this.loadExistingImage(); // Reload the image after successful upload
+              this.loadExistingImage();
+              this.startPolling();
               // localStorage.removeItem('Admin_ID'); 
               this.route.navigate(["/main/staffpage/staffmain/staffview/"]);
-              location.reload(); // Reload the page after navigation
+              // location.reload(); // Reload the page after navigation
+             
             });
           },
           (error: any) => {

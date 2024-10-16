@@ -88,24 +88,24 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-center">
-                  <td>07/18/2024 - 18:03:23</td>
-                  <td>Juan Dela Cruz</td>
-                  <td>2,400.00</td>
-                  <td class="text-success">2,400.00</td>
-                  <td class="text-danger">270.00</td>
-                  <td class="text-primary">2,130.00</td>
-                  <td class="text-primary">0.00</td>
-                </tr>
-                <tr class="text-center">
-                  <td>07/19/2024 - 18:03:23</td>
-                  <td>Carlo Katigbak</td>
-                  <td>10,000.00</td>
-                  <td class="text-success">10,000.00</td>
-                  <td class="text-danger">70.00</td>
-                  <td class="text-primary">9,930.00</td>
-                  <td class="text-primary">0.00</td>
-                </tr>
+                @for(d of remit; track d.Staff_ID){
+                  <tr class="text-center" >
+                    <td>{{d.date}}</td>
+                    <td>{{d.name}}</td>
+                    <td>{{d.initialAmount}}</td>
+                    <td class="text-success">{{d.paymentsAmount}}</td>
+                    <td class="text-danger">{{d.expenseAmount}}</td>
+                    <td class="text-primary">{{d.remitamount}}</td>
+                    <!-- <td class="text-primary">{{ (d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance}}</td> -->
+                    <td class=""
+                        [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">
+                        {{d.totalprofit}}
+                    </td>
+                    <!-- <td class="text-danger">
+                      <button class="btn btn-primary" (click)="approved()">Approved</button>
+                    </td> -->
+                  </tr>
+                }
               </tbody>
               <!-- <tfoot class="text-center">
                 <tr>

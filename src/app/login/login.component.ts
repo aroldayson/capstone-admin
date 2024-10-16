@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit{
   
             // Store the token in localStorage
             localStorage.setItem('Admin_ID', result.user.Admin_ID);
-            console.log('Token stored:', result.user.Admin_ID);
+            // localStorage.setItem('token', result.token);
+            // console.log('Token stored:', result.token);
   
             // Navigate to the main page
             this.router.navigate(['/main']);

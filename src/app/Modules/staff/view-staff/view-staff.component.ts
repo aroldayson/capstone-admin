@@ -12,8 +12,26 @@ import { AdminService } from '../../../admin.service';
 export class ViewStaffComponent implements OnInit{
   staff:any
   id: any;
+  intervalId: any;
+  staff_id: { id: string | null } = { id: localStorage.getItem('Admin_ID') };
+
 
   ngOnInit(): void {
+    this.startPolling();
+    this.showdata();
+  }
+  startPolling() {
+    this.intervalId = setInterval(async () => {
+      const latestAdminId = localStorage.getItem('Admin_ID');
+      if (latestAdminId !== this.staff_id.id) {
+        this.staff_id.id = latestAdminId;
+        this.showdata();
+        location.reload();
+      }
+    }, 300); // Check every second
+  }
+
+  showdata(){
     this.admin.getData().subscribe((result: any) => {
       this.staff = result;
       console.log(this.staff);

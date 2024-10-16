@@ -10,16 +10,7 @@ import { transactionRoute } from './Modules/transaction/transaction.routes';
 import { customerRoute } from './Modules/customer/customer.routes';
 import { inject } from '@angular/core';
 
-export const authGuard: CanActivateFn = (route, state) => {
-
-    const localData = localStorage.getItem('token');
-    if(localData != null){
-      return true;
-    } else {
-      inject(Router).navigateByUrl('login')
-      return false;
-    }
-};
+// exports
 
 export const routes: Routes = [
     {path: 'main', component: SidenavComponent,
@@ -27,41 +18,43 @@ export const routes: Routes = [
             {
                 path: 'dashboardpage',
                 loadChildren: () => import('./Modules/dashboard/dashboard.routes').then(r=>dashboardRoute),
-                canActivate: [authGuard]
+                // canActivate: [authGuard]
             },
             {
                 path: 'tansactionpage',
                 loadChildren: () => import('./Modules/transaction/transaction.routes').then(r=>transactionRoute),
-                canActivate: [authGuard]
+                // canActivate: [authGuard]
             },
             {
                 path: 'pricemanagementpage',
                 loadChildren: () => import('./Modules/price-managemt/pricemanagement.routes').then(r=>pricemanagementRoute),
-                canActivate: [authGuard]
+                // canActivate: [authGuard]
             },
             {
                 path: 'reportpage',
                 loadChildren: () => import('./Modules/report/report.routes').then(r=>reportRoute),
-                canActivate: [authGuard]
+                // canActivate: [authGuard]
             },
             {
                 path: 'customertpage',
                 loadChildren: () => import('./Modules/customer/customer.routes').then(r=>customerRoute),
-                canActivate: [authGuard]
+                // canActivate: [authGuard]
             },
             {
                 path: 'staffpage',
                 loadChildren: () => import('./Modules/staff/staff.routes').then(r=>staffRoute),
-                canActivate: [authGuard]
+                // canActivate: [authGuard]
             },
             {
                 path: 'accountpage',
                 loadChildren: () => import('./Modules/account/account.routes').then(r=>accountRoute),
-                canActivate: [authGuard]
+                // canActivate: [authGuard]
             },
             {path: '', redirectTo: 'dashboardpage', pathMatch: 'full'}
         ]
     },
-    {path: 'login', component: LoginComponent, canActivate: [authGuard]},
+    {path: 'login', component: LoginComponent, 
+        // canActivate: [authGuard]s
+    },
     {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-his-remit',
@@ -23,6 +24,7 @@ export class ViewHisRemitComponent implements OnInit{
   Totalreceive: any;
   TotalOver: any;
   Remit: any;
+  totalAmount: any;
 
   constructor(
     private admin: AdminService,
@@ -44,7 +46,7 @@ export class ViewHisRemitComponent implements OnInit{
   
 
   ngOnInit(): void {
-    console.log(this.Transac);
+    console.log(this.Transac.id);
     this.currentDate = this.formatDate(new Date());
     // this.admin.remittanceapproved().subscribe((result: any) => {
     //   this.remit = result.Data;
@@ -52,19 +54,49 @@ export class ViewHisRemitComponent implements OnInit{
     // });
 
     this.admin.printTransac(this.Transac.id).subscribe((result: any) => {
-      this.data = result;
-      this.Transacs = result.Transac;
-      this.Initial = result.Initials[0];
-      this.Expenses = result.Expenses[0];
-      this.Totalprice = result.Totalprice;
-      this.Totalreceive = result.Totalinitials;
-      this.Remit = result.Remit[0];
-      console.log(this.Totalprice,this.data,this.Transacs,this.Initial,this.Expenses,this.Remit);
+      this.data = result.combinedData[0];
+      console.log(this.data);
     })
   }
 
   Transaction(){
     this.route.navigate(['/main/tansactionpage/main/view-tran/view-paid'])
+  }
+
+  approve(id: any){
+    console.log(id);
+    Swal.fire({
+      title: "Do you want to approve the remittance?",
+      // text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, approve it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.admin.approveremit(id).subscribe({
+          next: (response) => {
+            console.log('Update successful', response);
+            Swal.fire({
+              title: "Approved!",
+              text: "The transaction has been approved.",
+              icon: "success"
+            }).then(() => {
+              this.route.navigate(['/main/tansactionpage/main/view-tran/remittanceview']);
+            });
+          },
+          error: (error) => {
+            console.error('Update failed', error);
+            Swal.fire({
+              title: 'Error!',
+              text: 'Failed to approve transaction. Please try again.',
+              icon: 'error'
+            });
+          }
+        });
+      }
+    });
   }
 
 }
