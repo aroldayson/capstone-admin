@@ -26,7 +26,7 @@ export class UpdatePriceComponent implements OnInit {
   }
   categoryForm = new FormGroup({
     Category: new FormControl(null, Validators.required),
-    Per_kilograms: new FormControl(0.0, Validators.required),
+    Price: new FormControl(0.0, Validators.required),
   });
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class UpdatePriceComponent implements OnInit {
       this.categ = result;
       if (this.categ) {
         this.categoryForm.controls['Category'].setValue(this.categ.Category);
-        this.categoryForm.controls['Per_kilograms'].setValue(this.categ.Per_kilograms);
+        this.categoryForm.controls['Price'].setValue(this.categ.Price);
       }
     });
   }

@@ -27,3 +27,23 @@ tfoot th:last-child {
   float: right;
   padding-right: 100px;
 }
+.sticky-thead {
+  position: sticky;
+  top: 0;
+  /* background-color: rgb(184,219,240); */
+}
+.table-wrapper {
+  max-width: 100%;
+  overflow-y: scroll;
+  height: fit-content;
+  max-height: 65.4vh;
+  margin-top: 22px;
+  /* margin: 15px; */
+  padding-bottom: 20px;
+  text-align: d-flex;
+  scrollbar-width: none; /* For Firefox */
+}
+
+.table-wrapper::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}

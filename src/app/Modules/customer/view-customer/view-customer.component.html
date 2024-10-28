@@ -17,6 +17,7 @@
                       id="search-from"
                       name="search-from"
                       placeholder="Search"
+                      [(ngModel)]="keyword"
                     />
                   </div>
                 </div>
@@ -36,12 +37,12 @@
               </div>
             </div> -->
           </div>
-          <div class="table-responsive">
+          <div class="table-responsive table-wrapper">
             <table class="table table-bordered table-hover">
               <thead class="table-light">
-                <tr class="text-center">
+                <tr class="text-center sticky-thead">
                   <th>No.</th>
-                  <th>Customer Image</th>
+                  <!-- <th>Customer Image</th> -->
                   <th>Customer Name</th>
                   <th>Contact Phone #</th>
                   <th>Address</th>
@@ -49,13 +50,13 @@
                 </tr>
               </thead>
               <tbody>
-              @for(c of cust; track c.Cust_ID){
+              @for(c of cust | searchfilter: keyword; track c.Cust_ID){
                 <tr
                   class="text-center"
                   (click)="history(c.Cust_ID)"
                 >
                   <td>{{$index+1}}</td>
-                  <td>{{c.Cust_image}}</td>
+                  <!-- <td>{{c.Cust_image}}</td> -->
                   <td>{{c.Cust_fname}} {{c.Cust_mname}} {{c.Cust_lname}}</td>
                   <td>{{c.Cust_phoneno}}</td>
                   <td>{{c.Cust_address}}</td>

@@ -8,9 +8,9 @@
               <h3 class="fw-bold">LIST OF REMITTANCE</h3>
             </div>
           </div>
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-              <thead class="table-light">
+          <div class="table-responsive table-wrapper">
+            <table class="table table-bordered table-hover rounded">
+              <thead class="sticky-thead">
                 <tr class="text-center">
                   <th>DateTime</th>
                   <th>Cashier in Charge</th>
@@ -22,18 +22,22 @@
                 </tr>
               </thead>
               <tbody>
-                @for(d of remit; track d.id){
-                  <tr class="text-center" (click)="print(d.id)">
-                    <td>{{d.date}}</td>
+                @for(d of remit; track d.Staff_ID){
+                  <tr class="text-center" (click)="print(d.Staff_ID)">
+                    <td>{{d.remitMonth }} - {{ d.remitDay }} - {{ d.remitYear }}</td>
                     <td>{{d.name}}</td>
                     <td>{{d.initialAmount}}</td>
-                    <td class="text-success">{{d.paymentsAmount}}</td>
-                    <td class="text-danger">{{d.expenseAmount}}</td>
-                    <td class="text-primary">{{d.remitamount}}</td>
+                    <td class="text-success">{{d.paymentAmount}}</td>
+                    <td class="text-danger">{{d.ExpensesAmount}}</td>
+                    <td class="text-primary">{{d.remitAmount}}</td>
                     <!-- <td class="text-primary">{{ (d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance}}</td> -->
-                    <td class="" 
+                    <!-- <td class=""
                         [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">
                         {{d.totalprofit}}
+                    </td> -->
+                    <td 
+                      [ngClass]="d.totalprofit >= 0 ? 'text-success' : 'text-danger'">
+                      {{ getAbsoluteProfit(d.totalprofit) | number: '1.2-2' }}
                     </td>
                     <!-- <td class="text-danger">
                       <button class="btn btn-primary" (click)="approved()">Approved</button>

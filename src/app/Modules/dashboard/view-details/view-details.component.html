@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md text-center mt-2">
+        <h5 class="mb-4 mx-2 fw-bold">View Details</h5>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr class="text-center">
+          <th>No.</th>
+          <th>Date</th>
+          <th>Staff</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(c of details; track c.Cash_ID){
+            <tr
+            class="text-center"
+            >
+            <td>{{$index+1}}</td>
+            <td>{{c.Datetime_InitialAmo}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.Initial_amount}}</td>
+            </tr>
+        }
+      </tbody>
+    </table>
+    <div class="col-6" style="float: right">
+      <button type="button" class="btn btn-primary w-100" routerLink="/main/dashboardpage/dashboardmain/dashboardview/cashdetails">BACK</button>
+    </div>
+  </div>

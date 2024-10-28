@@ -1,45 +1,53 @@
 <div class="row">
-    <div class="col-md-7 mt-2">
-        <h5 class="mb-4 fw-bold">CASH DETAILS</h5>
-    </div>
-    <div class="col-md">
-        <button class="btn btn-primary" routerLink="/main/dashboardpage/dashboardmain/dashboardview/remit">REMIT</button>
-    </div>
+  <div class="col-md-7 mt-2">
+      <h5 class="mb-4 fw-bold">CASH DETAILS</h5>
+  </div>
+  <div class="col-md">
+      <button
+          class="btn btn-primary"
+          routerLink="/main/dashboardpage/dashboardmain/dashboardview/remit"
+      >REMIT</button>
+  </div>
 </div>
-    <form [formGroup]="InitialFrom" (submit)="save()">
-        <div class="form-group">
-          <label for="userSelect">Select Cashier</label>
-          <select id="userSelect" class="form-control"  formControlName="Staff_ID">
-              <option value="" selected>Select Cashier</option>
-              @for(c of staff; track c.Admin_ID){
-                <option [value]="c.Admin_ID">{{ c.Admin_fname }} {{ c.Admin_lname }} {{ c.Admin_mname }}</option>
-              }
-          </select>
-        </div>
-    
-      
-        <div class="row">
-          <div class="col-md">
-            <div class="form-group mb-3">
+
+<form [formGroup]="InitialFrom" (submit)="save()">
+  <div class="form-group">
+      <label for="userSelect">Select Cashier</label>
+      <select id="userSelect" class="form-control" formControlName="Staff_ID">
+          <option value="" selected>Select Cashier</option>
+          <ng-container *ngFor="let c of staff">
+              <option [value]="c.Admin_ID">
+                  {{ c.Admin_fname }} {{ c.Admin_lname }} {{ c.Admin_mname }}
+              </option>
+          </ng-container>
+      </select>
+  </div>
+
+  <div class="row">
+      <div class="col-md-6">
+          <div class="form-group mb-3">
               <label for="changeFundInput">Initial Funds</label>
               <input
-                type="number"
-                id="changeFundInput"
-                class="form-control"
-                formControlName="Initial_amount"
+                  type="number"
+                  id="changeFundInput"
+                  class="form-control"
+                  formControlName="Initial_amount"
+                  min="0"
+                  (input)="enforceNonNegative()"
               />
-            </div>
           </div>
-        </div>
-      
-        <div class="row">
-          <div class="col-6">
-            <button type="button" class="btn btn-primary w-100" (click)="clearForm()">
+      </div>
+      <div class="col-md mt-4"><button class="btn btn-primary mt-2" routerLink="/main/dashboardpage/dashboardmain/dashboardview/details">CASH VIEW</button></div>
+  </div>
+
+  <div class="row">
+      <div class="col-6">
+          <button type="button" class="btn btn-primary w-100" (click)="clearForm()">
               CLEAR
-            </button>
-          </div>
-          <div class="col-6">
-            <button type="submit" class="btn btn-success w-100" >SUBMIT</button>            
-          </div>
-        </div>
-    </form>
+          </button>
+      </div>
+      <div class="col-6">
+          <button type="submit" class="btn btn-success w-100">SUBMIT</button>
+      </div>
+  </div>
+</form>

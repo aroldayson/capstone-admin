@@ -35,7 +35,7 @@ export class RemitComponent implements OnInit{
 
   cashout = new FormGroup({
     Admin_ID: new FormControl(localStorage.getItem('Admin_ID')),
-    Remitance: new FormControl(0.0),
+    Remittance: new FormControl(0.0),
   })
 
   save(){

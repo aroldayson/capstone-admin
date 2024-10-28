@@ -54,7 +54,7 @@ export class ViewHisRemitComponent implements OnInit{
     // });
 
     this.admin.printTransac(this.Transac.id).subscribe((result: any) => {
-      this.data = result.combinedData[0];
+      this.data = result[0];
       console.log(this.data);
     })
   }
@@ -98,5 +98,10 @@ export class ViewHisRemitComponent implements OnInit{
       }
     });
   }
+
+  getAbsoluteProfit(profit: number | null): number {
+    return Math.abs(profit ?? 0);
+  }
+  
 
 }

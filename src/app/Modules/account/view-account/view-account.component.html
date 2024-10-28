@@ -8,7 +8,8 @@
           <div class="preview text-center mb-4 mt-4 position-relative">
             <img
               class="preview-img"
-              src="http://simpleicon.com/wp-content/uploads/account.png"
+              *ngIf="imagePreview"
+              [src]="imagePreview"
               alt="Preview Image"
             />
             <div class="browse-button">
@@ -19,6 +20,7 @@
                 required
                 name="UploadedFile"
                 id="UploadedFile"
+                (change)="onFileSelected($event)"
               />
             </div>
             <span class="Error"></span>
@@ -32,55 +34,112 @@
             <h4>{{users.Email}}</h4>
           </div>
         </form>
+        <div class="justify-content-end text-right">
+          <button type="submit" class="btn btn-success btn-small btn-block col-md-3" (click)="onUpload()">
+              Upload
+          </button>
+        </div>
       </div>
     </div>
     <!-- Personal Details Section -->
-    <div class="col-md-12 col-lg-6 mb-4">
+    <div class="col-md-12 col-lg-6">
       <div class="account-section personal-details">
         <p class="h2 text-center fw-bold">EDIT ACCOUNT</p>
         <form [formGroup]="updateaccount" (submit)="update()">
-          <div class="form-group">
-            <label><b>Email:</b></label>
-            <input
-              class="form-control"
-              type="text"
-              name="email"
-              required
-              formControlName="Admin_Email"
-              placeholder="Enter Your Email"
-            />
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><b>Last Name</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  required
+                  formControlName="Admin_lname"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><b>First Name</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  required
+                  formControlName="Admin_fname"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><b>Middle Name</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  required
+                  formControlName="Admin_mname"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label><b>Current Password:</b></label>
-            <input
-              class="form-control"
-              type="password"
-              name="password"
-              required
-              formControlName="Admin_Password"
-              placeholder="Enter Your Password"
-            />
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label><b>Email:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  required
+                  formControlName="Email"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group form-outline">
+                <label><b>Current Password:</b></label>
+                  <input  [type]="showOldPassword ? 'text' : 'password'" formControlName="Admin_OldPassword" class="form-control mb-2"  placeholder=""/>
+                  <label class="form-label mt-5" for="password"><b></b></label><br>
+                  <i (click)="togglePasswordVisibility()"
+                    class="fa {{ showOldPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label><b>New Password:</b></label>
-            <input
-              class="form-control"
-              type="password"
-              name="password"
-              required
-              placeholder="Enter Your Password"
-            />
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group form-outline">
+                <label><b>New Password:</b></label>
+                  <input  [type]="showPassword ? 'text' : 'password'" formControlName="Password" class="form-control mb-2"  placeholder=""/>
+                  <label class="form-label mt-5" for="password"><b></b></label><br>
+                  <i (click)="togglePasswordVisibilitys()"
+                    class="fa {{ showPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group form-outline">
+                <label><b>Confirm Password:</b></label>
+                  <input  [type]="showConPassword ? 'text' : 'password'" formControlName="Admin_ConPassword" class="form-control mb-2"  placeholder=""/>
+                  <label class="form-label mt-5" for="password"><b></b></label><br>
+                  <i (click)="togglePasswordVisibilityss()"
+                    class="fa {{ showConPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label><b>Confirm Password:</b></label>
-            <input
-              class="form-control"
-              type="password"
-              name="confirm_password"
-              required
-              placeholder="Re-enter Your Password"
-            />
+          <div *ngIf="!passwordsMatch" class="alert alert-danger">
+            Passwords do not match.
           </div>
+  
           <!-- Buttons inside Personal Details -->
           <div class="row opt mt-4">
             <div class="col-md-6 mb-3">
@@ -89,7 +148,7 @@
               </button>
             </div>
             <div class="col-md-6 mb-3">
-              <button type="button" class="btn btn-primary btn-small btn-block">
+              <button type="submit" class="btn btn-primary btn-small btn-block">
                 Save
               </button>
             </div>

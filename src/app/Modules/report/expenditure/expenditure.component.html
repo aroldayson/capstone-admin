@@ -33,6 +33,9 @@
                       class="form-control"
                       id="search-from"
                       name="search-from"
+                      placeholder="MM/DD/YYYY HH:MM"
+                      (change)="onDateChange()"
+                      [(ngModel)]="fromDate"
                     />
                   </div>
                 </div>
@@ -48,17 +51,20 @@
                     <input
                       type="date"
                       class="form-control"
-                      id="search-from"
-                      name="search-from"
+                      id="search-to"
+                      name="search-to"
+                      placeholder="MM/DD/YYYY HH:MM"
+                      (change)="onDateChange()"
+                      [(ngModel)]="toDate"
                     />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="table-responsive" id="print-section">
-            <table class="table table-bordered table-hover">
-              <thead class="table-light">
+          <div class="table-responsive table-wrapper" id="print-section">
+              <table class="table table-bordered table-hover rounded">
+                <thead class="sticky-thead">
                 <tr class="text-center">
                   <th>Date</th>
                   <th>Proof of Purchased</th>
@@ -68,13 +74,13 @@
                 </tr>
               </thead>
               <tbody>
-                @for(e of expen; track e.Expense_ID){
+                @for(e of filteredData; track e.transactionDate){
                 <tr class="text-center">
-                  <td>{{e.Datetime_taken}}</td>
-                  <td>{{e.Receipt_filenameimg}}</td>
-                  <td>{{e.Admin_fname}} {{e.Admin_lname}}</td>
-                  <td>{{e.Desc_reason}}</td>
-                  <td class="text-danger">{{e.Amounts}}</td>
+                  <td>{{e.transactionDate}}</td>
+                  <td>{{e.image}}</td>
+                  <td>{{e.adminNames}}</td>
+                  <td>{{e.reason}}</td>
+                  <td class="text-danger">{{e.totalExpenses}}</td>
                 </tr>
               }
               </tbody>

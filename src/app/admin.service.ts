@@ -15,6 +15,11 @@ export class AdminService {
   logins(data:any): Observable<any> {
     return this.http.post(this.Apiurl + 'login', data);
   }
+  logout(headers: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.Apiurl + 'logout', {}, { headers });
+  }
 
   // logo
 
@@ -77,6 +82,9 @@ export class AdminService {
   remit(data: any) {
     return this.http.post(this.Apiurl + 'remittance', data); 
   }
+  viewdetails(){
+    return this.http.get(this.Apiurl + 'veiwdeatils');
+  }
 
   //CUSTOMER
   customerdisplay() {
@@ -84,6 +92,9 @@ export class AdminService {
   }
   findcustomer(id: any) {
     return this.http.get(`${this.Apiurl}findcustomer/${id}`); 
+  }
+  updateprofilecus(data:any){
+    return this.http.put(`${this.Apiurl}updateprofilecus/${data.id}`,data);
   }
 
   // TRANSACTION

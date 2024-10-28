@@ -41,15 +41,22 @@
         >
           <small>Please input a username</small>
         </div>
+        
+        <div style="position: relative; display: inline-block; width: 100%;">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            class="fadeIn third"
+            name="password"
+            placeholder="Password"
+            formControlName="Password"
+            style="padding-right: 40px;"/>
+          <i
+            (click)="togglePasswordVisibility()"
+            class="fa {{ showPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
+            style="position: absolute; right: 70px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+        </div>
 
-        <input
-          type="password"
-          id="password"
-          class="fadeIn third"
-          name="password"
-          placeholder="Password"
-          formControlName="Password"
-        />
         <div
           id="nopassword"
           class="text-danger mt-2 mb-3"
@@ -62,6 +69,7 @@
           class="fadeIn fourth btn"
           value="Log In"
         />
+        
       </form>
     </div>
   </div>

@@ -15,7 +15,7 @@ export class AddPriceComponent implements OnInit{
 
   categoryForm = new FormGroup({
     Category: new FormControl(null),
-    Per_kilograms: new FormControl(0.0),
+    Price: new FormControl(0.0),
   })
 
   constructor(

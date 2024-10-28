@@ -21,24 +21,7 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <div class="row">
-                <!-- <div class="col-md-2 mt-2">
-                  <label for="search-from">From:</label>
-                </div> -->
-                <div class="col">
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="search-from"
-                    name="search-from"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="row mb-4">
+          <div class="row mb-4">
             <div class="col-md-6 col-lg-3">
               <div class="form-group">
                 <div class="row">
@@ -51,6 +34,9 @@
                       class="form-control"
                       id="search-from"
                       name="search-from"
+                      placeholder="MM/DD/YYYY HH:MM"
+                      (change)="onDateChange()"
+                      [(ngModel)]="fromDate"
                     />
                   </div>
                 </div>
@@ -66,17 +52,19 @@
                     <input
                       type="date"
                       class="form-control"
-                      id="search-from"
-                      name="search-from"
+                      id="search-to"
+                      name="search-to"
+                      placeholder="MM/DD/YYYY HH:MM"
+                      (change)="onDateChange()"
+                      [(ngModel)]="toDate"
                     />
                   </div>
                 </div>
               </div>
             </div>
-          </div> -->
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-              <thead class="table-light">
+          <div class="table-responsive table-wrapper" id="print-section">
+            <table class="table table-bordered table-hover rounded">
+              <thead class="sticky-thead">
                 <tr class="text-center">
                   <th>DateTime</th>
                   <th>Cashier in Charge</th>
@@ -88,14 +76,14 @@
                 </tr>
               </thead>
               <tbody>
-                @for(d of remit; track d.Staff_ID){
+                @for(d of filteredData; track d.Staff_ID){
                   <tr class="text-center" >
-                    <td>{{d.date}}</td>
+                    <td>{{ d.remitYear }}-{{d.remitMonth }}-{{ d.remitDay }} </td>
                     <td>{{d.name}}</td>
                     <td>{{d.initialAmount}}</td>
-                    <td class="text-success">{{d.paymentsAmount}}</td>
-                    <td class="text-danger">{{d.expenseAmount}}</td>
-                    <td class="text-primary">{{d.remitamount}}</td>
+                    <td class="text-success">{{d.paymentAmount}}</td>
+                    <td class="text-danger">{{d.ExpensesAmount}}</td>
+                    <td class="text-primary">{{d.remitAmount}}</td>
                     <!-- <td class="text-primary">{{ (d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance}}</td> -->
                     <td class=""
                         [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">

@@ -101,3 +101,24 @@ input[type="submit"]:active {
     padding: 20px;
   }
 }
+
+.form-outline {
+  position: relative;
+}
+
+.form-outline .form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.form-outline input:focus ~ .form-label,
+.form-outline input:not(:placeholder-shown) ~ .form-label {
+  top: -1rem;
+  left: 0;
+  font-size: 0.75rem;
+  color: #007bff;
+}

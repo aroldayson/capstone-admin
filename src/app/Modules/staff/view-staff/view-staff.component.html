@@ -13,6 +13,7 @@
             id="search-from"
             name="search-from"
             placeholder="Search"
+            [(ngModel)]="keyword"
           />
         </div>
       </div>
@@ -35,7 +36,7 @@
           </tr>
         </thead>
         <tbody>
-          @for(c of staff; track c.Admin_ID){
+          @for(c of staff | searchfilter: keyword; track c.Admin_ID){
           <tr>
             <td class="text-center">{{$index +1}}</td>
             <td>
@@ -52,21 +53,24 @@
             <td>{{ c.Address }}</td>
             <td>{{ c.Phone_no }}</td>
             <td>{{ c.Email }}</td>
-            <td class="text-center col-md-2">
+            <td >
               <button
                 class="btn btn-primary btn-custom-sm"
                 (click)="update(c.Admin_ID)"
               >
-                <i class="fas fa-pencil-alt"></i>
+                <!-- <i class="fas fa-pencil-alt"></i> -->
+                <i>Edit</i>
               </button>
               <button
                 class="btn btn-success btn-custom-sm mx-1"
                 (click)="upload(c.Admin_ID)"
               >
-                <i class="fa fa-upload"></i>
+                <!-- <i class="fa fa-upload"></i> -->
+                <i>Upload</i>
               </button>
               <button class="btn btn-danger btn-custom-sm" (click)="dltbtn(c.Admin_ID)">
-                <i class="fa fa-trash-o"></i>
+                <!-- <i class="fa fa-trash-o"></i> -->
+                <i>Delete</i>
               </button>
             </td>
           </tr>

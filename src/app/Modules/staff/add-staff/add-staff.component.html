@@ -1,39 +1,39 @@
-<div class="container bg-white p-4 rounded shadow-sm">
-  <h4 class="text-center mb-4"><b>ADD STAFF</b></h4>
+<div class="container bg-white rounded shadow-sm">
+  <h4 class="text-center m-2"><b>ADD STAFF</b></h4>
   <form [formGroup]="addstaff" (submit)="insertStaff()">
     
-    <div class="form-outline mb-3">
+    <div class="form-outline mb-2">
       <input type="text" id="admin_lname" formControlName="Admin_lname" class="form-control"  placeholder=""/>
       <label class="form-label" for="admin_lname">Last Name</label>
     </div>
     
-    <div class="form-outline mb-3">
+    <div class="form-outline mb-2">
       <input type="text" id="admin_fname" formControlName="Admin_fname" class="form-control"  placeholder=""/>
       <label class="form-label" for="admin_fname">First Name</label>
     </div>
     
-    <div class="form-outline mb-3">
+    <div class="form-outline mb-2">
       <input type="text" id="admin_mname" formControlName="Admin_mname" class="form-control"  placeholder=""/>
       <label class="form-label" for="admin_mname">Middle Name</label>
     </div>
     
-    <div class="form-outline mb-3">
+    <div class="form-outline mb-2">
       <input type="text" id="address" formControlName="Address" class="form-control"  placeholder=""/>
       <label class="form-label" for="address">Address</label>
     </div>
 
-    <div class="form-outline mb-3">
+    <div class="form-outline mb-2">
       <input type="tel" id="phone_no" formControlName="Phone_no" class="form-control"  placeholder=""/>
       <label class="form-label" for="phone_no">Phone Number</label>
     </div>
 
-    <div class="form-outline mb-3">
+    <div class="form-outline mb-2">
       <input type="email" id="email" formControlName="Email" class="form-control"  placeholder=""/>
       <label class="form-label" for="email">Email</label>
     </div>
     
 
-    <div class="form-outline mb-3">
+    <div class="form-outline mb-2">
       <input  [type]="showPassword ? 'text' : 'password'" formControlName="Password" class="form-control"  placeholder=""/>
       <label class="form-label" for="password">Password</label>
 
@@ -42,20 +42,21 @@
         style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
     </div>
 
-    <div class="form-outline mb-3">
+    <div class="form-outline mb-2">
       <input  [type]="showConPassword ? 'text' : 'password'" formControlName="ConfirmPassword" class="form-control"  placeholder=""/>
       <label class="form-label" for="password">Confirm Password</label>
 
       <i (click)="togglePasswordVisibilityy()"
         class="fa {{ showConPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
-        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+      </i>
     </div>
 
     <div *ngIf="!passwordsMatch" class="alert alert-danger">
       Passwords do not match.
     </div>
 
-    <div class="row">
+    <div class="row text-center">
       <div class="col-md-6 mb-3">
         <button type="button" class="btn btn-secondary btn-block">
           Cancel

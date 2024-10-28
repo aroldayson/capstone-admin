@@ -108,11 +108,15 @@
   .table-wrapper {
     max-width: 100%;
     overflow-y: scroll;
-    /* overflow-x: scroll; */
     height: fit-content;
-    max-height: 75.4vh;
+    max-height: 67vh;
     margin-top: 22px;
-    margin: 15px;
+    /* margin: 15px; */
     padding-bottom: 20px;
     text-align: d-flex;
+    scrollbar-width: none; /* For Firefox */
+  }
+
+  .table-wrapper::-webkit-scrollbar {
+      display: none; /* For Chrome, Safari, and Opera */
   }

@@ -14,6 +14,14 @@ import { resourceUsage } from 'node:process';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit{
+  showPassword: boolean = false;
+
+
+
+  
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword; 
+  }
   ngOnInit(): void {
     
   }
@@ -45,7 +53,7 @@ export class LoginComponent implements OnInit{
   
             // Store the token in localStorage
             localStorage.setItem('Admin_ID', result.user.Admin_ID);
-            // localStorage.setItem('token', result.token);
+            localStorage.setItem('token', result.token);
             // console.log('Token stored:', result.token);
   
             // Navigate to the main page
@@ -85,49 +93,5 @@ export class LoginComponent implements OnInit{
       console.log("Form is not valid");
     }
   }
-  
-
-  // login(){
-  //   if(this.loginform.valid){
-  //     this.admin.logins(this.loginform.value).subscribe((result: any) => {
-  //       if(result.token){
-  //         localStorage.setItem('token',result.token);
-  //         this.router.navigate(['/main'])
-  //       }
-  //       console.log(result)
-  //     });
-  //   } else{
-  //     console.log("Form is not valid")
-  //   }
-  // }
-  
-  // login(){
-  //   console.log("From is not valid");
-    // this.AdminService.logins(this.email, this.password).subscribe(
-    //   (response) => {
-    //     localStorage.setItem('personal_access_token', response.personal_access_token);
-    //     Swal.fire({
-    //       icon: 'success',
-    //       title: 'Login Successful!',
-    //       text: 'You are now logged in.',
-    //       timer: 2000,
-    //       timerProgressBar: true,
-    //       showConfirmButton: false
-    //     });
-    
-    //     this.router.navigate(['/main']);
-    //   },
-    //   (error) => {
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Login Failed',
-    //       text: 'Please check your email and password.',
-    //       showConfirmButton: true
-    //     });
-    
-    //     console.error('Login error:', error);
-    //   }
-    // );
-      // }
 
 }

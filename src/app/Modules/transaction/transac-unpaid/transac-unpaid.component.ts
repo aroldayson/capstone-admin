@@ -3,18 +3,20 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AdminService } from '../../../admin.service';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchfilterPipe } from '../../../searchfilter.pipe';
 
 @Component({
   selector: 'app-transac-unpaid',
   standalone: true,
-  imports: [RouterLink,CommonModule,ReactiveFormsModule,RouterOutlet],
+  imports: [RouterLink,CommonModule,ReactiveFormsModule,RouterOutlet,FormsModule,SearchfilterPipe],
   templateUrl: './transac-unpaid.component.html',
   styleUrl: './transac-unpaid.component.css',
 })
 export class TransacUnpaidComponent implements OnInit{
   trans: any;
   error: any
+  keyword: any;
   
   
   constructor(

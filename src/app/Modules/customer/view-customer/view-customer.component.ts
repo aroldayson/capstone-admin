@@ -2,17 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AdminService } from '../../../admin.service';
+import { SearchfilterPipe } from '../../../searchfilter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view-customer',
   standalone: true,
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterLink, RouterOutlet,SearchfilterPipe,FormsModule],
   templateUrl: './view-customer.component.html',
   styleUrl: './view-customer.component.css',
 })
 export class ViewCustomerComponent implements OnInit{
 
   cust: any
+  keyword: string = '';
 
   constructor(
     private admin: AdminService,

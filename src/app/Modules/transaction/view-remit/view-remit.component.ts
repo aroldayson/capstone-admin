@@ -28,7 +28,7 @@ export class ViewRemitComponent implements OnInit{
 
   ngOnInit(): void {
     this.admin.remittanceapproved().subscribe((result: any) => {
-      this.remit = result.combinedData;
+      this.remit = result;
       if (this.remit && this.remit.length > 0) {
           const pendingTransactions = this.remit.filter((transaction: any) => transaction.Fund_status === 'Pending');
 
@@ -43,8 +43,12 @@ export class ViewRemitComponent implements OnInit{
           console.log('No transactions available');
           this.remit = [];
       }
-      console.log(this.remit,this.expenses,this.initial,this.payment,this.totalprice);
+      console.log(this.remit);
     });
+  }
+
+  getAbsoluteProfit(profit: number): number {
+    return Math.abs(profit);
   }
 
   print(id: any){

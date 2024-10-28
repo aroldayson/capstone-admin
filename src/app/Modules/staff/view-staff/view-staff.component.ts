@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AdminService } from '../../../admin.service';
+import { SearchfilterPipe } from '../../../searchfilter.pipe';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-view-staff',
   standalone: true,
-  imports: [RouterLink,RouterOutlet],
+  imports: [RouterLink,RouterOutlet,SearchfilterPipe,CommonModule,FormsModule],
   templateUrl: './view-staff.component.html',
   styleUrl: './view-staff.component.css'
 })
@@ -13,6 +16,7 @@ export class ViewStaffComponent implements OnInit{
   staff:any
   id: any;
   intervalId: any;
+  keyword: string = '';
   staff_id: { id: string | null } = { id: localStorage.getItem('Admin_ID') };
 
 
@@ -26,21 +30,41 @@ export class ViewStaffComponent implements OnInit{
       if (latestAdminId !== this.staff_id.id) {
         this.staff_id.id = latestAdminId;
         this.showdata();
-        location.reload();
+        // location.reload();
       }
     }, 300); // Check every second
   }
 
   showdata(){
     this.admin.getData().subscribe((result: any) => {
+      if (!result || result.length === 0) {
+          console.log('No transactions available');
+          this.staff = [];
+          return; // exit early if no data
+      }
+  
       this.staff = result;
       console.log(this.staff);
-    });
+      this.startPolling();
+  
+      const pendingTransactions = this.staff.filter((transaction: any) => transaction.Role === 'staff');
+  
+      if (pendingTransactions.length > 0) {
+          // console.log('Pending Transactions:', pendingTransactions);
+          this.staff = pendingTransactions;
+      } else {
+          console.log('No pending transactions found');
+          this.staff = [];
+      }
+  });
+  
   }
   constructor(
     private admin: AdminService,
     private route: Router
-  ){}
+  ){
+    this.showdata();
+  }
 
   dltbtn(id: any): void {
     const swalWithBootstrapButtons = Swal.mixin({

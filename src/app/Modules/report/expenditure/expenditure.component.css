@@ -23,3 +23,18 @@
       overflow-x: auto;
     }
   }
+  .table-wrapper {
+    max-width: 100%;
+    overflow-y: scroll;
+    height: fit-content;
+    max-height: 65.4vh;
+    margin-top: 22px;
+    /* margin: 15px; */
+    padding-bottom: 20px;
+    text-align: d-flex;
+    scrollbar-width: none; /* For Firefox */
+  }
+
+  .table-wrapper::-webkit-scrollbar {
+      display: none; /* For Chrome, Safari, and Opera */
+  }

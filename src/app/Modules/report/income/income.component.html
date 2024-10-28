@@ -33,6 +33,9 @@
                       class="form-control"
                       id="search-from"
                       name="search-from"
+                      placeholder="MM/DD/YYYY HH:MM"
+                      (change)="onDateChange()"
+                      [(ngModel)]="fromDate"
                     />
                   </div>
                 </div>
@@ -41,24 +44,27 @@
             <div class="col-md-6 col-lg-3">
               <div class="form-group">
                 <div class="row">
-                  <div class="col-md-1 mt-2">
-                    <label for="search-from">To:</label>
+                  <div class="col-md-2 mt-2">
+                    <label for="search-to">To:</label>
                   </div>
                   <div class="col">
                     <input
                       type="date"
                       class="form-control"
-                      id="search-from"
-                      name="search-from"
+                      id="search-to"
+                      name="search-to"
+                      placeholder="MM/DD/YYYY HH:MM"
+                      (change)="onDateChange()"
+                      [(ngModel)]="toDate"
                     />
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="table-responsive" id="print-section">
-            <table class="table table-bordered table-hover">
-              <thead class="table-light">
+          </div>      
+          <div class="table-responsive table-wrapper" id="print-section">
+            <table class="table table-bordered table-hover rounded">
+              <thead class="sticky-thead">
                 <tr class="text-center">
                   <th>Date</th>
                   <th>Cashier in Charge</th>
@@ -69,23 +75,24 @@
                 </tr>
               </thead>
               <tbody>
-                @for(i of income; track i.id){
+                @for(i of filteredData; track i.Staff_ID){
                   <tr class="text-center">
-                    <td>{{i.date}}</td>
-                    <td>{{i.name}}</td>
-                    <td>{{i.paymentsAmount}}</td>
+                    <td>{{ i.transactionDate }}</td>
+                    <td>{{i.adminNames}}</td>
+                    <td>{{i.totalPayments}}</td>
                     <!-- <td>{{i.initialAmount}}</td> -->
-                    <td class="text-danger">{{i.expenseAmount}}</td>
-                    <td class="text-success">{{i.netIncome}}</td>
+                    <td class="text-danger">{{i.totalExpenses}}</td>
+                    <td class="text-success">{{i.total}}</td>
                   </tr>
                 }
               </tbody>
               <tfoot class="table-light">
                 <tr class="text-center">
                   <th>Total</th>
-                  <th></th>
+                  <th>
+                  </th>
                   <th id="total-amount">{{totalpayment}}</th>
-                  <!--  <th>{{totalcash}}</th> -->
+                   <!-- <th>{{totalcash}}</th> -->
                   <th id="total-amount" class="text-danger">{{totalexpense}}</th>
                   <th id="total-amount" class="text-success">{{totalincome}}</th>
                 </tr>

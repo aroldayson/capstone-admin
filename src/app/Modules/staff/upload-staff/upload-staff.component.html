@@ -3,10 +3,10 @@
       <div class="row">
         <div class="field" text-align="left">
           <h4 class="text-center"><b>UPLOAD IMAGE</b></h4>
-          <input type="file" (change)="onFileSelected($event)" accept="image/*">
+          <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*">
           
           <div class="image-preview img-fluid">
-            <img *ngIf="imagePreview" [src]="imagePreview" alt="Image preview" class="preview-image" style="width: auto; height: 180px;">
+            <img *ngIf="imagePreview" [src]="imagePreview" alt="Image preview" class="preview-image" style="width: 230px; height: 180px;">
             <!-- <img *ngIf="!imagePreview" src="assets/placeholder-image.png" alt="Placeholder" class="preview-image" style="width: 150p; height: 180px;"> -->
           </div>
 

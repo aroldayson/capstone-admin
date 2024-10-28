@@ -21,7 +21,10 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
   existingImageUrl: string | null = null;
   intervalId: any;
 
-  constructor(private http: HttpClient, private adminService: AdminService, private route: Router) {}
+  constructor(private http: HttpClient, private adminService: AdminService, private route: Router) {
+    this.loadExistingImage();
+    this.startPolling();
+  }
 
   ngOnInit() {
     this.loadExistingImage();

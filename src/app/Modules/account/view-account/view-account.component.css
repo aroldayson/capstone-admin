@@ -21,9 +21,9 @@
 
 .preview-img {
   border-radius: 50%;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  max-width: 150px;
-  max-height: 150px;
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); */
+  max-width: 220px;
+  max-height: 200px;
   object-fit: cover;
 }
 
@@ -39,7 +39,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
+  /* background: rgba(0, 0, 0, 0.5); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,4 +153,25 @@
     font-size: 12px;
     padding: 8px;
   }
+}
+
+.form-outline {
+  position: relative;
+}
+
+.form-outline .form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.form-outline input:focus ~ .form-label,
+.form-outline input:not(:placeholder-shown) ~ .form-label {
+  top: -1rem;
+  left: 0;
+  font-size: 0.75rem;
+  color: #007bff;
 }
