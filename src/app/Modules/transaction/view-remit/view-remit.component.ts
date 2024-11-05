@@ -53,7 +53,7 @@ export class ViewRemitComponent implements OnInit{
 
   print(id: any){
     console.log(id);
-    localStorage.setItem('Staff_ID', id);
+    localStorage.setItem('Cash_ID', id);
     this.route.navigate(['/main/tansactionpage/main/view-tran/viewremit-his'])
   }
   approved(){

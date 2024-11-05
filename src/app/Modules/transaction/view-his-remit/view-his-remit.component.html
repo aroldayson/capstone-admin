@@ -31,11 +31,11 @@
           <h2 class="m-">Expenses</h2>
         </div>
         <div class="m-2 col">
-          <h2 class="text-right">{{data.initialAmount}}</h2>
-          <h2 class="text-right">{{data.paymentAmount}}</h2>
+          <h2 class="text-right">{{data.initialAmount  | currency: ' ':'symbol' }}</h2>
+          <h2 class="text-right">{{data.paymentAmount | currency: ' ':'symbol'}}</h2>
           <h2 class="text-right">-</h2>
           <hr>
-          <h2 class="text-right">{{data.totaltransac}}</h2>
+          <h2 class="text-right">{{data.totaltransac | currency: ' ':'symbol'}}</h2>
           <hr>
           <h5 class="mt-3 text-right">TOTAL COLLECTION: </h5>
           <h5 class="mt-1 text-right">REMITTANCE: </h5>
@@ -47,23 +47,23 @@
         <div class="m-2 col">
           <h2 class="text-right">-</h2>
           <h2 class="text-right">-</h2>
-          <h2 class="text-right">{{data.ExpensesAmount}}</h2>
+          <h2 class="text-right">{{data.ExpensesAmount | currency: ' ':'symbol'}}</h2>
           <hr>
-          <h2 class="text-right">{{data.ExpensesAmount}}</h2>
+          <h2 class="text-right">{{data.ExpensesAmount | currency: ' ':'symbol'}}</h2>
           <hr>
           <h3></h3>
-          <h2 class="mt-3 text-right">{{data.totalcollec}}</h2>
-          <h2 class="text-right">{{data.remitAmount}}</h2>
+          <h2 class="mt-3 text-right">{{data.totalcollec | currency: ' ':'symbol'}}</h2>
+          <h2 class="text-right">{{ data.remitAmount | currency: ' ' : 'symbol' }}</h2>
           <!-- <h2 class="text-right" [ngClass]="data.totalprofit > 0 ? 'text-success' : 'text-danger'">{{ (data.totalprofit ?? 0) > 0 ?  (data.totalprofit ?? 0) : 0 }} </h2>
           <h2 class="text-right" [ngClass]="data.totalprofit > 0 ? 'text-success' : 'text-danger'">{{ (data.totalprofit ?? 0) < 0 ?  (data.totalprofit ?? 0) : 0 }} </h2> -->
           <h2 class="text-right" 
-            [ngClass]="data.totalprofit > 0 ? 'text-success' : 'text-danger'">
-            {{ data.totalprofit > 0 ? getAbsoluteProfit(data.totalprofit) : 0 }}
+            [ngClass]="data.totalprofit > 0 ? 'text-success' : 'text-danger'" >
+            {{ data.totalprofit > 0 ? (getAbsoluteProfit(data.totalprofit) | currency: ' ' : 'symbol') : 0 }}
             <!-- {{ getAbsoluteProfit(data.totalprofit) }} -->
           </h2>
           <h2 class="text-right" 
             [ngClass]="data.totalprofit > 0 ? 'text-success' : 'text-danger'">
-            {{ data.totalprofit < 0 ? getAbsoluteProfit(data.totalprofit) : 0 }}
+            {{ data.totalprofit < 0 ? (getAbsoluteProfit(data.totalprofit) | currency: ' ' : 'symbol') : 0 }}
             <!-- {{ getAbsoluteProfit(data.totalprofit) }} -->
           </h2>
 

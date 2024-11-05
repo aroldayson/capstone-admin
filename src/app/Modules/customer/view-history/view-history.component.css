@@ -25,3 +25,6 @@
 .table-wrapper::-webkit-scrollbar {
     display: none; /* For Chrome, Safari, and Opera */
 }
+/* .end{
+  float: left;
+} */

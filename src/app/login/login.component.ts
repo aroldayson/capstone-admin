@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit{
       this.admin.logins(this.loginform.value).subscribe(
         (result: any) => {
           if (result && result.token) {
-            // Display success notification
             Swal.fire({
               icon: 'success',
               title: 'Login Successful!',
@@ -50,16 +49,12 @@ export class LoginComponent implements OnInit{
               timerProgressBar: true,
               showConfirmButton: false
             });
-  
-            // Store the token in localStorage
+
             localStorage.setItem('Admin_ID', result.user.Admin_ID);
             localStorage.setItem('token', result.token);
             // console.log('Token stored:', result.token);
-  
-            // Navigate to the main page
-            this.router.navigate(['/main']);
+              this.router.navigate(['/main']);
           } else {
-            // Handle case where the result doesn't contain the token
             Swal.fire({
               icon: 'error',
               title: 'Login Failed',
@@ -70,20 +65,16 @@ export class LoginComponent implements OnInit{
           console.log(result);
         },
         (error) => {
-          // Handle error response from the server (e.g., 401 Unauthorized)
           Swal.fire({
             icon: 'error',
             title: 'Login Failed',
             text: 'Please check your email and password.',
             showConfirmButton: true
           });
-  
-          // Log the error for debugging
-          console.error('Login error:', error);
+            console.error('Login error:', error);
         }
       );
     } else {
-      // Handle case where the form is not valid
       Swal.fire({
         icon: 'error',
         title: 'Invalid Form',

@@ -68,10 +68,10 @@
                 <tr class="text-center">
                   <th>Date</th>
                   <th>Cashier in Charge</th>
-                  <th>Total Payment</th>
+                  <th class="text-right">Total Payment</th>
                   <!-- <th>Initial Amount</th> -->
-                  <th>Total Expenses</th>
-                  <th>Total Income</th>
+                  <th class="text-right">Total Expenses</th>
+                  <th class="text-right">Total Income</th>
                 </tr>
               </thead>
               <tbody>
@@ -79,10 +79,10 @@
                   <tr class="text-center">
                     <td>{{ i.transactionDate }}</td>
                     <td>{{i.adminNames}}</td>
-                    <td>{{i.totalPayments}}</td>
+                    <td class="text-right">{{i.totalPayments | currency: ' ':'symbol'}}</td>
                     <!-- <td>{{i.initialAmount}}</td> -->
-                    <td class="text-danger">{{i.totalExpenses}}</td>
-                    <td class="text-success">{{i.total}}</td>
+                    <td class="text-danger text-right">{{i.totalExpenses | currency: ' ':'symbol'}}</td>
+                    <td class="text-success text-right">{{i.total | currency: ' ':'symbol'}}</td>
                   </tr>
                 }
               </tbody>
@@ -91,10 +91,10 @@
                   <th>Total</th>
                   <th>
                   </th>
-                  <th id="total-amount">{{totalpayment}}</th>
+                  <th id="total-amount" class="text-right">{{totalpayment | currency: ' ':'symbol'}}</th>
                    <!-- <th>{{totalcash}}</th> -->
-                  <th id="total-amount" class="text-danger">{{totalexpense}}</th>
-                  <th id="total-amount" class="text-success">{{totalincome}}</th>
+                  <th id="total-amount" class="text-danger text-right">{{totalexpense | currency: ' ':'symbol'}}</th>
+                  <th id="total-amount" class="text-success text-right">{{totalincome | currency: ' ':'symbol'}}</th>
                 </tr>
               </tfoot>
             </table>

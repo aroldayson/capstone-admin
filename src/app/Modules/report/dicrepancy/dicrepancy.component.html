@@ -68,11 +68,11 @@
                 <tr class="text-center">
                   <th>DateTime</th>
                   <th>Cashier in Charge</th>
-                  <th>Initial Amount</th>
-                  <th>Total Collection</th>
-                  <th>Expenditure</th>
-                  <th>Remittance</th>
-                  <th>Net Profit/Loss</th>
+                  <th class="text-right">Initial Amount</th>
+                  <th class="text-right">Total Collection</th>
+                  <th class="text-right">Expenditure</th>
+                  <th class="text-right">Remittance</th>
+                  <th class="text-right">Net Profit/Loss</th>
                 </tr>
               </thead>
               <tbody>
@@ -80,14 +80,14 @@
                   <tr class="text-center" >
                     <td>{{ d.remitYear }}-{{d.remitMonth }}-{{ d.remitDay }} </td>
                     <td>{{d.name}}</td>
-                    <td>{{d.initialAmount}}</td>
-                    <td class="text-success">{{d.paymentAmount}}</td>
-                    <td class="text-danger">{{d.ExpensesAmount}}</td>
-                    <td class="text-primary">{{d.remitAmount}}</td>
+                    <td class="text-right">{{d.initialAmount | currency: ' ':'symbol'}}</td>
+                    <td class="text-success text-right">{{d.paymentAmount | currency: ' ':'symbol'}}</td>
+                    <td class="text-danger text-right">{{d.ExpensesAmount | currency: ' ':'symbol'}}</td>
+                    <td class="text-primary text-right">{{d.remitAmount | currency: ' ':'symbol'}}</td>
                     <!-- <td class="text-primary">{{ (d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance}}</td> -->
-                    <td class=""
+                    <td class="text-right"
                         [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">
-                        {{d.totalprofit}}
+                        {{d.totalprofit | currency: ' ':'symbol'}}
                     </td>
                     <!-- <td class="text-danger">
                       <button class="btn btn-primary" (click)="approved()">Approved</button>

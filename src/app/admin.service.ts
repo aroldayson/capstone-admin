@@ -25,102 +25,169 @@ export class AdminService {
 
   // STAFF
   getData(){
-    return this.http.get(this.Apiurl + 'displaystaff');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'displaystaff',{headers});
   }
   insertData(data: any) {
-    return this.http.post(this.Apiurl + 'addstaff', data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.Apiurl + 'addstaff', data,{headers});
   }
   deletestaff(id: any) {
-    return this.http.delete(`${this.Apiurl}deletestaff/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.Apiurl}deletestaff/${id}`,{headers}); 
   }
 
   findstaff(id: any) {
-    return this.http.get(`${this.Apiurl}findstaff/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}findstaff/${id}`,{headers}); 
   }
 
   updateStaff(data: any) {
-    return this.http.put(`${this.Apiurl}updatestaff/${data.id}`,data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.Apiurl}updatestaff/${data.id}`,data,{headers});
   }
   uploadAdmin(data: any){
-    return this.http.put(`${this.Apiurl}upload/${data.Admin_ID}`, data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.Apiurl}upload/${data.Admin_ID}`, data,{headers});
   }
 
   // PRICEMANAGEMENT
   displayprice(){
-    return this.http.get(this.Apiurl + 'pricedisplay');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'pricedisplay',{headers});
   }
   addprice(data: any) {
-    return this.http.post(this.Apiurl + 'addprice', data); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.Apiurl + 'addprice', data, {headers}); 
   }
   deletecateg(id: any) {
-    return this.http.delete(`${this.Apiurl}deletecateg/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.Apiurl}deletecateg/${id}`,{headers}); 
   }
   findprice(id: any) {
-    return this.http.get(`${this.Apiurl}findprice/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}findprice/${id}`,{headers}); 
   }
   updateprice(data: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put(`${this.Apiurl}updateprice/${data.id}`,data);
   }
 
 
   // DASHBOARD
   paymentDisplay() {
-    return this.http.get(this.Apiurl + 'dashdisplays');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'dashdisplays',{headers});
   }
+  // paymentDisplays(month: number, year: number): Observable<any> {
+  //     return this.http.get<any>(`${this.Apiurl}/dashdisplaysgraph?month=${month}&year=${year}`);
+  // }
+
   expensesDisplay() {
-    return this.http.get(this.Apiurl + 'expensendisplays');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'expensendisplays',{headers});
   }
   CountDisplay(){
-    return this.http.get(this.Apiurl + 'CountDisplay');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'CountDisplay',{headers});
   }
   Staffinitail(){
-    return this.http.get(this.Apiurl + 'displaystaffs');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'displaystaffs',{headers});
   }
   cashinitial(data: any) {
-    return this.http.post(this.Apiurl + 'cashinitial', data); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.Apiurl + 'cashinitial', data, {headers}); 
   }
   remit(data: any) {
-    return this.http.post(this.Apiurl + 'remittance', data); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.Apiurl + 'remittance', data,{headers}); 
   }
   viewdetails(){
-    return this.http.get(this.Apiurl + 'veiwdeatils');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'veiwdeatils',{headers});
   }
+    // Inside admin.service.ts
+  getIncomeDataByMonth(month: string) {
+    return this.http.get<{ GCASH: number; BPI: number; CASH: number }>(`/api/income/${month}`);
+  }
+
 
   //CUSTOMER
   customerdisplay() {
-    return this.http.get(this.Apiurl + 'customerdisplay');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'customerdisplay',{headers});
   }
   findcustomer(id: any) {
-    return this.http.get(`${this.Apiurl}findcustomer/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}findcustomer/${id}`,{headers}); 
   }
   updateprofilecus(data:any){
-    return this.http.put(`${this.Apiurl}updateprofilecus/${data.id}`,data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.Apiurl}updateprofilecus/${data.id}`,data,{headers});
   }
 
   // TRANSACTION
   findtransaction(id: any) {
-    return this.http.get(`${this.Apiurl}findtrans/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}findtrans/${id}`,{headers}); 
   }
   findtransactionprint(id: any) {
-    return this.http.get(`${this.Apiurl}printtrans/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}printtrans/${id}`,{headers}); 
   }
   getprint(id: any) {
-    return this.http.get(`${this.Apiurl}calculateBalance/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}calculateBalance/${id}`,{headers}); 
   }
   Transadisplay() {
-    return this.http.get(this.Apiurl + 'Transadisplay');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'Transadisplay',{headers});
   }
   approvetrans(id: any) {
-    return this.http.get(`${this.Apiurl}approvedtrans/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}approvedtrans/${id}`,{headers}); 
   }
   remittanceapproved() {
-    return this.http.get(this.Apiurl + 'remittanceapproved');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'remittanceapproved',{headers});
   }
   printTransac(id: any){
-    return this.http.get(`${this.Apiurl}printTransac/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}printTransac/${id}`,{headers}); 
   }
   approveremit(id: any){
-    return this.http.get(`${this.Apiurl}approveremit/${id}`); 
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}approveremit/${id}`,{headers}); 
   }
 
 

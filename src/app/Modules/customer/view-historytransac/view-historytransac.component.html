@@ -34,9 +34,9 @@
         <tr>
           <th>No.</th>
           <th>Category</th>
-          <th>QTY</th>
-          <th>Kilograms</th>
-          <th>Amount</th>
+          <th class="text-right">QTY</th>
+          <th class="text-right">Kilograms</th>
+          <th class="text-right">Amount</th>
         </tr>
       </thead>
       <tbody>
@@ -44,9 +44,9 @@
         <tr>
           <td>{{$index+1}}</td>
           <td>{{c.Categories}}</td>
-          <td>{{c.Qty}}</td>
-          <td>{{c.Weight}}</td>
-          <td class="text-right">{{c.Price}}</td>
+          <td class="text-right">{{c.Qty}}</td>
+          <td class="text-right">{{c.Weight | currency: ' ':'symbol'}}</td>
+          <td class="text-right">{{c.Price | currency: ' ':'symbol'}}</td>
         </tr>
         }
         <tr>
@@ -62,16 +62,17 @@
           <td>
               <div class="transaction-item text-right">
                 <p>
-                    {{ totalpayment }}
+                    {{ totalpayment | currency: ' ':'symbol'}}
                 </p>
                 <p>
-                    {{ payment ?? 0 }} <!-- Display payment or 0 -->
+                    {{ payment ?? 0 | currency: ' ':'symbol'}}
                 </p>                
-                <p>
-                    {{ balance >= 0 ? balance : 0 }} <!-- Display change or 0 -->
+                <p> 
+                  {{ (payment != null && totalpayment != null) ? ((payment - totalpayment) > 0 ? (payment - totalpayment) : 0) : 0 | currency: ' ' : 'symbol'  }}
                 </p>
                 <p class="text-danger">
-                  {{ (payment != null && totalpayment != null) ? ((payment - totalpayment) < 0 ? 0 - (payment - totalpayment) : 0) : null }} <!-- Display balance or null -->
+                  <!-- {{ (payment != null && totalpayment != null) ? ((payment - totalpayment) < 0 ? (payment - totalpayment) : 0) : 0 | currency: ' ':'symbol'}} -->
+                  {{ (payment - totalpayment) < 0 ? (0 - (payment - totalpayment)) : 0 | currency: ' ' : 'symbol' }}
               </p>
               </div>          
           </td>
@@ -87,7 +88,7 @@
             <td class="text-right">
               <h2>
                 <strong>
-                  {{ totalpayment }}
+                  {{ totalpayment | currency: ' ' : 'symbol' }}
                 </strong>
               </h2>
             </td>

@@ -13,7 +13,7 @@ Chart.register(...registerables);
   standalone: true,
   imports: [RouterLink, FormsModule, CommonModule, RouterOutlet],
   templateUrl: './view-dash.component.html',
-  styleUrls: ['./view-dash.component.css'], // Fixed typo 'styleUrl' to 'styleUrls'
+  styleUrls: ['./view-dash.component.css'],
 })
 export class ViewDashComponent implements OnInit {
   selectedCashier: string = ''; 
@@ -22,6 +22,7 @@ export class ViewDashComponent implements OnInit {
   cashCount: string = ""; 
   isDisabled: boolean = true;
   currentDate: any;
+  currentdate: any;
   isCollapsed: boolean = false;
   users: any;
 
@@ -33,39 +34,31 @@ export class ViewDashComponent implements OnInit {
   count: any;
   staff: any;
 
-  constructor(private admin: AdminService) {}
+  year: any;
+  month: any;
 
-  onRoleChange(event: any) {
-    this.selectedRole = event.target.value;
-  }
+  results: any = null; // Store the fetched results
+  currentYear: number = new Date().getFullYear();
 
-  toggleCollapse() {
-    this.isCollapsed = !this.isCollapsed;
-  }
-
-  formatDate(date: Date): string {
-    const options: Intl.DateTimeFormatOptions = {
-      month: 'long',
-      day: '2-digit',
-      year: 'numeric',
-    };
-    return date.toLocaleDateString('en-US', options);
-  }
-
+  months: string[] = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  
+  chart: any;
+  
   public config: any = {
     type: 'bar',
     data: {
       labels: ['GCASH', 'BPI', 'CASH'],
-      datasets: [
-        {
-          label: 'Income',
-          data: [],
-          backgroundColor: ['#2986cc', '#da1b1b', '#89c76e'],
-          borderColor: ['#ff6384', '#36a2eb', '#cc65fe'],
-          fill: false,
-          tension: 0.1,
-        },
-      ],
+      datasets: [{
+        label: 'Income',
+        data: [],
+        backgroundColor: ['#2986cc', '#da1b1b', '#89c76e'],
+        borderColor: ['#ff6384', '#36a2eb', '#cc65fe'],
+        fill: false,
+        tension: 0.1,
+      }],
     },
     options: {
       scales: {
@@ -86,7 +79,7 @@ export class ViewDashComponent implements OnInit {
       plugins: {
         title: {
           display: true,
-          text: 'Monthly Income Data for September 2024',
+          text: '',
         },
         legend: {
           labels: {
@@ -98,53 +91,58 @@ export class ViewDashComponent implements OnInit {
       maintainAspectRatio: false,
     },
   };
+  // results: any;
 
-  chart: any;
+  constructor(private admin: AdminService) {}
 
-  private updateChartData(): void {
-    // Ensure the totals object is defined before trying to access its properties
-    if (this.totals) {
-      this.config.data.datasets[0].data = [this.totals.gcash, this.totals.bpi, this.totals.cash];
-      if (this.chart) {
-        this.chart.update(); // Update the chart with new data
-      }
-    }
+  initializeChart(): void {
+    this.chart = new Chart('myChart', this.config); // Create the chart instance
   }
 
   ngOnInit(): void {
-    this.chart = new Chart('MyChart', this.config);
     this.currentDate = this.formatDate(new Date());
+    this.currentdate = this.formatDates(new Date());
+    this.config.options.plugins.title.text = `Monthly Income Data for ${this.currentdate}`;
 
-    // Fetch payment data
+    this.chart = new Chart('MyChart', this.config);
+
+    this.loadPaymentData();
+    this.loadExpensesData();
+    this.loadCountData();
+  }
+
+  loadPaymentData(): void {
     this.admin.paymentDisplay().subscribe(
       (result: any) => {
-        this.cash = result.payments; // Store payments
-        this.totalAmount = result.total_amount; // Store total amount
+        this.cash = result.payments;
+        this.totalAmount = result.total_amount;
         this.totals = result.totals;
-        console.log(this.cash, this.totalAmount); // Log for debugging
-        this.updateChartData(); // Update the chart after fetching data
+        console.log(this.cash, this.totalAmount);
+        this.updateChartData();
       },
       (error) => {
         console.error('Error fetching payment data:', error);
       }
     );
+  }
 
-    // Fetch expenses data
+  private loadExpensesData(): void {
     this.admin.expensesDisplay().subscribe(
       (result: any) => {
-        this.expenses = result; // Store payments
-        console.log(this.expenses); // Log for debugging
+        this.expenses = result;
+        console.log(this.expenses);
       },
       (error) => {
         console.error('Error fetching expenses data:', error);
       }
     );
+  }
 
-    // Fetch count data
+  private loadCountData(): void {
     this.admin.CountDisplay().subscribe(
       (result: any) => {
-        this.count = result.total_count; // Store payments
-        console.log(this.count); // Log for debugging
+        this.count = result.total_count;
+        console.log(this.count);
       },
       (error) => {
         console.error('Error fetching count data:', error);
@@ -152,34 +150,63 @@ export class ViewDashComponent implements OnInit {
     );
   }
 
+  private updateChartData(): void {
+    if (this.totals) {
+      this.config.data.datasets[0].data = [this.totals.gcash, this.totals.bpi, this.totals.cash];
+      this.chart.update(); 
+    }
+  }
+
+  formatDate(date: Date): string {
+    const options: Intl.DateTimeFormatOptions = {
+      month: 'long',
+      day: '2-digit',
+      year: 'numeric',
+    };
+    return date.toLocaleDateString('en-US', options);
+  }
+  formatDates(date: Date): string {
+    const options: Intl.DateTimeFormatOptions = {
+      month: 'long',
+      // day: '2-digit',
+      year: 'numeric',
+    };
+    return date.toLocaleDateString('en-US', options);
+  }
+
+
+  onRoleChange(event: any): void {
+    this.selectedRole = event.target.value;
+  }
+
+  toggleCollapse(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
   isFormValid(): boolean {
     return this.initialAmount !== null && this.cashCount !== '';
   }
 
-  openForms() {
+  openForms(): void {
     this.isDisabled = true;
-    const totalAmount = 5000.00; 
     Swal.fire({
       title: 'Cash Count',
-      html: `...`, // Keep the form HTML here as in your original code
+      html: `...`, // Add your form HTML here
       confirmButtonText: 'Calculate Total',
       showCancelButton: true,
       cancelButtonText: 'Cancel',
       preConfirm: () => {
-        // Retrieve values from the form and calculate total as in your original code
+        // Retrieve values from the form
         // Return { totalAmount };
-      }
+      },
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result.isConfirmed && result.value) {
         const { totalAmount } = result.value;
         Swal.fire({
           html: `<p>Total Amount: ${totalAmount}.00</p>`,
-          icon: 'info'
-        }).then((result) => {
-          if (result.isConfirmed || result.isDismissed) {
-            // Assign the total amount to cashCount
-            this.initialAmount = totalAmount;
-          }
+          icon: 'info',
+        }).then(() => {
+          this.initialAmount = totalAmount;
         });
       }
     });

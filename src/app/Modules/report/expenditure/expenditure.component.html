@@ -70,7 +70,7 @@
                   <th>Proof of Purchased</th>
                   <th>Cashier in Charge</th>
                   <th>Description</th>
-                  <th>Total Purchased</th>
+                  <th class="text-right">Total Purchased</th>
                 </tr>
               </thead>
               <tbody>
@@ -80,7 +80,7 @@
                   <td>{{e.image}}</td>
                   <td>{{e.adminNames}}</td>
                   <td>{{e.reason}}</td>
-                  <td class="text-danger">{{e.totalExpenses}}</td>
+                  <td class="text-danger text-right">{{e.totalExpenses | currency: ' ':'symbol'}}</td>
                 </tr>
               }
               </tbody>
@@ -90,7 +90,7 @@
                   <th></th>
                   <th></th>
                   <th>TOTAL</th>
-                  <th id="total-amount" class="text-danger">{{amount}}</th>
+                  <th id="total-amount" class="text-danger text-right">{{amount | currency: ' ':'symbol'}}</th>
                 </tr>
               </tfoot>
             </table>

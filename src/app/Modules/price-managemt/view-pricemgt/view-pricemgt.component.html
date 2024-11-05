@@ -17,7 +17,7 @@
                 <td class="text-center col-md-1">{{$index +1}}</td>
                 <td class="text-center">{{c.Category}}</td>
                 <!-- <td>{{c.price | currency: 'PHP'}}</td> -->
-                <td class="text-center">{{c.Price }}</td>
+                <td class="text-center">{{c.Price | currency: ' ':'symbol'}}</td>
                 <td class="text-center">
                   <button
                     class="btn bg-primary mx-2 text-light btn-custom-sm"

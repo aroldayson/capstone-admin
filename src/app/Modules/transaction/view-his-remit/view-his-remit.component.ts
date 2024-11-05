@@ -15,7 +15,7 @@ export class ViewHisRemitComponent implements OnInit{
 
   remit: any
   currentDate: any;
-  Transac = {id: localStorage.getItem('Staff_ID')}
+  Transac = {id: localStorage.getItem('Cash_ID')}
   Initial: any;
   Expenses: any;
   data: any;

@@ -37,10 +37,7 @@ export class SidenavComponent {
   
       this.admin.logout(headers).subscribe(
         (result: any) => {
-          // Clear the token and other data from localStorage
           localStorage.removeItem('token');
-  
-          // Display success notification
           Swal.fire({
             icon: 'success',
             title: 'Logout Successful!',
