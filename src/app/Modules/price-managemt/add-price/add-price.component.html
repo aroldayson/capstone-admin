@@ -1,39 +1,49 @@
 <form [formGroup]="categoryForm" (submit)="save()">
-  <div class="bg-white p-3 rounded" >
-    <h4 class="text-center"><b>ADD CATEGORY</b></h4>
+  <div class="bg-white p-4">
+    <h4 class="text-center mb-4"><b>ADD CATEGORY</b></h4>
     <div>
-      <div class="row">
-        <div class="col-md">
-          <div class="form-outline mb-2">
-            <input type="text" id="form7Example1" class="form-control" formControlName="Category"/>
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <div class="form-outline">
+            <input
+              type="text"
+              id="form7Example1"
+              class="form-control"
+              formControlName="Category"
+              placeholder="Enter laundry name"
+            />
             <label class="form-label" for="form7Example1">Laundry Name</label>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md mb-2">
-          <input type="number" id="form7Example2" class="form-control" formControlName="Price"/>
-          <label class="form-label" for="form7Example2">Per Kilograms</label>
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <div class="form-outline">
+            <input
+              type="number"
+              id="form7Example2"
+              class="form-control"
+              formControlName="Price"
+              placeholder="Price per kilogram"
+              [min]="0"
+              (input)="onNumberInput($event)"
+            />
+            <label class="form-label" for="form7Example2">Per Kilograms</label>
+          </div>
         </div>
       </div>
-      <div class="row opt">
+      <div class="row">
         <div class="col-md-6">
           <button
             type="button"
-            class="btn btn-secondary btn-block mb-3"
+            class="btn btn-secondary w-100 mb-3"
             (click)="clear()"
           >
             Clear
           </button>
         </div>
         <div class="col-md-6">
-          <button
-            type="submit"
-            class="btn btn-primary btn-block mb-3"
-           
-          >
-            Save
-          </button>
+          <button type="submit" class="btn btn-primary w-100 mb-3">Save</button>
         </div>
       </div>
     </div>

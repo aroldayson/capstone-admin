@@ -1,131 +1,216 @@
-<div class="container mt-5">
-    <div class="row">
-      <!-- My Account Section -->
-      <div class="col-md-12 col-lg-6 mb-4">
-        <div class="account-section">
-          <p class="h2 text-center fw-bold">CUSTOMER ACCOUNT</p>
-          <form>
-            <div class="preview text-center position-relative">
-                <img
-                  class="preview-img"
-                  *ngIf="imagePreview"
-                  [src]="imagePreview"
-                  alt="Preview Image"
-                />
-                <div *ngIf="!previewImage" class="placeholder">
-                  <img
-                    class="placeholder-img"
-                    alt="Placeholder Image"
-                    style="max-width: 100%; height: 100%;"
-                  />
-                </div>
-                
-                <div class="browse-button">
-                  <i class="fa fa-pencil-alt"></i>
-                  <input
-                    class="browse-input"
-                    type="file"
-                    required
-                    name="UploadedFile"
-                    id="UploadedFile"
-                    (change)="onFileSelected($event)"/>
-                </div>
-                
-                <span class="Error text-danger">{{ errorMessage }}</span>
-              </div>
-              
-            <div class="form-group mt-5">
-              <label>Customer Name:</label><br />
-              <h4>{{cust.Cust_fname}} {{cust.Cust_mname}} {{cust.Cust_lname}}</h4>
-            </div>
-            <div class="form-group">
-              <label>Customer Email:</label><br />
-              <h4>{{cust.Cust_email}}</h4>
-            </div>
-          </form>
-          <div class="justify-content-end text-right">
-            <button type="submit" class="btn btn-success btn-small btn-block col-md-3" (click)="onUpload()">
-                Upload
-            </button>
+<div class="container mt-4">
+  <div class="row">
+    <!-- My Account Section -->
+    <div class="col-md-12 col-lg-6 mb-4">
+      <div class="account-section">
+        <p class="h2 text-center fw-bold">CUSTOMER ACCOUNT</p>
+        <form [formGroup]="updateaccount" (ngSubmit)="update()">
+          <div class="preview text-center position-relative">
+            <img
+              class="preview-img"
+              [src]="
+                previewUrl ||
+                'http://simpleicon.com/wp-content/uploads/account.png'
+              "
+              alt="Preview Image"
+            />
+            <input
+              type="file"
+              class="file-input"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+            />
           </div>
-        </div>
+
+          <div class="form-group mt-4">
+            <label>Customer Name:</label><br />
+            <h4>
+              {{ cust.Cust_fname }} {{ cust.Cust_mname }} {{ cust.Cust_lname }}
+            </h4>
+          </div>
+          <div class="form-group">
+            <label>Customer Email:</label><br />
+            <h4>{{ cust.Cust_email }}</h4>
+          </div>
+        </form>
       </div>
-      <!-- Personal Details Section -->
-      <div class="col-md-12 col-lg-6 mb-4">
-        <div class="account-section personal-details">
-          <p class="h2 text-center fw-bold">EDIT ACCOUNT</p>
-          <form [formGroup]="updateaccount" (submit)="update()">
-            <div class="form-group">
-              <label><b>Address:</b></label>
-              <input
-                class="form-control"
-                type="text"
-                name="email"
-                required
-                formControlName="Cust_address"
-                placeholder="Enter Your Email"
-              />
-            </div>
-            <div class="form-group">
-              <label><b>Phone_no:</b></label>
-                <input
-                  class="form-control"
-                  type="text"
-                  name="email"
-                  required
-                  formControlName="Cust_phoneno"
-                  placeholder="Enter Your Email"
-                />
-            </div>
+    </div>
+    <!-- Personal Details Section -->
+    <div class="col-md-12 col-lg-6 mb-4">
+      <div class="account-section personal-details">
+        <p class="h2 text-center fw-bold">EDIT ACCOUNT</p>
+        <form [formGroup]="updateaccount" (submit)="update()">
+          <div class="form-group">
+            <label><b>Address:</b></label>
+            <input
+              class="form-control"
+              type="text"
+              name="email"
+              required
+              formControlName="Cust_address"
+              placeholder="Enter Your Email"
+            />
+          </div>
+          <div class="form-group">
+            <label><b>Phone_no:</b></label>
+            <input
+              class="form-control"
+              type="text"
+              name="email"
+              required
+              formControlName="Cust_phoneno"
+              placeholder="Enter Your Email"
+            />
+          </div>
 
-            <div class="form-group form-outline mb-2">
-              <label><b>Current Password:</b></label>
-                <input  [type]="showOldPassword ? 'text' : 'password'" formControlName="Cust_OldPassword" class="form-control"  placeholder=""/>
-                <label class="form-label" for="password"></label>
-          
-                <i (click)="togglePasswordVisibility()"
-                  class="fa {{ showOldPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
-                  style="position: absolute; right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;"></i>
-            </div>
+          <!-- <div class="form-group form-outline mb-2">
+            <label><b>Current Password:</b></label>
+            <input
+              [type]="showOldPassword ? 'text' : 'password'"
+              formControlName="Cust_OldPassword"
+              class="form-control"
+              placeholder=""
+            />
+            <label class="form-label" for="password"></label>
 
-            <div class="form-group form-outline mb-2">
-              <label><b>New Password:</b></label>
-                <input  [type]="showPassword ? 'text' : 'password'" formControlName="Cust_password" class="form-control"  placeholder=""/>
-                <label class="form-label" for="password"></label>
-          
-                <i (click)="togglePasswordVisibilitys()"
-                  class="fa {{ showPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
-                  style="position: absolute; right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;"></i>
-            </div>
+            <i
+              (click)="togglePasswordVisibility()"
+              class="fa {{
+                showOldPassword ? 'fa-eye-slash' : 'fa-eye'
+              }} password-toggle-icon"
+              style="
+                position: absolute;
+                right: 10px;
+                top: 70%;
+                transform: translateY(-50%);
+                cursor: pointer;
+              "
+            ></i>
+          </div> -->
 
-            <div class="form-group form-outline mb-2">
-              <label><b>Confirm Password:</b></label>
-                <input  [type]="showConPassword ? 'text' : 'password'" formControlName="Cust_ConfirmPassword" class="form-control"  placeholder=""/>
-                <label class="form-label" for="password"></label>
-          
-                <i (click)="togglePasswordVisibilityss()"
-                  class="fa {{ showConPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon"
-                  style="position: absolute; right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;"></i>
+          <div class="form-group position-relative">
+            <label><b>Current Password:</b></label>
+            <input
+              [type]="showOldPassword ? 'text' : 'password'"
+              class="form-control"
+              formControlName="Cust_OldPassword"
+              placeholder="Enter Current Password"
+            />
+            <i
+              class="fa"
+              [class.fa-eye]="showOldPassword"
+              [class.fa-eye-slash]="!showOldPassword"
+              (click)="togglePasswordVisibility()"
+            ></i>
+          </div>
+
+          <!-- <div class="form-group form-outline mb-2">
+            <label><b>New Password:</b></label>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="Cust_password"
+              class="form-control"
+              placeholder=""
+            />
+            <label class="form-label" for="password"></label>
+
+            <i
+              (click)="togglePasswordVisibilitys()"
+              class="fa {{
+                showPassword ? 'fa-eye-slash' : 'fa-eye'
+              }} password-toggle-icon"
+              style="
+                position: absolute;
+                right: 10px;
+                top: 70%;
+                transform: translateY(-50%);
+                cursor: pointer;
+              "
+            ></i>
+          </div> -->
+
+          <div class="form-group position-relative">
+            <label><b>New Password:</b></label>
+            <input
+              [type]="hideNewPassword ? 'password' : 'text'"
+              class="form-control"
+              formControlName="Admin_NewPassword"
+              placeholder="Enter New Password"
+            />
+            <i
+              class="fa"
+              [class.fa-eye]="hideNewPassword"
+              [class.fa-eye-slash]="!hideNewPassword"
+              (click)="togglePasswordVisibilitys()"
+            ></i>
+          </div>
+
+          <!-- <div class="form-group form-outline mb-2">
+            <label><b>Confirm Password:</b></label>
+            <input
+              [type]="showConPassword ? 'text' : 'password'"
+              formControlName="Cust_ConfirmPassword"
+              class="form-control"
+              placeholder=""
+            />
+            <label class="form-label" for="password"></label>
+
+            <i
+              (click)="togglePasswordVisibilityss()"
+              class="fa {{
+                showConPassword ? 'fa-eye-slash' : 'fa-eye'
+              }} password-toggle-icon"
+              style="
+                position: absolute;
+                right: 10px;
+                top: 70%;
+                transform: translateY(-50%);
+                cursor: pointer;
+              "
+            ></i>
+          </div>
+          <div *ngIf="!passwordsMatch" class="alert alert-danger">
+            Passwords do not match.
+          </div> -->
+
+          <div class="form-group position-relative">
+            <label><b>Confirm Password:</b></label>
+            <input
+              [type]="hideConfirmPassword ? 'password' : 'text'"
+              class="form-control"
+              formControlName="Admin_ConfirmPassword"
+              placeholder="Confirm New Password"
+              [ngClass]="{ 'is-invalid': passwordsDoNotMatch() }"
+            />
+            <i
+              class="fa"
+              [class.fa-eye]="hideConfirmPassword"
+              [class.fa-eye-slash]="!hideConfirmPassword"
+              (click)="togglePasswordVisibilityss()"
+            ></i>
+            <div *ngIf="passwordsDoNotMatch()" class="invalid-feedback">
+              Passwords do not match.
             </div>
-            <div *ngIf="!passwordsMatch" class="alert alert-danger">
-                Passwords do not match.
-              </div>
-            <!-- Buttons inside Personal Details -->
-            <div class="row opt mt-4">
-              <div class="col-md-6 mb-3">
-                <button type="button" class="btn btn-danger btn-small btn-block">
-                  Clear
-                </button>
-              </div>
-              <div class="col-md-6 mb-3">
-                <button type="submit" class="btn btn-primary btn-small btn-block">
-                  Save
-                </button>
-              </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+              <button
+                type="button"
+                class="btn btn-secondary btn-block"
+                [routerLink]="['//main/customertpage/main/view-history']"
+              >
+                Cancel
+              </button>
             </div>
-          </form>
-        </div>
+            <div class="col-md-6 mb-3">
+              <button type="submit" class="btn btn-primary btn-block">
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
@@ -8,22 +13,16 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-update-price',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,ReactiveFormsModule,CommonModule],
+  imports: [RouterLink, RouterOutlet, ReactiveFormsModule, CommonModule],
   templateUrl: './update-price.component.html',
-  styleUrl: './update-price.component.css'
+  styleUrl: './update-price.component.css',
 })
 export class UpdatePriceComponent implements OnInit {
-  
-  category_id: { id: string | null } = {id: localStorage.getItem('Categ_ID')};
+  category_id: { id: string | null } = { id: localStorage.getItem('Categ_ID') };
   categ: any;
   intervalId: any;
   // category = {category:localStorage.getItem('category')}
-  constructor(
-    private admin: AdminService,
-    private route: Router
-  ){
-
-  }
+  constructor(private admin: AdminService, private route: Router) {}
   categoryForm = new FormGroup({
     Category: new FormControl(null, Validators.required),
     Price: new FormControl(0.0, Validators.required),
@@ -33,7 +32,7 @@ export class UpdatePriceComponent implements OnInit {
     console.log(this.category_id.id);
     this.findCategory();
     this.startPolling();
-  } 
+  }
 
   startPolling() {
     this.intervalId = setInterval(async () => {
@@ -44,7 +43,7 @@ export class UpdatePriceComponent implements OnInit {
       }
     }, 100); // Check every second
   }
-  
+
   findCategory(): void {
     this.admin.findprice(this.category_id.id).subscribe((result: any) => {
       this.categ = result;
@@ -54,28 +53,49 @@ export class UpdatePriceComponent implements OnInit {
       }
     });
   }
-  
-  update(){
+
+  update() {
     console.log(this.categoryForm.value);
 
     if (this.categoryForm.valid) {
-      const updatedData = { id: this.category_id.id, ...this.categoryForm.value };
+      const updatedData = {
+        id: this.category_id.id,
+        ...this.categoryForm.value,
+      };
       this.admin.updateprice(updatedData).subscribe(
         (response: any) => {
           // location.reload();
           console.log('Update successful', response);
-          Swal.fire('Success!', 'Laundry Category Price details updated successfully.', 'success').then(() => {
+          Swal.fire(
+            'Success!',
+            'Laundry Category Price details updated successfully.',
+            'success'
+          ).then(() => {
             location.reload(); // Reload the page after the alert is closed
           });
-          this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview/add']);
+          this.route.navigate([
+            '/main/pricemanagementpage/pricemgtmain/pricemgtview/add',
+          ]);
         },
-        error => {
+        (error) => {
           console.error('Update failed', error);
-          Swal.fire('Error!', 'There was an error updating the category.', 'error');
+          Swal.fire(
+            'Error!',
+            'There was an error updating the category.',
+            'error'
+          );
         }
       );
     } else {
       Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
+    }
+  }
+
+  // Optional: Prevent decrement below 0 for Per_kilograms input
+  onNumberInput(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (+inputElement.value < 0) {
+      inputElement.value = '0';
     }
   }
 }

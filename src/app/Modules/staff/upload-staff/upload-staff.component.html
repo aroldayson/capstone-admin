@@ -1,29 +1,50 @@
 <div class="bg-white p-3 rounded">
-    <div class="container">
-      <div class="row">
-        <div class="field" text-align="left" enctype="multipart/form-data">
-          <h4 class="text-center"><b>UPLOAD IMAGE</b></h4>
-          <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*">
-          
-          <div class="image-preview img-fluid">
-            <img *ngIf="imagePreview" [src]="imagePreview" alt="Image preview" class="preview-image" style="width: 230px; height: 180px;">
-            <!-- <img *ngIf="!imagePreview" src="assets/placeholder-image.png" alt="Placeholder" class="preview-image" style="width: 150p; height: 180px;"> -->
-          </div>
-
-          <p *ngIf="message" [ngClass]="{'success': message.includes('successfully'), 'error': message.includes('Error')}">
-            <!-- {{ message }} -->
-          </p>
-          
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-3">
+        <h4 class="text-center"><b>UPLOAD IMAGE</b></h4>
       </div>
-      <div class="row mt-5">
-        <div class="col-md-6">
-          <button type="button" class="btn btn-primary btn-block mb-3" [routerLink]="['/main/staffpage/staffmain']">Cancel</button>
-        </div>
-        <div class="col-md-6">
-          <button type="button" class="btn btn-success btn-block mb-3" (click)="onUpload()">Upload</button>
+      <div class="col-12 d-flex justify-content-center">
+        <input
+          id="fileInput"
+          type="file"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          class="form-control-file"
+          style="max-width: 300px"
+        />
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-3">
+        <div class="image-preview img-fluid">
+          <img
+            *ngIf="imagePreview"
+            [src]="imagePreview"
+            alt="Image preview"
+            class="preview-image img-fluid"
+            style="max-width: 100%; height: auto"
+          />
         </div>
       </div>
     </div>
+    <div class="row mt-5">
+      <div class="col-md-6 col-12 mb-3">
+        <button
+          type="button"
+          class="btn btn-primary w-100"
+          [routerLink]="['/main/staffpage/staffmain']"
+        >
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-6 col-12 mb-3">
+        <button
+          type="button"
+          class="btn btn-success w-100"
+          (click)="onUpload()"
+        >
+          Upload
+        </button>
+      </div>
+    </div>
   </div>
-  
+</div>

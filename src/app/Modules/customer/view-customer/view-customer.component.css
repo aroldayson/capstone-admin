@@ -1,46 +1,56 @@
 .pri {
-    margin-left: auto;
-  }
-  
+  margin-left: auto;
+}
+
+.table-responsive {
+  margin-top: 20px;
+  max-height: 68vh;
+  overflow-y: auto;
+}
+
+thead th:first-child,
+tfoot th:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+thead th:last-child,
+tfoot th:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@media (max-width: 768px) {
   .table-responsive {
-    margin-top: 20px;
+    overflow-x: auto;
   }
-  
-  thead th:first-child,
-  tfoot th:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-  
-  thead th:last-child,
-  tfoot th:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .table-responsive {
-      overflow-x: auto;
-    }
-  }
+}
 
-  .sticky-thead {
-    position: sticky;
-    top: 0;
-    /* background-color: rgb(184,219,240); */
-  }
-  .table-wrapper {
-    max-width: 100%;
-    overflow-y: scroll;
-    height: fit-content;
-    max-height: 65.4vh;
-    margin-top: 22px;
-    /* margin: 15px; */
-    padding-bottom: 20px;
-    text-align: d-flex;
-    scrollbar-width: none; /* For Firefox */
-  }
+/* Ensure the heading and input field have the same height */
+h3.fw-bold {
+  line-height: 45px; /* Match the input field height */
+  margin: 0;
+}
 
-  .table-wrapper::-webkit-scrollbar {
-      display: none; /* For Chrome, Safari, and Opera */
-  }
+.form-inputs {
+  position: relative;
+}
+
+.form-inputs .form-control {
+  height: 45px;
+  padding-right: 35px; /* Add padding to avoid text overlapping with the icon */
+}
+
+.form-inputs i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the icon */
+  font-size: 18px; /* Adjust the size of the icon */
+  color: #555; /* Optional: Adjust color to fit the design */
+}
+
+.form-inputs .form-control:focus {
+  box-shadow: none;
+  border: 1px solid #000;
+}

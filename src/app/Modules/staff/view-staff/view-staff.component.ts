@@ -2,165 +2,106 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AdminService } from '../../../admin.service';
-import { SearchfilterPipe } from '../../../searchfilter.pipe';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-view-staff',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,SearchfilterPipe,CommonModule,FormsModule],
+  imports: [RouterLink, RouterOutlet, FormsModule],
   templateUrl: './view-staff.component.html',
-  styleUrl: './view-staff.component.css'
+  styleUrl: './view-staff.component.css',
 })
-export class ViewStaffComponent implements OnInit{
-  staff:any
-  id: any;
-  intervalId: any;
-  keyword: string = '';
-  staff_id: { id: string | null } = { id: localStorage.getItem('Admin_ID') };
+export class ViewStaffComponent implements OnInit {
+  staff: any[] = []; // List of staff members
+  filteredStaff: any[] = []; // Filtered list for displaying
+  searchTerm: string = ''; // Search term for filtering
 
+  constructor(private admin: AdminService, private route: Router) {}
 
   ngOnInit(): void {
-    this.startPolling();
-    this.showdata();
-  }
-  startPolling() {
-    this.intervalId = setInterval(async () => {
-      const latestAdminId = localStorage.getItem('Admin_ID');
-      if (latestAdminId !== this.staff_id.id) {
-        this.staff_id.id = latestAdminId;
-        this.showdata();
-        // location.reload();
-      }
-    }, 300); // Check every second
+    this.admin.getData().subscribe((result: any) => {
+      this.staff = result; // Fetch the complete list of staff from the server
+      this.filteredStaff = result; // Initialize the filtered list with the full staff list
+    });
   }
 
-  showdata(){
-    this.admin.getData().subscribe((result: any) => {
-      if (!result || result.length === 0) {
-          console.log('No transactions available');
-          this.staff = [];
-          return; // exit early if no data
-      }
-  
-      this.staff = result;
-      console.log(this.staff);
-      this.startPolling();
-  
-      const pendingTransactions = this.staff.filter((transaction: any) => transaction.Role === 'staff');
-  
-      if (pendingTransactions.length > 0) {
-          // console.log('Pending Transactions:', pendingTransactions);
-          this.staff = pendingTransactions;
-      } else {
-          console.log('No pending transactions found');
-          this.staff = [];
-      }
-  });
-  
-  }
-  constructor(
-    private admin: AdminService,
-    private route: Router
-  ){
-    this.showdata();
+  // Filter staff based on the search term
+  filterStaff(): void {
+    const searchTermLower = this.searchTerm.toLowerCase(); // Convert search term to lowercase for case-insensitive comparison
+
+    // Filter the staff list based on first name, last name, or phone number containing the search term
+    this.filteredStaff = this.staff.filter(
+      (staff) =>
+        staff.Admin_fname.toLowerCase().includes(searchTermLower) ||
+        staff.Admin_lname.toLowerCase().includes(searchTermLower) ||
+        staff.Address.toLowerCase().includes(searchTermLower) ||
+        staff.Email.toLowerCase().includes(searchTermLower) ||
+        staff.Phone_no.toString().includes(this.searchTerm) // Convert phone number to string for comparison
+    );
   }
 
   dltbtn(id: any): void {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success mx-2',
-        cancelButton: 'btn btn-danger'
+        cancelButton: 'btn btn-danger',
       },
-      buttonsStyling: false
+      buttonsStyling: false,
     });
-  
-    swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.admin.deletestaff(id).subscribe(
-          response => {
-            swalWithBootstrapButtons.fire({
-              title: 'Deleted!',
-              text: 'Your file has been deleted.',
-              icon: 'success'
-            });
-            this.route.navigate(["/main/staffpage/staffmain/staffview/addstaff"])
-            this.staff = this.staff.filter((staff: any) => staff.Admin_ID !== id);
-          },
-          error => {
-            console.error('Delete failed', error);
-            swalWithBootstrapButtons.fire({
-              title: 'Error!',
-              text: 'There was an error deleting the staff member.',
-              icon: 'error'
-            });
-          }
-        );
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        swalWithBootstrapButtons.fire({
-          title: 'Cancelled',
-          text: 'Your imaginary file is safe :)',
-          icon: 'error'
-        });
-      }
-    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.admin.deletestaff(id).subscribe(
+            (response) => {
+              swalWithBootstrapButtons.fire({
+                title: 'Deleted!',
+                text: 'The staff member has been deleted.',
+                icon: 'success',
+              });
+              this.route.navigate([
+                '/main/staffpage/staffmain/staffview/addstaff',
+              ]);
+              this.staff = this.staff.filter(
+                (staff: any) => staff.Admin_ID !== id
+              ); // Remove deleted staff from the list
+              this.filteredStaff = this.staff; // Update the filtered list
+            },
+            (error) => {
+              console.error('Delete failed', error);
+              swalWithBootstrapButtons.fire({
+                title: 'Error!',
+                text: 'There was an error deleting the staff member.',
+                icon: 'error',
+              });
+            }
+          );
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire({
+            title: 'Cancelled',
+            text: 'Your staff member is safe :)',
+            icon: 'error',
+          });
+        }
+      });
   }
 
-  update(id: any){
-    console.log(id)
-    localStorage.setItem('Admin_ID', id)
-    this.route.navigate(["/main/staffpage/staffmain/staffview/update"])
+  update(id: any): void {
+    localStorage.setItem('Admin_ID', id);
+    this.route.navigate(['/main/staffpage/staffmain/staffview/update']);
   }
-  upload(id: any){
-    console.log(id)
-    localStorage.setItem('Admin_ID', id)
-    this.route.navigate(["/main/staffpage/staffmain/staffview/upload"])
+
+  upload(id: any): void {
+    localStorage.setItem('Admin_ID', id);
+    this.route.navigate(['/main/staffpage/staffmain/staffview/upload']);
   }
-  
-
-
-
-  // dltbtn(): void {
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: "btn btn-success mx-2",
-  //       cancelButton: "btn btn-danger"
-  //     },
-  //     buttonsStyling: false
-  //   });
-  //   swalWithBootstrapButtons.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonText:"Yes, delete it!",
-  //     cancelButtonText: "No, cancel!",
-  //     reverseButtons: true
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       swalWithBootstrapButtons.fire({
-  //         title: "Deleted!",
-  //         text: "Your file has been deleted.",
-  //         icon: "success"
-  //       });
-  //     } else if (
-  //       /* Read more about handling dismissals below */
-  //       result.dismiss === Swal.DismissReason.cancel
-  //     ) {
-  //       swalWithBootstrapButtons.fire({
-  //         title: "Cancelled",
-  //         text: "Your imaginary file is safe :)",
-  //         icon: "error"
-  //       });
-  //     }
-  //   });
-  // }
 }

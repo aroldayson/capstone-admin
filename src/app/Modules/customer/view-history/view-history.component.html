@@ -3,61 +3,57 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-body">
+          <button
+            class="end btn bg-primary text-light btn-custom-sm"
+            (click)="editpro(cust.Cust_ID)"
+          >
+            <i class="fas fa-pencil-alt"></i>
+          </button>
           <div class="row mb-4">
             <div class="col-md-12">
               <h3 class="fw-bold">Customer Transactions Record</h3>
+
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3 mt-3">
                   <img
-                    class="img-responsive img-fluid mt-5 mx-2"
+                    class="img-responsive img-fluid"
                     alt="logo"
-                    [src]="imagePreview"
-                    height="100%"
-                    width="100%"
+                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                   />
-                  <button class="btn btn-primary btn-sm mt-2 mx-2" (click)="editpro(cust.Cust_ID)"><i >Edit</i></button>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md">
                   <div class="row mt-5">
                     <h5>Customer Name:</h5>
-                    <h2 class="mt-1">{{cust.Cust_fname}} {{cust.Cust_mname}} {{cust.Cust_lname}}</h2>
+                    <h2 class="mt-1">
+                      {{ cust.Cust_fname }} {{ cust.Cust_mname }}
+                      {{ cust.Cust_lname }}
+                    </h2>
                     <div class="col-md mt-1">
                       <p class="mt-2"><b>Phone Number:</b></p>
-                      <p>{{cust.Cust_phoneno}}</p>
+                      <p>{{ cust.Cust_phoneno }}</p>
                     </div>
                     <div class="col-md mt-1">
                       <p class="mt-2"><b>Customer Address:</b></p>
-                      <p>{{cust.Cust_address}}</p>
+                      <p>{{ cust.Cust_address }}</p>
                     </div>
                     <div class="col-md mt-1">
                       <p class="mt-2"><b>Customer Email:</b></p>
-                      <p>{{cust.Cust_email}}</p>
+                      <p>{{ cust.Cust_email }}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="d-flex justify-content-end">
-                <!-- <button
-                    class="btn btn-success pri mb-3"
-                    [useExistingCss]="true"
-                    printSectionId="print-section"
-                    ngxPrint
-                  >
-                    <i class="fas fa-print"></i> Print
-                  </button> -->
-              </div>
-            </div>
           </div>
-          <h3 class="mb-2 text-center">Transaction History</h3>
+
+          <!-- Transaction History -->
+          <h3 class="text-center">Transaction History</h3>
           <div class="table-responsive table-wrapper">
             <table class="table table-bordered table-hover">
               <thead class="table-light sticky-thead">
                 <tr class="text-center">
                   <th>No.</th>
-                  <th [class.hidden]="true">Transaction Number</th>
-                  <th>Transaction Number</th>
+                  <th>Trans. Number</th>
                   <th>Received Date</th>
                   <th>Staff Received</th>
                   <th>Laundry Details</th>
@@ -68,33 +64,22 @@
                 </tr>
               </thead>
               <tbody>
-                @for(c of histo; track c.Transac_ID){
-                <tr
-                  class="text-center"
-                   (click)="history(c.Transac_ID)"
-                >
-                  <td>{{$index+1}}</td>
-                  <td [class.hidden]="true">{{c.Transac_ID}}</td>
-                  <td>{{c.Tracking_number}}</td>
-                  <td>{{c.Transac_date}}</td>
-                  <td>{{c.Admin_fname}} {{c.Admin_mname}} {{c.Admin_lname}}</td>
-                  <td>{{c.Category}}</td>
-                  <td>{{c.totalprice | currency: ' ':'symbol'}}</td>
-                  <td>{{c.Transac_status}}</td>
-                  <td>{{c.Released_datetime}}</td>
-                  <td>{{c.Staffincharge}}</td>
+                @for (c of histo; track c.Transac_ID) {
+                <tr class="text-center" (click)="history(c.Transac_ID)">
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ c.Tracking_number | slice : 0 : 10 }}...</td>
+                  <td>{{ c.Transac_date }}</td>
+                  <td>
+                    {{ c.Admin_fname | slice : 0 : 1 }}. {{ c.Admin_lname }}
+                  </td>
+                  <td>{{ c.Category | slice : 0 : 10 }}...</td>
+                  <td>{{ c.totalprice | currency : " " : "symbol" }}</td>
+                  <td>{{ c.Transac_status | slice : 0 : 10 }}...</td>
+                  <td>{{ c.Released_datetime }}</td>
+                  <td>{{ c.Staffincharge | slice : 0 : 10 }}...</td>
                 </tr>
-              }
+                }
               </tbody>
-              <!-- <tfoot class="text-center">
-                  <tr>
-                    <th>Total</th>
-                    <th></th>
-                    <th id="total-amount">₱ 15000</th>
-                    <th id="total-amount">₱ 15000</th>
-                    <th id="total-amount">₱ 100</th>
-                  </tr>
-                </tfoot> -->
             </table>
           </div>
         </div>

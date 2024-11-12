@@ -8,24 +8,20 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-update-staff',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,CommonModule,ReactiveFormsModule],
+  imports: [RouterLink, RouterOutlet, CommonModule, ReactiveFormsModule],
   templateUrl: './update-staff.component.html',
-  styleUrl: './update-staff.component.css'
+  styleUrls: ['./update-staff.component.css'],
 })
-export class UpdateStaffComponent implements OnInit{
-  staff_id:{ id: string | null } = {id:localStorage.getItem('Admin_ID')}
-
-  staff: any
+export class UpdateStaffComponent implements OnInit {
+  staff_id: { id: string | null } = { id: localStorage.getItem('Admin_ID') };
+  staff: any;
   showOldPassword: boolean = false;
   showPassword: boolean = false;
   showConPassword: boolean = false;
   passwordsMatch = true;
   intervalId: any;
 
-  constructor(
-    private admin: AdminService,
-    private route: Router
-  ){}
+  constructor(private admin: AdminService, private route: Router) {}
 
   togglePasswordVisibility() {
     this.showOldPassword = !this.showOldPassword; // Toggle the password visibility
@@ -45,43 +41,32 @@ export class UpdateStaffComponent implements OnInit{
     this.passwordsMatch = password === confirmPassword;
   }
 
-
   updatestaff = new FormGroup({
     Admin_lname: new FormControl(null),
     Admin_fname: new FormControl(null),
-    Admin_mname: new FormControl(""),
+    Admin_mname: new FormControl(''),
     Address: new FormControl(null),
     Phone_no: new FormControl(null),
     Email: new FormControl(null),
     Oldpassword: new FormControl(null),
     Password: new FormControl(null),
-    ConfirmPassword: new FormControl(null)
+    ConfirmPassword: new FormControl(null),
   });
 
-
   ngOnInit(): void {
-    console.log(this.staff_id.id);
-    
-
     this.startPolling();
     this.get();
-
-    // this.updatestaff.valueChanges.subscribe(() => {
-    //   this.checkPasswords();
-    // });
   }
-  get(){
+
+  get() {
     this.admin.findstaff(this.staff_id.id).subscribe((result: any) => {
       this.staff = result;
-      console.log(result);
-
       this.updatestaff.controls['Admin_lname'].setValue(this.staff.Admin_lname);
       this.updatestaff.controls['Admin_fname'].setValue(this.staff.Admin_fname);
       this.updatestaff.controls['Admin_mname'].setValue(this.staff.Admin_mname);
       this.updatestaff.controls['Address'].setValue(this.staff.Address);
       this.updatestaff.controls['Phone_no'].setValue(this.staff.Phone_no);
       this.updatestaff.controls['Oldpassword'].setValue(this.staff.Password);
-      // this.updatestaff.controls['Password'].setValue(this.staff.Password);
       this.updatestaff.controls['Email'].setValue(this.staff.Email);
     });
   }
@@ -93,44 +78,39 @@ export class UpdateStaffComponent implements OnInit{
         this.staff_id.id = latestAdminId;
         this.get();
       }
-    }, 100); // Check every second
+    }, 100); // Check every 100 ms
   }
-
-
 
   update(): void {
     if (this.updatestaff.valid) {
       this.checkPasswords();
-  
       const updatedData = { id: this.staff_id.id, ...this.updatestaff.value };
-      console.log('Data to be sent:', updatedData);
 
       if (this.passwordsMatch) {
         this.admin.updateStaff(updatedData).subscribe(
-          response => {
-            console.log('Update successful', response);
-            Swal.fire('Success!', 'Staff details updated successfully.', 'success').then(() => {
-              location.reload(); 
+          (response) => {
+            Swal.fire(
+              'Success!',
+              'Staff details updated successfully.',
+              'success'
+            ).then(() => {
+              location.reload();
             });
             this.route.navigate(['/main/staffpage/staffmain/staffview/']);
           },
-          error => {
-            console.error('Update failed', error);
-            Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
+          (error) => {
+            Swal.fire(
+              'Warning!',
+              'Please fill in all required fields.',
+              'warning'
+            );
           }
         );
       } else {
-        if (!this.passwordsMatch) {
-          Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
-        }
+        Swal.fire('Warning!', 'Passwords do not match.', 'warning');
       }
     } else {
-      console.error('Form is invalid');
       Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
     }
   }
-  
-  
-
-
 }

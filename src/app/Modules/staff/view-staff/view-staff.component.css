@@ -1,122 +1,104 @@
-/* Table Container */
-.table-responsive {
-    overflow-x: auto;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-    background-color: #fff;
-  }
-  
-  .table th,
-  .table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-  }
-  
-  .table thead th {
-    vertical-align: bottom;
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
-  }
-  
-  .table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .table img.img-thumbnail {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-  }
-  
-  /* Fixed Action Column */
-  .fixed-action-column {
-    position: sticky;
-    right: 0;
-    background-color: #fff;
-    z-index: 1;
-    white-space: nowrap; /* Prevents wrapping of buttons */
-  }
-  
-  /* Button Styles */
-  .btn-custom-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-  }
-  
-  /* Adjusted button sizes for responsiveness */
-  @media (min-width: 576px) {
-    .btn-custom-md {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .btn-custom-lg {
-      padding: 0.55rem 1.25rem;
-      font-size: 1rem;
-    }
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .table thead {
-      display: none;
-    }
-    .table,
-    .table tbody,
-    .table tr,
-    .table td {
-      display: block;
-      width: 100%;
-    }
-    .table tr {
-      margin-bottom: 0.5rem;
-      border: 1px solid #dee2e6;
-      border-radius: 0.25rem;
-    }
-    .table td {
-      border: none;
-      position: relative;
-      padding-left: 50%;
-      text-align: right;
-    }
-    .table td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 0;
-      width: 50%;
-      padding-left: 0.75rem;
-      font-weight: bold;
-      text-align: left;
-    }
-  }
-  .sticky-thead {
-    position: sticky;
-    top: 0;
-    /* background-color: rgb(184,219,240); */
-  }
-  .table-wrapper {
-    max-width: 100%;
-    overflow-y: scroll;
-    height: fit-content;
-    max-height: 67vh;
-    margin-top: 22px;
-    /* margin: 15px; */
-    padding-bottom: 20px;
-    text-align: d-flex;
-    scrollbar-width: none; /* For Firefox */
-  }
+/* Card Styling */
+#staff-management-section .card {
+  margin-top: 20px;
+}
 
-  .table-wrapper::-webkit-scrollbar {
-      display: none; /* For Chrome, Safari, and Opera */
+/* Table Responsiveness */
+#staff-management-section .table-responsive {
+  margin-top: 20px;
+  max-height: 68vh;
+  overflow-y: auto;
+}
+
+/* Consistent Heading Styling */
+#staff-management-section h3.fw-bold {
+  line-height: 45px; /* Match the input field height */
+  margin: 0;
+}
+
+/* Search Input with Icon */
+.form-inputs {
+  position: relative;
+}
+
+.form-inputs .form-control {
+  height: 45px;
+  padding-right: 35px;
+}
+
+.form-inputs i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #555;
+}
+
+.form-inputs .form-control:focus {
+  box-shadow: none;
+  border: 1px solid #000;
+}
+
+/* Table and Button Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.table th, .table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-custom-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* Child Router Outlet */
+#staff-management-section .col-md-3 .card {
+  margin-top: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .table thead {
+    display: none;
   }
+  .table, .table tbody, .table tr, .table td {
+    display: block;
+    width: 100%;
+  }
+  .table td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 0.75rem;
+    font-weight: bold;
+    text-align: left;
+  }
+}

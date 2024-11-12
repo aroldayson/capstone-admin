@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterModule,
+  RouterOutlet,
+} from '@angular/router';
 import { AdminService } from '../admin.service';
 import Swal from 'sweetalert2';
 import { resourceUsage } from 'node:process';
@@ -9,32 +14,30 @@ import { resourceUsage } from 'node:process';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink,RouterModule,CommonModule,RouterOutlet,ReactiveFormsModule],
+  imports: [
+    RouterLink,
+    RouterModule,
+    CommonModule,
+    RouterOutlet,
+    ReactiveFormsModule,
+  ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   showPassword: boolean = false;
 
-
-
-  
   togglePasswordVisibility() {
-    this.showPassword = !this.showPassword; 
+    this.showPassword = !this.showPassword;
   }
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
-  constructor(
-    private admin: AdminService,
-    private router: Router
-  ){ }
+  constructor(private admin: AdminService, private router: Router) {}
 
   loginform = new FormGroup({
     Email: new FormControl(''),
-    Password: new FormControl('')
-  })
+    Password: new FormControl(''),
+  });
 
   login() {
     if (this.loginform.valid) {
@@ -47,19 +50,19 @@ export class LoginComponent implements OnInit{
               text: 'You are now logged in.',
               timer: 2000,
               timerProgressBar: true,
-              showConfirmButton: false
+              showConfirmButton: false,
             });
 
             localStorage.setItem('Admin_ID', result.user.Admin_ID);
             localStorage.setItem('token', result.token);
             // console.log('Token stored:', result.token);
-              this.router.navigate(['/main']);
+            this.router.navigate(['/main']);
           } else {
             Swal.fire({
               icon: 'error',
               title: 'Login Failed',
               text: 'Login was unsuccessful. Please try again.',
-              showConfirmButton: true
+              showConfirmButton: true,
             });
           }
           console.log(result);
@@ -69,9 +72,9 @@ export class LoginComponent implements OnInit{
             icon: 'error',
             title: 'Login Failed',
             text: 'Please check your email and password.',
-            showConfirmButton: true
+            showConfirmButton: true,
           });
-            console.error('Login error:', error);
+          console.error('Login error:', error);
         }
       );
     } else {
@@ -79,10 +82,9 @@ export class LoginComponent implements OnInit{
         icon: 'error',
         title: 'Invalid Form',
         text: 'Please fill in all required fields correctly.',
-        showConfirmButton: true
+        showConfirmButton: true,
       });
-      console.log("Form is not valid");
+      console.log('Form is not valid');
     }
   }
-
 }

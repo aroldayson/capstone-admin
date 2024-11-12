@@ -9,23 +9,26 @@ import { AdminService } from '../../../admin.service';
 @Component({
   selector: 'app-remit',
   standalone: true,
-  imports: [RouterLink, FormsModule,CommonModule, RouterOutlet,ReactiveFormsModule],
+  imports: [
+    RouterLink,
+    FormsModule,
+    CommonModule,
+    RouterOutlet,
+    ReactiveFormsModule,
+  ],
   templateUrl: './remit.component.html',
-  styleUrl: './remit.component.css'
+  styleUrl: './remit.component.css',
 })
-export class RemitComponent implements OnInit{
+export class RemitComponent implements OnInit {
   users: any;
 
-  constructor(
-    private admin: AdminService,
-    private route: Router
-  ){}
+  constructor(private admin: AdminService, private route: Router) {}
   ngOnInit(): void {
     this.users = { id: localStorage.getItem('Admin_ID') };
     console.log('Admin_ID:', this.users.id);
     this.get();
   }
-  get(){
+  get() {
     this.admin.findstaff(this.users.id).subscribe((result: any) => {
       this.users = result;
       console.log(result);
@@ -36,29 +39,35 @@ export class RemitComponent implements OnInit{
   cashout = new FormGroup({
     Admin_ID: new FormControl(localStorage.getItem('Admin_ID')),
     Remittance: new FormControl(0.0),
-  })
+  });
 
-  save(){
-    console.log(this.cashout.value)
+  clearForm() {
+    this.cashout.reset(); // Resets all form fields to their initial values
+  }
+
+  save() {
+    console.log(this.cashout.value);
     // Swal.fire({
     //   position: "center",
     //   icon: "success",
     //   title: "Your work has been saved",
-    //   showConfirmButton: true, 
+    //   showConfirmButton: true,
     // })
-  
+
     this.admin.remit(this.cashout.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {
           Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: true, 
+            position: 'center',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: true,
           }).then(() => {
             location.reload();
           });
-          this.route.navigate(['/main/dashboardpage/dashboardmain/dashboardview']);
+          this.route.navigate([
+            '/main/dashboardpage/dashboardmain/dashboardview',
+          ]);
         } else {
           console.error('Error occurred during save:', result);
         }

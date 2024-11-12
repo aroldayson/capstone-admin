@@ -1,6 +1,6 @@
 <div class="navbar container-fluid sidenav" [ngClass]="{ open: isOpen }">
   <div class="logo-container">
-    <img src="./s2klogo2.png" alt="Logo" class="logo" width="60%" height="60%" />
+    <img src="./bilog.png" alt="Logo" class="logo" />
   </div>
   <div class="menu">
     <a
@@ -56,10 +56,10 @@
     </a>
     <a
       class="menu-item nav-link"
+      [routerLink]="['/login']"
       routerLinkActive="active"
-      (click)="logout()"
     >
-      <i class="fas fa-sign-out mx-2" ></i> Sign Out
+      <i class="fas fa-sign-out mx-2"></i> Sign Out
     </a>
   </div>
 </div>
@@ -70,7 +70,7 @@
       <i class="fa fa-bars"></i>
     </span>
     <span class="nav-title text-responsive fw-bold">
-     S2K LAUNDRY <span class="text-black-50 fw-bolder">ADMIN</span>
+      S2K LAUNDRY <span class="text-black-50 fw-bolder">ADMIN</span>
     </span>
   </div>
   <div class="container mt-2">

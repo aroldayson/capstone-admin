@@ -53,7 +53,7 @@
 //             {path: '', redirectTo: 'dashboardpage', pathMatch: 'full'}
 //         ]
 //     },
-//     {path: 'login', component: LoginComponent, 
+//     {path: 'login', component: LoginComponent,
 //         // canActivate: [authGuard]s
 //     },
 //     {path: '', redirectTo: 'login', pathMatch: 'full'}
@@ -78,37 +78,52 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboardpage',
-        loadChildren: () => import('./Modules/dashboard/dashboard.routes').then(r => dashboardRoute),
+        loadChildren: () =>
+          import('./Modules/dashboard/dashboard.routes').then(
+            (r) => dashboardRoute
+          ),
         canActivate: [authGuard], // Apply guard to the child route as well
       },
       {
         path: 'tansactionpage',
-        loadChildren: () => import('./Modules/transaction/transaction.routes').then(r => transactionRoute),
+        loadChildren: () =>
+          import('./Modules/transaction/transaction.routes').then(
+            (r) => transactionRoute
+          ),
         canActivate: [authGuard],
       },
       {
         path: 'pricemanagementpage',
-        loadChildren: () => import('./Modules/price-managemt/pricemanagement.routes').then(r => pricemanagementRoute),
+        loadChildren: () =>
+          import('./Modules/price-managemt/pricemanagement.routes').then(
+            (r) => pricemanagementRoute
+          ),
         canActivate: [authGuard],
       },
       {
         path: 'reportpage',
-        loadChildren: () => import('./Modules/report/report.routes').then(r => reportRoute),
+        loadChildren: () =>
+          import('./Modules/report/report.routes').then((r) => reportRoute),
         canActivate: [authGuard],
       },
       {
         path: 'customertpage',
-        loadChildren: () => import('./Modules/customer/customer.routes').then(r => customerRoute),
+        loadChildren: () =>
+          import('./Modules/customer/customer.routes').then(
+            (r) => customerRoute
+          ),
         canActivate: [authGuard],
       },
       {
         path: 'staffpage',
-        loadChildren: () => import('./Modules/staff/staff.routes').then(r => staffRoute),
+        loadChildren: () =>
+          import('./Modules/staff/staff.routes').then((r) => staffRoute),
         canActivate: [authGuard],
       },
       {
         path: 'accountpage',
-        loadChildren: () => import('./Modules/account/account.routes').then(r => accountRoute),
+        loadChildren: () =>
+          import('./Modules/account/account.routes').then((r) => accountRoute),
         canActivate: [authGuard],
       },
       { path: '', redirectTo: 'dashboardpage', pathMatch: 'full' },
@@ -117,4 +132,3 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent }, // No auth guard for the login page
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
-
