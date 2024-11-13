@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AdminService } from '../../../admin.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { SearchfilterPipe } from '../../../searchfilter.pipe';
 
 @Component({
   selector: 'app-view-staff',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, FormsModule],
+  imports: [RouterLink, RouterOutlet, FormsModule, SearchfilterPipe],
   templateUrl: './view-staff.component.html',
   styleUrl: './view-staff.component.css',
 })
@@ -23,21 +24,6 @@ export class ViewStaffComponent implements OnInit {
       this.staff = result; // Fetch the complete list of staff from the server
       this.filteredStaff = result; // Initialize the filtered list with the full staff list
     });
-  }
-
-  // Filter staff based on the search term
-  filterStaff(): void {
-    const searchTermLower = this.searchTerm.toLowerCase(); // Convert search term to lowercase for case-insensitive comparison
-
-    // Filter the staff list based on first name, last name, or phone number containing the search term
-    this.filteredStaff = this.staff.filter(
-      (staff) =>
-        staff.Admin_fname.toLowerCase().includes(searchTermLower) ||
-        staff.Admin_lname.toLowerCase().includes(searchTermLower) ||
-        staff.Address.toLowerCase().includes(searchTermLower) ||
-        staff.Email.toLowerCase().includes(searchTermLower) ||
-        staff.Phone_no.toString().includes(this.searchTerm) // Convert phone number to string for comparison
-    );
   }
 
   dltbtn(id: any): void {

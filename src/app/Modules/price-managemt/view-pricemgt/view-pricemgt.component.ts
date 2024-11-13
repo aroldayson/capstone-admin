@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import For
 import Swal from 'sweetalert2';
 import { AdminService } from '../../../admin.service';
 import { HttpClient } from '@angular/common/http';
+import { SearchfilterPipe } from '../../../searchfilter.pipe';
 
 @Component({
   selector: 'app-view-pricemgt',
@@ -23,6 +24,7 @@ import { HttpClient } from '@angular/common/http';
     RouterLinkActive,
     FormsModule, // Add FormsModule for ngModel to work
     ReactiveFormsModule,
+    SearchfilterPipe,
   ],
   templateUrl: './view-pricemgt.component.html',
   styleUrl: './view-pricemgt.component.css',
@@ -30,7 +32,7 @@ import { HttpClient } from '@angular/common/http';
 export class ViewPricemgtComponent implements OnInit {
   categ: any[] = []; // List of categories fetched from the service
   filteredCategories: any[] = []; // Filtered list of categories for display
-  searchTerm: string = ''; // Search term entered in the input field
+  keyword: any;
 
   constructor(
     private admin: AdminService,
@@ -46,25 +48,25 @@ export class ViewPricemgtComponent implements OnInit {
     });
   }
 
-  // Filter categories based on the search term
-  filterCategories(): void {
-    const searchTermLower = this.searchTerm.toLowerCase(); // Convert search term to lowercase for case-insensitive text matching
+  // // Filter categories based on the search term
+  // filterCategories(): void {
+  //   const searchTermLower = this.searchTerm.toLowerCase(); // Convert search term to lowercase for case-insensitive text matching
 
-    // Check if the search term is a number
-    const searchTermNumber = parseFloat(this.searchTerm); // Convert to a number for numeric filtering (NaN if not a number)
+  //   // Check if the search term is a number
+  //   const searchTermNumber = parseFloat(this.searchTerm); // Convert to a number for numeric filtering (NaN if not a number)
 
-    // Filter categories based on text or numeric search
-    this.filteredCategories = this.categ.filter((category) => {
-      // Convert Per_kilograms to string and check if searchTerm is a part of it
-      const perKilogramsString = category.Price.toString();
+  //   // Filter categories based on text or numeric search
+  //   this.filteredCategories = this.categ.filter((category) => {
+  //     // Convert Per_kilograms to string and check if searchTerm is a part of it
+  //     const perKilogramsString = category.Price.toString();
 
-      return (
-        category.Category.toLowerCase().includes(searchTermLower) || // Match category name
-        perKilogramsString.includes(this.searchTerm) || // Match per kilograms (as a string)
-        (!isNaN(searchTermNumber) && category.Price === searchTermNumber) // Match exact per kilograms if search term is a number
-      );
-    });
-  }
+  //     return (
+  //       category.Category.toLowerCase().includes(searchTermLower) || // Match category name
+  //       perKilogramsString.includes(this.searchTerm) || // Match per kilograms (as a string)
+  //       (!isNaN(searchTermNumber) && category.Price === searchTermNumber) // Match exact per kilograms if search term is a number
+  //     );
+  //   });
+  // }
 
   // Other existing methods (updatebtn, dltbtn)...
 

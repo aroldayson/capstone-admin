@@ -11,21 +11,20 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col">
-                    <input
-                      type="search"
-                      class="form-control"
-                      id="search-from"
-                      name="search-from"
-                      placeholder="Search"
-                      [(ngModel)]="keyword"
-                    />
+                    <div class="d-flex form-inputs">
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Search paid..."
+                        [(ngModel)]="keyword"
+                      />
+                      <i class="bx bx-search"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          
 
           <div class="table-responsive table-wrapper">
             <table class="table table-bordered table-hover rounded">
@@ -43,19 +42,17 @@
               <!-- routerLink="/main/tansactionpage/main/view-tran/view-receipt" -->
               <tbody>
                 @for(t of trans | searchfilter: keyword; track t.Transac_ID){
-                <tr
-                  class="text-center"
-                >
-                  <td>{{t.Tracking_number}}</td>
-                  <td>{{t.Cust_fname}} {{t.Cust_lname}}</td>
-                  <td>{{t.Transac_date}}</td>
-                  <td>{{t.Category}}</td>
-                  <td class="">{{t.totalprice}}</td>
+                <tr class="text-center">
+                  <td>{{ t.Tracking_number }}</td>
+                  <td>{{ t.Cust_fname }} {{ t.Cust_lname }}</td>
+                  <td>{{ t.Transac_date }}</td>
+                  <td>{{ t.Category }}</td>
+                  <td class="">{{ t.totalprice }}</td>
                   <!-- <td class="">{{t.Transac_status}}</td> -->
-                  <td class="">{{t.Admin_fname}} {{t.Admin_lname}}</td>
+                  <td class="">{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
                   <!-- <td><button class="btn btn-primary" (click)="Approved()">Approved</button></td> -->
                 </tr>
-              }
+                }
               </tbody>
             </table>
           </div>

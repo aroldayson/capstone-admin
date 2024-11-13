@@ -44,6 +44,29 @@ tfoot th:last-child {
   scrollbar-width: none; /* For Firefox */
 }
 
+.form-inputs {
+  position: relative;
+}
+
+.form-inputs .form-control {
+  height: 45px;
+  padding-right: 35px; /* Avoid overlap with the icon */
+}
+
+.form-inputs i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #555;
+}
+
+.form-inputs .form-control:focus {
+  box-shadow: none;
+  border: 1px solid #000;
+}
+
 .table-wrapper::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera */
+  display: none; /* For Chrome, Safari, and Opera */
 }

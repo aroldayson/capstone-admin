@@ -16,8 +16,7 @@
                         class="form-control"
                         type="text"
                         placeholder="Search category..."
-                        [(ngModel)]="searchTerm"
-                        (input)="filterCategories()"
+                        [(ngModel)]="keyword"
                       />
                       <i class="bx bx-search"></i>
                     </div>
@@ -39,7 +38,8 @@
               </thead>
               <tbody>
                 <!-- Use @for to iterate over the filteredCategories -->
-                @for(c of filteredCategories; track c.Categ_ID) {
+                @for(c of filteredCategories | searchfilter: keyword; track
+                c.Categ_ID) {
                 <tr>
                   <td class="text-center col-md-1">{{ $index + 1 }}</td>
                   <td class="text-center">{{ c.Category }}</td>

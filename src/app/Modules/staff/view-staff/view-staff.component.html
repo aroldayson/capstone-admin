@@ -17,7 +17,6 @@
                         type="text"
                         placeholder="Search staff..."
                         [(ngModel)]="searchTerm"
-                        (input)="filterStaff()"
                       />
                       <i class="bx bx-search"></i>
                     </div>
@@ -41,7 +40,8 @@
               </thead>
               <tbody>
                 <!-- Use @for to iterate over the filteredStaff list -->
-                @for(staff of filteredStaff; track staff.Admin_ID) {
+                @for(staff of filteredStaff | searchfilter: searchTerm; track
+                staff.Admin_ID) {
                 <tr>
                   <td class="text-center">{{ $index + 1 }}</td>
                   <td>
@@ -79,7 +79,7 @@
                       <i class="fa fa-upload"></i>
                     </button>
                     <button
-                      class="btn bg-danger text-light btn-custom-sm mx-1"
+                      class="btn bg-danger text-light btn-custom-sm "
                       (click)="dltbtn(staff.Admin_ID)"
                     >
                       <i class="fa fa-trash-o"></i>

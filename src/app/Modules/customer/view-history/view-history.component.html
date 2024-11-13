@@ -4,11 +4,18 @@
       <div class="card">
         <div class="card-body">
           <button
+            class="end btn bg-danger text-light btn-custom-sm"
+            (click)="dltbtn(cust.Cust_ID)"
+          >
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <button
             class="end btn bg-primary text-light btn-custom-sm"
             (click)="editpro(cust.Cust_ID)"
           >
             <i class="fas fa-pencil-alt"></i>
           </button>
+
           <div class="row mb-4">
             <div class="col-md-12">
               <h3 class="fw-bold">Customer Transactions Record</h3>

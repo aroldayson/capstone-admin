@@ -175,6 +175,12 @@ export class AdminService {
     });
   }
 
+  deletecustomer(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.Apiurl}deletecustomer/${id}`, { headers });
+  }
+
   // TRANSACTION
   findtransaction(id: any) {
     const token = localStorage.getItem('token');

@@ -18,7 +18,6 @@
                         type="text"
                         placeholder="Search customer..."
                         [(ngModel)]="searchTerm"
-                        (input)="filterCustomers()"
                       />
                       <i class="bx bx-search"></i>
                     </div>
@@ -41,7 +40,7 @@
               </thead>
               <tbody>
                 <!-- Iterate over the filtered customer list -->
-                @for (c of filteredCustomers; track c.Cust_ID) {
+                @for (c of filteredCustomers | searchfilter: searchTerm; track c.Cust_ID) {
                 <tr class="text-center" (click)="history(c.Cust_ID)">
                   <td>{{ $index + 1 }}</td>
                   <td>

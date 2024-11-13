@@ -62,6 +62,10 @@ export class ViewAccountComponent implements OnInit {
     }
   }
 
+  clearForm() {
+    this.updateaccount.reset(); // Resets all form fields to their initial values
+  }
+
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
