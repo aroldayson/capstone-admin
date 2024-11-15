@@ -23,6 +23,20 @@ export class ViewStaffComponent implements OnInit {
     this.admin.getData().subscribe((result: any) => {
       this.staff = result; // Fetch the complete list of staff from the server
       this.filteredStaff = result; // Initialize the filtered list with the full staff list
+
+      if (this.filteredStaff && this.filteredStaff.length > 0) {
+        const pendingTransactions = this.filteredStaff.filter((staff: any) => staff.Role === 'staff');
+
+        if (pendingTransactions.length > 0) {
+            this.filteredStaff = pendingTransactions;
+        } else {
+            console.log('Not found staff');
+            this.filteredStaff = [];
+        }
+      } else {
+          console.log('Not Register satff');
+          this.filteredStaff = [];
+      }
     });
   }
 

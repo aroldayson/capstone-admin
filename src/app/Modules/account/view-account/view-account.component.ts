@@ -23,9 +23,9 @@ export class ViewAccountComponent implements OnInit {
   users: any;
   previewUrl: string | ArrayBuffer | null = null;
   showOldPassword: boolean = false;
-  hideNewPassword = true;
+  hideNewPassword: boolean = false;
   newPassword = '';
-  hideConfirmPassword = true;
+  hideConfirmPassword: boolean = false;
 
   updateaccount = new FormGroup({
     Admin_lname: new FormControl(null),

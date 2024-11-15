@@ -98,7 +98,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
               this.startPolling();
               // localStorage.removeItem('Admin_ID'); 
               this.route.navigate(["/main/staffpage/staffmain/staffview/"]);
-              // location.reload(); // Reload the page after navigation
+              location.reload(); 
              
             });
           },
