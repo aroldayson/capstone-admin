@@ -28,7 +28,7 @@ export class TransacUnpaidComponent implements OnInit{
       this.trans = result.data;
   
       if (this.trans && this.trans.length > 0) {
-          const pendingTransactions = this.trans.filter((transaction: any) => transaction.Transac_status === 'unpaid');
+          const pendingTransactions = this.trans.filter((transaction: any) => transaction.Transac_status === 'pending');
   
           if (pendingTransactions.length > 0) {
               console.log('Pending Transactions:', pendingTransactions);
