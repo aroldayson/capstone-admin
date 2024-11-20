@@ -46,7 +46,6 @@
               class="form-control"
               type="text"
               name="email"
-              required
               formControlName="Cust_address"
               placeholder="Enter Your Email"
             />
@@ -57,7 +56,6 @@
               class="form-control"
               type="text"
               name="email"
-              required
               formControlName="Cust_phoneno"
               placeholder="Enter Your Email"
             />
@@ -134,7 +132,7 @@
             <input
               [type]="hideNewPassword ? 'password' : 'text'"
               class="form-control"
-              formControlName="Admin_NewPassword"
+              formControlName="Cust_password"
               placeholder="Enter New Password"
             />
             <i
@@ -178,7 +176,7 @@
             <input
               [type]="hideConfirmPassword ? 'password' : 'text'"
               class="form-control"
-              formControlName="Admin_ConfirmPassword"
+              formControlName="Cust_ConfirmPassword"
               placeholder="Confirm New Password"
               [ngClass]="{ 'is-invalid': passwordsDoNotMatch() }"
             />

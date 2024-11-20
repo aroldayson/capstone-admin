@@ -168,7 +168,7 @@ export class EditprofCustomerComponent implements OnInit {
   }
 
   passwordsDoNotMatch(): boolean {
-    const currentPassword = this.updateaccount.get('Admin_Password')?.value;
+    const currentPassword = this.updateaccount.get('Cust_password')?.value;
     return (
       this.newPassword !== '' &&
       currentPassword !== null &&
