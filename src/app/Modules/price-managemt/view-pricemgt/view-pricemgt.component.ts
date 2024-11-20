@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import { AdminService } from '../../../admin.service';
 import { HttpClient } from '@angular/common/http';
 import { SearchfilterPipe } from '../../../searchfilter.pipe';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-view-pricemgt',
@@ -33,42 +34,61 @@ export class ViewPricemgtComponent implements OnInit {
   categ: any[] = []; // List of categories fetched from the service
   filteredCategories: any[] = []; // Filtered list of categories for display
   keyword: any;
+  intervalId: any;
+  private pollingSubscription: Subscription | null = null;
 
   constructor(
     private admin: AdminService,
     private http: HttpClient,
-    private route: Router
+    private route: Router,
   ) {}
 
   ngOnInit(): void {
-    // Fetch categories and initialize both categ and filteredCategories
-    this.admin.displayprice().subscribe((result: any) => {
-      this.categ = result;
-      this.filteredCategories = result; // Initially display all categories
+    this.getdatastaff();
+    this. startPolling();
+  }
+  startPolling() {
+    const pollingInterval = interval(5000);
+
+    if (this.pollingSubscription) {
+      this.pollingSubscription.unsubscribe();
+    }
+
+    this.pollingSubscription = pollingInterval.subscribe(() => {
+      this.fetchStaffData();
     });
   }
 
-  // // Filter categories based on the search term
-  // filterCategories(): void {
-  //   const searchTermLower = this.searchTerm.toLowerCase(); // Convert search term to lowercase for case-insensitive text matching
+  fetchStaffData() {
+    this.admin.displayprice().subscribe((result: any) => {
+      const updatedStaff = result;
 
-  //   // Check if the search term is a number
-  //   const searchTermNumber = parseFloat(this.searchTerm); // Convert to a number for numeric filtering (NaN if not a number)
+      if (JSON.stringify(updatedStaff) !== JSON.stringify(this.categ)) {
+        console.log('Staff data has changed, updating list...');
+        this.categ = updatedStaff;
+        this.filteredCategories = updatedStaff;
+      }
+    });
+  }
 
-  //   // Filter categories based on text or numeric search
-  //   this.filteredCategories = this.categ.filter((category) => {
-  //     // Convert Per_kilograms to string and check if searchTerm is a part of it
-  //     const perKilogramsString = category.Price.toString();
+  getdatastaff() {
+    this.admin.displayprice().subscribe((result: any) => {
+      this.categ = result; 
+      this.filteredCategories = result; 
+    });
+  }
 
-  //     return (
-  //       category.Category.toLowerCase().includes(searchTermLower) || // Match category name
-  //       perKilogramsString.includes(this.searchTerm) || // Match per kilograms (as a string)
-  //       (!isNaN(searchTermNumber) && category.Price === searchTermNumber) // Match exact per kilograms if search term is a number
-  //     );
-  //   });
-  // }
+  stopPolling() {
+    if (this.pollingSubscription) {
+      this.pollingSubscription.unsubscribe();
+      this.pollingSubscription = null;
+    }
+  }
 
-  // Other existing methods (updatebtn, dltbtn)...
+  ngOnDestroy() {
+    this.stopPolling();
+  }
+
 
   updatebtn(item: any): void {
     localStorage.setItem('Categ_ID', item);

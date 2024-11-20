@@ -20,7 +20,7 @@ import { SearchfilterPipe } from '../../../searchfilter.pipe';
     CommonModule,
     RouterModule,
     RouterLinkActive,
-    FormsModule, // Add FormsModule for ngModel to work
+    FormsModule, 
     ReactiveFormsModule,
     SearchfilterPipe,
   ],
@@ -28,21 +28,19 @@ import { SearchfilterPipe } from '../../../searchfilter.pipe';
   styleUrls: ['./view-customer.component.css'],
 })
 export class ViewCustomerComponent implements OnInit {
-  cust: any[] = []; // List of customers
-  filteredCustomers: any[] = []; // Filtered list for display
-  searchTerm: string = ''; // Search input value
+  cust: any[] = []; 
+  filteredCustomers: any[] = [];
+  searchTerm: string = ''; 
 
   constructor(private admin: AdminService, private router: Router) {}
 
   ngOnInit(): void {
-    // Fetch customer data and initialize cust and filteredCustomers
     this.admin.customerdisplay().subscribe((result: any) => {
       this.cust = result;
-      this.filteredCustomers = result; // Initialize the filtered list
+      this.filteredCustomers = result; 
     });
   }
 
-  // Navigate to the customer's history
   history(id: any) {
     localStorage.setItem('Cust_ID', id);
     this.router.navigate(['/main/customertpage/main/view-history']);

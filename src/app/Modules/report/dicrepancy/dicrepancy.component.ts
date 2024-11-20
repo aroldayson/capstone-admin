@@ -10,13 +10,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [RouterLink, NgxPrintModule, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './dicrepancy.component.html',
-  styleUrls: ['./dicrepancy.component.css']  // Corrected 'styleUrls'
+  styleUrls: ['./dicrepancy.component.css']  
 })
 export class DicrepancyComponent implements OnInit {
-  remit: any[] = [];           // Ensure remit is an array of transactions
-  fromDate: string = '';       // Bound to date input fields
-  toDate: string = '';         // Bound to date input fields
-  filteredData: any[] = [];    // Holds the filtered data based on the date range
+  remit: any[] = [];           
+  fromDate: string = '';       
+  toDate: string = '';         
+  filteredData: any[] = [];    
 
   constructor(private admin: AdminService) {}
 
@@ -25,7 +25,6 @@ export class DicrepancyComponent implements OnInit {
           this.remit = result;
           this.filteredData = this.remit;
 
-          // Filter for approved transactions only
           this.filteredData = this.filteredData.filter((transaction: any) => transaction.Fund_status === 'Approve');
 
           if (this.filteredData.length === 0) {
@@ -44,7 +43,6 @@ export class DicrepancyComponent implements OnInit {
           const toDateEnd = new Date(this.toDate);
           toDateEnd.setHours(23, 59, 59, 999);
 
-          // Filter data based on date range and approval status
           this.filteredData = this.remit.filter(transaction => {
               const transactionDate = new Date(transaction.remitYear, transaction.remitMonth - 1, transaction.remitDay).getTime();
               return (
@@ -56,7 +54,6 @@ export class DicrepancyComponent implements OnInit {
 
           console.log('Filtered Data:', this.filteredData);
       } else {
-          // Reset to only approved transactions if no date is selected
           this.filteredData = this.remit.filter(transaction => transaction.Fund_status === 'Approve');
       }
   }

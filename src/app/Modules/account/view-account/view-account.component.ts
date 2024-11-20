@@ -26,21 +26,23 @@ export class ViewAccountComponent implements OnInit {
   hideNewPassword: boolean = false;
   newPassword = '';
   hideConfirmPassword: boolean = false;
+  admin_id = {id:localStorage.getItem('Account_ID')}
+  passwordsMatch = true;
 
   updateaccount = new FormGroup({
     Admin_lname: new FormControl(null),
     Admin_fname: new FormControl(null),
     Admin_mname: new FormControl(null),
-    Admin_Email: new FormControl(null, [Validators.required, Validators.email]),
-    Admin_Password: new FormControl(null, Validators.required),
+    Email: new FormControl(null),
+    Password: new FormControl(null),
     Admin_OldPassword: new FormControl(null),
-    Admin_ConPassword: new FormControl(null),
+    Admin_ConfirmPassword: new FormControl(null),
   });
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private route: Router) {}
 
   ngOnInit(): void {
-    const adminId = localStorage.getItem('Admin_ID');
+    const adminId = localStorage.getItem('Account_ID');
     console.log(adminId);
     this.getAdminDetails(adminId);
     this.loadExistingImage();
@@ -52,7 +54,7 @@ export class ViewAccountComponent implements OnInit {
         this.users = data;
         console.log(this.users);
         this.updateaccount.patchValue({
-          Admin_Email: this.users.Email,
+          Email: this.users.Email,
           Admin_lname: this.users.Admin_lname,
           Admin_fname: this.users.Admin_fname,
           Admin_mname: this.users.Admin_mname,
@@ -63,7 +65,7 @@ export class ViewAccountComponent implements OnInit {
   }
 
   clearForm() {
-    this.updateaccount.reset(); // Resets all form fields to their initial values
+    this.updateaccount.reset(); 
   }
 
   onFileSelected(event: any): void {
@@ -90,25 +92,35 @@ export class ViewAccountComponent implements OnInit {
     this.hideConfirmPassword = !this.hideConfirmPassword;
   }
 
-  passwordsDoNotMatch(): boolean {
-    const currentPassword = this.updateaccount.get('Admin_Password')?.value;
-    return (
-      this.newPassword !== '' &&
-      currentPassword !== null &&
-      currentPassword !== undefined &&
-      this.newPassword !== currentPassword
-    );
+  passwordsDoNotMatch() {
+    const password = this.updateaccount.get('Password')?.value;
+    const confirmPassword = this.updateaccount.get('Admin_ConfirmPassword')?.value;
+    this.passwordsMatch = password === confirmPassword;
   }
 
   update(): void {
-    if (this.updateaccount.valid) {
-      console.log(this.updateaccount.valid);
-      // const adminId = localStorage.getItem('Admin_ID');
-      // const updatedData = { ...this.updateaccount.value, adminId };
-      // this.adminService.updateAdmin(updatedData).subscribe(
-      //   () => Swal.fire('Success', 'Your account has been updated', 'success'),
-      //   () => Swal.fire('Error', 'Error updating your account', 'error')
-      // );
+    console.log(this.updateaccount.valid)
+    this.passwordsDoNotMatch();
+    const updatedData = { id: this.admin_id.id, ...this.updateaccount.value };
+    console.log('Data to be sent:', updatedData);
+
+    if (this.passwordsMatch) {
+      this.adminService.updateaccount(updatedData).subscribe(
+        response => {
+          console.log('Update successful', response);
+          Swal.fire('Success!', 'Staff details updated successfully.', 'success').then(() => {
+          });
+          this.route.navigate(['/main/accountpage/accountmain']);
+        },
+        error => {
+          console.error('Update failed', error);
+          Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
+        }
+      );
+    } else {
+      if (!this.passwordsMatch) {
+        Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
+      }
     }
   }
 

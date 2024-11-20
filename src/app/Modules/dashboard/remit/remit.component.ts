@@ -32,7 +32,6 @@ export class RemitComponent implements OnInit {
     this.admin.findstaff(this.users.id).subscribe((result: any) => {
       this.users = result;
       console.log(result);
-      // this.cashout.controls['Admin_ID'].setValue(this.users.Admin_ID);
     });
   }
 
@@ -42,18 +41,11 @@ export class RemitComponent implements OnInit {
   });
 
   clearForm() {
-    this.cashout.reset(); // Resets all form fields to their initial values
+    this.cashout.reset(); 
   }
 
   save() {
     console.log(this.cashout.value);
-    // Swal.fire({
-    //   position: "center",
-    //   icon: "success",
-    //   title: "Your work has been saved",
-    //   showConfirmButton: true,
-    // })
-
     this.admin.remit(this.cashout.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {

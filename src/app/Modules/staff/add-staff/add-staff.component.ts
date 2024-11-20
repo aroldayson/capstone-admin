@@ -83,7 +83,6 @@ export class AddStaffComponent implements OnInit {
     });
   }
 
-  // Custom validator to check if passwords match
   passwordMatchValidator(form: FormGroup) {
     const pass = form.get('Password')?.value;
     const confirmPass = form.get('ConfirmPassword')?.value;
@@ -94,19 +93,17 @@ export class AddStaffComponent implements OnInit {
     if (this.addstaff.valid) {
       const formValue = this.addstaff.value;
 
-      this.checkPasswords(); // Check passwords for match
+      this.checkPasswords(); 
 
-      // If passwords do not match, show an error message and return early
       if (!this.passwordsMatch) {
         Swal.fire(
           'Error!',
           'Passwords do not match. Please check your entries.',
           'error'
         );
-        return; // Exit the function to prevent submission
+        return; 
       }
 
-      // Ensure `Password_confirmation` is sent with the correct field name
       const payload = {
         ...formValue,
         Password_confirmation: formValue.ConfirmPassword,
@@ -115,17 +112,7 @@ export class AddStaffComponent implements OnInit {
       this.admin.insertData(payload).subscribe(
         (result: any) => {
           console.log('Staff added successfully:', result);
-          // Navigate to the desired route
-          this.router
-            .navigate(['/main/staffpage/staffmain/'])
-            .then((success) => {
-              if (success) {
-                console.log('Navigation successful');
-                location.reload(); // Reload the page after successful navigation
-              } else {
-                console.error('Navigation failed');
-              }
-            });
+          this.router.navigate(['/main/staffpage/staffmain/staffview/'])
         },
         (error) => {
           console.error('Error adding staff:', error);

@@ -27,7 +27,6 @@ export class TransacPaidComponent implements OnInit{
           const pendingTransactions = this.trans.filter((transaction: any) => transaction.Transac_status === 'paid');
   
           if (pendingTransactions.length > 0) {
-              // console.log('Pending Transactions:', pendingTransactions);
               this.trans = pendingTransactions;
           } else {
               console.log('No pending transactions found');

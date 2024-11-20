@@ -21,8 +21,8 @@ export class ViewDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.admin.viewdetails().subscribe(
       (result: any) => {
-        this.details = result.cashed; // Store payments
-        console.log(this.details); // Log for debugging
+        this.details = result.cashed; 
+        console.log(this.details); 
       },
       (error) => {
         console.error('Error fetching expenses data:', error);

@@ -33,7 +33,6 @@ export class ViewRemitComponent implements OnInit{
           const pendingTransactions = this.remit.filter((transaction: any) => transaction.Fund_status === 'Pending');
 
           if (pendingTransactions.length > 0) {
-              // console.log('Pending Transactions:', pendingTransactions);
               this.remit = pendingTransactions;
           } else {
               console.log('No pending transactions found');

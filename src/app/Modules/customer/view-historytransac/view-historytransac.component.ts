@@ -40,31 +40,14 @@ export class ViewHistorytransacComponent implements OnInit{
     );
     this.admin.findtransactionprint(this.his_id.id).subscribe(
       (result: any) => {
-        // this.custs = result;
         this.histo = result.data; 
         this.trackingnumber = result.data[0].Tracking_number;
         this.payment = result.data[0].totalPaymentAmount;
-        // this.histoss = result.trans.Tracking_number;  
         this.totalpayment = result.price;
         this.balance = result.data[0].balanceAmount; 
         console.log( this.histo,this.payment,this.totalpayment,this.trackingnumber );
       }
     );
-    // this.admin.getprint(this.his_id.id).subscribe(
-    //   (result: any) => {
-    //     this.data = result.trans; // Assign transactions to 'data'
-    //     this.trans_id = result.trans[0].Tracking_number
-    //     this.totalAmount = result.totalprice
-    //     this.totalpayment = result.amount
-    //     this.balance = result.balance
-    //     this.totalPayment = result[0].totalprice; // Assign total price from the result
-    //     // this.totalPayment = result.balance;
-    //     console.log('Total Payment:', this.data); // Check the value
-    //   },
-    //   error => {
-    //     console.error('Error fetching data:', error); // Log any error
-    //   }
-    // );
     
   }
 }

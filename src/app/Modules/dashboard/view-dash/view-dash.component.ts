@@ -37,7 +37,7 @@ export class ViewDashComponent implements OnInit {
   year: any;
   month: any;
 
-  results: any = null; // Store the fetched results
+  results: any = null; 
   currentYear: number = new Date().getFullYear();
 
   months: string[] = [
@@ -91,12 +91,11 @@ export class ViewDashComponent implements OnInit {
       maintainAspectRatio: false,
     },
   };
-  // results: any;
 
   constructor(private admin: AdminService) {}
 
   initializeChart(): void {
-    this.chart = new Chart('myChart', this.config); // Create the chart instance
+    this.chart = new Chart('myChart', this.config); 
   }
 
   ngOnInit(): void {
@@ -191,7 +190,7 @@ export class ViewDashComponent implements OnInit {
     this.isDisabled = true;
     Swal.fire({
       title: 'Cash Count',
-      html: `...`, // Add your form HTML here
+      html: `...`,
       confirmButtonText: 'Calculate Total',
       showCancelButton: true,
       cancelButtonText: 'Cancel',

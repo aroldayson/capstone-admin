@@ -53,9 +53,8 @@ export class LoginComponent implements OnInit {
               showConfirmButton: false,
             });
 
-            localStorage.setItem('Admin_ID', result.user.Admin_ID);
+            localStorage.setItem('Account_ID', result.user.Admin_ID);
             localStorage.setItem('token', result.token);
-            // console.log('Token stored:', result.token);
             this.router.navigate(['/main']);
           } else {
             Swal.fire({

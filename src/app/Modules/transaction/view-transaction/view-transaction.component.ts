@@ -22,7 +22,6 @@ export class ViewTransactionComponent {
     swalWithBootstrapButtons
       .fire({
         title: 'Are you sure to approved?',
-        // text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, Approved it!',
@@ -37,7 +36,6 @@ export class ViewTransactionComponent {
             icon: 'success',
           });
         } else if (
-          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire({

@@ -20,6 +20,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
   message: string = '';
   existingImageUrl: string | null = null;
   intervalId: any;
+  unload: any;
 
   constructor(private http: HttpClient, private adminService: AdminService, private route: Router) {
     this.loadExistingImage();
@@ -31,7 +32,6 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
     this.startPolling();
   }
 
-  // Start polling for Admin_ID changes in localStorage
   startPolling() {
     this.intervalId = setInterval(async () => {
       const latestAdminId = localStorage.getItem('Admin_ID');
@@ -39,7 +39,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
         this.staff_id.id = latestAdminId;
         this.loadExistingImage();
       }
-    }, 300); // Check every second
+    }, 300); 
   }
 
   loadExistingImage() {
@@ -47,11 +47,11 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
       this.adminService.findstaff(this.staff_id.id).subscribe(
         (response: any) => {
           if (response.Admin_image) {
-            this.existingImageUrl = `http://localhost/admin/profile_images/${response.Admin_image}`;
-            this.imagePreview = this.existingImageUrl; // Set the preview to existing image
+            this.existingImageUrl = `http://localhost:8000/images/${response.Admin_image}`;
+            this.imagePreview = this.existingImageUrl; 
           } else {
-            this.imagePreview = null; // Clear preview if no image exists
-            this.message = 'No existing image found.'; // Message if no image
+            this.imagePreview = null; 
+            this.message = 'No existing image found.'; 
           }
         },
         (error) => {
@@ -60,7 +60,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
         }
       );
     } else {
-      this.imagePreview = null; // Clear the preview if no ID
+      this.imagePreview = null;
       this.message = 'No Admin ID found. Please log in again.';
     }
   }
@@ -74,7 +74,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
     if (this.selectedFile) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview = reader.result; // Update image preview with selected file
+        this.imagePreview = reader.result; 
       };
       reader.readAsDataURL(this.selectedFile);
     }
@@ -96,10 +96,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
             }).then(() => {
               this.loadExistingImage();
               this.startPolling();
-              // localStorage.removeItem('Admin_ID'); 
               this.route.navigate(["/main/staffpage/staffmain/staffview/"]);
-              location.reload(); 
-             
             });
           },
           (error: any) => {
@@ -124,6 +121,6 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    clearInterval(this.intervalId); // Clear the polling interval on component destruction
+    clearInterval(this.intervalId); 
   }
 }

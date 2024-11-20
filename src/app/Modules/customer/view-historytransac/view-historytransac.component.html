@@ -71,7 +71,6 @@
                   {{ (payment != null && totalpayment != null) ? ((payment - totalpayment) > 0 ? (payment - totalpayment) : 0) : 0 | currency: ' ' : 'symbol'  }}
                 </p>
                 <p class="text-danger">
-                  <!-- {{ (payment != null && totalpayment != null) ? ((payment - totalpayment) < 0 ? (payment - totalpayment) : 0) : 0 | currency: ' ':'symbol'}} -->
                   {{ (payment - totalpayment) < 0 ? (0 - (payment - totalpayment)) : 0 | currency: ' ' : 'symbol' }}
               </p>
               </div>          

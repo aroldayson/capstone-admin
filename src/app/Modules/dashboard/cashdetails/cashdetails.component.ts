@@ -14,7 +14,7 @@ import { AdminService } from '../../../admin.service';
   styleUrl: './cashdetails.component.css'
 })
 export class CashdetailsComponent {
-  staff: any[] = []; // Populate this with your staff data
+  staff: any[] = []; 
   InitialFrom: FormGroup;
 
   constructor(private admin: AdminService, private route: Router) {
@@ -27,8 +27,8 @@ export class CashdetailsComponent {
   ngOnInit(): void {
     this.admin.Staffinitail().subscribe(
       (result: any) => {
-        this.staff = result; // Store staff data
-        console.log(this.staff); // Log for debugging
+        this.staff = result; 
+        console.log(this.staff); 
       },
       (error) => {
         console.error('Error fetching staff data:', error);

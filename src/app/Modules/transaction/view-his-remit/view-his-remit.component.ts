@@ -33,13 +33,13 @@ export class ViewHisRemitComponent implements OnInit{
 
   formatDate(date: Date): string {
     const options: Intl.DateTimeFormatOptions = {
-      month: 'long', // Full month name (e.g., January, February)
-      day: '2-digit', // Day with leading zeros if necessary (e.g., 01, 02)
-      year: 'numeric', // Full year (e.g., 2023)
-      hour: '2-digit', // Hour (e.g., 01, 02)
-      minute: '2-digit', // Minute (e.g., 30, 45)
-      second: '2-digit', // Second (e.g., 30, 45)
-      hour12: true // Optional: To show time in 12-hour format with AM/PM
+      month: 'long', 
+      day: '2-digit', 
+      year: 'numeric', 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      second: '2-digit', 
+      hour12: true 
     };
     return date.toLocaleDateString('en-US', options) ;
   }
@@ -48,10 +48,6 @@ export class ViewHisRemitComponent implements OnInit{
   ngOnInit(): void {
     console.log(this.Transac.id);
     this.currentDate = this.formatDate(new Date());
-    // this.admin.remittanceapproved().subscribe((result: any) => {
-    //   this.remit = result.Data;
-    //   console.log(this.remit);
-    // });
 
     this.admin.printTransac(this.Transac.id).subscribe((result: any) => {
       this.data = result[0];
@@ -67,7 +63,6 @@ export class ViewHisRemitComponent implements OnInit{
     console.log(id);
     Swal.fire({
       title: "Do you want to approve the remittance?",
-      // text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

@@ -12,7 +12,6 @@
                 <div class="row">
                   <div class="col">
                     <div class="d-flex form-inputs">
-                      <!-- Bind search input to searchTerm and trigger filter on input -->
                       <input
                         class="form-control"
                         type="text"
@@ -39,7 +38,6 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Iterate over the filtered customer list -->
                 @for (c of filteredCustomers | searchfilter: searchTerm; track c.Cust_ID) {
                 <tr class="text-center" (click)="history(c.Cust_ID)">
                   <td>{{ $index + 1 }}</td>

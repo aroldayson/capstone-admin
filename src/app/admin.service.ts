@@ -19,6 +19,14 @@ export class AdminService {
     const token = localStorage.getItem('token');
     return this.http.post(this.Apiurl + 'logout', {}, { headers });
   }
+  updateaccount(data: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.Apiurl}updateaccount/${data.id}`, data, {
+      headers,
+    });
+  }
+
 
   // ADMIN ACCOUNT MANAGEMENT
   getAdmin(adminId: string): Observable<any> {

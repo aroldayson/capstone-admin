@@ -54,13 +54,7 @@ export class AddPriceComponent implements OnInit {
     this.admin.addprice(this.categoryForm.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {
-          this.route
-            .navigateByUrl('/', { skipLocationChange: true })
-            .then(() => {
-              this.route.navigate([
-                '/main/pricemanagementpage/pricemgtmain/pricemgtview',
-              ]);
-            });
+          this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview']);
         } else {
           console.error('Error occurred during save:', result);
         }
@@ -75,7 +69,6 @@ export class AddPriceComponent implements OnInit {
     this.categoryForm.reset();
   }
 
-  // Optional: Prevent decrement below 0 for Per_kilograms input
   onNumberInput(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (+inputElement.value < 0) {
