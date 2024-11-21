@@ -32,13 +32,13 @@ export class EditprofCustomerComponent implements OnInit {
   intervalId: any;
 
   showOldPassword: boolean = false;
-  showPassword: boolean = false;
-  showConPassword: boolean = false;
-  passwordsMatch = true;
-  hideNewPassword = true;
-  hideConfirmPassword = true;
+  // showPassword: boolean = false;
+  // showConPassword: boolean = false;
+  passwordsMatch: boolean = true;
+  hideNewPassword: boolean = false;
+  hideConfirmPassword: boolean = false;
 
-  newPassword = '';
+  // newPassword = '';
 
   constructor(
     private admin: AdminService,
@@ -144,19 +144,19 @@ export class EditprofCustomerComponent implements OnInit {
     }
   }
 
-  toggleNewPasswordVisibility(): void {
-    this.hideNewPassword = !this.hideNewPassword;
-  }
+  // toggleNewPasswordVisibility(): void {
+  //   this.hideNewPassword = !this.hideNewPassword;
+  // }
   togglePasswordVisibility() {
     this.showOldPassword = !this.showOldPassword;
   }
 
   togglePasswordVisibilitys() {
-    this.showPassword = !this.showPassword;
+    this.hideNewPassword = !this.hideNewPassword;
   }
 
   togglePasswordVisibilityss() {
-    this.showConPassword = !this.showConPassword;
+    this.hideConfirmPassword = !this.hideConfirmPassword;
   }
 
   checkPasswords() {
@@ -167,13 +167,9 @@ export class EditprofCustomerComponent implements OnInit {
     this.passwordsMatch = password === confirmPassword;
   }
 
-  passwordsDoNotMatch(): boolean {
-    const currentPassword = this.updateaccount.get('Cust_password')?.value;
-    return (
-      this.newPassword !== '' &&
-      currentPassword !== null &&
-      currentPassword !== undefined &&
-      this.newPassword !== currentPassword
-    );
+  passwordsDoNotMatch(): void{
+    const password = this.updateaccount.get('Cust_password')?.value;
+    const confirmPassword = this.updateaccount.get('Cust_ConfirmPassword')?.value;
+    this.passwordsMatch = password === confirmPassword;
   }
 }

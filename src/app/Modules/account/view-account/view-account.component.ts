@@ -24,10 +24,10 @@ export class ViewAccountComponent implements OnInit {
   previewUrl: string | ArrayBuffer | null = null;
   showOldPassword: boolean = false;
   hideNewPassword: boolean = false;
-  newPassword = '';
+  newPassword: boolean = false;
   hideConfirmPassword: boolean = false;
   admin_id = {id:localStorage.getItem('Account_ID')}
-  passwordsMatch = true;
+  passwordsMatch: boolean = true;
 
   updateaccount = new FormGroup({
     Admin_lname: new FormControl(null),
@@ -88,7 +88,7 @@ export class ViewAccountComponent implements OnInit {
     this.hideNewPassword = !this.hideNewPassword;
   }
 
-  toggleConfirmPasswordVisibility() {
+  toggleConfirmPasswordVisibility(): void {
     this.hideConfirmPassword = !this.hideConfirmPassword;
   }
 

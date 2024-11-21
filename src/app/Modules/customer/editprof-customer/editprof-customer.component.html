@@ -130,7 +130,7 @@
           <div class="form-group position-relative">
             <label><b>New Password:</b></label>
             <input
-              [type]="hideNewPassword ? 'password' : 'text'"
+              [type]="hideNewPassword ? 'text' : 'password'"
               class="form-control"
               formControlName="Cust_password"
               placeholder="Enter New Password"
@@ -174,11 +174,11 @@
           <div class="form-group position-relative">
             <label><b>Confirm Password:</b></label>
             <input
-              [type]="hideConfirmPassword ? 'password' : 'text'"
+              [type]="hideConfirmPassword ? 'text' : 'password'"
               class="form-control"
               formControlName="Cust_ConfirmPassword"
               placeholder="Confirm New Password"
-              [ngClass]="{ 'is-invalid': passwordsDoNotMatch() }"
+         
             />
             <i
               class="fa"

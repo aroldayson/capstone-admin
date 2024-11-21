@@ -32,23 +32,7 @@ export class AddStaffComponent implements OnInit {
   showConPassword: boolean = false;
   passwordsMatch = true;
 
-  togglePasswordVisibility() {
-    this.showOldPassword = !this.showOldPassword;
-  }
-
-  togglePasswordVisibilitys() {
-    this.showPassword = !this.showPassword;
-  }
-
-  togglePasswordVisibilityy() {
-    this.showConPassword = !this.showConPassword;
-  }
-
-  checkPasswords() {
-    const password = this.addstaff.get('Password')?.value;
-    const confirmPassword = this.addstaff.get('ConfirmPassword')?.value;
-    this.passwordsMatch = password === confirmPassword;
-  }
+  
 
   addstaff = new FormGroup({
     Admin_lname: new FormControl(null, [Validators.required]),
@@ -113,6 +97,7 @@ export class AddStaffComponent implements OnInit {
         (result: any) => {
           console.log('Staff added successfully:', result);
           this.router.navigate(['/main/staffpage/staffmain/staffview/'])
+          this.clear();
         },
         (error) => {
           console.error('Error adding staff:', error);
@@ -130,5 +115,23 @@ export class AddStaffComponent implements OnInit {
   }
   clear(): void {
     this.addstaff.reset();
+  }
+
+  togglePasswordVisibility() {
+    this.showOldPassword = !this.showOldPassword;
+  }
+
+  togglePasswordVisibilitys() {
+    this.showPassword = !this.showPassword;
+  }
+
+  togglePasswordVisibilityy() {
+    this.showConPassword = !this.showConPassword;
+  }
+
+  checkPasswords() {
+    const password = this.addstaff.get('Password')?.value;
+    const confirmPassword = this.addstaff.get('ConfirmPassword')?.value;
+    this.passwordsMatch = password === confirmPassword;
   }
 }
