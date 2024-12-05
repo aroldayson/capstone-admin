@@ -76,9 +76,9 @@
               </thead>
               <tbody>
                 @for(i of filteredData; track i.Staff_ID){
-                  <tr class="text-center">
+                  <tr class="text-center" (click)="incomes(i.transactionDate)">
                     <td>{{ i.transactionDate }}</td>
-                    <td>{{i.adminNames}}</td>
+                    <td>{{ i.adminNames}}</td>
                     <td class="text-right">{{i.totalPayments | currency: ' ':'symbol'}}</td>
                     <!-- <td>{{i.initialAmount}}</td> -->
                     <td class="text-danger text-right">{{i.totalExpenses | currency: ' ':'symbol'}}</td>
@@ -91,10 +91,10 @@
                   <th>Total</th>
                   <th>
                   </th>
-                  <th id="total-amount" class="text-right">{{totalpayment | currency: ' ':'symbol'}}</th>
+                  <th id="total-amount" class="text-right">{{totalPaymentsSum | currency: ' ':'symbol'}}</th>
                    <!-- <th>{{totalcash}}</th> -->
-                  <th id="total-amount" class="text-danger text-right">{{totalexpense | currency: ' ':'symbol'}}</th>
-                  <th id="total-amount" class="text-success text-right">{{totalincome | currency: ' ':'symbol'}}</th>
+                  <th id="total-amount" class="text-danger text-right">{{totalExpenseSum | currency: ' ':'symbol'}}</th>
+                  <th id="total-amount" class="text-success text-right">{{totalSum | currency: ' ':'symbol'}}</th>
                 </tr>
               </tfoot>
             </table>

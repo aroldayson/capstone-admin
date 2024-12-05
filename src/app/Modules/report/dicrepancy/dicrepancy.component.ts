@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgxPrintModule } from 'ngx-print';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,10 @@ export class DicrepancyComponent implements OnInit {
   toDate: string = '';         
   filteredData: any[] = [];    
 
-  constructor(private admin: AdminService) {}
+  constructor(
+    private admin: AdminService,
+    private route: Router
+) {}
 
   ngOnInit(): void {
       this.admin.remittanceapproved().subscribe((result: any) => {
@@ -56,5 +59,12 @@ export class DicrepancyComponent implements OnInit {
       } else {
           this.filteredData = this.remit.filter(transaction => transaction.Fund_status === 'Approve');
       }
+  }
+
+  discrepany(id: any){
+    localStorage.setItem('Categ_ID', id);
+    this.route.navigate([
+      '/main/reportpage/reportmain/reportview/listdisrepancy',
+    ]);
   }
 }

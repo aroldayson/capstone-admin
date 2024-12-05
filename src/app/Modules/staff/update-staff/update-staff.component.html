@@ -1,3 +1,8 @@
+<div class="text-right mb-3">
+  <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
+  <a class="btn btn-primary w-md" [routerLink]="['/main/staffpage/staffview']">Back</a> 
+</div>
+
 <div class="bg-white p-4 rounded">
   <h4 class="text-center mb-3"><b>EDIT STAFF</b></h4>
   <form [formGroup]="updatestaff" (submit)="update()">
@@ -67,7 +72,7 @@
       <label class="form-label" for="email">Email</label>
     </div>
 
-    <div class="form-outline mb-3 position-relative">
+    <!-- <div class="form-outline mb-3 position-relative">
       <input
         [type]="showOldPassword ? 'text' : 'password'"
         id="oldpassword"
@@ -89,7 +94,7 @@
           cursor: pointer;
         "
       ></i>
-    </div>
+    </div> -->
 
     <div class="form-outline mb-3">
       <input
@@ -146,9 +151,9 @@
         <button
           type="button"
           class="btn btn-secondary"
-          [routerLink]="['/main/staffpage/staffmain/staffview']"
+          (click)="clear()"
         >
-          Cancel
+          Clear
         </button>
       </div>
       <div class="col-md-6 mb-3">

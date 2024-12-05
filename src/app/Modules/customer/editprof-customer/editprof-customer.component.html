@@ -40,8 +40,57 @@
       <div class="account-section personal-details">
         <p class="h2 text-center fw-bold">EDIT ACCOUNT</p>
         <form [formGroup]="updateaccount" (submit)="update()">
+
+          <div class="row">
+            <div class="col md">
+              <div class="form-group">
+                <label><b>Last Name:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  formControlName="Cust_address"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
+            <div class="col md">
+              <div class="form-group">
+                <label><b>First Name:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  formControlName="Cust_address"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
+            <div class="col md">
+              <div class="form-group">
+                <label><b>Middle Name:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  formControlName="Cust_address"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
+          </div>
           <div class="form-group">
             <label><b>Address:</b></label>
+            <input
+              class="form-control"
+              type="text"
+              name="email"
+              formControlName="Cust_address"
+              placeholder="Enter Your Email"
+            />
+          </div>
+          <div class="form-group">
+            <label><b>Email:</b></label>
             <input
               class="form-control"
               type="text"
@@ -61,32 +110,8 @@
             />
           </div>
 
-          <!-- <div class="form-group form-outline mb-2">
-            <label><b>Current Password:</b></label>
-            <input
-              [type]="showOldPassword ? 'text' : 'password'"
-              formControlName="Cust_OldPassword"
-              class="form-control"
-              placeholder=""
-            />
-            <label class="form-label" for="password"></label>
 
-            <i
-              (click)="togglePasswordVisibility()"
-              class="fa {{
-                showOldPassword ? 'fa-eye-slash' : 'fa-eye'
-              }} password-toggle-icon"
-              style="
-                position: absolute;
-                right: 10px;
-                top: 70%;
-                transform: translateY(-50%);
-                cursor: pointer;
-              "
-            ></i>
-          </div> -->
-
-          <div class="form-group position-relative">
+          <!-- <div class="form-group position-relative">
             <label><b>Current Password:</b></label>
             <input
               [type]="showOldPassword ? 'text' : 'password'"
@@ -99,31 +124,6 @@
               [class.fa-eye]="showOldPassword"
               [class.fa-eye-slash]="!showOldPassword"
               (click)="togglePasswordVisibility()"
-            ></i>
-          </div>
-
-          <!-- <div class="form-group form-outline mb-2">
-            <label><b>New Password:</b></label>
-            <input
-              [type]="showPassword ? 'text' : 'password'"
-              formControlName="Cust_password"
-              class="form-control"
-              placeholder=""
-            />
-            <label class="form-label" for="password"></label>
-
-            <i
-              (click)="togglePasswordVisibilitys()"
-              class="fa {{
-                showPassword ? 'fa-eye-slash' : 'fa-eye'
-              }} password-toggle-icon"
-              style="
-                position: absolute;
-                right: 10px;
-                top: 70%;
-                transform: translateY(-50%);
-                cursor: pointer;
-              "
             ></i>
           </div> -->
 
@@ -142,34 +142,6 @@
               (click)="togglePasswordVisibilitys()"
             ></i>
           </div>
-
-          <!-- <div class="form-group form-outline mb-2">
-            <label><b>Confirm Password:</b></label>
-            <input
-              [type]="showConPassword ? 'text' : 'password'"
-              formControlName="Cust_ConfirmPassword"
-              class="form-control"
-              placeholder=""
-            />
-            <label class="form-label" for="password"></label>
-
-            <i
-              (click)="togglePasswordVisibilityss()"
-              class="fa {{
-                showConPassword ? 'fa-eye-slash' : 'fa-eye'
-              }} password-toggle-icon"
-              style="
-                position: absolute;
-                right: 10px;
-                top: 70%;
-                transform: translateY(-50%);
-                cursor: pointer;
-              "
-            ></i>
-          </div>
-          <div *ngIf="!passwordsMatch" class="alert alert-danger">
-            Passwords do not match.
-          </div> -->
 
           <div class="form-group position-relative">
             <label><b>Confirm Password:</b></label>

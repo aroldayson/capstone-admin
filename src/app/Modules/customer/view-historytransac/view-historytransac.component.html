@@ -29,6 +29,7 @@
       </div>
     </div>
     <!-- } -->
+    <h2>Transaction</h2>
     <table class="table table-bordered" >
       <thead>
         <tr>
@@ -49,13 +50,15 @@
           <td class="text-right">{{c.Price | currency: ' ':'symbol'}}</td>
         </tr>
         }
-        <tr>
+        <!-- <tr>
+          <td></td>
           <td></td>
           <td></td>
           <td></td>
           <td class="text-right">
             <p><strong>Total Amount: </strong></p>
             <p><strong>Amount Received: </strong></p>
+            <p><strong>Additional Services: </strong></p>
             <p><strong>Change: </strong></p>
             <p><strong>Balance: </strong></p>
           </td>
@@ -66,12 +69,15 @@
                 </p>
                 <p>
                     {{ payment ?? 0 | currency: ' ':'symbol'}}
-                </p>                
+                </p>       
+                <p>
+                    {{ addservices ?? 0 | currency: ' ':'symbol'}}
+                </p>           
                 <p> 
                   {{ (payment != null && totalpayment != null) ? ((payment - totalpayment) > 0 ? (payment - totalpayment) : 0) : 0 | currency: ' ' : 'symbol'  }}
                 </p>
                 <p class="text-danger">
-                  {{ (payment - totalpayment) < 0 ? (0 - (payment - totalpayment)) : 0 | currency: ' ' : 'symbol' }}
+                  {{ (payment - totalpayment - addservices) < 0 ? (0 - (payment - totalpayment - addservices)) : 0 | currency: ' ' : 'symbol' }}
               </p>
               </div>          
           </td>
@@ -81,13 +87,90 @@
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
           <td class="text-right">
-            <h2><strong>Total: </strong></h2>
+            <h2><strong>OverAll Total: </strong></h2>
           </td>
+          
             <td class="text-right">
               <h2>
                 <strong>
-                  {{ totalpayment | currency: ' ' : 'symbol' }}
+                  {{ totalamount | currency: ' ' : 'symbol' }}
+                </strong>
+              </h2>
+            </td>
+        </tr> -->
+      </tbody>
+    </table>
+    <h2>Additional Service</h2>
+    <table class="table table-bordered" >
+      <thead>
+        <tr>
+          <th>Additional Name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th class="text-right">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(s of service; track s.AddService_ID){
+        <tr>
+          <td>{{s.AddService_name}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="text-right">{{s.AddService_price}}</td>
+        </tr>
+        }
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="text-right">
+            <p><strong>Total Amount: </strong></p>
+            <p><strong>Additional Services: </strong></p>
+            <p><strong>Amount Received: </strong></p>
+            <p><strong>Change: </strong></p>
+            <p><strong>Balance: </strong></p>
+          </td>
+          <td>
+              <div class="transaction-item text-right">
+                <p>
+                    {{ totalpayment | currency: ' ':'symbol'}}
+                </p>
+                <p>
+                    {{ addservices ?? 0 | currency: ' ':'symbol'}}
+                </p>           
+                <p>
+                    {{ payment ?? 0 | currency: ' ':'symbol'}}
+                </p>       
+                <p> 
+                  {{ (payment != null && totalpayment != null) ? ((payment - totalpayment - addservices) > 0 ? (payment - totalpayment - addservices) : 0) : 0 | currency: ' ' : 'symbol'  }}
+                </p>
+                <p class="text-danger">
+                  {{ (payment - totalpayment - addservices) < 0 ? (0 - (payment - totalpayment - addservices)) : 0 | currency: ' ' : 'symbol' }}
+              </p>
+              </div>          
+          </td>
+          
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="text-right">
+            <h2><strong>OverAll Total: </strong></h2>
+          </td>
+          
+            <td class="text-right">
+              <h2>
+                <strong>
+                  {{ totalamount | currency: ' ' : 'symbol' }}
                 </strong>
               </h2>
             </td>

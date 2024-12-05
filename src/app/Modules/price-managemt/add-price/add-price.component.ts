@@ -21,6 +21,10 @@ import { AdminService } from '../../../admin.service';
 export class AddPriceComponent implements OnInit {
   categoryForm = new FormGroup({
     Category: new FormControl(null, Validators.required),
+    Minimum_weight: new FormControl(0.0, [
+      Validators.required,
+      Validators.min(0),
+    ]),
     Price: new FormControl(0.0, [
       Validators.required,
       Validators.min(0),
@@ -54,7 +58,8 @@ export class AddPriceComponent implements OnInit {
     this.admin.addprice(this.categoryForm.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {
-          this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview']);
+          this.clear();
+          this.route.navigate(['main/pricemanagementpage/pricemgtview']);
         } else {
           console.error('Error occurred during save:', result);
         }

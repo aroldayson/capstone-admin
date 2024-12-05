@@ -24,7 +24,7 @@ export class RemitComponent implements OnInit {
 
   constructor(private admin: AdminService, private route: Router) {}
   ngOnInit(): void {
-    this.users = { id: localStorage.getItem('Admin_ID') };
+    this.users = { id: localStorage.getItem('Account_ID') };
     console.log('Admin_ID:', this.users.id);
     this.get();
   }
@@ -36,7 +36,7 @@ export class RemitComponent implements OnInit {
   }
 
   cashout = new FormGroup({
-    Admin_ID: new FormControl(localStorage.getItem('Admin_ID')),
+    Admin_ID: new FormControl(localStorage.getItem('Account_ID')),
     Remittance: new FormControl(0.0),
   });
 

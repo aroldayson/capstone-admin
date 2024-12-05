@@ -77,7 +77,7 @@
               </thead>
               <tbody>
                 @for(d of filteredData; track d.Staff_ID){
-                  <tr class="text-center" >
+                  <tr class="text-center" (click)="discrepany(d.name)">
                     <td>{{ d.remitYear }}-{{d.remitMonth }}-{{ d.remitDay }} </td>
                     <td>{{d.name}}</td>
                     <td class="text-right">{{d.initialAmount | currency: ' ':'symbol'}}</td>

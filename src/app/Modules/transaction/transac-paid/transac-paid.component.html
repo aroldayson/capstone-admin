@@ -35,7 +35,7 @@
                   <th>Date Time</th>
                   <th>Laundry Details</th>
                   <th>Amount</th>
-                  <!-- <th>Status</th> -->
+                  <th>Status</th>
                   <th>Cashier in Charge</th>
                 </tr>
               </thead>
@@ -45,10 +45,10 @@
                 <tr class="text-center">
                   <td>{{ t.Tracking_number }}</td>
                   <td>{{ t.Cust_fname }} {{ t.Cust_lname }}</td>
-                  <td>{{ t.Transac_date }}</td>
+                  <td>{{ t.Transac_datetime }}</td>
                   <td>{{ t.Category }}</td>
                   <td class="">{{ t.totalprice }}</td>
-                  <!-- <td class="">{{t.Transac_status}}</td> -->
+                  <td class="">{{t.latest_transac_status}}</td>
                   <td class="">{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
                   <!-- <td><button class="btn btn-primary" (click)="Approved()">Approved</button></td> -->
                 </tr>

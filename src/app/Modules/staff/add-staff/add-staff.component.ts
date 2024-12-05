@@ -96,7 +96,7 @@ export class AddStaffComponent implements OnInit {
       this.admin.insertData(payload).subscribe(
         (result: any) => {
           console.log('Staff added successfully:', result);
-          this.router.navigate(['/main/staffpage/staffmain/staffview/'])
+          this.router.navigate(['/main/staffpage/staffview'])
           this.clear();
         },
         (error) => {
@@ -115,6 +115,7 @@ export class AddStaffComponent implements OnInit {
   }
   clear(): void {
     this.addstaff.reset();
+    // this.router.navigate(['/main/staffpage/staffview']);
   }
 
   togglePasswordVisibility() {

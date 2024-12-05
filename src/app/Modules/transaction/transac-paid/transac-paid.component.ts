@@ -24,7 +24,13 @@ export class TransacPaidComponent implements OnInit{
       console.log(this.trans)
   
       if (this.trans && this.trans.length > 0) {
-          const pendingTransactions = this.trans.filter((transaction: any) => transaction.Transac_status === 'paid');
+          const pendingTransactions = this.trans.filter((transaction: any) => 
+            transaction.latest_transac_status === 'folding' || 
+            transaction.latest_transac_status === 'washing' ||
+            transaction.latest_transac_status === 'forRelease' ||
+            transaction.latest_transac_status === 'received' ||
+            transaction.latest_transac_status === 'released'
+          );
   
           if (pendingTransactions.length > 0) {
               this.trans = pendingTransactions;

@@ -202,11 +202,14 @@ export class ViewStaffComponent implements OnInit {
 
   update(id: any): void {
     localStorage.setItem('Admin_ID', id);
-    this.route.navigate(['/main/staffpage/staffmain/staffview/update']);
+    this.route.navigate(['/main/staffpage/update']);
   }
 
   upload(id: any): void {
     localStorage.setItem('Admin_ID', id);
-    this.route.navigate(['/main/staffpage/staffmain/staffview/upload']);
+    this.route.navigate(['main/staffpage/upload']);
+  }
+  add(): void {
+    this.route.navigate(['/main/staffpage/addstaff']);
   }
 }

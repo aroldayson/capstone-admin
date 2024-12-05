@@ -24,7 +24,7 @@
               <tbody>
                 @for(d of remit; track d.Cash_ID){
                   <tr class="text-center" (click)="print(d.Cash_ID)">
-                    <td>{{d.remitMonth }} - {{ d.remitDay }} - {{ d.remitYear }}</td>
+                    <td>{{ d.remitYear }}-{{d.remitMonth }}-{{ d.remitDay }}</td>
                     <td>{{d.name}}</td>
                     <td class="text-right">{{d.initialAmount | currency: ' ':'symbol'}}</td>
                     <td class="text-success text-right">{{d.paymentAmount | currency: ' ':'symbol'}}</td>

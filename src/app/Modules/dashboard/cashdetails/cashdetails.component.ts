@@ -52,23 +52,25 @@ export class CashdetailsComponent {
 
   save(): void {
     console.log(this.InitialFrom.value);
-    this.admin.cashinitial(this.InitialFrom.value).subscribe(
-      (result: any) => {
-        if (result.message === 'Success') {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: true,
-          }).then(() => location.reload());
-          this.route.navigate(['/main/dashboardpage/dashboardmain/dashboardview']);
-        } else {
-          console.error('Error occurred during save:', result);
-        }
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
+    this.route.navigate(['/main/dashboardpage/dashboardmain/dashboardview/cashregister']);
+    // this.admin.cashinitial(this.InitialFrom.value).subscribe(
+    //   (result: any) => {
+    //     if (result.message === 'Success') {
+    //       Swal.fire({
+    //         position: 'center',
+    //         icon: 'success',
+    //         title: 'Your work has been saved',
+    //         showConfirmButton: true,
+    //       })
+    //       // this.route.navigate(['/main/dashboardpage/dashboardmain/dashboardview']);
+    //       this.route.navigate(['/main/dashboardpage/dashboardmain/dashboardview/cashregister']);
+    //     } else {
+    //       console.error('Error occurred during save:', result);
+    //     }
+    //   },
+    //   (error) => {
+    //     console.error('Error:', error);
+    //   }
+    // );
   }
 }

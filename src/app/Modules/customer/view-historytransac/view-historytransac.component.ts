@@ -27,6 +27,9 @@ export class ViewHistorytransacComponent implements OnInit{
   trans_id: any;
   payment: any;
   trackingnumber: any;
+  totalamount: any;
+  addservices: any;
+  service: any;
 
   constructor(
     private admin: AdminService
@@ -44,7 +47,10 @@ export class ViewHistorytransacComponent implements OnInit{
         this.trackingnumber = result.data[0].Tracking_number;
         this.payment = result.data[0].totalPaymentAmount;
         this.totalpayment = result.price;
+        this.totalamount = result.totalamount;
+        this.addservices = result.addprice;
         this.balance = result.data[0].balanceAmount; 
+        this.service = result.servicedata;
         console.log( this.histo,this.payment,this.totalpayment,this.trackingnumber );
       }
     );

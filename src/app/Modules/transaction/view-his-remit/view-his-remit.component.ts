@@ -25,6 +25,9 @@ export class ViewHisRemitComponent implements OnInit{
   TotalOver: any;
   Remit: any;
   totalAmount: any;
+  day: any;
+  month: any;
+  year: any;
 
   constructor(
     private admin: AdminService,
@@ -51,12 +54,23 @@ export class ViewHisRemitComponent implements OnInit{
 
     this.admin.printTransac(this.Transac.id).subscribe((result: any) => {
       this.data = result[0];
-      console.log(this.data);
+      this.day = result[0].transactionDate;
+      // this.month = result[0].remitDay
+      // this.year = result[0].remitMonth
+      console.log(this.data,this.day);
     })
   }
 
-  Transaction(){
-    this.route.navigate(['/main/tansactionpage/main/view-tran/view-paid'])
+  Transaction(id: any){
+    localStorage.setItem('datetime', id);
+    console.log(id)
+    this.route.navigate(['/main/tansactionpage/main/view-tran/alltransaction'])
+  }
+
+  Expense(id: any){
+    localStorage.setItem('datetime', id);
+    console.log(id)
+    this.route.navigate(['/main/tansactionpage/main/view-tran/allexpenses'])
   }
 
   approve(id: any){

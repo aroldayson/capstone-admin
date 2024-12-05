@@ -4,6 +4,7 @@ import { ViewDashComponent } from "./view-dash/view-dash.component";
 import { CashdetailsComponent } from "./cashdetails/cashdetails.component";
 import { RemitComponent } from "./remit/remit.component";
 import { ViewDetailsComponent } from "./view-details/view-details.component";
+import { CashregisterComponent } from "./cashregister/cashregister.component";
 
 
 export const dashboardRoute: Routes = [
@@ -14,6 +15,7 @@ export const dashboardRoute: Routes = [
                     {path: 'cashdetails',component:CashdetailsComponent},
                     {path: 'remit',component:RemitComponent},
                     {path: 'details', component:ViewDetailsComponent},
+                    {path: 'cashregister',component:CashregisterComponent},
                     {path: '', redirectTo: 'cashdetails', pathMatch: 'full'}
                 ]
             },

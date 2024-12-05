@@ -6,8 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AdminService {
-  url = 'http://localhost/admin/';
+  // url = 'http://localhost/admin/';
   Apiurl = 'http://localhost:8000/api/';
+  // Apiurl = 'http://10.0.110.205:8000/api/';
 
   constructor(private http: HttpClient) {}
 
@@ -238,13 +239,40 @@ export class AdminService {
     return this.http.get(`${this.Apiurl}approveremit/${id}`, { headers });
   }
 
+  DisplayAllTransaction(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}DisplayAllTransaction/${id}`, { headers });
+  }
+
+  DisplayAllExpenses(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}DisplayAllExpenses/${id}`, { headers });
+  }
+
   // EXPENSES
   displayexpenses() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(this.Apiurl + 'displayexpenses');
   }
 
   // REPORT
   displayincome() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(this.Apiurl + 'displayincome');
+  }
+  hisdisplayincome(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}hisdisplayincome/${id}`, { headers });
+  }
+
+  hisdisplayexpenses(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}hisdisplayexpenses/${id}`, { headers });
   }
 }

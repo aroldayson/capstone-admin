@@ -45,6 +45,10 @@ export class UpdateStaffComponent implements OnInit{
     this.passwordsMatch = password === confirmPassword;
   }
 
+  clear(): void {
+    this.updatestaff.reset();
+  }
+
 
   updatestaff = new FormGroup({
     Admin_lname: new FormControl(null),
@@ -89,8 +93,6 @@ export class UpdateStaffComponent implements OnInit{
     }, 100); 
   }
 
-
-
   update(): void {
     console.log(this.updatestaff.value)
     if (this.updatestaff.valid) {
@@ -105,7 +107,7 @@ export class UpdateStaffComponent implements OnInit{
             console.log('Update successful', response);
             Swal.fire('Success!', 'Staff details updated successfully.', 'success').then(() => {
             });
-            this.route.navigate(['/main/staffpage/staffmain/staffview/']);
+            this.route.navigate(['/main/staffpage/staffview']);
           },
           error => {
             console.error('Update failed', error);

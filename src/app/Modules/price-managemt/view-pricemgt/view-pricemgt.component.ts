@@ -93,7 +93,7 @@ export class ViewPricemgtComponent implements OnInit {
   updatebtn(item: any): void {
     localStorage.setItem('Categ_ID', item);
     this.route.navigate([
-      '/main/pricemanagementpage/pricemgtmain/pricemgtview/update',
+      '/main/pricemanagementpage/update',
     ]);
   }
 

@@ -25,7 +25,7 @@ import { resourceUsage } from 'node:process';
   styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
-  showPassword: boolean = false;
+  showPassword: boolean = true;
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;

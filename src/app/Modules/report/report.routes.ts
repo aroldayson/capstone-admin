@@ -5,6 +5,9 @@ import { IncomeComponent } from "./income/income.component";
 import { ExpenditureComponent } from "./expenditure/expenditure.component";
 import { DicrepancyComponent } from "./dicrepancy/dicrepancy.component";
 import { PrintComponent } from "./print/print.component";
+import { ListtranincomeComponent } from "./listtranincome/listtranincome.component";
+import { ListtranexpenseComponent } from "./listtranexpense/listtranexpense.component";
+import { ListtrandiscrepancyComponent } from "./listtrandiscrepancy/listtrandiscrepancy.component";
 
 export const reportRoute: Routes = [
     {path: 'reportmain', component: MainReportComponent,
@@ -18,6 +21,9 @@ export const reportRoute: Routes = [
                     },
                     {path: 'expenditure', component: ExpenditureComponent},
                     {path: 'disrepancy', component: DicrepancyComponent},
+                    {path: 'listincome', component: ListtranincomeComponent},
+                    {path: 'listexpenses', component: ListtranexpenseComponent},
+                    {path: 'listdisrepancy', component: ListtrandiscrepancyComponent},
                     // {path: 'print', component: PrintComponent},
                     {path: '', redirectTo: 'income', pathMatch: 'full'}
                 ]

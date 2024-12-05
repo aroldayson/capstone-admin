@@ -47,8 +47,8 @@ body {
 }
 
 .table th {
-  background: #414143;
-  color: #fff;
+  /* background: #414143; */
+  color: #000000;
 }
 
 .table td,

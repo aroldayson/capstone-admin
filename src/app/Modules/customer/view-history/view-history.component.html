@@ -74,13 +74,13 @@
                 <tr class="text-center" (click)="history(c.Transac_ID)">
                   <td>{{ $index + 1 }}</td>
                   <td>{{ c.Tracking_number | slice : 0 : 10 }}...</td>
-                  <td>{{ c.Transac_date }}</td>
+                  <td>{{ c.Transac_datetime }}</td>
                   <td>
                     {{ c.Admin_fname | slice : 0 : 1 }}. {{ c.Admin_lname }}
                   </td>
                   <td>{{ c.Category | slice : 0 : 10 }}...</td>
                   <td>{{ c.totalprice | currency : " " : "symbol" }}</td>
-                  <td>{{ c.Transac_status | slice : 0 : 10 }}...</td>
+                  <td>{{ c.latest_transac_status | slice : 0 : 10 }}...</td>
                   <td>{{ c.TransacStatus_datetime }}</td>
                   <td>{{ c.Staffincharge | slice : 0 : 10 }}...</td>
                 </tr>

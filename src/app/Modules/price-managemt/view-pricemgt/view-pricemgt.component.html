@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row" id="price-management-section">
-    <div class="col-md-9">
+    <div class="col md">
       <div class="card">
         <div class="card-body">
           <div class="row mb-4">
             <div class="col">
-              <h3 class="fw-bold">PRICE MANAGEMENT</h3>
+              <h3 class="fw-bold">PRICE MANAGEMENT <button class="btn btn-primary btn-sm mb-2" [routerLink]="['/main/pricemanagementpage/add']">+ ADD PRICE</button></h3>
             </div>
             <div class="col-md-6 col-lg-4 mt-2">
               <div class="form-group">
@@ -41,16 +41,16 @@
                 @for(c of filteredCategories | searchfilter: keyword; track
                 c.Categ_ID) {
                 <tr>
-                  <td class="text-center col-md-1">{{ $index + 1 }}</td>
-                  <td class="text-center">{{ c.Category }}</td>
-                  <td class="text-center">{{ c.Price }}</td>
-                  <td class="text-center">
-                    <button
+                  <td (click)="updatebtn(c.Categ_ID)" class="text-center col-md-1">{{ $index + 1 }}</td>
+                  <td (click)="updatebtn(c.Categ_ID)" class="text-Left">{{ c.Category }}</td>
+                  <td (click)="updatebtn(c.Categ_ID)" class="text-right">{{ c.Price | currency: 'PHP':'symbol'  }}</td>
+                  <td (click)="updatebtn(c.Categ_ID)" class="text-center">
+                    <!-- <button
                       class="btn bg-primary mx-2 text-light btn-custom-sm"
                       (click)="updatebtn(c.Categ_ID)"
                     >
                       <i class="fas fa-pencil-alt"></i>
-                    </button>
+                    </button> -->
                     <button
                       class="btn bg-danger text-light btn-custom-sm"
                       (click)="dltbtn(c.Categ_ID)"
@@ -66,12 +66,12 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <!-- <div class="col-md-4">
       <div class="card">
         <div class="card-body">
           <router-outlet></router-outlet>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

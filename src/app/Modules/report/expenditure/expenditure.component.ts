@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgxPrintModule } from 'ngx-print';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
@@ -23,7 +23,8 @@ export class ExpenditureComponent implements OnInit{
 
 
   constructor(
-    private admin: AdminService
+    private admin: AdminService,
+    private route: Router
   ){}
   ngOnInit(): void {
     this.admin.displayexpenses().subscribe((result: any) => {
@@ -59,6 +60,13 @@ export class ExpenditureComponent implements OnInit{
   calculateTotals() {
     this.amount = this.filteredData.reduce((acc, i) => acc + (i.totalExpenses || 0), 0);
     console.log('Filtered Data:', this.amount);
+  }
+
+  expenses(id: any){
+    localStorage.setItem('datetimeincome', id);
+    this.route.navigate([
+      '/main/reportpage/reportmain/reportview/listexpenses',
+    ]);
   }
 
 }

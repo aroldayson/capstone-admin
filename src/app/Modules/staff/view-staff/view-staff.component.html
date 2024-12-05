@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row" id="staff-management-section">
-    <div class="col-md-9">
+    <div class="col md">
       <div class="card">
         <div class="card-body">
           <div class="row mb-4">
             <div class="col">
-              <h3 class="fw-bold">LIST OF STAFF MEMBERS</h3>
+              <h3 class="fw-bold">LIST OF STAFF MEMBERS<span (click)="add()" class="btn btn-primary mx-2 sm"> + ADD STAFF</span></h3>
             </div>
             <div class="col-md-6 col-lg-4 mt-2">
               <div class="form-group">
@@ -46,6 +46,7 @@
                   <td class="text-center">{{ $index + 1 }}</td>
                   <td>
                     <img
+                      (click)="upload(staff.Admin_ID)"
                       [src]="staff.Admin_image"
                       alt="{{ staff.Admin_fname }} {{ staff.Admin_lname }}"
                       class="img-thumbnail"
@@ -65,26 +66,26 @@
                       width="50"
                     /> -->
                   </td>
-                  <td>
+                  <td (click)="update(staff.Admin_ID)">
                     {{ staff.Admin_fname }} {{ staff.Admin_mname }}
                     {{ staff.Admin_lname }}
                   </td>
-                  <td>{{ staff.Address }}</td>
-                  <td>{{ staff.Phone_no }}</td>
-                  <td>{{ staff.Email }}</td>
-                  <td class="text-center col-md-2">
-                    <button
+                  <td (click)="update(staff.Admin_ID)">{{ staff.Address }}</td>
+                  <td (click)="update(staff.Admin_ID)">{{ staff.Phone_no }}</td>
+                  <td (click)="update(staff.Admin_ID)">{{ staff.Email }}</td>
+                  <td class="text-center">
+                    <!-- <button
                       class="btn bg-primary text-light btn-custom-sm"
                       (click)="update(staff.Admin_ID)"
                     >
                       <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <button
+                    </button> -->
+                    <!-- <button
                       class="btn btn-success btn-custom-sm mx-1"
                       (click)="upload(staff.Admin_ID)"
                     >
                       <i class="fa fa-upload"></i>
-                    </button>
+                    </button> -->
                     <button
                       class="btn bg-danger text-light btn-custom-sm "
                       (click)="dltbtn(staff.Admin_ID)"
@@ -100,12 +101,12 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
       <div class="card">
         <div class="card-body">
           <router-outlet></router-outlet>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

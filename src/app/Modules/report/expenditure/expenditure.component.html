@@ -75,7 +75,7 @@
               </thead>
               <tbody>
                 @for(e of filteredData; track e.transactionDate){
-                <tr class="text-center">
+                <tr class="text-center" (click)="expenses(e.transactionDate)">
                   <td>{{e.transactionDate}}</td>
                   <td>{{e.image}}</td>
                   <td>{{e.adminNames}}</td>

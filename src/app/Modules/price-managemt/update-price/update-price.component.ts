@@ -44,6 +44,10 @@ export class UpdatePriceComponent implements OnInit {
     }, 100); // Check every second
   }
 
+  clear(): void {
+    this.categoryForm.reset();
+  }
+
   findCategory(): void {
     this.admin.findprice(this.category_id.id).subscribe((result: any) => {
       this.categ = result;
@@ -71,6 +75,7 @@ export class UpdatePriceComponent implements OnInit {
             'success'
           ).then(() => {
           });
+          this.clear();
           this.route.navigate([
             '/main/pricemanagementpage/pricemgtmain/pricemgtview/add',
           ]);

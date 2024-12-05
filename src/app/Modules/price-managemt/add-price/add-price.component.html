@@ -1,3 +1,7 @@
+<div class="text-right mb-3">
+  <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
+  <a class="btn btn-primary w-md" [routerLink]="['/main/pricemanagementpage/pricemgtview']">Back</a> 
+</div>
 <form [formGroup]="categoryForm" (submit)="save()">
   <div class="bg-white p-4">
     <h4 class="text-center mb-4"><b>ADD CATEGORY</b></h4>
@@ -29,6 +33,22 @@
               (input)="onNumberInput($event)"
             />
             <label class="form-label" for="form7Example2">Per Kilograms</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <div class="form-outline">
+            <input
+              type="number"
+              id="form7Example2"
+              class="form-control"
+              formControlName="Minimum_weight"
+              placeholder="Minimum_weight"
+              [min]="0"
+              (input)="onNumberInput($event)"
+            />
+            <label class="form-label" for="form7Example2">Mininum Weight</label>
           </div>
         </div>
       </div>

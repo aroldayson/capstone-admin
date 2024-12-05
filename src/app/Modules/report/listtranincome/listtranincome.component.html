@@ -1,0 +1,151 @@
+<div class="container bg-white">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="table-responsive mt-2 mb-2">
+          <div class="card">
+            <div class="card-body" id="print-section">
+              <div class="invoice-title">
+                <!-- <h4 class="float-end font-size-15">Invoice #DS0204 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4> -->
+                <div class="mb-">
+                  <h2 class="mb- text-muted">History of Income Within The Day</h2>
+                </div>
+                <div class="text-muted">
+                  <p class="mb-">Date of Income Transaction: <b>{{dateincome}}</b></p>
+                  <!-- <p class="mb-"><i class="uil uil-envelope-alt me-"></i> </p>
+                  <p><i class="uil uil-phone me-"></i> FB Account: S2K Laundry Services</p>
+                  <p><i class="uil uil-phone me-"></i> Income Date 2024</p> -->
+                </div>
+              </div>
+              <hr class="my-4">
+              <div class="row">
+                <div class="col-md-8">
+                    <h5 class="font-size-15 mb-1">Payment History Transaction</h5>
+                </div>
+                <div class="col md">
+                    <!-- <h5 class="font-size-15 mb-1 ">Amount:</h5> -->
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                    <div class="col-md-4">
+                      <div class="">
+                        <p><b>Tracking_number</b></p>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4">
+                        <div class="">
+                          <p><b>Mode of Payment</b></p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <div class="">
+                        <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
+                        <p><b>Amounts</b></p>
+                      </div>
+                    </div>
+              </div>
+
+              <div class="row">
+                @for(p of payments; track p.payments) {
+                    <div class="col-md-4">
+                      <div class="">
+                        <p>{{p.Tracking_number}}</p>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4">
+                        <div class="">
+                          <p>{{p.Mode_of_Payment}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <div class="">
+                        <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
+                        <p>{{ p.AmountPayments | currency: 'PHP':'symbol' }}</p>
+                      </div>
+                    </div>
+                }
+              </div>
+
+              <div class="row mt-3">
+                <h5 class="font-size-15 mb-1">Expenses History Transaction</h5>
+                <div class="col-md-4">
+                  <div class="">
+                    <p><b>Staff Name</b></p>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="">
+                      <p><b>Description Reason</b></p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                  <div class="">
+                    <p><b></b></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                @for(e of expenses; track e.expenses) {
+                <div class="col-md-4">
+                  <div class="">
+                    <p>{{e.adminNames}}</p>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="">
+                      <p>{{e.Desc_reason}}</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                  <div class="">
+                    <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
+                    <p>{{ e.AmountExpenses | currency: 'PHP':'symbol' }}</p>
+                  </div>
+                </div>
+                }
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mx-4">
+                  <div class="mt-4">
+                    <h5 class="font-size-15 mb-1"></h5>
+                    <p></p>
+                    <p></p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mt-4">
+                    <h5 class="font-size-15 mb-1">Total Income: {{overalltotal | currency: 'PHP':'symbol'}}</h5>
+                    <!-- <p>₱ 500</p>
+                    <p>₱ 700</p> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="tal">
+                <h5></h5>
+              </div> -->
+              <div class="py-2">
+                <div class="d-print-none mt-2">
+                  <div class="float-end">
+                    <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
+                    <a class="btn btn-primary w-md" [routerLink]="['/main/reportpage/reportmain/reportview/income']">Back</a> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

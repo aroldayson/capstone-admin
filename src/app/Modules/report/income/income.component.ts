@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NgxPrintModule } from 'ngx-print';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
@@ -25,20 +25,33 @@ export class IncomeComponent implements OnInit{
   filteredData: any[] = [];
   
   constructor(
-    private admin: AdminService
+    private admin: AdminService,
+    private route: Router
   ){}
   ngOnInit(): void {
     this.admin.displayincome().subscribe((result: any) => {
       this.income = result.transactions;
       this.filteredData = this.income; 
       this.totalpayment = result.totalPayments;
-      this.totalexpense = result.totalExpense;
+      this.totalexpense = result.totalExpenses;
       this.totalincome = result.total;
       this.totalcash = result.transactions;
+      
   
       console.log('Income Data:', this.income, this.totalpayment, this.totalexpense,  this.totalincome);
     });
   }
+
+  get totalPaymentsSum(): number {
+    return this.income ? this.income.reduce((sum, item) => sum + (item.totalPayments || 0), 0) : 0;
+  }
+  get totalExpenseSum(): number {
+    return this.income ? this.income.reduce((sum, item) => sum + (item.totalExpenses || 0), 0) : 0;
+  }
+  get totalSum(): number {
+    return this.income ? this.income.reduce((sum, item) => sum + (item.total || 0), 0) : 0;
+  }
+
 
   onDateChange() {
     if (this.fromDate && this.toDate) {
@@ -66,6 +79,14 @@ export class IncomeComponent implements OnInit{
     this.totalpayment = this.filteredData.reduce((acc, i) => acc + (i.totalPayments || 0), 0);
     this.totalexpense = this.filteredData.reduce((acc, i) => acc + (i.totalExpenses || 0), 0);
     this.totalincome = this.filteredData.reduce((acc, i) => acc + (i.total || 0), 0);
+  }
+  
+  incomes(data: any){
+    localStorage.setItem('datetimeincome', data);
+    this.route.navigate([
+      '/main/reportpage/reportmain/reportview/listincome',
+    ]);
+    console.log(data);
   }
   
   
