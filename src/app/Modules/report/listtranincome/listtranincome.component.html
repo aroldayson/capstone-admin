@@ -11,6 +11,7 @@
                 </div>
                 <div class="text-muted">
                   <p class="mb-">Date of Income Transaction: <b>{{dateincome}}</b></p>
+                  <p class="mb-">Cashier in Charge: <b>{{staff}}</b></p>
                   <!-- <p class="mb-"><i class="uil uil-envelope-alt me-"></i> </p>
                   <p><i class="uil uil-phone me-"></i> FB Account: S2K Laundry Services</p>
                   <p><i class="uil uil-phone me-"></i> Income Date 2024</p> -->
@@ -26,92 +27,149 @@
                 </div>
               </div>
 
-              <div class="row mt-3">
-                    <div class="col-md-4">
+              <div class="row mt-3 mx-2">
+                    <div class="col-md-3">
                       <div class="">
                         <p><b>Tracking_number</b></p>
                       </div>
                     </div>
     
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="">
                           <p><b>Mode of Payment</b></p>
                         </div>
                     </div>
                     
-                    <div class="col-md-4">
+                    <div class="col-md-3 text-right">
                       <div class="">
                         <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
-                        <p><b>Amounts</b></p>
+                        <p><b>Amount</b></p>
                       </div>
                     </div>
+
+                    <div class="col-md-3 text-right">
+                      <div class="">
+                        <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
+                        <p><b>Total Amount</b></p>
+                      </div>
+                    </div>
+              </div>
+
+              <div class="row mx-2">
+                @for(p of payments; track p.payments) {
+                  <div class="col-12 col-sm-6 col-md-3">
+                    <div class="">
+                      <p>{{ p.Tracking_number }}</p>
+                    </div>
+                  </div>
+              
+                  <div class="col-12 col-sm-6 col-md-3">
+                    <div class="">
+                      <p>{{ p.Mode_of_Payment }}</p>
+                    </div>
+                  </div>
+              
+                  <div class="col-12 col-sm-6 col-md-3 text-right">
+                    <div class="">
+                      <p>{{ p.AmountPayments | currency: 'PHP':'symbol' }}</p>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-6 col-md-3 text-right">
+                    <div class="">
+                      <!-- <p>{{ p.AmountPayments | currency: 'PHP':'symbol' }}</p> -->
+                    </div>
+                  </div>
+                }
+              </div>
+              
+              <hr>
+              <div class="row ">
+                <!-- <div class="col-8 text-right">
+                  <div class="">
+                    <h5 class="font-size-15 mb-1"></h5>
+                    <p>9000</p>
+                  </div>
+                </div> -->
+                <div class="col-12 text-right">
+                  <div class="">
+                    <h5 class="font-size-15 mb-1"></h5>
+                    <!-- <p><b>Total Payments: {{totalpayments | currency: 'PHP':'symbol'}}</b></p> -->
+                    <p><b>{{totalpayments | currency: 'PHP':'symbol'}}</b></p>
+                  </div>
+                </div>
               </div>
 
               <div class="row">
-                @for(p of payments; track p.payments) {
-                    <div class="col-md-4">
-                      <div class="">
-                        <p>{{p.Tracking_number}}</p>
-                      </div>
-                    </div>
-    
-                    <div class="col-md-4">
-                        <div class="">
-                          <p>{{p.Mode_of_Payment}}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                      <div class="">
-                        <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
-                        <p>{{ p.AmountPayments | currency: 'PHP':'symbol' }}</p>
-                      </div>
-                    </div>
-                }
-              </div>
-
-              <div class="row mt-3">
-                <h5 class="font-size-15 mb-1">Expenses History Transaction</h5>
-                <div class="col-md-4">
+                <h5 class="font-size-15">Expenses History Transaction</h5>
+                <div class="col-md-3 mx-3">
                   <div class="">
-                    <p><b>Staff Name</b></p>
+                    <p><b>Description Reason</b></p>
                   </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="">
-                      <p><b>Description Reason</b></p>
-                    </div>
+                <div class="col-md-3">
+                  <div class="">
+                    <!-- <p><b>Staff Name</b></p> -->
+                  </div>
                 </div>
                 
-                <div class="col-md-4">
+                <div class="col-md-3">
+                  <div class="">
+                    <p><b></b></p>
+                  </div>
+                </div>
+                <div class="col-md-3">
                   <div class="">
                     <p><b></b></p>
                   </div>
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row mx-2">
                 @for(e of expenses; track e.expenses) {
-                <div class="col-md-4">
-                  <div class="">
-                    <p>{{e.adminNames}}</p>
-                  </div>
-                </div>
-
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="">
                       <p>{{e.Desc_reason}}</p>
                     </div>
                 </div>
+
+                <div class="col-md-1">
+                  <div class="">
+                    <!-- <p>{{e.adminNames}}</p> -->
+                  </div>
+                </div>
                 
-                <div class="col-md-4">
+                <div class="col-md-3 text-right">
                   <div class="">
                     <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
                     <p>{{ e.AmountExpenses | currency: 'PHP':'symbol' }}</p>
                   </div>
                 </div>
+                <div class="col-md-3">
+                  <div class="">
+                    <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
+                    <!-- <p>{{ e.AmountExpenses | currency: 'PHP':'symbol' }}</p> -->
+                  </div>
+                </div>
                 }
+              </div>
+
+              <hr>
+              <div class="row">
+                <!-- <div class="col-8 text-right">
+                  <div class="">
+                    <h5 class="font-size-15 mb-1"></h5>
+                    <p>9000</p>
+                  </div>
+                </div> -->
+                <div class="col-12 text-right">
+                  <div class="">
+                    <h5 class="font-size-15 mb-1"></h5>
+                    <!-- <p><b>Total Expenses: {{totalexpenses | currency: 'PHP':'symbol'}}</b></p> -->
+                    <p><b>{{totalexpenses | currency: 'PHP':'symbol'}}</b></p>
+                  </div>
+                </div>
               </div>
 
               <div class="row">
@@ -122,9 +180,12 @@
                     <p></p>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="mt-4">
-                    <h5 class="font-size-15 mb-1">Total Income: {{overalltotal | currency: 'PHP':'symbol'}}</h5>
+                <div class="col-md-12">
+                  <div class="mt-4 text-left">
+                    <!-- <h5 class="font-size-15 mb-1 text-right">Total Payments: {{totalpayments | currency: 'PHP':'symbol'}}</h5>
+                    <h5 class="font-size-15 mb-1 text-right">Total Expenses: {{totalexpenses | currency: 'PHP':'symbol'}}</h5> -->
+                    <!-- <hr> -->
+                    <h5 class="font-size-15 mb-1 text-right">Total Income: {{overalltotal | currency: 'PHP':'symbol'}}</h5>
                     <!-- <p>₱ 500</p>
                     <p>₱ 700</p> -->
                   </div>

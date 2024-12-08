@@ -1,106 +1,170 @@
-<div class="container bg-white">
-    <div class="row justify-content-center">
-      <div class="col-lg-12">
-        <div class="table-responsive mt-2 mb-2">
-          <div class="card">
-            <div class="card-body" id="print-section">
-              <div class="invoice-title">
-                <!-- <h4 class="float-end font-size-15">Invoice #DS0204 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4> -->
-                <div class="mb-">
-                  <h2 class="mb- text-muted">History of Discrepancy Transaction</h2>
-                </div>
-                <div class="text-muted">
-                  <!-- <p class="mb-">Date of Transaction Transaction: <b>{{dateincome}}</b></p> -->
-                  <!-- <p class="mb-"><i class="uil uil-envelope-alt me-"></i> </p>
-                  <p><i class="uil uil-phone me-"></i> FB Account: S2K Laundry Services</p>
-                  <p><i class="uil uil-phone me-"></i> Income Date 2024</p> -->
-                </div>
+<div class="container bg-white py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="table-responsive mt-2 mb-2">
+        <div class="card">
+          <div class="card-body" id="print-section">
+            <div class="invoice-title mb-4">
+              <h2 class="text-center text-muted">History of Discrepancy Within The Day</h2>
+              <div class="text-muted mt-3">
+                <p>Date of Discrepancy Transaction: <b>{{ dateincome }}</b></p>
+                <p>Cashier in Charge: <b>{{ staff }}</b></p>
               </div>
-              <hr class="my-4">
-              <div class="row">
-                <div class="col-md-8">
-                    <h5 class="font-size-15 mb-1">Expenses History Transaction</h5>
-                </div>
-                <div class="col md">
-                    <!-- <h5 class="font-size-15 mb-1 ">Amount:</h5> -->
-                </div>
+            </div>
+            <hr class="my-4">
+
+            <!-- Section: Initial Amount -->
+            <div class="mb-4">
+              <h5 class="text-muted">Initial Amount</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                  <thead class="table-light">
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th class="text-end">Amount Initial</th>
+                      <th class="col-md-1 text-center">Over All Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (i of initial; track i.initial) {
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="text-end">{{ i?.AmountInitial | currency: ' ':'symbol' }}</td>
+                      <td></td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
               </div>
-
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="mt-3">
-                    <p><b>STAFF NAME</b></p>
-                  </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="mt-3">
-                      <p><b>DESCRIPTION REASON</b></p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                  <div class="mt-3 mx-4 text-right">
-                    <!-- <h5 class="font-size-15 mb-1">Amount: </h5> -->
-                    <p class=""><b>AMOUNT</b></p>
-                  </div>
-                </div>
-
-              <div class="row">
-                <!-- @for(e of expenses; track e.expenses) { -->
-                <div class="col-md-4">
-                  <div class="">
-                    <!-- <p>{{e.Admin_lname}}</p> -->
-                  </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="mx-2">
-                      <!-- <p>{{e.Desc_reason}}</p> -->
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                  <div class="text-right">
-                    <!-- <h5 class="font-size-15 mb-1">Amount: </h5> -->
-                    <!-- <p class="">{{e.Amount | currency: 'PHP':'symbol'}}</p> -->
-                  </div>
-                </div>
-                 <!-- } -->
+              <div class="text-end mt-2">
+                <h5 class="fw-bold">{{ totalinitial | currency: ' ':'symbol' }}</h5>
               </div>
+            </div>
 
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="mt-4">
-                    <h5 class="font-size-15 mb-1"></h5>
-                    <p></p>
-                    <p></p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="mt-4 text-right">
-                    <!-- <h5 class="font-size-15 mb-1">Total Income: {{ overalltotal | currency: 'PHP':'symbol' }}</h5> -->
-                    <!-- <p>₱ 500</p>
-                    <p>₱ 700</p> -->
-                  </div>
-                </div>
-              </div>
+            <hr class="my-4">
 
-              <!-- <div class="tal">
-                <h5></h5>
-              </div> -->
-              <div class="py-2">
-                <div class="d-print-none mt-2">
-                  <div class="float-end">
-                    <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>
-                    <a class="btn btn-primary w-md" [routerLink]="['/main/reportpage/reportmain/reportview/income']">Back</a> -->
-                  </div>
-                </div>
+            <!-- Section: Payment Transaction -->
+            <div class="mb-4">
+              <h5 class="text-muted">Payment Transaction</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                  <thead class="table-light">
+                    <tr>
+                      <th></th>
+                      <th>Tracking Number</th>
+                      <th>Mode of Payment</th>
+                      <th class="text-end">Amount Payments</th>
+                      <th class="col-md-1"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (p of payments; track p.expenses) {
+                    <tr>
+                      <td></td>
+                      <td>{{ p?.Tracking_number }}</td>
+                      <td>{{ p?.Mode_of_Payment }}</td>
+                      <td class="text-end">{{ p?.AmountPayments | currency: ' ':'symbol' }}</td>
+                      <td class="col-md-1"></td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
               </div>
+              <div class="text-end mt-2">
+                <h5 class="fw-bold">{{ totalpayments | currency: ' ':'symbol' }}</h5>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Section: Expenses Transaction -->
+            <div class="mb-4">
+              <h5 class="text-muted">Expenses Transaction</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                  <thead class="table-light">
+                    <tr>
+                      <th></th>
+                      <th>Cashier in Charge</th>
+                      <th>Description Reason</th>
+                      <th class="text-end">Amount Expenses</th>
+                      <th class="col-md-1"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (e of expenses; track e.expenses) {
+                    <tr>
+                      <td></td>
+                      <td>{{ e?.adminNames }}</td>
+                      <td>{{ e?.Desc_reason }}</td>
+                      <td class="text-end">{{ e?.AmountExpenses | currency: ' ':'symbol' }}</td>
+                      <td class="col-md-1"></td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-2">
+                <h5 class="fw-bold">{{ totalexpenses | currency: ' ':'symbol' }}</h5>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Section: Remittance -->
+            <div class="mb-4">
+              <h5 class="text-muted">Remittance</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                  <thead class="table-light">
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th class="text-end">Amount Remittance</th>
+                      <th class="col-md-1"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (r of remit; track r.remit) {
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="text-end">{{ r?.AmountRemittance | currency: ' ':'symbol' }}</td>
+                      <td class="col-md-1"></td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-end mt-2">
+                <h5 class="fw-bold">{{ totalremit | currency: ' ':'symbol' }}</h5>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Section: Net Profit/Loss -->
+            <div class="text-end">
+              <h5>Net Profit/Loss</h5>
+              <h5 class="fw-bold"
+                  [ngClass]="overalltotal > 0 ? 'text-success' : 'text-danger'">
+                  {{ overalltotal < 0 ? (overalltotal * -1) : overalltotal | currency: ' ':'symbol' }}
+              </h5>
+            </div>
+
+            <!-- Footer -->
+            <div class="d-print-none mt-4 text-end">
+              <a class="btn btn-primary" [routerLink]="['/main/reportpage/reportmain/reportview/disrepancy']">Back</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

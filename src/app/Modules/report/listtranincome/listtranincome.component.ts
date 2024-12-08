@@ -19,6 +19,9 @@ export class ListtranincomeComponent implements OnInit{
   expenses: any;
   overalltotal: any;
   dateincome: any;
+  totalpayments: any;
+  totalexpenses: any;
+  staff: any;
   constructor(
     private admin: AdminService,
     private route: Router
@@ -27,8 +30,11 @@ export class ListtranincomeComponent implements OnInit{
     this.admin.hisdisplayincome(this.date_id).subscribe((result: any) => {
       this.payments = result.transactionPayments;
       this.expenses = result.transactionExpenses;
+      this.totalpayments = result.totalPayments;
+      this.totalexpenses = result.totalExpense;
       this.overalltotal = result.total;
       this.dateincome = result.transactionPayments[0].transactionDate;
+      this.staff = result.transactionExpenses[0].adminNames;
       console.log(this.payments,this.expenses,this.overalltotal)
     });
   }

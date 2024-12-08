@@ -62,9 +62,10 @@ export class DicrepancyComponent implements OnInit {
   }
 
   discrepany(id: any){
-    localStorage.setItem('Categ_ID', id);
+    localStorage.setItem('datetimeincome', id);
     this.route.navigate([
       '/main/reportpage/reportmain/reportview/listdisrepancy',
     ]);
+    console.log(id)
   }
 }

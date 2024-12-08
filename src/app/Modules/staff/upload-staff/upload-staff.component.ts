@@ -85,7 +85,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
       const formData = new FormData();
       formData.append('Admin_image', this.selectedFile, this.selectedFile.name);
     
-      this.http.post(`http://10.0.110.205:8000/api/update-profile-image/${this.staff_id.id}`, formData)
+      this.http.post(`http://localhost:8000/api/update-profile-image/${this.staff_id.id}`, formData)
         .subscribe(
           (response: any) => {
             Swal.fire({

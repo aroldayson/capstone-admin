@@ -1,6 +1,28 @@
-<div class="mt-4 mb-4">
+<div class="mt-4 mb-1">
   <div class="row justify-content-start">
-    <div class="col-6 col-sm-4 col-md-2 mb-3">
+    <div class="col-6 col-sm-4 col-md-2 mb-">
+      <button
+        type="submit"
+        class="btn btn-nav btn-block active"
+        [routerLink]="['/main/tansactionpage/main/view-tran/viewtransac']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        DAILY 
+      </button>
+    </div>
+    <div class="col-6 col-sm-4 col-md-2 mb-">
+      <button
+        type="submit"
+        class="btn btn-nav btn-block active"
+        [routerLink]="['/main/tansactionpage/main/view-tran/cashdetails']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        CASH DETAILS
+      </button>
+    </div>
+    <!-- <div class="col-6 col-sm-4 col-md-2 mb-">
       <button
         type="submit"
         class="btn btn-nav btn-block active"
@@ -10,8 +32,8 @@
       >
         PAID
       </button>
-    </div>
-    <div class="col-6 col-sm-4 col-md-2 mb-3">
+    </div> -->
+    <!-- <div class="col-6 col-sm-4 col-md-2 mb-3">
       <button
         type="submit"
         class="btn btn-nav btn-block"
@@ -21,8 +43,8 @@
       >
         UNPAID
       </button>
-    </div>
-    <div class="col-6 col-sm-4 col-md-2 mb-3">
+    </div> -->
+    <div class="col-7 col-sm-7 col-md-3 mb-3">
       <button
         type="submit"
         class="btn btn-nav btn-block"
@@ -30,7 +52,7 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
       >
-        REMITTANCE
+        REMITTANCE APPROVE
       </button>
     </div>
     <!-- <div class="col-6 col-sm-4 col-md-2 mb-3">

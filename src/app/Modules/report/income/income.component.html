@@ -82,7 +82,12 @@
                     <td class="text-right">{{i.totalPayments | currency: ' ':'symbol'}}</td>
                     <!-- <td>{{i.initialAmount}}</td> -->
                     <td class="text-danger text-right">{{i.totalExpenses | currency: ' ':'symbol'}}</td>
-                    <td class="text-success text-right">{{i.total | currency: ' ':'symbol'}}</td>
+                    <!-- <td class="text-success text-right">{{i.total | currency: ' ':'symbol'}}</td> -->
+                    <th class="text-right" 
+                        [ngClass]="i.total > 0 ? 'text-success' : 'text-danger'">
+                      {{ (i.total < 0 ? (i.total * -1 | number:'1.2-2') : (i.total | number:'1.2-2')) }}
+                    </th>
+
                   </tr>
                 }
               </tbody>

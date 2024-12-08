@@ -72,13 +72,13 @@
                   <th class="text-right">Total Collection</th>
                   <th class="text-right">Expenditure</th>
                   <th class="text-right">Remittance</th>
-                  <th class="text-right">Net Profit/Loss</th>
+                  <th class="text-right">Net Profit</th>
                 </tr>
               </thead>
               <tbody>
                 @for(d of filteredData; track d.Staff_ID){
-                  <tr class="text-center" (click)="discrepany(d.name)">
-                    <td>{{ d.remitYear }}-{{d.remitMonth }}-{{ d.remitDay }} </td>
+                  <tr class="text-center" (click)="discrepany(d.transactionDate)">
+                    <td>{{ d.transactionDate }}  {{ d.transactionDates}}</td>
                     <td>{{d.name}}</td>
                     <td class="text-right">{{d.initialAmount | currency: ' ':'symbol'}}</td>
                     <td class="text-success text-right">{{d.paymentAmount | currency: ' ':'symbol'}}</td>

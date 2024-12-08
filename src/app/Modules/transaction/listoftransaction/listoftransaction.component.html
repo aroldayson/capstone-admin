@@ -1,0 +1,100 @@
+<div class="container my-3" id="print-section">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row mb-4">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-4 mt-2">
+                    <h3 class="fw-bold">All Transaction</h3>
+                  </div>
+                  <div class="col-md-3 mt-2">
+                    <button
+                      class="btn btn-primary"
+                      [routerLink]="['/main/tansactionpage/main/view-tran/viewtransac']"
+                    >
+                      Daily Transaction
+                    </button>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <div class="form-group mt-2">
+                      <select
+                        id="userSelect"
+                        class="form-control"
+                        [(ngModel)]="keyword"
+                      >
+                        <option value="" selected>Select Cashier</option>
+                        <ng-container *ngFor="let c of staff">
+                          <option [value]="c.Cust_fname + ' ' + c.Cust_lname">
+                            {{ c.Cust_fname }} {{ c.Cust_lname }}
+                          </option>
+                        </ng-container>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-12 col-lg-5 mt-2 d-flex justify-content-end">
+                <div class="mx-5 form-group">
+                  <div class="row">
+                    <div class="col">
+                      <div class="d-flex form-inputs">
+                        <input
+                          class="form-control"
+                          type="text"
+                          placeholder="Search Transaction..."
+                          [(ngModel)]="keyword"
+                        />
+                        <!-- <i class="bx bx-search mt-2"></i> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Responsive Scrollable Table -->
+            <div
+              class="table-responsive"
+              style="max-height: 450px; overflow-y: auto; overflow-x: auto;"
+            >
+              <table class="table table-bordered table-hover rounded">
+                <thead class="sticky-top bg-light">
+                  <tr class="text-center">
+                    <th>Transaction Number</th>
+                    <th>Customer Name</th>
+                    <th>Transaction Date</th>
+                    <th>Paid</th>
+                    <th>Unpaid</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (t of trans | searchfilter: keyword; track t.Transac_ID) {
+                  <tr class="text-center">
+                    <td>{{ t.Tracking_number }}</td>
+                    <td>{{ t.Customers }}</td>
+                    <td>{{ t.Transac_datetime }}</td>
+                    <td class="text-right">{{ t.totalprice }}</td>
+                    <td class="text-right">{{ t.totalprice }}</td>
+                  </tr>
+                  }
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th class="text-right">Total Price</th>
+                    <th class="text-right">{{ totalprice }}</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

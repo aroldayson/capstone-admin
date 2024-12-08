@@ -156,6 +156,22 @@ export class ViewDashComponent implements OnInit {
     }
   }
 
+  updateChartDataChart(date: Date | null) {
+    // Format the date if provided
+    const formattedDate = date 
+      ? date.toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' }) 
+      : '';
+  
+    // Update the chart if totals exist
+    if (this.totals) {
+      this.config.data.datasets[0].data = [this.totals.gcash, this.totals.bpi, this.totals.cash];
+      this.chart.update(); 
+    }
+  
+    console.log('Formatted Date:', formattedDate); // Debug log if needed
+  }
+  
+
   formatDate(date: Date): string {
     const options: Intl.DateTimeFormatOptions = {
       month: 'long',

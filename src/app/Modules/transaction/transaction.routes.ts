@@ -9,6 +9,10 @@ import { ViewRemitComponent } from './view-remit/view-remit.component';
 import { ViewHisRemitComponent } from './view-his-remit/view-his-remit.component';
 import { TransactionhistoryComponent } from './transactionhistory/transactionhistory.component';
 import { ExpenseshistoryComponent } from './expenseshistory/expenseshistory.component';
+import { AlltransactionComponent } from './alltransaction/alltransaction.component';
+import { CashdetailsComponent } from './cashdetails/cashdetails.component';
+import { RemittanceComponent } from './remittance/remittance.component';
+import { ListoftransactionComponent } from './listoftransaction/listoftransaction.component';
 export const transactionRoute: Routes = [
   {
     path: 'main',
@@ -18,19 +22,29 @@ export const transactionRoute: Routes = [
         path: 'view-tran',
         component: ViewTransactionComponent,
         children: [
-          { path: 'view-paid', component: TransacPaidComponent },
-          { path: 'view-unpaid', component: TransacUnpaidComponent },
-          { path: 'view-receipt', component: ViewReceiptComponent },
-          { path: 'expensesview', component: ViewExpenseComponent },
+          { path: 'viewtransac', component: AlltransactionComponent },
+          { path: 'cashdetails', component: CashdetailsComponent,
+            children:[
+              {path: 'remit', component: RemittanceComponent },
+              {path: '', redirectTo: 'remit', pathMatch: 'full' },
+            ]
+           },
+          { path: 'remit', component: RemittanceComponent},
+          // { path: 'view-paid', component: TransacPaidComponent },
+          // { path: 'view-unpaid', component: TransacUnpaidComponent },
+          // { path: 'view-receipt', component: ViewReceiptComponent },
+          // { path: 'expensesview', component: ViewExpenseComponent },
           { path: 'remittanceview', component: ViewRemitComponent },
           { path: 'viewremit-his', component: ViewHisRemitComponent },
           { path: 'alltransaction', component: TransactionhistoryComponent },
           { path: 'allexpenses', component: ExpenseshistoryComponent },
-          { path: '', redirectTo: 'view-paid', pathMatch: 'full' },
+          { path: 'listtransaction', component: ListoftransactionComponent },
+          { path: '', redirectTo: 'viewtransac', pathMatch: 'full' },
         ],
       },
       { path: '', redirectTo: 'view-tran', pathMatch: 'full' },
     ],
   },
+  // { path: 'viewtransac', component: AlltransactionComponent },
   { path: '', redirectTo: 'main', pathMatch: 'full' },
 ];

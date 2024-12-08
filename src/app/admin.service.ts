@@ -215,6 +215,18 @@ export class AdminService {
     return this.http.get(this.Apiurl + 'Transadisplay', { headers });
   }
 
+  TransactiondisplayAll() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'TransactiondisplayAll', { headers });
+  }
+
+  TransactiondisplayAlls() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'TransactiondisplayAlls', { headers });
+  }
+
   approvetrans(id: any) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -251,6 +263,12 @@ export class AdminService {
     return this.http.get(`${this.Apiurl}DisplayAllExpenses/${id}`, { headers });
   }
 
+  customerdisplays() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'customerdisplay', { headers });
+  }
+
   // EXPENSES
   displayexpenses() {
     const token = localStorage.getItem('token');
@@ -274,5 +292,17 @@ export class AdminService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.Apiurl}hisdisplayexpenses/${id}`, { headers });
+  }
+
+  hisdisplaydicsripancy(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}hisdisplaydiscripancy/${id}`, { headers });
+  }
+
+  collectable() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'collectable');
   }
 }

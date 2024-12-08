@@ -102,3 +102,20 @@ canvas {
     padding: 8px;
   }
 }
+
+.chart-container {
+  height: 260px; /* Adjust the height based on your needs */
+  position: relative;
+}
+
+#startDate {
+  max-width: 200px;
+}
+
+.bg-light {
+  background-color: #f8f9fa; /* Bootstrap's light gray */
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
