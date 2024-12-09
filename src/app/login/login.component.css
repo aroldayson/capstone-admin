@@ -143,15 +143,15 @@ input[type="submit"]:active {
 }
 
 .basket-left {
-  width: 120px;
-  bottom: 20px;
+  width: 140px;
+  bottom: 25px;
   left: 10%;
   animation-delay: 0.5s;
 }
 
 .basket-right {
   width: 140px;
-  bottom: 15px;
+  bottom: 25px;
   right: 10%;
   animation-delay: 1s;
 }
