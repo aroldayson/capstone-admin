@@ -21,7 +21,7 @@ export class ListoftransactionComponent implements OnInit{
     private admin: AdminService
   ){}
   ngOnInit(): void {
-    this.admin.customerdisplays().subscribe(
+    this.admin.displaystaff().subscribe(
       (result: any) => {
         this.staff = result; 
         console.log(this.staff); 

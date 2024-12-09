@@ -49,7 +49,7 @@
                   class="form-control"
                   type="text"
                   name="email"
-                  formControlName="Cust_address"
+                  formControlName="Cust_lname"
                   placeholder="Enter Your Email"
                 />
               </div>
@@ -61,7 +61,7 @@
                   class="form-control"
                   type="text"
                   name="email"
-                  formControlName="Cust_address"
+                  formControlName="Cust_fname"
                   placeholder="Enter Your Email"
                 />
               </div>
@@ -73,7 +73,7 @@
                   class="form-control"
                   type="text"
                   name="email"
-                  formControlName="Cust_address"
+                  formControlName="Cust_mname"
                   placeholder="Enter Your Email"
                 />
               </div>
@@ -89,25 +89,31 @@
               placeholder="Enter Your Email"
             />
           </div>
-          <div class="form-group">
-            <label><b>Email:</b></label>
-            <input
-              class="form-control"
-              type="text"
-              name="email"
-              formControlName="Cust_address"
-              placeholder="Enter Your Email"
-            />
-          </div>
-          <div class="form-group">
-            <label><b>Phone_no:</b></label>
-            <input
-              class="form-control"
-              type="text"
-              name="email"
-              formControlName="Cust_phoneno"
-              placeholder="Enter Your Email"
-            />
+          <div class="row">
+            <div class="col md">
+              <div class="form-group">
+                <label><b>Email:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  formControlName="Cust_email"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
+            <div class="col md">
+              <div class="form-group">
+                <label><b>Phone_no:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  formControlName="Cust_phoneno"
+                  placeholder="Enter Your Email"
+                />
+              </div>
+            </div>
           </div>
 
 
@@ -127,39 +133,44 @@
             ></i>
           </div> -->
 
-          <div class="form-group position-relative">
-            <label><b>New Password:</b></label>
-            <input
-              [type]="hideNewPassword ? 'text' : 'password'"
-              class="form-control"
-              formControlName="Cust_password"
-              placeholder="Enter New Password"
-            />
-            <i
-              class="fa"
-              [class.fa-eye]="hideNewPassword"
-              [class.fa-eye-slash]="!hideNewPassword"
-              (click)="togglePasswordVisibilitys()"
-            ></i>
-          </div>
-
-          <div class="form-group position-relative">
-            <label><b>Confirm Password:</b></label>
-            <input
-              [type]="hideConfirmPassword ? 'text' : 'password'"
-              class="form-control"
-              formControlName="Cust_ConfirmPassword"
-              placeholder="Confirm New Password"
-         
-            />
-            <i
-              class="fa"
-              [class.fa-eye]="hideConfirmPassword"
-              [class.fa-eye-slash]="!hideConfirmPassword"
-              (click)="togglePasswordVisibilityss()"
-            ></i>
-            <div *ngIf="passwordsDoNotMatch()" class="invalid-feedback">
-              Passwords do not match.
+          <div class="row">
+            <div class="col md">
+              <div class="form-group position-relative">
+                <label><b>New Password:</b></label>
+                <input
+                  [type]="hideNewPassword ? 'text' : 'password'"
+                  class="form-control"
+                  formControlName="Cust_password"
+                  placeholder="Enter New Password"
+                />
+                <i
+                  class="fa"
+                  [class.fa-eye]="hideNewPassword"
+                  [class.fa-eye-slash]="!hideNewPassword"
+                  (click)="togglePasswordVisibilitys()"
+                ></i>
+              </div>
+            </div>
+            <div class="col md">
+              <div class="form-group position-relative">
+                <label><b>Confirm Password:</b></label>
+                <input
+                  [type]="hideConfirmPassword ? 'text' : 'password'"
+                  class="form-control"
+                  formControlName="Cust_ConfirmPassword"
+                  placeholder="Confirm New Password"
+             
+                />
+                <i
+                  class="fa"
+                  [class.fa-eye]="hideConfirmPassword"
+                  [class.fa-eye-slash]="!hideConfirmPassword"
+                  (click)="togglePasswordVisibilityss()"
+                ></i>
+                <div *ngIf="passwordsDoNotMatch()" class="invalid-feedback">
+                  Passwords do not match.
+                </div>
+              </div>
             </div>
           </div>
 

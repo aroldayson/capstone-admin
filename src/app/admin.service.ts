@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AdminService {
   // url = 'http://localhost/admin/';
   Apiurl = 'http://localhost:8000/api/';
-  // Apiurl = 'http://10.0.110.205:8000/api/';
+  // Apiurl = 'http://10.0.110.195:8000/api/';
 
   constructor(private http: HttpClient) {}
 
@@ -263,10 +263,10 @@ export class AdminService {
     return this.http.get(`${this.Apiurl}DisplayAllExpenses/${id}`, { headers });
   }
 
-  customerdisplays() {
+  displaystaff() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(this.Apiurl + 'customerdisplay', { headers });
+    return this.http.get(this.Apiurl + 'displaystaff', { headers });
   }
 
   // EXPENSES

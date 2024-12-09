@@ -50,6 +50,10 @@ export class EditprofCustomerComponent implements OnInit {
   }
 
   updateaccount = new FormGroup({
+    Cust_lname: new FormControl(null),
+    Cust_fname: new FormControl(null),
+    Cust_mname: new FormControl(null),
+    Cust_email: new FormControl(null),
     Cust_address: new FormControl(null),
     Cust_phoneno: new FormControl(null),
     Cust_OldPassword: new FormControl(null),
@@ -76,6 +80,18 @@ export class EditprofCustomerComponent implements OnInit {
       );
       this.updateaccount.controls['Cust_OldPassword'].setValue(
         this.cust.Cust_password
+      );
+      this.updateaccount.controls['Cust_lname'].setValue(
+        this.cust.Cust_lname
+      );
+      this.updateaccount.controls['Cust_mname'].setValue(
+        this.cust.Cust_fname
+      );
+      this.updateaccount.controls['Cust_fname'].setValue(
+        this.cust.Cust_mname
+      );
+      this.updateaccount.controls['Cust_email'].setValue(
+        this.cust.Cust_email
       );
     });
   }
