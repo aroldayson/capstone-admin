@@ -25,7 +25,7 @@
           <div class="form-group mt-4">
             <label>Customer Name:</label><br />
             <h4>
-              {{ cust.Cust_fname }} {{ cust.Cust_mname }} {{ cust.Cust_lname }}
+              {{ cust.Cust_lname }} {{ cust.Cust_fname }} {{ cust.Cust_mname }}
             </h4>
           </div>
           <div class="form-group">
@@ -40,7 +40,6 @@
       <div class="account-section personal-details">
         <p class="h2 text-center fw-bold">EDIT ACCOUNT</p>
         <form [formGroup]="updateaccount" (submit)="update()">
-
           <div class="row">
             <div class="col md">
               <div class="form-group">
@@ -116,7 +115,6 @@
             </div>
           </div>
 
-
           <!-- <div class="form-group position-relative">
             <label><b>Current Password:</b></label>
             <input
@@ -159,7 +157,6 @@
                   class="form-control"
                   formControlName="Cust_ConfirmPassword"
                   placeholder="Confirm New Password"
-             
                 />
                 <i
                   class="fa"

@@ -26,6 +26,10 @@ export class UpdatePriceComponent implements OnInit {
   categoryForm = new FormGroup({
     Category: new FormControl(null, Validators.required),
     Price: new FormControl(0.0, Validators.required),
+    Minimum_weight: new FormControl(0.0, [
+      Validators.required,
+      Validators.min(0),
+    ]),
   });
 
   ngOnInit(): void {
@@ -54,6 +58,9 @@ export class UpdatePriceComponent implements OnInit {
       if (this.categ) {
         this.categoryForm.controls['Category'].setValue(this.categ.Category);
         this.categoryForm.controls['Price'].setValue(this.categ.Price);
+        this.categoryForm.controls['Minimum_weight'].setValue(
+          this.categ.Minimum_weight
+        );
       }
     });
   }
@@ -73,12 +80,9 @@ export class UpdatePriceComponent implements OnInit {
             'Success!',
             'Laundry Category Price details updated successfully.',
             'success'
-          ).then(() => {
-          });
+          ).then(() => {});
           this.clear();
-          this.route.navigate([
-            '/main/pricemanagementpage/pricemgtmain/pricemgtview/add',
-          ]);
+          this.route.navigate(['/main/pricemanagementpage']);
         },
         (error) => {
           console.error('Update failed', error);

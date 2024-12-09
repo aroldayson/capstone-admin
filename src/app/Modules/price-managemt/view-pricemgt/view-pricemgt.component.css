@@ -1,106 +1,128 @@
-/* General Styling for Card and Layout */
+/* General Layout */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+#price-management-section {
+  overflow-x: hidden; /* Ensure no horizontal overflow in the section */
+}
+
 #price-management-section .card {
   margin-top: 20px;
 }
 
-#price-management-section .table-responsive {
-  margin-top: 20px;
-  max-height: 68vh;
-  overflow-y: auto;
-}
-
-#price-management-section h3.fw-bold {
-  line-height: 45px; /* Match the input field height */
+h3.fw-bold {
+  line-height: 1.5;
   margin: 0;
 }
 
-.form-inputs {
+/* Search Bar Styling */
+.search-bar {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.form-inputs .form-control {
-  height: 45px;
-  padding-right: 35px; /* Avoid overlap with the icon */
-}
-
-.form-inputs i {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #555;
-}
-
-.form-inputs .form-control:focus {
-  box-shadow: none;
-  border: 1px solid #000;
-}
-
-/* Table Styling */
-.table {
+.search-input {
   width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
+  height: 45px;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s;
 }
 
-.table th,
-.table td {
-  padding: 0.75rem;
-  vertical-align: middle;
-  border-top: 1px solid #dee2e6;
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.table thead th {
-  vertical-align: bottom;
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #dee2e6;
+.search-icon {
+  position: absolute;
+  right: 15px;
+  font-size: 20px;
+  color: #777;
 }
 
-.table tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
+/* Scrollable Cards */
+.card-container {
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  padding-right: 10px;
 }
 
-.table tbody tr:hover {
-  background-color: #f1f1f1;
+.card-container::-webkit-scrollbar {
+  width: 6px;
 }
 
-/* Button Styles */
-.btn-custom-sm {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
+.card-container::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 3px;
 }
 
-/* Child Router Outlet Styling */
-#price-management-section .col-md-3 .card {
-  margin-top: 20px;
+/* Price Card Styling */
+.price-card {
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.price-card:hover {
+  transform: scale(1.02);
+}
+
+.price-card-body {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box; /* Include padding and border in total width */
+}
+
+.details {
+  flex: 1;
+}
+
+.actions button {
+  margin-right: 10px;
+}
+
+.actions button:last-child {
+  margin-right: 0;
+}
+
+/* Button Styling */
+.btn {
+  border-radius: 25px;
+  padding: 8px 15px;
+  font-size: 14px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .table thead {
-    display: none;
+  .price-card-body {
+    flex-direction: column;
+    text-align: center;
   }
-  .table,
-  .table tbody,
-  .table tr,
-  .table td {
-    display: block;
-    width: 100%;
+
+  .actions {
+    margin-top: 10px;
   }
-  .table td {
-    border: none;
-    position: relative;
-    padding-left: 50%;
-    text-align: right;
-  }
-  .table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 50%;
-    padding-left: 0.75rem;
-    font-weight: bold;
-    text-align: left;
+
+  .search-bar {
+    flex-direction: column;
   }
 }

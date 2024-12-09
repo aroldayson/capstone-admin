@@ -1,9 +1,25 @@
-/* body {
+/* General Styles */
+body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
 }
 
+.hero {
+  height: 100vh;
+  background: #5988e2;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Wrapper Styles */
 .wrapper {
   display: flex;
   align-items: center;
@@ -13,6 +29,7 @@
   padding: 20px;
 }
 
+/* Form Container */
 #formContent {
   background: #fff;
   padding: 20px;
@@ -23,12 +40,14 @@
   text-align: center;
 }
 
+/* Headings */
 h2.active {
   color: #0d0d0d;
   padding-bottom: 15px;
   border-bottom: 2px solid #3e5e89;
 }
 
+/* Input Fields */
 input[type="text"],
 input[type="password"] {
   background-color: #f6f6f6;
@@ -39,6 +58,7 @@ input[type="password"] {
   width: 80%;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
+  padding-right: 40px; /* Space for password toggle icon */
 }
 
 input[type="text"]:focus,
@@ -47,6 +67,7 @@ input[type="password"]:focus {
   border-bottom: 2px solid #3e5e89;
 }
 
+/* Submit Button */
 input[type="submit"] {
   background-color: #3e5e89;
   color: white;
@@ -66,11 +87,37 @@ input[type="submit"]:active {
   transform: scale(0.95);
 }
 
-#icon {
-  width: 30%;
-  margin-bottom: 20px;
+/* Password Input */
+.password-input {
+  background-color: #f6f6f6;
+  border: 2px solid #f6f6f6;
+  color: #0d0d0d;
+  padding: 15px 40px 15px 20px; /* Padding for icon space */
+  margin: 10px 0;
+  width: 100%; /* Full-width input */
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
 }
 
+.password-input:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #3e5e89;
+}
+
+/* Password Toggle Icon Inside Input */
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #000;
+  z-index: 10;
+}
+
+/* Error Messages */
 .text-danger {
   font-size: 14px;
   color: rgb(247, 76, 76);
@@ -80,6 +127,7 @@ input[type="submit"]:active {
   text-align: center;
 }
 
+/* Fade-In Animation */
 .fadeInDown {
   animation: fadeInDown 1s both;
 }
@@ -95,46 +143,7 @@ input[type="submit"]:active {
   }
 }
 
-@media screen and (max-width: 768px) {
-  #formContent {
-    width: 95%;
-    padding: 20px;
-  }
-}
-
-.form-outline {
-  position: relative;
-}
-
-.form-outline .form-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0.5rem;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-.form-outline input:focus ~ .form-label,
-.form-outline input:not(:placeholder-shown) ~ .form-label {
-  top: -1rem;
-  left: 0;
-  font-size: 0.75rem;
-  color: #007bff;
-} */
-.hero {
-  height: 100vh;
-  background: #5988e2;
-  color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
+/* Floating Animation for Decorative Baskets */
 .laundry-basket {
   position: absolute;
   z-index: 1;
@@ -155,8 +164,21 @@ input[type="submit"]:active {
   right: 10%;
   animation-delay: 1s;
 }
-.hero::before, .hero::after {
-  content: '';
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+/* Hero Background Effects */
+.hero::before,
+.hero::after {
+  content: "";
   position: absolute;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
@@ -178,133 +200,8 @@ input[type="submit"]:active {
   right: -100px;
   animation-duration: 8s;
 }
-@media (max-width: 576px) {
-  .basket-left, .basket-right {
-    width: 80px;
-  }
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(20px);
-  }
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-}
-
-#formContent {
-  background: #fff;
-  padding: 20px;
-  width: 90%;
-  max-width: 450px;
-  border-radius: 10px;
-  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
-  text-align: center;
-}
-
-h2.active {
-  color: #0d0d0d;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #3e5e89;
-}
-
-input[type="text"],
-input[type="password"] {
-  background-color: #f6f6f6;
-  border: 2px solid #f6f6f6;
-  color: #0d0d0d;
-  padding: 15px 20px;
-  margin: 10px 0;
-  width: 80%;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-  background-color: #fff;
-  border-bottom: 2px solid #3e5e89;
-}
-
-input[type="submit"] {
-  background-color: #3e5e89;
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 10px 30px 0 rgba(62, 94, 137, 0.4);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #2e5e89;
-}
-
-input[type="submit"]:active {
-  transform: scale(0.95);
-}
-
-#icon {
-  width: 30%;
-  margin-bottom: 20px;
-}
-
-.text-danger {
-  font-size: 14px;
-  color: rgb(247, 76, 76);
-}
-
-.text-center {
-  text-align: center;
-}
-
-.fadeInDown {
-  animation: fadeInDown 1s both;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Responsive Design */
 @media screen and (max-width: 768px) {
   #formContent {
     width: 95%;
@@ -312,23 +209,9 @@ input[type="submit"]:active {
   }
 }
 
-.form-outline {
-  position: relative;
-}
-
-.form-outline .form-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0.5rem;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-.form-outline input:focus ~ .form-label,
-.form-outline input:not(:placeholder-shown) ~ .form-label {
-  top: -1rem;
-  left: 0;
-  font-size: 0.75rem;
-  color: #007bff;
+@media (max-width: 576px) {
+  .basket-left,
+  .basket-right {
+    width: 80px;
+  }
 }

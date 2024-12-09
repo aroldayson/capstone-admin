@@ -44,57 +44,6 @@ export class ViewHistoryComponent implements OnInit {
     });
   }
 
-  dltbtn(id: any): void {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success mx-2',
-        cancelButton: 'btn btn-danger',
-      },
-      buttonsStyling: false,
-    });
-
-    swalWithBootstrapButtons
-      .fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          this.admin.deletecustomer(id).subscribe(
-            (response) => {
-              swalWithBootstrapButtons.fire({
-                title: 'Deleted!',
-                text: 'The staff member has been deleted.',
-                icon: 'success',
-              });
-              this.route.navigate(['/main/customertpage/main/view']);
-              this.cust = this.cust.filter((cust: any) => cust.Admin_ID !== id); // Remove deleted staff from the list
-              // this.filteredStaff = this.cust; // Update the filtered list
-            },
-            (error) => {
-              console.error('Delete failed', error);
-              swalWithBootstrapButtons.fire({
-                title: 'Error!',
-                text: 'There was an error deleting the staff member.',
-                icon: 'error',
-              });
-            }
-          );
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire({
-            title: 'Cancelled',
-            text: 'Your staff member is safe :)',
-            icon: 'error',
-          });
-        }
-      });
-  }
-
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File;
     this.previewImage();

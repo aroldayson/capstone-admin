@@ -1,71 +1,81 @@
-<div class="text-right mb-3">
-  <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
-  <a class="btn btn-primary w-md" [routerLink]="['/main/pricemanagementpage/pricemgtview']">Back</a> 
-</div>
-<form [formGroup]="categoryForm" (submit)="save()">
-  <div class="bg-white p-4">
-    <h4 class="text-center mb-4"><b>ADD CATEGORY</b></h4>
-    <div>
-      <div class="row mb-3">
-        <div class="col-md-12">
-          <div class="form-outline">
-            <input
-              type="text"
-              id="form7Example1"
-              class="form-control"
-              formControlName="Category"
-              placeholder="Enter laundry name"
-            />
-            <label class="form-label" for="form7Example1">Laundry Name</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-12">
-          <div class="form-outline">
-            <input
-              type="number"
-              id="form7Example2"
-              class="form-control"
-              formControlName="Price"
-              placeholder="Price per kilogram"
-              [min]="0"
-              (input)="onNumberInput($event)"
-            />
-            <label class="form-label" for="form7Example2">Per Kilograms</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-12">
-          <div class="form-outline">
-            <input
-              type="number"
-              id="form7Example2"
-              class="form-control"
-              formControlName="Minimum_weight"
-              placeholder="Minimum_weight"
-              [min]="0"
-              (input)="onNumberInput($event)"
-            />
-            <label class="form-label" for="form7Example2">Mininum Weight</label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <button
-            type="button"
-            class="btn btn-secondary w-100 mb-3"
-            (click)="clear()"
-          >
-            Clear
-          </button>
-        </div>
-        <div class="col-md-6">
-          <button type="submit" class="btn btn-primary w-100 mb-3">Save</button>
+<div class="container py-5">
+  <div class="text-end mb-4">
+    <a
+      class="btn btn-primary"
+      [routerLink]="['/main/pricemanagementpage/pricemgtview']"
+      >BACK</a
+    >
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h4 class="text-center mb-4"><b>ADD CATEGORY</b></h4>
+          <form [formGroup]="categoryForm" (submit)="save()">
+            <!-- Laundry Name -->
+            <div class="mb-3">
+              <label for="form7Example1" class="form-label">Laundry Name</label>
+              <input
+                type="text"
+                id="form7Example1"
+                class="form-control"
+                formControlName="Category"
+                placeholder="Enter laundry name"
+              />
+            </div>
+
+            <!-- Price Per Kilogram -->
+            <div class="mb-3">
+              <label for="form7Example2" class="form-label"
+                >Per Kilograms</label
+              >
+              <input
+                type="number"
+                id="form7Example2"
+                class="form-control"
+                formControlName="Price"
+                placeholder="Price per kilogram"
+                [min]="0"
+                (input)="onNumberInput($event)"
+              />
+            </div>
+
+            <!-- Minimum Weight -->
+            <div class="mb-3">
+              <label for="form7Example3" class="form-label"
+                >Minimum Weight</label
+              >
+              <input
+                type="number"
+                id="form7Example3"
+                class="form-control"
+                formControlName="Minimum_weight"
+                placeholder="Minimum weight"
+                [min]="0"
+                (input)="onNumberInput($event)"
+              />
+            </div>
+
+            <!-- Buttons -->
+            <div class="row g-3">
+              <div class="col-6">
+                <button
+                  type="button"
+                  class="btn btn-secondary w-100"
+                  (click)="clear()"
+                >
+                  Clear
+                </button>
+              </div>
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary w-100">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-</form>
+</div>

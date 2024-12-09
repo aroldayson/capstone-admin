@@ -1,10 +1,11 @@
-<div class="text-right mb-3">
-  <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
-  <a class="btn btn-primary w-md" [routerLink]="['/main/staffpage/staffview']">Back</a> 
+<div class="text-right mt-3">
+  <a class="btn btn-primary" [routerLink]="['/main/staffpage/staffview']"
+    >BACK</a
+  >
 </div>
 <div class="container bg-white p-4 rounded">
   <h4 class="text-center mb-4"><b>ADD STAFF</b></h4>
-  <form [formGroup]="addstaff" (ngSubmit)="insertStaff()">
+  <form [formGroup]="addstaff" (submit)="insertStaff()">
     <!-- Last Name -->
     <div class="form-outline mb-3">
       <input

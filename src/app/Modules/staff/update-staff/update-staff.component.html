@@ -1,11 +1,12 @@
-<div class="text-right mb-3">
-  <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
-  <a class="btn btn-primary w-md" [routerLink]="['/main/staffpage/staffview']">Back</a> 
+<div class="text-right mt-3">
+  <a class="btn btn-primary" [routerLink]="['/main/staffpage/staffview']"
+    >BACK</a
+  >
 </div>
-
-<div class="bg-white p-4 rounded">
-  <h4 class="text-center mb-3"><b>EDIT STAFF</b></h4>
+<div class="container bg-white p-4 rounded">
+  <h4 class="text-center mb-4"><b>EDIT STAFF</b></h4>
   <form [formGroup]="updatestaff" (submit)="update()">
+    <!-- Last Name -->
     <div class="form-outline mb-3">
       <input
         type="text"
@@ -15,8 +16,18 @@
         placeholder=""
       />
       <label class="form-label" for="admin_lname">Last Name</label>
+      <div
+        *ngIf="
+          updatestaff.get('Admin_lname')?.invalid &&
+          updatestaff.get('Admin_lname')?.touched
+        "
+        class="text-danger"
+      >
+        Last name is required.
+      </div>
     </div>
 
+    <!-- First Name -->
     <div class="form-outline mb-3">
       <input
         type="text"
@@ -26,8 +37,18 @@
         placeholder=""
       />
       <label class="form-label" for="admin_fname">First Name</label>
+      <div
+        *ngIf="
+          updatestaff.get('Admin_fname')?.invalid &&
+          updatestaff.get('Admin_fname')?.touched
+        "
+        class="text-danger"
+      >
+        First name is required.
+      </div>
     </div>
 
+    <!-- Middle Name -->
     <div class="form-outline mb-3">
       <input
         type="text"
@@ -39,6 +60,7 @@
       <label class="form-label" for="admin_mname">Middle Name</label>
     </div>
 
+    <!-- Address -->
     <div class="form-outline mb-3">
       <input
         type="text"
@@ -48,8 +70,18 @@
         placeholder=""
       />
       <label class="form-label" for="address">Address</label>
+      <div
+        *ngIf="
+          updatestaff.get('Address')?.invalid &&
+          updatestaff.get('Address')?.touched
+        "
+        class="text-danger"
+      >
+        Address is required.
+      </div>
     </div>
 
+    <!-- Phone Number -->
     <div class="form-outline mb-3">
       <input
         type="tel"
@@ -59,8 +91,18 @@
         placeholder=""
       />
       <label class="form-label" for="phone_no">Phone Number</label>
+      <div
+        *ngIf="
+          updatestaff.get('Phone_no')?.invalid &&
+          updatestaff.get('Phone_no')?.touched
+        "
+        class="text-danger"
+      >
+        Phone number is required and must be 11 digits.
+      </div>
     </div>
 
+    <!-- Email -->
     <div class="form-outline mb-3">
       <input
         type="email"
@@ -70,94 +112,93 @@
         placeholder=""
       />
       <label class="form-label" for="email">Email</label>
+      <div
+        *ngIf="
+          updatestaff.get('Email')?.invalid && updatestaff.get('Email')?.touched
+        "
+        class="text-danger"
+      >
+        Valid email is required.
+      </div>
     </div>
 
-    <!-- <div class="form-outline mb-3 position-relative">
-      <input
-        [type]="showOldPassword ? 'text' : 'password'"
-        id="oldpassword"
-        formControlName="Oldpassword"
-        class="form-control"
-        placeholder=""
-      />
-      <label class="form-label" for="oldpassword">Current Password</label>
-      <i
-        (click)="togglePasswordVisibility()"
-        class="fa {{
-          showOldPassword ? 'fa-eye-slash' : 'fa-eye'
-        }} password-toggle-icon"
-        style="
-          position: absolute;
-          right: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-          cursor: pointer;
-        "
-      ></i>
-    </div> -->
-
+    <!-- Password -->
     <div class="form-outline mb-3">
       <input
-        [type]="showPassword ? 'text' : 'password'"
+        [type]="showPassword ? 'password' : 'text'"
         formControlName="Password"
         class="form-control"
         placeholder=""
       />
-      <label class="form-label" for="password">New Password</label>
+      <label class="form-label" for="password">Password</label>
       <i
         (click)="togglePasswordVisibilitys()"
         class="fa {{
           showPassword ? 'fa-eye-slash' : 'fa-eye'
         }} password-toggle-icon"
-        style="
-          position: absolute;
-          right: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-          cursor: pointer;
-        "
       ></i>
+      <div
+        *ngIf="
+          updatestaff.get('Password')?.invalid &&
+          updatestaff.get('Password')?.touched
+        "
+        class="text-danger"
+      >
+        Password is required and must be at least 6 characters.
+      </div>
     </div>
 
+    <!-- Confirm Password -->
     <div class="form-outline mb-3">
       <input
-        [type]="showConPassword ? 'text' : 'password'"
+        [type]="showConPassword ? 'password' : 'text'"
         formControlName="ConfirmPassword"
         class="form-control"
         placeholder=""
       />
-      <label class="form-label" for="confirmPassword">Confirm Password</label>
+      <label class="form-label" for="confirm_password">Confirm Password</label>
       <i
         (click)="togglePasswordVisibilityy()"
         class="fa {{
           showConPassword ? 'fa-eye-slash' : 'fa-eye'
         }} password-toggle-icon"
-        style="
-          position: absolute;
-          right: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-          cursor: pointer;
-        "
       ></i>
+      <div
+        *ngIf="
+          updatestaff.get('ConfirmPassword')?.invalid &&
+          updatestaff.get('ConfirmPassword')?.touched
+        "
+        class="text-danger"
+      >
+        Confirm password is required.
+      </div>
+      <div
+        *ngIf="!passwordsMatch && updatestaff.get('ConfirmPassword')?.touched"
+        class="text-danger"
+      >
+        Passwords do not match.
+      </div>
     </div>
 
-    <div *ngIf="!passwordsMatch" class="alert alert-danger">
-      Passwords do not match.
-    </div>
-
+    <!-- Action Buttons -->
     <div class="row">
       <div class="col-md-6 mb-3">
         <button
           type="button"
-          class="btn btn-secondary"
+          class="btn btn-secondary btn-block"
           (click)="clear()"
         >
           Clear
         </button>
       </div>
       <div class="col-md-6 mb-3">
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+          [disabled]="!updatestaff.valid"
+        >
+          Save
+        </button>
       </div>
     </div>
   </form>

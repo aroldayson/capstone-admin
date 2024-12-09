@@ -1,112 +1,75 @@
-<div class="container">
+<div class="container my-3">
   <div class="row" id="staff-management-section">
-    <div class="col md">
+    <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <div class="row mb-4">
-            <div class="col">
-              <h3 class="fw-bold">LIST OF STAFF MEMBERS<span (click)="add()" class="btn btn-primary mx-2 sm"> + ADD STAFF</span></h3>
+          <!-- Header Section -->
+          <div class="row align-items-center mb-4">
+            <div class="col-12 col-md-8 mb-2 mb-md-0">
+              <h3 class="fw-bold text-center text-md-start">
+                STAFF MANAGEMENT
+                <button class="btn btn-primary btn-sm ms-2" (click)="add()">
+                  + ADD STAFF
+                </button>
+              </h3>
             </div>
-            <div class="col-md-6 col-lg-4 mt-2">
+            <div class="col-12 col-md-4">
               <div class="form-group">
-                <div class="row">
-                  <div class="col">
-                    <div class="d-flex form-inputs">
-                      <input
-                        class="form-control"
-                        type="text"
-                        placeholder="Search staff..."
-                        [(ngModel)]="searchTerm"
-                      />
-                      <i class="bx bx-search"></i>
-                    </div>
-                  </div>
+                <div class="search-bar">
+                  <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search staff..."
+                    [(ngModel)]="searchTerm"
+                  />
+                  <span class="search-icon">
+                    <i class="bx bx-search"></i>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="table-responsive table-wrapper">
-            <table class="table table-bordered table-hover rounded">
-              <thead class="sticky-thead">
-                <tr class="text-center">
-                  <th>No.</th>
-                  <th>Image</th>
-                  <th>Staff Name</th>
-                  <th>Address</th>
-                  <th>Phone No.</th>
-                  <th>Email</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- Use @for to iterate over the filteredStaff list -->
-                @for(staff of filteredStaff | searchfilter: searchTerm; track
-                staff.Admin_ID) {
-                <tr>
-                  <td class="text-center">{{ $index + 1 }}</td>
-                  <td>
-                    <img
-                      (click)="upload(staff.Admin_ID)"
-                      [src]="staff.Admin_image"
-                      alt="{{ staff.Admin_fname }} {{ staff.Admin_lname }}"
-                      class="img-thumbnail"
-                      height="70"
-                      width="70"
-                    />
-                    <!-- <img
-                      [src]="
-                        staff.Admin_image
-                          ? 'http://localhost/admin/profile_images/' +
-                            staff.Admin_image
-                          : 'http://placehold.it/50x50'
-                      "
-                      alt="{{ staff.Admin_fname }} {{ staff.Admin_lname }}"
-                      class="img-thumbnail"
-                      height="50"
-                      width="50"
-                    /> -->
-                  </td>
-                  <td (click)="update(staff.Admin_ID)">
+          <!-- End Header Section -->
+
+          <!-- Scrollable Cards -->
+          <div class="card-container">
+            <!-- Loop through staff data -->
+            @for (staff of filteredStaff | searchfilter: searchTerm; track
+            staff.Admin_ID) {
+            <div class="staff-card">
+              <div class="staff-card-body">
+                <div class="image-container">
+                  <img
+                    [src]="staff.Admin_image"
+                    alt="{{ staff.Admin_fname }} {{ staff.Admin_lname }}"
+                    class="staff-image"
+                    (click)="upload(staff.Admin_ID)"
+                  />
+                </div>
+                <div class="details" (click)="update(staff.Admin_ID)">
+                  <h5 class="fw-bold">
                     {{ staff.Admin_fname }} {{ staff.Admin_mname }}
                     {{ staff.Admin_lname }}
-                  </td>
-                  <td (click)="update(staff.Admin_ID)">{{ staff.Address }}</td>
-                  <td (click)="update(staff.Admin_ID)">{{ staff.Phone_no }}</td>
-                  <td (click)="update(staff.Admin_ID)">{{ staff.Email }}</td>
-                  <td class="text-center">
-                    <!-- <button
-                      class="btn bg-primary text-light btn-custom-sm"
-                      (click)="update(staff.Admin_ID)"
-                    >
-                      <i class="fas fa-pencil-alt"></i>
-                    </button> -->
-                    <!-- <button
-                      class="btn btn-success btn-custom-sm mx-1"
-                      (click)="upload(staff.Admin_ID)"
-                    >
-                      <i class="fa fa-upload"></i>
-                    </button> -->
-                    <button
-                      class="btn bg-danger text-light btn-custom-sm "
-                      (click)="dltbtn(staff.Admin_ID)"
-                    >
-                      <i class="fa fa-trash-o"></i>
-                    </button>
-                  </td>
-                </tr>
-                }
-              </tbody>
-            </table>
+                  </h5>
+                  <p>Address: {{ staff.Address }}</p>
+                  <p>Phone: {{ staff.Phone_no }}</p>
+                  <p>Email: {{ staff.Email }}</p>
+                </div>
+                <div class="actions">
+                  <button
+                    class="btn btn-danger btn-sm"
+                    (click)="dltbtn(staff.Admin_ID)"
+                  >
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            }
           </div>
+          <!-- End Scrollable Cards -->
         </div>
       </div>
     </div>
-    <!-- <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
-    </div> -->
   </div>
 </div>

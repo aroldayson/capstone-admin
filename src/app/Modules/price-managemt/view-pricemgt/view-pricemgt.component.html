@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-3">
   <div class="row" id="price-management-section">
     <div class="col-12">
       <div class="card">
@@ -12,61 +12,69 @@
                   class="btn btn-primary btn-sm ms-2"
                   [routerLink]="['/main/pricemanagementpage/add']"
                 >
-                  + ADD PRICE
+                  + ADD
                 </button>
               </h3>
             </div>
             <div class="col-12 col-md-4">
               <div class="form-group">
-                <div class="d-flex form-inputs">
+                <div class="search-bar">
                   <input
-                    class="form-control"
                     type="text"
+                    class="search-input"
                     placeholder="Search category..."
                     [(ngModel)]="keyword"
                   />
-                  <i class="bx bx-search"></i>
+                  <span class="search-icon">
+                    <i class="bx bx-search"></i>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
           <!-- End Header Section -->
 
-          <!-- Row-Based Layout -->
-          <div class="row g-3">
-            <!-- Use @for to iterate over the filteredCategories -->
-            @for (c of filteredCategories | searchfilter: keyword; track c.Categ_ID) {
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body d-flex flex-column flex-md-row align-items-md-center justify-content-between">
-                  <div class="d-flex flex-column text-start">
-                    <h5 class="fw-bold mb-1">{{ c.Category }}</h5>
-                    <p class="mb-0">Price per Kilogram: 
-                      <span class="fw-bold">{{ c.Price | currency: 'PHP':'symbol' }}</span>
-                    </p>
-                  </div>
-                  <div class="mt-3 mt-md-0">
-                    <button
-                      class="btn btn-secondary btn-sm me-2"
-                      (click)="updatebtn(c.Categ_ID)"
-                    >
-                      Update
-                    </button>
-                    <button
-                      class="btn btn-danger btn-sm"
-                      (click)="dltbtn(c.Categ_ID)"
-                    >
-                      <i class="fa fa-trash-o"></i>
-                    </button>
-                  </div>
+          <!-- Scrollable Cards -->
+          <div class="card-container">
+            <!-- Use @for to iterate over filteredCategories -->
+            @for (c of filteredCategories | searchfilter: keyword; track
+            c.Categ_ID) {
+            <div class="price-card" (click)="history(c.Categ_ID)">
+              <div class="price-card-body">
+                <div class="details">
+                  <h5 class="fw-bold">{{ c.Category }}</h5>
+                  <p>
+                    Price per Kilogram:
+                    <span class="fw-bold">{{
+                      c.Price | currency : "PHP" : "symbol"
+                    }}</span>
+                    <br />
+                    Minimum Weight:
+                    <span class="fw-bold">{{ c.Minimum_weight }}kg</span>
+                  </p>
+                </div>
+                <div class="actions">
+                  <button
+                    class="btn btn-danger btn-sm"
+                    (click)="dltbtn(c.Categ_ID)"
+                  >
+                    <i class="fa fa-trash-o"></i>
+                  </button>
                 </div>
               </div>
             </div>
             }
           </div>
-          <!-- End Row-Based Layout -->
+          <!-- End Scrollable Cards -->
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <button
+  class="btn bg-danger text-light btn-custom-sm"
+  (click)="dltbtn(staff.Admin_ID)"
+>
+  <i class="fa fa-trash-o"></i>
+</button> -->

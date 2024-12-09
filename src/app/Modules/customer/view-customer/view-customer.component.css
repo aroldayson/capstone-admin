@@ -1,56 +1,145 @@
-.pri {
-  margin-left: auto;
-}
-
-.table-responsive {
-  margin-top: 20px;
-  max-height: 68vh;
-  overflow-y: auto;
-}
-
-thead th:first-child,
-tfoot th:first-child {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-thead th:last-child,
-tfoot th:last-child {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-@media (max-width: 768px) {
-  .table-responsive {
-    overflow-x: auto;
-  }
-}
-
-/* Ensure the heading and input field have the same height */
-h3.fw-bold {
-  line-height: 45px; /* Match the input field height */
+/* General Styling */
+body,
+html {
   margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+#customer-management-section {
+  overflow-x: hidden; /* Ensure no horizontal overflow in the section */
 }
 
-.form-inputs {
+#customer-management-section .card {
+  margin-top: 20px;
+}
+
+#customer-management-section h3 {
+   line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Search Bar Styling */
+.search-bar {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.form-inputs .form-control {
+.search-input {
+  width: 100%;
   height: 45px;
-  padding-right: 35px; /* Add padding to avoid text overlapping with the icon */
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s;
 }
 
-.form-inputs i {
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.search-icon {
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%); /* Vertically center the icon */
-  font-size: 18px; /* Adjust the size of the icon */
-  color: #555; /* Optional: Adjust color to fit the design */
+  right: 15px;
+  font-size: 20px;
+  color: #777;
 }
 
-.form-inputs .form-control:focus {
-  box-shadow: none;
-  border: 1px solid #000;
+/* Scrollable Cards */
+.card-container {
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  padding-right: 10px;
+}
+
+.card-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 3px;
+}
+
+/* Card Styling */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.customer-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.customer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.customer-card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Details Section */
+.details {
+  margin-bottom: 15px;
+}
+
+.details h5 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.details p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Button Styling */
+.btn {
+  border-radius: 25px;
+  padding: 8px 15px;
+  font-size: 14px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background-color: #e53935;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions .btn {
+  font-size: 0.85rem;
+  padding: 5px 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .customer-card-body {
+    padding: 10px;
+  }
+
+  .details p {
+    font-size: 0.8rem;
+  }
 }

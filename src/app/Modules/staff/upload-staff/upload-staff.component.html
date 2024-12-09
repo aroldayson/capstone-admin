@@ -1,55 +1,43 @@
-<div class="text-right mb-3">
-  <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
-  <a class="btn btn-primary w-md" [routerLink]="['/main/staffpage/staffview']">Back</a> 
-</div>
-
-<div class="bg-white p-3 rounded">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center mb-3">
-        <h4 class="text-center"><b>UPLOAD IMAGE</b></h4>
-      </div>
-      <div class="col-12 d-flex justify-content-center">
-        <input
-          id="fileInput"
-          type="file"
-          (change)="onFileSelected($event)"
-          accept="image/*"
-          class="form-control-file"
-          style="max-width: 300px"
-        />
-      </div>
-      <div class="col-12 d-flex justify-content-center mt-3">
-        <div class="image-preview img-fluid">
-          <img
-            *ngIf="imagePreview"
-            [src]="imagePreview"
-            alt="Image preview"
-            class="preview-image img-fluid"
-            style="max-width: 100%; height: auto"
-          />
-        </div>
-      </div>
+<div class="container mt-5 bg-white p-4 rounded">
+  <h4 class="text-center mb-4"><b>UPLOAD IMAGE</b></h4>
+  <div class="col-12 d-flex justify-content-center">
+    <input
+      id="fileInput"
+      type="file"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+      class="form-control-file"
+    />
+  </div>
+  <div class="col-12 d-flex justify-content-center mt-3">
+    <div class="image-container">
+      <img
+        *ngIf="imagePreview"
+        [src]="imagePreview"
+        alt="Image preview"
+        class="preview-image"
+      />
     </div>
-    <div class="row mt-5">
-      <div class="col-md-6 col-12 mb-3">
-        <button
-          type="button"
-          class="btn btn-primary w-100"
-          [routerLink]="['/main/staffpage/staffview']"
-        >
-          Back
-        </button>
-      </div>
-      <div class="col-md-6 col-12 mb-3">
-        <button
-          type="button"
-          class="btn btn-success w-100"
-          (click)="onUpload()"
-        >
-          Upload
-        </button>
-      </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6 col-sm-12 mb-3">
+      <button
+        type="button"
+        class="btn btn-primary btn-responsive"
+        [routerLink]="['/main/staffpage/staffview']"
+      >
+        Back
+      </button>
+    </div>
+    <div class="col-md-6 col-sm-12 mb-3">
+      <button
+        type="button"
+        class="btn btn-success btn-responsive"
+        (click)="onUpload()"
+      >
+        Upload
+      </button>
     </div>
   </div>
 </div>

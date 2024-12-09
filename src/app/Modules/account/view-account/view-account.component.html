@@ -23,8 +23,8 @@
           <div class="form-group mt-4">
             <label>Full Name:</label>
             <h4>
-              {{ users?.Admin_fname }} {{ users?.Admin_mname }}
-              {{ users?.Admin_lname }}
+              {{ users?.Admin_lname }} {{ users?.Admin_fname }}
+              {{ users?.Admin_mname }}
             </h4>
           </div>
           <div class="form-group">
@@ -39,6 +39,45 @@
       <div class="account-section personal-details">
         <p class="h2 text-center fw-bold">EDIT ACCOUNT</p>
         <form [formGroup]="updateaccount" (ngSubmit)="update()">
+          <div class="row">
+            <div class="col md">
+              <div class="form-group">
+                <label><b>Last Name:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  formControlName="Admin_lname"
+                  placeholder="Enter Your Last Name"
+                />
+              </div>
+            </div>
+            <div class="col md">
+              <div class="form-group">
+                <label><b>First Name:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  formControlName="Admin_fname"
+                  placeholder="Enter Your First Name"
+                />
+              </div>
+            </div>
+            <div class="col md">
+              <div class="form-group">
+                <label><b>Middle Name:</b></label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="email"
+                  formControlName="Admin_mname"
+                  placeholder="Enter Your Middle Name"
+                />
+              </div>
+            </div>
+          </div>
+
           <div class="form-group">
             <label><b>Email:</b></label>
             <input
@@ -48,22 +87,6 @@
               placeholder="Enter Your Email"
             />
           </div>
-
-          <!-- <div class="form-group position-relative">
-            <label><b>Current Password:</b></label>
-            <input
-              [type]="showOldPassword ? 'text' : 'password'"
-              class="form-control"
-              formControlName="Admin_OldPassword"
-              placeholder="Enter Current Password"
-            />
-            <i
-              class="fa"
-              [class.fa-eye]="showOldPassword"
-              [class.fa-eye-slash]="!showOldPassword"
-              (click)="toggleCurrentPasswordVisibility()"
-            ></i>
-          </div> -->
 
           <div class="form-group position-relative">
             <label><b>New Password:</b></label>

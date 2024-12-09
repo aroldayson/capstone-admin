@@ -27,9 +27,9 @@ import Swal from 'sweetalert2';
 })
 export class AddStaffComponent implements OnInit {
   staff: any;
-  showOldPassword: boolean = false;
-  showPassword: boolean = false;
-  showConPassword: boolean = false;
+  showOldPassword: boolean = true;
+  showPassword: boolean = true;
+  showConPassword: boolean = true;
   passwordsMatch = true;
 
   

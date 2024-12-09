@@ -40,12 +40,12 @@ export class ViewPricemgtComponent implements OnInit {
   constructor(
     private admin: AdminService,
     private http: HttpClient,
-    private route: Router,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
     this.getdatastaff();
-    this. startPolling();
+    this.startPolling();
   }
   startPolling() {
     const pollingInterval = interval(5000);
@@ -73,8 +73,8 @@ export class ViewPricemgtComponent implements OnInit {
 
   getdatastaff() {
     this.admin.displayprice().subscribe((result: any) => {
-      this.categ = result; 
-      this.filteredCategories = result; 
+      this.categ = result;
+      this.filteredCategories = result;
     });
   }
 
@@ -89,12 +89,9 @@ export class ViewPricemgtComponent implements OnInit {
     this.stopPolling();
   }
 
-
   updatebtn(item: any): void {
     localStorage.setItem('Categ_ID', item);
-    this.route.navigate([
-      '/main/pricemanagementpage/update',
-    ]);
+    this.route.navigate(['/main/pricemanagementpage/update']);
   }
 
   dltbtn(id: any): void {
@@ -149,5 +146,10 @@ export class ViewPricemgtComponent implements OnInit {
           );
         }
       });
+  }
+
+  history(id: any) {
+    localStorage.setItem('Categ_ID', id);
+    this.route.navigate(['/main/pricemanagementpage/update']);
   }
 }

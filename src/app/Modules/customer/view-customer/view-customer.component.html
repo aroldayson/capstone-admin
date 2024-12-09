@@ -1,57 +1,59 @@
-<div class="container my-3" id="print-section">
+<div class="container my-3" id="customer-management-section">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-body">
+          <!-- Header Section -->
           <div class="row mb-4">
             <div class="col">
               <h3 class="fw-bold">LIST OF CUSTOMERS</h3>
             </div>
-            <div class="col-md-6 col-lg-3 mt-2">
+            <div class="col-12 col-md-4">
               <div class="form-group">
-                <div class="row">
-                  <div class="col">
-                    <div class="d-flex form-inputs">
-                      <input
-                        class="form-control"
-                        type="text"
-                        placeholder="Search customer..."
-                        [(ngModel)]="searchTerm"
-                      />
-                      <i class="bx bx-search"></i>
-                    </div>
-                  </div>
+                <div class="search-bar">
+                  <input
+                    class="search-input"
+                    type="text"
+                    placeholder="Search customer..."
+                    [(ngModel)]="searchTerm"
+                  />
+                  <span class="search-icon">
+                    <i class="bx bx-search"></i>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-              <thead class="table-light">
-                <tr class="text-center">
-                  <th>No.</th>
-                  <th>Customer Name</th>
-                  <th>Contact Phone #</th>
-                  <th>Address</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                @for (c of filteredCustomers | searchfilter: searchTerm; track c.Cust_ID) {
-                <tr class="text-center" (click)="history(c.Cust_ID)">
-                  <td>{{ $index + 1 }}</td>
-                  <td>
-                    {{ c.Cust_fname }} {{ c.Cust_mname }} {{ c.Cust_lname }}
-                  </td>
-                  <td>{{ c.Cust_phoneno }}</td>
-                  <td>{{ c.Cust_address }}</td>
-                  <td>{{ c.Cust_email }}</td>
-                </tr>
-                }
-              </tbody>
-            </table>
+          <!-- Scrollable Cards for Customer -->
+          <div class="card-container">
+            <!-- Loop through customer data -->
+            @for (c of filteredCustomers | searchfilter: searchTerm; track
+            c.Cust_ID) {
+            <div class="customer-card">
+              <div class="customer-card-body text-start">
+                <div class="details" (click)="history(c.Cust_ID)">
+                  <h5 class="fw-bold">
+                    {{ c.Cust_fname }} {{ c.Cust_mname }}
+                    {{ c.Cust_lname }}
+                  </h5>
+                  <p><b>Phone:</b> {{ c.Cust_phoneno }}</p>
+                  <p><b>Address:</b> {{ c.Cust_address }}</p>
+                  <p><b>Email:</b> {{ c.Cust_email }}</p>
+                </div>
+                <div class="actions align-content-end">
+                  <button
+                    class="btn btn-danger btn-sm"
+                    (click)="dltbtn(c.Cust_ID)"
+                  >
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            }
           </div>
+          <!-- End Scrollable Cards -->
         </div>
       </div>
     </div>
