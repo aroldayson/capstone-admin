@@ -3,11 +3,11 @@ body,
 html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  overflow-x: hidden;
 }
 
 #price-management-section {
-  overflow-x: hidden; /* Ensure no horizontal overflow in the section */
+  overflow-x: hidden; 
 }
 
 #price-management-section .card {
@@ -83,7 +83,7 @@ h3.fw-bold {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box; /* Include padding and border in total width */
+  box-sizing: border-box; 
 }
 
 .details {

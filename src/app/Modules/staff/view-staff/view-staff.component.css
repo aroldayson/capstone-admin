@@ -1,9 +1,20 @@
-/* General Styling */
+/* General Layout */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#staff-management-section {
+  overflow-x: hidden;
+}
+
 #staff-management-section .card {
   margin-top: 20px;
 }
 
-#staff-management-section h3 {
+h3.fw-bold {
   line-height: 1.5;
   margin: 0;
   margin-bottom: 10px;
@@ -40,59 +51,83 @@
 
 /* Card Styling */
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+.card-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 3px;
 }
 
 .staff-card {
+  margin-bottom: 15px;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  transition: transform 0.3s;
 }
 
 .staff-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
 }
 
 .staff-card-body {
   padding: 15px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
+  box-sizing: border-box;
 }
 
 /* Image Styling */
 .image-container {
-  margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .staff-image {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
 
+.staff-image:hover {
+  border: 2px solid #007bff;
+}
+
 /* Details Section */
 .details {
-  margin-bottom: 15px;
+  font-size: 0.9rem;
 }
 
 .details h5 {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-size: 1rem;
+  margin-bottom: 5px;
 }
 
 .details p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  margin-bottom: 3px;
   color: #555;
-  margin-bottom: 5px;
+}
+
+/* Actions Section */
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.actions .btn {
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  border-radius: 20px;
 }
 
 /* Button Styling */
@@ -108,24 +143,15 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Action Buttons */
-.actions {
-  display: flex;
-  gap: 10px;
-}
-
-.actions .btn {
-  font-size: 0.85rem;
-  padding: 5px 10px;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .staff-card-body {
-    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .details p {
-    font-size: 0.8rem;
+  .actions {
+    margin-top: 10px;
+    align-self: flex-end;
   }
 }

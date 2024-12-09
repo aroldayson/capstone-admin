@@ -7,9 +7,9 @@
           <div class="row align-items-center mb-4">
             <div class="col-12 col-md-8 mb-2 mb-md-0">
               <h3 class="fw-bold text-center text-md-start">
-                STAFF MANAGEMENT
+               LIST OF STAFFS
                 <button class="btn btn-primary btn-sm ms-2" (click)="add()">
-                  + ADD STAFF
+                  + ADD
                 </button>
               </h3>
             </div>
@@ -37,24 +37,35 @@
             @for (staff of filteredStaff | searchfilter: searchTerm; track
             staff.Admin_ID) {
             <div class="staff-card">
-              <div class="staff-card-body">
-                <div class="image-container">
-                  <img
-                    [src]="staff.Admin_image"
-                    alt="{{ staff.Admin_fname }} {{ staff.Admin_lname }}"
-                    class="staff-image"
+              <div
+                class="staff-card-body d-flex align-items-center justify-content-between"
+              >
+                <!-- Image and Details Section -->
+                <div class="d-flex align-items-center">
+                  <div
+                    class="image-container me-3"
                     (click)="upload(staff.Admin_ID)"
-                  />
+                  >
+                    <img
+                      [src]="staff.Admin_image"
+                      alt="{{ staff.Admin_fname }} {{ staff.Admin_lname }}"
+                      class="staff-image"
+                    />
+                  </div>
+                  <div
+                    class="details text-start"
+                    (click)="update(staff.Admin_ID)"
+                  >
+                    <h5 class="fw-bold">
+                      {{ staff.Admin_fname }} {{ staff.Admin_mname }}
+                      {{ staff.Admin_lname }}
+                    </h5>
+                    <p><b>Address:</b> {{ staff.Address }}</p>
+                    <p><b>Phone:</b> {{ staff.Phone_no }}</p>
+                    <p><b>Email:</b> {{ staff.Email }}</p>
+                  </div>
                 </div>
-                <div class="details" (click)="update(staff.Admin_ID)">
-                  <h5 class="fw-bold">
-                    {{ staff.Admin_fname }} {{ staff.Admin_mname }}
-                    {{ staff.Admin_lname }}
-                  </h5>
-                  <p>Address: {{ staff.Address }}</p>
-                  <p>Phone: {{ staff.Phone_no }}</p>
-                  <p>Email: {{ staff.Email }}</p>
-                </div>
+                <!-- Actions Section -->
                 <div class="actions">
                   <button
                     class="btn btn-danger btn-sm"
