@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AdminService {
   // url = 'http://localhost/admin/';
   Apiurl = 'http://localhost:8000/api/';
-  // Apiurl = 'http://10.0.110.195:8000/api/';
+  // Apiurl = 'http://192.168.3.83:8000/api/';
 
   constructor(private http: HttpClient) {}
 
@@ -87,11 +87,17 @@ export class AdminService {
     });
   }
 
-  // PRICEMANAGEMENT
+  // PRICEMANAGEMENT 
   displayprice() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(this.Apiurl + 'pricedisplay', { headers });
+  }
+
+  pricedisplayDestination() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'pricedisplayDestination', { headers });
   }
 
   addprice(data: any) {
@@ -100,10 +106,22 @@ export class AdminService {
     return this.http.post(this.Apiurl + 'addprice', data, { headers });
   }
 
+  addpricedestination(data: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.Apiurl + 'addpricedestination', data, { headers });
+  }
+
   deletecateg(id: any) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.Apiurl}deletecateg/${id}`, { headers });
+  }
+
+  deletedestination(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.Apiurl}deletedestination/${id}`, { headers });
   }
 
   findprice(id: any) {
@@ -281,6 +299,11 @@ export class AdminService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(this.Apiurl + 'displayincome');
+  }
+  displayDisrepancy() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'displayDisrepancy');
   }
   hisdisplayincome(id: any) {
     const token = localStorage.getItem('token');

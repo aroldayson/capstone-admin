@@ -81,7 +81,7 @@
                         <td>{{ i.Transac_datetime }}</td>
                         <td>{{ i.adminnames}}</td>
                         <td>{{ i.Tracking_number}}</td>
-                        <td>{{ i.TransacStatus_name}}</td>
+                        <td>{{ i.latest_transac_status}}</td>
                         <th class="text-right" 
                             [ngClass]="i.totalprice > 0 ? 'text-success' : 'text-danger'">
                             {{ (i.totalprice < 0 ? (i.totalprice * -1 | number:'1.2-2') : (i.totalprice | number:'1.2-2')) }}

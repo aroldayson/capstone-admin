@@ -14,8 +14,9 @@ import { HttpClient } from '@angular/common/http';
 import { SearchfilterPipe } from '../../../searchfilter.pipe';
 import { interval, Subscription } from 'rxjs';
 
+
 @Component({
-  selector: 'app-view-pricemgt',
+  selector: 'app-viewcatege',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -27,10 +28,10 @@ import { interval, Subscription } from 'rxjs';
     ReactiveFormsModule,
     SearchfilterPipe,
   ],
-  templateUrl: './view-pricemgt.component.html',
-  styleUrl: './view-pricemgt.component.css',
+  templateUrl: './viewcatege.component.html',
+  styleUrl: './viewcatege.component.css'
 })
-export class ViewPricemgtComponent implements OnInit {
+export class ViewcategeComponent implements OnInit {
   categ: any[] = []; // List of categories fetched from the service
   filteredCategories: any[] = []; // Filtered list of categories for display
   keyword: any;
@@ -91,7 +92,7 @@ export class ViewPricemgtComponent implements OnInit {
 
   updatebtn(item: any): void {
     localStorage.setItem('Categ_ID', item);
-    this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/update']);
+    this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview/update']);
   }
 
   dltbtn(id: any): void {
@@ -150,6 +151,7 @@ export class ViewPricemgtComponent implements OnInit {
 
   history(id: any) {
     localStorage.setItem('Categ_ID', id);
-    this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/update']);
+    this.route.navigate(['/main/pricemanagementpage/pricemgtmain/pricemgtview/add']);
   }
 }
+

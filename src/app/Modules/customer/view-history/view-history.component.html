@@ -75,8 +75,8 @@
                   <td>{{ c.Category | slice : 0 : 10 }}...</td>
                   <td>{{ c.totalprice | currency : " " : "symbol" }}</td>
                   <td>{{ c.latest_transac_status | slice : 0 : 10 }}...</td>
-                  <td>{{ c.TransacStatus_datetime }}</td>
-                  <td>{{ c.Staffincharge | slice : 0 : 10 }}...</td>
+                  <td>{{ c.latest_transac_datetime }}</td>
+                  <td>{{ c.latest_admin_name | slice : 0 : 10 }}...</td>
                 </tr>
                 }
               </tbody>

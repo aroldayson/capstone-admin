@@ -127,3 +127,9 @@ p {
     padding: 20px;
   }
 }
+.table-hover:hover {
+  color: blue; /* Change text color */
+  cursor: pointer; /* Show pointer cursor */
+  text-decoration: underline; /* Ensure underline on hover */
+}
+

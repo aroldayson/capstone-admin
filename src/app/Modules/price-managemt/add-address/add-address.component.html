@@ -1,0 +1,68 @@
+<div class="container py-5">
+    <div class="text-end mb-4">
+      <a
+        class="btn btn-primary"
+        [routerLink]="['/main/pricemanagementpage/pricemgtmain/viewcateg/view-address']"
+        >BACK</a
+      >
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h4 class="text-center mb-4"><b>ADD DESTINATION</b></h4>
+            <form [formGroup]="categoryForm" (submit)="save()">
+              <!-- Laundry Name -->
+              <div class="mb-3">
+                <label for="form7Example1" class="form-label">Destination Name</label>
+                <input
+                  type="text"
+                  id="form7Example1"
+                  class="form-control"
+                  formControlName="City_Address"
+                  placeholder="Enter Destination Name"
+                />
+              </div>
+  
+              <!-- Price Per Kilogram -->
+              <div class="mb-3">
+                <label for="form7Example2" class="form-label"
+                  >Destination Price</label
+                >
+                <input
+                  type="number"
+                  id="form7Example2"
+                  class="form-control"
+                  formControlName="ShipServ_price"
+                  placeholder="ShipServ_price"
+                  [min]="0"
+                  (input)="onNumberInput($event)"
+                />
+              </div>
+  
+              <!-- Minimum Weight -->
+  
+              <!-- Buttons -->
+              <div class="row g-3">
+                <div class="col-6">
+                  <button
+                    type="button"
+                    class="btn btn-secondary w-100"
+                    (click)="clear()"
+                  >
+                    Clear
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="submit" class="btn btn-primary w-100">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

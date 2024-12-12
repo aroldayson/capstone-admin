@@ -12,20 +12,16 @@ import {
 import { AdminService } from '../../../admin.service';
 
 @Component({
-  selector: 'app-add-price',
+  selector: 'app-add-address',
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule, FormsModule],
-  templateUrl: './add-price.component.html',
-  styleUrl: './add-price.component.css',
+  templateUrl: './add-address.component.html',
+  styleUrl: './add-address.component.css'
 })
-export class AddPriceComponent implements OnInit {
+export class AddAddressComponent implements OnInit {
   categoryForm = new FormGroup({
-    Category: new FormControl(null, Validators.required),
-    Minimum_weight: new FormControl(0.0, [
-      Validators.required,
-      Validators.min(0),
-    ]),
-    Price: new FormControl(0.0, [
+    City_Address: new FormControl(null, Validators.required),
+    ShipServ_price: new FormControl(0.0, [
       Validators.required,
       Validators.min(0),
     ]),
@@ -49,7 +45,7 @@ export class AddPriceComponent implements OnInit {
     console.log(this.categoryForm.value);
 
    
-    this.admin.addprice(this.categoryForm.value).subscribe(
+    this.admin.addpricedestination(this.categoryForm.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {
           Swal.fire(
@@ -58,7 +54,7 @@ export class AddPriceComponent implements OnInit {
             'success'
           );
           this.clear();
-          this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/pricemgtview']);
+          this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/view-address']);
         } else {
           console.error('Error occurred during save:', result);
         }
@@ -67,7 +63,7 @@ export class AddPriceComponent implements OnInit {
         console.error('Error:', error);
         Swal.fire(
           'Error!',
-          'Duplicated Category.',
+          'Duplicated City_Address.',
           'error'
         );
     

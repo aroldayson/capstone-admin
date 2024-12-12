@@ -21,7 +21,7 @@
                   <thead class="table-light">
                     <tr>
                       <th></th>
-                      <th></th>
+                      <th>Cashier in Charge</th>
                       <th></th>
                       <th class="text-end">Amount Initial</th>
                       <th class="col-md-1 text-center">Over All Total</th>
@@ -31,7 +31,7 @@
                     @for (i of initial; track i.initial) {
                     <tr>
                       <td></td>
-                      <td></td>
+                      <td>{{ i?.adminNames}}</td>
                       <td></td>
                       <td class="text-end">{{ i?.AmountInitial | currency: ' ':'symbol' }}</td>
                       <td></td>
@@ -123,7 +123,7 @@
                   <thead class="table-light">
                     <tr>
                       <th></th>
-                      <th></th>
+                      <th>Cashier in Charge</th>
                       <th></th>
                       <th class="text-end">Amount Remittance</th>
                       <th class="col-md-1"></th>
@@ -133,7 +133,7 @@
                     @for (r of remit; track r.remit) {
                     <tr>
                       <td></td>
-                      <td></td>
+                      <td>{{r.adminNames}}</td>
                       <td></td>
                       <td class="text-end">{{ r?.AmountRemittance | currency: ' ':'symbol' }}</td>
                       <td class="col-md-1"></td>
@@ -151,7 +151,7 @@
 
             <!-- Section: Net Profit/Loss -->
             <div class="text-end">
-              <h5>Net Profit/Loss</h5>
+              <h5>Net Profit/<span class="text-danger">Loss</span></h5>
               <h5 class="fw-bold"
                   [ngClass]="overalltotal > 0 ? 'text-success' : 'text-danger'">
                   {{ overalltotal < 0 ? (overalltotal * -1) : overalltotal | currency: ' ':'symbol' }}

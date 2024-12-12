@@ -36,6 +36,26 @@ export class CollectableComponent implements OnInit{
       // this.totalexpense = result.totalExpenses;
       // this.totalincome = result.total;
       // this.totalcash = result.transactions;
+
+      if (this.income && this.income.length > 0) {
+        const pendingTransactions = this.income.filter((transaction: any) => 
+          transaction.latest_transac_status === 'folding' || 
+          transaction.latest_transac_status === 'washing' ||
+          transaction.latest_transac_status === 'forRelease' ||
+          transaction.latest_transac_status === 'received' ||
+          transaction.latest_transac_status === 'released'
+        );
+
+        if (pendingTransactions.length > 0) {
+            this.income = pendingTransactions;
+        } else {
+            console.log('No pending transactions found');
+            this.income = [];
+        }
+    } else {
+        console.log('No transactions available');
+        this.income = [];
+    }
       
   
       console.log('Income Data:', this.income);

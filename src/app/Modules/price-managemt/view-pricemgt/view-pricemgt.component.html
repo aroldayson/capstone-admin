@@ -7,10 +7,10 @@
           <div class="row align-items-center mb-4">
             <div class="col-12 col-md-8 mb-2 mb-md-0">
               <h3 class="fw-bold text-center text-md-start">
-                PRICE MANAGEMENT
+                CATEGORY PRICE
                 <button
                   class="btn btn-primary btn-sm ms-2"
-                  [routerLink]="['/main/pricemanagementpage/add']"
+                  [routerLink]="['/main/pricemanagementpage/pricemgtmain/viewcateg/add']"
                 >
                   + ADD
                 </button>
@@ -41,7 +41,7 @@
             c.Categ_ID) {
             <div class="price-card">
               <div class="price-card-body">
-                <div class="details" (click)="history(c.Categ_ID)">
+                <div class="details" (click)="updatebtn(c.Categ_ID)">
                   <h5 class="fw-bold">{{ c.Category }}</h5>
                   <p>
                     Price per Kilogram:

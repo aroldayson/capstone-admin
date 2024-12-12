@@ -15,7 +15,7 @@ import { SearchfilterPipe } from '../../../searchfilter.pipe';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-view-pricemgt',
+  selector: 'app-viewaddress',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -27,10 +27,10 @@ import { interval, Subscription } from 'rxjs';
     ReactiveFormsModule,
     SearchfilterPipe,
   ],
-  templateUrl: './view-pricemgt.component.html',
-  styleUrl: './view-pricemgt.component.css',
+  templateUrl: './viewaddress.component.html',
+  styleUrl: './viewaddress.component.css'
 })
-export class ViewPricemgtComponent implements OnInit {
+export class ViewaddressComponent implements OnInit {
   categ: any[] = []; // List of categories fetched from the service
   filteredCategories: any[] = []; // Filtered list of categories for display
   keyword: any;
@@ -60,7 +60,7 @@ export class ViewPricemgtComponent implements OnInit {
   }
 
   fetchStaffData() {
-    this.admin.displayprice().subscribe((result: any) => {
+    this.admin.pricedisplayDestination().subscribe((result: any) => {
       const updatedStaff = result;
 
       if (JSON.stringify(updatedStaff) !== JSON.stringify(this.categ)) {
@@ -72,7 +72,7 @@ export class ViewPricemgtComponent implements OnInit {
   }
 
   getdatastaff() {
-    this.admin.displayprice().subscribe((result: any) => {
+    this.admin.pricedisplayDestination().subscribe((result: any) => {
       this.categ = result;
       this.filteredCategories = result;
     });
@@ -91,7 +91,7 @@ export class ViewPricemgtComponent implements OnInit {
 
   updatebtn(item: any): void {
     localStorage.setItem('Categ_ID', item);
-    this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/update']);
+    this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/update-address']);
   }
 
   dltbtn(id: any): void {
@@ -115,7 +115,7 @@ export class ViewPricemgtComponent implements OnInit {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          this.admin.deletecateg(id).subscribe(
+          this.admin.deletedestination(id).subscribe(
             () => {
               swalWithBootstrapButtons.fire(
                 'Deleted!',
@@ -150,6 +150,6 @@ export class ViewPricemgtComponent implements OnInit {
 
   history(id: any) {
     localStorage.setItem('Categ_ID', id);
-    this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/update']);
+    this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/update-address']);
   }
 }

@@ -82,7 +82,7 @@ export class UpdatePriceComponent implements OnInit {
             'success'
           ).then(() => {});
           this.clear();
-          this.route.navigate(['/main/pricemanagementpage']);
+          this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/pricemgtview']);
         },
         (error) => {
           console.error('Update failed', error);

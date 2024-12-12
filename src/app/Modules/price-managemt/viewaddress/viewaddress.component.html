@@ -1,0 +1,74 @@
+<div class="container my-3">
+    <div class="row" id="price-management-section">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <!-- Header Section -->
+            <div class="row align-items-center mb-4">
+              <div class="col-12 col-md-8 mb-2 mb-md-0">
+                <h3 class="fw-bold text-center text-md-start">
+                  DESTINATION PRICE
+                <button
+                    class="btn btn-primary btn-sm ms-2"
+                    [routerLink]="['/main/pricemanagementpage/pricemgtmain/viewcateg/add-address']"
+                  >
+                    + ADD
+                </button>
+                </h3>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="form-group">
+                  <div class="search-bar">
+                    <input
+                      type="text"
+                      class="search-input"
+                      placeholder="Search category..."
+                      [(ngModel)]="keyword"
+                    />
+                    <span class="search-icon">
+                      <i class="bx bx-search"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Header Section -->
+  
+            <!-- Scrollable Cards -->
+            <div class="card-container">
+              <!-- Use @for to iterate over filteredCategories -->
+              @for (c of filteredCategories | searchfilter: keyword; track
+              c.Categ_ID) {
+              <div class="price-card">
+                <div class="price-card-body">
+                  <div class="details" (click)="history(c.ShipServ_ID)">
+                    <!-- <h5 class="fw-bold">{{ c.City_Address }}</h5> -->
+                    <p>
+                      Destination Address: 
+                      <span class="fw-bold">{{
+                        c.City_Address
+                      }}</span>
+                      <br />
+                      Destination Price: 
+                      <span class="fw-bold">{{ c.ShipServ_price }}</span>
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <button
+                      class="btn btn-danger btn-sm"
+                      (click)="dltbtn(c.ShipServ_ID)"
+                    >
+                      <i class="fa fa-trash-o"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+            <!-- End Scrollable Cards -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

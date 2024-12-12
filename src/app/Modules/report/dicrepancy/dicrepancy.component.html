@@ -72,23 +72,27 @@
                   <th class="text-right">Total Collection</th>
                   <th class="text-right">Expenditure</th>
                   <th class="text-right">Remittance</th>
-                  <th class="text-right">Net Profit</th>
+                  <th class="text-right">Net Profit/<span class="text-danger">Loss</span></th>
                 </tr>
               </thead>
               <tbody>
                 @for(d of filteredData; track d.Staff_ID){
                   <tr class="text-center" (click)="discrepany(d.transactionDate)">
-                    <td>{{ d.transactionDate }}  {{ d.transactionDates}}</td>
+                    <td>{{ d.transactionDate }}</td>
                     <td>{{d.name}}</td>
                     <td class="text-right">{{d.initialAmount | currency: ' ':'symbol'}}</td>
                     <td class="text-success text-right">{{d.paymentAmount | currency: ' ':'symbol'}}</td>
                     <td class="text-danger text-right">{{d.ExpensesAmount | currency: ' ':'symbol'}}</td>
                     <td class="text-primary text-right">{{d.remitAmount | currency: ' ':'symbol'}}</td>
                     <!-- <td class="text-primary">{{ (d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance}}</td> -->
-                    <td class="text-right"
+                    <!-- <td class="text-right"
                         [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">
                         {{d.totalprofit | currency: ' ':'symbol'}}
-                    </td>
+                    </td> -->
+                    <th class="text-right" 
+                        [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">
+                      {{ (d.totalprofit < 0 ? (d.totalprofit * -1 | number:'1.2-2') : (d.totalprofit | number:'1.2-2')) }}
+                    </th>
                     <!-- <td class="text-danger">
                       <button class="btn btn-primary" (click)="approved()">Approved</button>
                     </td> -->

@@ -66,35 +66,53 @@ export class EditprofCustomerComponent implements OnInit {
     this.loadExistingImage();
     this.startPolling();
   }
-
   getcustomer() {
     this.admin.findcustomer(this.cust_id.id).subscribe((result: any) => {
       this.cust = result;
-      console.log(result);
-
-      this.updateaccount.controls['Cust_address'].setValue(
-        this.cust.Cust_address
-      );
-      this.updateaccount.controls['Cust_phoneno'].setValue(
-        this.cust.Cust_phoneno
-      );
-      this.updateaccount.controls['Cust_OldPassword'].setValue(
-        this.cust.Cust_password
-      );
-      this.updateaccount.controls['Cust_lname'].setValue(
-        this.cust.Cust_lname
-      );
-      this.updateaccount.controls['Cust_mname'].setValue(
-        this.cust.Cust_fname
-      );
-      this.updateaccount.controls['Cust_fname'].setValue(
-        this.cust.Cust_mname
-      );
-      this.updateaccount.controls['Cust_email'].setValue(
-        this.cust.Cust_email
-      );
+  
+      // Use existing values to populate form controls
+      this.updateaccount.setValue({
+        Cust_address: this.cust.Cust_address || '',
+        Cust_phoneno: this.cust.Cust_phoneno || '',
+        Cust_OldPassword: null, // Do not prepopulate password fields for security
+        Cust_lname: this.cust.Cust_lname || '',
+        Cust_mname: this.cust.Cust_mname || '',
+        Cust_fname: this.cust.Cust_fname || '',
+        Cust_email: this.cust.Cust_email || '',
+        Cust_password: null, // Password fields start empty
+        Cust_ConfirmPassword: null,
+      });
     });
   }
+  
+  // getcustomer() {
+  //   this.admin.findcustomer(this.cust_id.id).subscribe((result: any) => {
+  //     this.cust = result;
+  //     console.log(result);
+
+  //     this.updateaccount.controls['Cust_address'].setValue(
+  //       this.cust.Cust_address
+  //     );
+  //     this.updateaccount.controls['Cust_phoneno'].setValue(
+  //       this.cust.Cust_phoneno
+  //     );
+  //     this.updateaccount.controls['Cust_OldPassword'].setValue(
+  //       this.cust.Cust_password
+  //     );
+  //     this.updateaccount.controls['Cust_lname'].setValue(
+  //       this.cust.Cust_lname
+  //     );
+  //     this.updateaccount.controls['Cust_mname'].setValue(
+  //       this.cust.Cust_fname
+  //     );
+  //     this.updateaccount.controls['Cust_fname'].setValue(
+  //       this.cust.Cust_mname
+  //     );
+  //     this.updateaccount.controls['Cust_email'].setValue(
+  //       this.cust.Cust_email
+  //     );
+  //   });
+  // }
 
   startPolling() {
     this.intervalId = setInterval(async () => {

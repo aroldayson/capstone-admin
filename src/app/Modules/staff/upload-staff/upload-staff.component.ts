@@ -102,7 +102,7 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
           (error: any) => {
             Swal.fire({
               title: 'Error!',
-              text: 'Error uploading image. Please try again.',
+              text: 'Duplicate image name detected. Upload a file with a different name.',
               icon: 'error',
               confirmButtonText: 'OK'
             });

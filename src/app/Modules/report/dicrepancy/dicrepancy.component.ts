@@ -24,18 +24,23 @@ export class DicrepancyComponent implements OnInit {
 ) {}
 
   ngOnInit(): void {
-      this.admin.remittanceapproved().subscribe((result: any) => {
-          this.remit = result;
-          this.filteredData = this.remit;
+      // this.admin.remittanceapproved().subscribe((result: any) => {
+      //     this.remit = result;
+      //     this.filteredData = this.remit;
 
-          this.filteredData = this.filteredData.filter((transaction: any) => transaction.Fund_status === 'Approve');
+      //     this.filteredData = this.filteredData.filter((transaction: any) => transaction.Fund_status === 'Approve');
 
-          if (this.filteredData.length === 0) {
-              console.log('No approved transactions found');
-          }
+      //     if (this.filteredData.length === 0) {
+      //         console.log('No approved transactions found');
+      //     }
 
-          console.log('Remit Data:', this.filteredData);
-      });
+      //     console.log('Remit Data:', this.filteredData);
+      // });
+      this.admin.displayDisrepancy().subscribe((result: any) => {
+        this.remit = result;
+        this.filteredData = this.remit;
+        console.log('Remit Data:', this.filteredData);
+    });
   }
 
   onDateChange() {

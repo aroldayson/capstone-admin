@@ -69,12 +69,12 @@
                   <td>{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
                   <td>{{ t.Customers }}</td>
                   <td>{{ t.Transac_datetime }}</td>
-                  <td class="text-right">{{ t.totalprice }}</td>
-                  <td class="text-right">{{ t.totalprice }}</td>
+                  <td class="text-right text-success">{{ t.Amount | currency : " " : "symbol"}}</td>
+                  <td class="text-right text-danger">{{ t.totalprice | currency : " " : "symbol"}}</td>
                 </tr>
                 }
               </tbody>
-              <tfoot>
+              <!-- <tfoot>
                 <tr>
                   <th></th>
                   <th></th>
@@ -82,7 +82,7 @@
                   <th class="text-right">Total Price</th>
                   <th class="text-right">{{ totalprice }}</th>
                 </tr>
-              </tfoot>
+              </tfoot> -->
             </table>
           </div>
         </div>

@@ -1,0 +1,31 @@
+<div class="mt-4 mb-1">
+  <div class="row justify-content-start">
+    <div class="col-6 col-sm-4 col-md-2 m-1">
+      <button
+        type="submit"
+        class="btn btn-nav btn-block active"
+        [routerLink]="['/main/pricemanagementpage/pricemgtmain/viewcateg/pricemgtview']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        CATEGORY
+      </button>
+    </div>
+    <div class="col-6 col-sm-4 col-md-2 m-1">
+      <button
+        type="submit"
+        class="btn btn-nav btn-block active"
+        [routerLink]="['/main/pricemanagementpage/pricemgtmain/viewcateg/view-address']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        DESTINATION
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
