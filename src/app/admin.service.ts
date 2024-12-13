@@ -130,10 +130,24 @@ export class AdminService {
     return this.http.get(`${this.Apiurl}findprice/${id}`, { headers });
   }
 
+  findpricedestination(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}findpricedestination/${id}`, { headers });
+  }
+
   updateprice(data: any) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put(`${this.Apiurl}updateprice/${data.id}`, data, {
+      headers,
+    });
+  }
+
+  updatepricedestination(data: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.Apiurl}updatepricedestination/${data.id}`, data, {
       headers,
     });
   }
@@ -156,6 +170,19 @@ export class AdminService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(this.Apiurl + 'CountDisplay', { headers });
   }
+
+  dashdisplaysmonth() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.Apiurl + 'dashdisplaysmonth', { headers });
+  }
+
+  dashdisplaysmonths(year: number, month: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.Apiurl}dashdisplaysmonths/${year}/${month}`, { headers });
+  }
+
 
   Staffinitail() {
     const token = localStorage.getItem('token');

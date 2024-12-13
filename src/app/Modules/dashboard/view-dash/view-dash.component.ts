@@ -22,10 +22,10 @@ export class ViewDashComponent implements OnInit {
   cashCount: string = ""; 
   isDisabled: boolean = true;
   currentDate: any;
-  currentdate: any;
+  currentDatezzz: string = `${new Date().getFullYear()}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}`;
   isCollapsed: boolean = false;
   users: any;
-
+  
   selectedRole: string = '';
   cash: any;
   expenses: any;
@@ -46,7 +46,7 @@ export class ViewDashComponent implements OnInit {
   ];
   
   chart: any;
-  
+
   public config: any = {
     type: 'bar',
     data: {
@@ -92,23 +92,26 @@ export class ViewDashComponent implements OnInit {
     },
   };
 
-  constructor(private admin: AdminService) {}
-
-  initializeChart(): void {
-    this.chart = new Chart('myChart', this.config); 
+  constructor(private admin: AdminService) {
+    // const now = new Date();
+    // this.currentDatezzz = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}`;
   }
 
   ngOnInit(): void {
+    const now = new Date();
     this.currentDate = this.formatDate(new Date());
-    this.currentdate = this.formatDates(new Date());
-    this.config.options.plugins.title.text = `Monthly Income Data for ${this.currentdate}`;
-
+    this.config.options.plugins.title.text = `Monthly Income Data for ${this.formatDates(new Date())}`;
     this.chart = new Chart('MyChart', this.config);
-
+    this.currentDatezzz = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}`;
+    
     this.loadPaymentData();
     this.loadExpensesData();
     this.loadCountData();
+  
+    // Pass the selected month in the correct format
+    this.onMonthChange(this.currentDate);
   }
+  
 
   loadPaymentData(): void {
     this.admin.paymentDisplay().subscribe(
@@ -116,7 +119,6 @@ export class ViewDashComponent implements OnInit {
         this.cash = result.payments;
         this.totalAmount = result.total_amount;
         this.totals = result.totals;
-        console.log(this.cash, this.totalAmount);
         this.updateChartData();
       },
       (error) => {
@@ -125,11 +127,10 @@ export class ViewDashComponent implements OnInit {
     );
   }
 
-  private loadExpensesData(): void {
+  loadExpensesData(): void {
     this.admin.expensesDisplay().subscribe(
       (result: any) => {
         this.expenses = result;
-        console.log(this.expenses);
       },
       (error) => {
         console.error('Error fetching expenses data:', error);
@@ -137,11 +138,10 @@ export class ViewDashComponent implements OnInit {
     );
   }
 
-  private loadCountData(): void {
+  loadCountData(): void {
     this.admin.CountDisplay().subscribe(
       (result: any) => {
         this.count = result.total_count;
-        console.log(this.count);
       },
       (error) => {
         console.error('Error fetching count data:', error);
@@ -149,70 +149,67 @@ export class ViewDashComponent implements OnInit {
     );
   }
 
-  private updateChartData(): void {
-    if (this.totals) {
-      this.config.data.datasets[0].data = [this.totals.gcash, this.totals.bpi, this.totals.cash];
-      this.chart.update(); 
+  onMonthChange(event?: Event): void {
+    const selectedMonth = (event?.target as HTMLInputElement)?.value || this.getCurrentMonth();
+    const [year, month] = selectedMonth.split('-').map(Number);
+    
+    if (year && month) {
+      this.currentDatezzz = selectedMonth;
+      this.updateChartData(selectedMonth);
+    } else {
+      console.error('Invalid month selected.');
     }
   }
 
-  updateChartDataChart(date: Date | null) {
-    // Format the date if provided
-    const formattedDate = date 
-      ? date.toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' }) 
-      : '';
-  
-    // Update the chart if totals exist
-    if (this.totals) {
-      this.config.data.datasets[0].data = [this.totals.gcash, this.totals.bpi, this.totals.cash];
-      this.chart.update(); 
-    }
-  
-    console.log('Formatted Date:', formattedDate); // Debug log if needed
+  getCurrentMonth(): string {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
   }
-  
+
+  updateChartData(selectedMonth: string = this.currentDatezzz): void {
+    const [year, month] = selectedMonth.split('-').map(Number);
+    this.admin.dashdisplaysmonths(year, month).subscribe(
+      (result: any) => {
+        const monthlyData = result.totals;
+        if (monthlyData) {
+          this.config.data.datasets[0].data = [
+            monthlyData.gcash, 
+            monthlyData.bpi, 
+            monthlyData.cash
+          ];  
+          this.chart.update();
+        } else {
+          console.error(`No data found for the selected month: ${selectedMonth}`);
+        }
+      },
+      (error) => {
+        console.error('Error fetching totals data:', error);
+      }
+    );
+  }
 
   formatDate(date: Date): string {
-    const options: Intl.DateTimeFormatOptions = {
-      month: 'long',
-      day: '2-digit',
-      year: 'numeric',
-    };
-    return date.toLocaleDateString('en-US', options);
+    return date.toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' });
   }
+
   formatDates(date: Date): string {
-    const options: Intl.DateTimeFormatOptions = {
-      month: 'long',
-      // day: '2-digit',
-      year: 'numeric',
-    };
-    return date.toLocaleDateString('en-US', options);
-  }
-
-
-  onRoleChange(event: any): void {
-    this.selectedRole = event.target.value;
-  }
-
-  toggleCollapse(): void {
-    this.isCollapsed = !this.isCollapsed;
-  }
-
-  isFormValid(): boolean {
-    return this.initialAmount !== null && this.cashCount !== '';
+    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
   }
 
   openForms(): void {
     this.isDisabled = true;
     Swal.fire({
       title: 'Cash Count',
-      html: `...`,
+      html: `<input type="number" id="initialAmount" class="swal2-input" placeholder="Enter Initial Amount">`,
       confirmButtonText: 'Calculate Total',
       showCancelButton: true,
       cancelButtonText: 'Cancel',
       preConfirm: () => {
-        // Retrieve values from the form
-        // Return { totalAmount };
+        const initialAmount = (document.getElementById('initialAmount') as HTMLInputElement)?.value;
+        if (initialAmount) {
+          return { totalAmount: initialAmount };
+        }
+        return null;
       },
     }).then((result) => {
       if (result.isConfirmed && result.value) {

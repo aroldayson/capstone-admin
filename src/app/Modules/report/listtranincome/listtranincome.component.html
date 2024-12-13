@@ -20,7 +20,7 @@
               <hr class="my-4">
               <div class="row">
                 <div class="col-md-8">
-                    <h5 class="font-size-15 mb-1">Payment History Transaction</h5>
+                    <h5 class="font-size-15 mb-1">Payment Transaction</h5>
                 </div>
                 <div class="col md">
                     <!-- <h5 class="font-size-15 mb-1 ">Amount:</h5> -->
@@ -86,16 +86,17 @@
               </div>
 
               <div class="row">
-                <h5 class="font-size-15">Expenses History Transaction</h5>
+                <h5 class="font-size-15">Expenses Transaction</h5>
+              
                 <div class="col-md-3">
                   <div class="">
-                    <p class="mx-4"><b>Description Reason</b></p>
+                    <p><b>Cashier in Charge</b></p>
                   </div>
                 </div>
 
                 <div class="col-md-3">
                   <div class="">
-                    <p><b>Cashier in Charge</b></p>
+                    <p class="mx-4"><b>Description Reason</b></p>
                   </div>
                 </div>
                 
@@ -120,15 +121,17 @@
 
               <div class="row mx-2">
                 @for(e of expenses; track e.expenses) {
-                <div class="col-md-3">
-                    <div class="">
-                      <p>{{e.Desc_reason}}</p>
-                    </div>
-                </div>
+                
 
                 <div class="col-md-3">
                   <div class="">
                     <p>{{e.adminNames}}</p>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="">
+                    <p>{{e.Desc_reason}}</p>
                   </div>
                 </div>
 

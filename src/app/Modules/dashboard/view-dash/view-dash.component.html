@@ -101,10 +101,15 @@
             </div>
           </div> -->
           <div class="col-md-12">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- <div class="d-flex justify-content-between align-items-center mb-3">
               <label for="startDate" class="form-label mb-0">Filter by Month:</label>
               <input type="month" id="startDate" class="form-control w-auto" />
+            </div> -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <label for="startDate" class="form-label mb-0">Filter by Month:</label>
+              <input type="month" id="startDate" class="form-control w-auto" [value]="currentDatezzz" (change)="onMonthChange($event)" />
             </div>
+            
             <div class="chart-container p-3 bg-light rounded shadow-sm">
               <canvas id="MyChart"></canvas>
             </div>
