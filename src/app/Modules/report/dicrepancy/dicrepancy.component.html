@@ -6,11 +6,11 @@
           <!-- Header Section -->
           <div class="row align-items-center mb-4">
             <div class="col-md-6">
-              <h3 class="fw-bold text-primary">List of Discrepancy</h3>
+              <h3 class="fw-bold text-primary">LIST OF DISCREPANCY</h3>
             </div>
-            <div class="col-md-6 text-end">
+            <div class="col-md-6 d-flex justify-content-end">
               <button
-                class="btn btn-success btn-lg px-4 py-2"
+                class="btn btn-success btn-icon mb-3"
                 [useExistingCss]="true"
                 printSectionId="print-section"
                 ngxPrint
@@ -24,7 +24,9 @@
           <div class="row g-3 mb-4">
             <div class="col-md-6 col-lg-3">
               <div class="input-group">
-                <label class="input-group-text bg-primary text-white">From</label>
+                <label class="input-group-text bg-primary text-white"
+                  >From</label
+                >
                 <input
                   type="date"
                   class="form-control"
@@ -49,8 +51,13 @@
           </div>
 
           <!-- Table Section -->
-          <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-            <table class="table table-bordered table-striped table-hover align-middle">
+          <div
+            class="table-responsive"
+            style="max-height: 350px; overflow-y: auto"
+          >
+            <table
+              class="table table-bordered table-striped table-hover align-middle"
+            >
               <thead class="sticky-top bg-primary text-white">
                 <div class="loader-container" *ngIf="isLoading">
                   <div class="spinner"></div>
@@ -62,27 +69,45 @@
                   <th class="text-end">Total Collection</th>
                   <th class="text-end">Expenditure</th>
                   <th class="text-end">Remittance</th>
-                  <th class="text-end">Net Profit/<span class="text-danger">Loss</span></th>
+                  <th class="text-end">
+                    Net Profit/<span class="text-danger">Loss</span>
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 @for (d of filteredData; track d.Staff_ID) {
-                  <tr
-                    class="text-center table-row-hover"
-                    *ngIf="!isLoading" 
-                    (click)="discrepany(d.transactionDate)"
+                <tr
+                  class="text-center table-row-hover"
+                  *ngIf="!isLoading"
+                  (click)="discrepany(d.transactionDate)"
+                >
+                  <td>{{ d.transactionDate }}</td>
+                  <td>{{ d.name }}</td>
+                  <td class="text-end">
+                    {{ d.initialAmount | currency : " " }}
+                  </td>
+                  <td class="text-success text-end">
+                    {{ d.paymentAmount | currency : " " }}
+                  </td>
+                  <td class="text-danger text-end">
+                    {{ d.ExpensesAmount | currency : " " }}
+                  </td>
+                  <td class="text-primary text-end">
+                    {{ d.remitAmount | currency : " " }}
+                  </td>
+                  <th
+                    class="text-right"
+                    [ngClass]="
+                      d.totalprofit > 0 ? 'text-success' : 'text-danger'
+                    "
                   >
-                    <td>{{ d.transactionDate }}</td>
-                    <td>{{ d.name }}</td>
-                    <td class="text-end">{{ d.initialAmount | currency: ' ' }}</td>
-                    <td class="text-success text-end">{{ d.paymentAmount | currency: ' ' }}</td>
-                    <td class="text-danger text-end">{{ d.ExpensesAmount | currency: ' ' }}</td>
-                    <td class="text-primary text-end">{{ d.remitAmount | currency: ' ' }}</td>
-                    <th class="text-right" 
-                        [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">
-                      {{ (d.totalprofit < 0 ? (d.totalprofit * -1 | number:'1.2-2') : (d.totalprofit | number:'1.2-2')) }}
-                    </th>
-                  </tr>
+                    {{
+                      d.totalprofit < 0
+                        ? (d.totalprofit * -1 | number : "1.2-2")
+                        : (d.totalprofit | number : "1.2-2")
+                    }}
+                  </th>
+                </tr>
                 }
               </tbody>
             </table>

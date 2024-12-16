@@ -5,15 +5,19 @@
         <div class="card-body" id="print-section">
           <!-- Header Section -->
           <div class="invoice-title mb-4">
-            <h2 class="text-primary">History of Expenses Within The Day</h2>
-            <p class="text-muted mb-0">Date of Expenses Transaction: <b>{{ dateincome }}</b></p>
+            <h2 class="text-muted">History of Expenses Within The Day</h2>
+            <p class="text-muted mb-0">
+              Date of Expenses Transaction: <b>{{ dateincome }}</b>
+            </p>
           </div>
-          <hr>
+          <hr />
 
           <!-- Expenses History Header -->
           <div class="row mb-4">
             <div class="col-md-8">
-              <h5 class="font-size-16 text-secondary">Expenses History Transaction</h5>
+              <h5 class="font-size-16 text-secondary">
+                Expenses History Transaction
+              </h5>
             </div>
           </div>
 
@@ -30,14 +34,20 @@
               </thead>
               <tbody>
                 @for (e of expenses; track e.expenses) {
-                  <tr>
-                    <td>{{ e.Admin_lname }}</td>
-                    <td>
-                      <img src="{{ e.Receipt_filenameimg }}" alt="Receipt" class="receipt-thumbnail" />
-                    </td>
-                    <td>{{ e.Desc_reason }}</td>
-                    <td class="text-end">{{ e.Amount | currency: 'PHP':'symbol' }}</td>
-                  </tr>
+                <tr>
+                  <td>{{ e.Admin_lname }}</td>
+                  <td>
+                    <img
+                      src="{{ e.Receipt_filenameimg }}"
+                      alt="Receipt"
+                      class="receipt-thumbnail"
+                    />
+                  </td>
+                  <td>{{ e.Desc_reason }}</td>
+                  <td class="text-end">
+                    {{ e.Amount | currency : "PHP" : "symbol" }}
+                  </td>
+                </tr>
                 }
               </tbody>
             </table>
@@ -47,18 +57,40 @@
           <div class="row mt-4">
             <div class="col-md-8"></div>
             <div class="col-md-4 text-end">
-              <h5 class="font-size-15 text-danger">Total Expenses: {{ overalltotal | currency: 'PHP':'symbol' }}</h5>
+              <h5 class="font-size-15 text-danger">
+                Total Expenses: {{ overalltotal | currency : "PHP" : "symbol" }}
+              </h5>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <div class="d-print-none mt-2">
+              <div class="float-end">
+                <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
+                <a
+                  class="btn btn-primary w-md"
+                  [routerLink]="[
+                    '/main/reportpage/reportmain/reportview/expenditure'
+                  ]"
+                  >Back</a
+                >
+              </div>
             </div>
           </div>
 
           <!-- Back Button -->
-          <div class="py-3">
+          <!-- <div class="py-3">
             <div class="d-flex justify-content-end">
-              <a class="btn btn-primary btn-lg" [routerLink]="['/main/reportpage/reportmain/reportview/expenditure']">
+              <a
+                class="btn btn-primary btn-lg"
+                [routerLink]="[
+                  '/main/reportpage/reportmain/reportview/expenditure'
+                ]"
+              >
                 Back
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

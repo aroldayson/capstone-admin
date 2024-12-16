@@ -5,24 +5,40 @@
         <div class="card-body">
           <!-- Header Section -->
           <div class="row mb-4">
-            <div class="col-md-7">
+            <div class="col-9">
               <div class="row">
-                <div class="col-md-5 mt-2">
-                  <h3 class="fw-bold text-primary">Daily Transaction</h3>
+                <div class="col-5 mt-2">
+                  <h3 class="fw-bold text-primary">DAILY TRANSACTIONS</h3>
                 </div>
-                <div class="col-md-3 mt-2">
-                  <button class="btn btn-primary w-100 shadow-sm" routerLink="/main/tansactionpage/main/view-tran/listtransaction">See All Transaction</button>
+                <div class="col-3 mt-2">
+                  <button
+                    class="btn btn-primary shadow-sm"
+                    routerLink="/main/tansactionpage/main/view-tran/listtransaction"
+                  >
+                    SEE ALL TRANSACTIONS
+                  </button>
                 </div>
-                <div class="col-md-3 mb-3">
-                  <div class="form-group mt-2">
-                    <select id="userSelect" class="form-control custom-select" [(ngModel)]="keyword">
+                <div class="col-3 mb-3">
+                  <div class="form-group mt-2 position-relative">
+                    <select id="userSelect" class="form-control pr-5">
                       <option value="" selected>Select Cashier</option>
-                      <ng-container *ngFor="let c of staff">
-                        <option [value]="c.Admin_fname + ' ' + c.Admin_lname">
-                          {{ c.Admin_fname }} {{ c.Admin_lname }}
-                        </option>
-                      </ng-container>
+                      <option
+                        *ngFor="let c of staff"
+                        [value]="c.Admin_fname + ' ' + c.Admin_lname"
+                      >
+                        {{ c.Admin_fname }} {{ c.Admin_lname }}
+                      </option>
                     </select>
+                    <!-- Dropdown Icon -->
+                    <i
+                      class="fas fa-chevron-down position-absolute"
+                      style="
+                        top: 50%;
+                        right: 10px;
+                        transform: translateY(-50%);
+                        pointer-events: none;
+                      "
+                    ></i>
                   </div>
                 </div>
               </div>
@@ -31,16 +47,15 @@
             <div class="loader-container" *ngIf="isLoading">
               <div class="spinner"></div>
             </div>
-  
 
             <!-- Search Input -->
-            <div class="col-md-4 col-lg-5 mt-2 d-flex justify-content-end">
-              <div class="form-group mx-5">
+            <div class="col-3 mt-2">
+              <div class="form-group">
                 <div class="input-group">
                   <input
                     class="form-control"
                     type="text"
-                    placeholder="Search Transaction..."
+                    placeholder="Search Transactions..."
                     [(ngModel)]="keyword"
                     aria-label="Search Transaction"
                   />
@@ -68,14 +83,23 @@
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngFor="let t of trans | searchfilter: keyword; trackTrans">
-                  <tr *ngIf="!isLoading && trans.length > 0" class="text-center">
+                <ng-container
+                  *ngFor="let t of trans | searchfilter : keyword; trackTrans"
+                >
+                  <tr
+                    *ngIf="!isLoading && trans.length > 0"
+                    class="text-center"
+                  >
                     <td>{{ t.Tracking_number }}</td>
                     <td>{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
                     <td>{{ t.Customers }}</td>
                     <td>{{ t.Transac_datetime }}</td>
-                    <td class="text-right text-success">{{ t.Amount | currency: ' ' : 'symbol' }}</td>
-                    <td class="text-right text-danger">{{ t.totalprice | currency: ' ' : 'symbol' }}</td>
+                    <td class="text-right text-success">
+                      {{ t.Amount | currency : " " : "symbol" }}
+                    </td>
+                    <td class="text-right text-danger">
+                      {{ t.totalprice | currency : " " : "symbol" }}
+                    </td>
                   </tr>
                 </ng-container>
               </tbody>

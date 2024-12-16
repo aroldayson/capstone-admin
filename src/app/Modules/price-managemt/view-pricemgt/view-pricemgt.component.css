@@ -50,7 +50,7 @@ h3.fw-bold {
 
 /* Scrollable Cards */
 .card-container {
-  max-height: 60vh;
+  max-height: 50vh;
   overflow-y: auto;
   overflow-x: hidden; /* Prevent horizontal scroll */
   padding-right: 10px;

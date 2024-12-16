@@ -1,104 +1,108 @@
 <div class="container my-3" id="print-section">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row mb-4">
-              <div class="col-md-7">
-                <div class="row">
-                  <div class="col-md-4 mt-2">
-                    <h3 class="fw-bold">All Transaction</h3>
-                  </div>
-                  <div class="col-md-3 mt-2">
-                    <button
-                      class="btn btn-primary"
-                      [routerLink]="['/main/tansactionpage/main/view-tran/viewtransac']"
-                    >
-                      Daily Transaction
-                    </button>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <div class="form-group mt-2">
-                      <select id="userSelect" class="form-control custom-select" [(ngModel)]="keyword">
-                        <option value="" selected>Select Cashier</option>
-                        <ng-container *ngFor="let c of staff">
-                          <option [value]="c.Admin_fname + ' ' + c.Admin_lname">
-                            {{ c.Admin_fname }} {{ c.Admin_lname }}
-                          </option>
-                        </ng-container>
-                      </select>
-                    </div>
-                  </div>
-                  <!-- <div class="col-md-3 mb-3">
-                    <div class="form-group mt-2">
-                      <select
-                        id="userSelect"
-                        class="form-control"
-                        [(ngModel)]="keyword"
-                      >
-                        <option value="" selected>Select Cashier</option>
-                        <ng-container *ngFor="let c of staff">
-                          <option [value]="c.Admin_fname + ' ' + c.Admin_lname">
-                            {{ c.Admin_fname }} {{ c.Admin_lname }}
-                          </option>
-                        </ng-container>
-                      </select>
-                    </div>
-                  </div> -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <!-- Header Section -->
+          <div class="row mb-4">
+            <div class="col-9">
+              <div class="row">
+                <div class="col-5 mt-2">
+                  <h3 class="fw-bold text-primary">ALL TRANSACTIONS</h3>
                 </div>
-              </div>
-  
-              <div class="col-md-12 col-lg-5 mt-2 d-flex justify-content-end">
-                <div class="mx-5 form-group">
-                  <div class="row">
-                    <div class="col">
-                      <div class="d-flex form-inputs">
-                        <input
-                          class="form-control"
-                          type="text"
-                          placeholder="Search Transaction..."
-                          [(ngModel)]="keyword"
-                        />
-                        <!-- <i class="bx bx-search mt-2"></i> -->
-                      </div>
-                    </div>
+                <div class="col-3 mt-2">
+                  <button
+                    class="btn btn-primary shadow-sm"
+                    [routerLink]="[
+                      '/main/tansactionpage/main/view-tran/viewtransac'
+                    ]"
+                  >
+                    DAILY TRANSACTIONS
+                  </button>
+                </div>
+                <div class="col-3 mb-3">
+                  <div class="form-group mt-2 position-relative">
+                    <select id="userSelect" class="form-control pr-5">
+                      <option value="" selected>Select Cashier</option>
+                      <option
+                        *ngFor="let c of staff"
+                        [value]="c.Admin_fname + ' ' + c.Admin_lname"
+                      >
+                        {{ c.Admin_fname }} {{ c.Admin_lname }}
+                      </option>
+                    </select>
+                    <!-- Dropdown Icon -->
+                    <i
+                      class="fas fa-chevron-down position-absolute"
+                      style="
+                        top: 50%;
+                        right: 10px;
+                        transform: translateY(-50%);
+                        pointer-events: none;
+                      "
+                    ></i>
                   </div>
                 </div>
               </div>
             </div>
-  
-            <!-- Responsive Scrollable Table -->
-            <div
-              class="table-responsive"
-              style="max-height: 450px; overflow-y: auto; overflow-x: auto;"
-            >
-              <table class="table table-bordered table-hover rounded">
-                <thead class="sticky-top bg-light">
-                  <div class="loader-container" *ngIf="isLoading">
-                    <div class="spinner"></div>
+
+            <!-- Search Input -->
+            <div class="col-3 mt-2">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Search Transactions..."
+                    [(ngModel)]="keyword"
+                    aria-label="Search Transaction"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text bg-primary text-white">
+                      <i class="bx bx-search"></i>
+                    </span>
                   </div>
-                  <tr class="text-center">
-                    <th>Transaction Number</th>
-                    <th>Cashier in Charge</th>
-                    <th>Customer Name</th>
-                    <th>Transaction Date</th>
-                    <th>Paid</th>
-                    <th>Unpaid</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for (t of trans | searchfilter: keyword; track t.Transac_ID) {
-                  <tr class="text-center" *ngIf="!isLoading">
-                    <td>{{ t.Tracking_number }}</td>
-                    <td>{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
-                    <td>{{ t.Customers }}</td>
-                    <td>{{ t.Transac_datetime }}</td>
-                    <td class="text-right text-success">{{ t.Amount | currency : " " : "symbol"}}</td>
-                    <td class="text-right text-danger">{{ t.totalprice | currency : " " : "symbol" }}</td>
-                  </tr>
-                  }
-                </tbody>
-                <!-- <tfoot>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Responsive Scrollable Table -->
+          <div
+            class="table-responsive"
+            style="max-height: 450px; overflow-y: auto; overflow-x: auto"
+          >
+            <table class="table table-bordered table-hover rounded">
+              <thead class="sticky-top bg-light">
+                <div class="loader-container" *ngIf="isLoading">
+                  <div class="spinner"></div>
+                </div>
+                <tr class="text-center">
+                  <th>Transaction Number</th>
+                  <th>Cashier in Charge</th>
+                  <th>Customer Name</th>
+                  <th>Transaction Date</th>
+                  <th>Paid</th>
+                  <th>Unpaid</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (t of trans | searchfilter: keyword; track t.Transac_ID) {
+                <tr class="text-center" *ngIf="!isLoading">
+                  <td>{{ t.Tracking_number }}</td>
+                  <td>{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
+                  <td>{{ t.Customers }}</td>
+                  <td>{{ t.Transac_datetime }}</td>
+                  <td class="text-right text-success">
+                    {{ t.Amount | currency : " " : "symbol" }}
+                  </td>
+                  <td class="text-right text-danger">
+                    {{ t.totalprice | currency : " " : "symbol" }}
+                  </td>
+                </tr>
+                }
+              </tbody>
+              <!-- <tfoot>
                   <tr>
                     <th></th>
                     <th></th>
@@ -107,11 +111,10 @@
                     <th class="text-right">{{ totalprice }}</th>
                   </tr>
                 </tfoot> -->
-              </table>
-            </div>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
