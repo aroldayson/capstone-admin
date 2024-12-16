@@ -25,6 +25,12 @@
                 </tr>
               </thead>
               <tbody>
+                  <!-- Placeholder Rows -->
+                <tr *ngIf="isLoading">
+                  <td colspan="7" class="text-center">
+                    <div class="placeholder-row"></div>
+                  </td>
+                </tr>
                 @for(d of remit; track d.Cash_ID){
                   <tr class="text-center"*ngIf="!isLoading && remit.length > 0" (click)="print(d.Cash_ID)">
                     <td>{{ d.remitYear }}-{{d.remitMonth }}-{{ d.remitDay }}</td>

@@ -120,33 +120,20 @@ canvas {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.spinner {
-  border: 8px solid white;
-  border-top: 8px solid blue;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 0.5s linear infinite;
+.placeholder {
+  font-size: 1.5rem;
+  color: #ccc; /* Light gray to simulate loading state */
+  animation: pulse 1.5s infinite;
 }
 
-@keyframes spin {
+@keyframes pulse {
   0% {
-    transform: rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
   }
   100% {
-    transform: rotate(360deg);
+    opacity: 0.8;
   }
 }
-
-.loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.7); /* Optional: adds a semi-transparent background */
-}
-

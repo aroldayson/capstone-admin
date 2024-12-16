@@ -1,39 +1,45 @@
 <div class="mt-4">
   <div class="row w-100">
     <!-- Top Cards with Hover Effect -->
-    <div class="col-md-4 mb-3" routerLink="/main/tansactionpage/main/view-tran/remittanceview">
+    <div
+      class="col-md-4 mb-3"
+      routerLink="/main/tansactionpage/main/view-tran/remittanceview"
+    >
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-wallet fa-2x mb-2 text-primary"></i>
         <h4>Today's Received Payment</h4>
         <div class="loader-container" *ngIf="isLoading">
-          <div class="spinner"></div>
+          <h1 class="placeholder">Loading...</h1>
         </div>
-        <h1 *ngIf="!isLoading">{{ totalAmount | currency: 'PHP':'symbol' }}</h1>
+        <h1 *ngIf="!isLoading">
+          {{ totalAmount | currency : "PHP" : "symbol" }}
+        </h1>
       </div>
     </div>
+
     <div class="col-md-4 mb-3" routerLink="/main/tansactionpage/main/view-tran">
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-exchange-alt fa-2x mb-2 text-success"></i>
         <h4>Today's Received Transactions</h4>
         <div class="loader-container" *ngIf="isLoading">
-          <div class="spinner"></div>
+          <h1 class="placeholder">Loading...</h1>
         </div>
-        <h1 *ngIf="!isLoading">{{count}}</h1>
+        <h1 *ngIf="!isLoading">{{ count }}</h1>
       </div>
     </div>
+
     <div class="col-md-4 mb-3">
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-money-bill-wave fa-2x mb-2 text-danger"></i>
         <h4>Today's Expenses</h4>
         <div class="loader-container" *ngIf="isLoading">
-          <div class="spinner"></div>
+          <h1 class="placeholder">Loading...</h1>
         </div>
-        <h1 *ngIf="!isLoading">{{ expenses.total_amount | currency: 'PHP':'symbol' }}</h1>
+        <h1 *ngIf="!isLoading">
+          {{ expenses.total_amount | currency : "PHP" : "symbol" }}
+        </h1>
       </div>
     </div>
-    
-    
-
 
     <!-- Received Payment and Chart Section -->
     <div class="col-lg-7 col-md-12">
@@ -54,15 +60,21 @@
                   <tbody>
                     <tr>
                       <td class="text-primary">GCash</td>
-                      <td class="text-right">{{ totals.gcash | currency: 'PHP':'symbol' }}</td>
+                      <td class="text-right">
+                        {{ totals.gcash | currency : "PHP" : "symbol" }}
+                      </td>
                     </tr>
                     <tr>
                       <td class="text-danger">BPI</td>
-                      <td class="text-right">{{ totals.bpi | currency: 'PHP':'symbol' }}</td>
+                      <td class="text-right">
+                        {{ totals.bpi | currency : "PHP" : "symbol" }}
+                      </td>
                     </tr>
                     <tr>
                       <td class="text-success">Cash</td>
-                      <td class="text-right">{{ totals.cash | currency: 'PHP':'symbol' }}</td>
+                      <td class="text-right">
+                        {{ totals.cash | currency : "PHP" : "symbol" }}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -117,14 +129,22 @@
               <input type="month" id="startDate" class="form-control w-auto" />
             </div> -->
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <label for="startDate" class="form-label mb-0">Filter by Month:</label>
-              <input type="month" id="startDate" class="form-control w-auto" [value]="currentDatezzz" (change)="onMonthChange($event)" />
+              <label for="startDate" class="form-label mb-0"
+                >Filter by Month:</label
+              >
+              <input
+                type="month"
+                id="startDate"
+                class="form-control w-auto"
+                [value]="currentDatezzz"
+                (change)="onMonthChange($event)"
+              />
             </div>
-            
+
             <div class="chart-container p-3 bg-light rounded shadow-sm">
               <canvas id="MyChart"></canvas>
             </div>
-          </div>          
+          </div>
         </div>
       </div>
     </div>

@@ -2,7 +2,9 @@
   <div class="col md">
     <div class="container bg-light p-4 rounded shadow-sm">
       <div class="row align-items-center">
-        <div class="col-md-12 col-sm-12 mt-2 d-flex align-items-center justify-content-between">
+        <div
+          class="col-md-12 col-sm-12 mt-2 d-flex align-items-center justify-content-between"
+        >
           <h5 class="mb-0 fw-bold text-center text-md-start">CASH DETAILS</h5>
           <button
             class="btn btn-primary btn-sm"
@@ -18,10 +20,10 @@
           <div class="col-md">
             <div class="form-group mb-3">
               <label for="userSelect">Select Cashier</label>
-              <select 
-                id="userSelect" 
-                class="form-control" 
-                formControlName="Staff_ID" 
+              <select
+                id="userSelect"
+                class="form-control"
+                formControlName="Staff_ID"
                 [attr.disabled]="isSubmitted ? true : null"
                 required
               >
@@ -32,6 +34,16 @@
                   </option>
                 </ng-container>
               </select>
+              <!-- Dropdown Icon -->
+              <i
+                class="fas fa-chevron-down position-absolute"
+                style="
+                  top: 60%;
+                  right: 20px;
+                  transform: translateY(-50%);
+                  pointer-events: none;
+                "
+              ></i>
             </div>
           </div>
           <div class="col-md">
@@ -49,36 +61,37 @@
               />
             </div>
           </div>
-        </div>              
-      
+        </div>
+
         <div class="row mt-4">
           <div class="col-6 mt-2">
-            <button 
-              type="button" 
-              class="btn btn-primary w-100"  
-              [disabled]="isSubmitted" 
-              (click)="clearForm()">
+            <button
+              type="button"
+              class="btn btn-primary w-100"
+              [disabled]="isSubmitted"
+              (click)="clearForm()"
+            >
               CLEAR
             </button>
           </div>
           <div class="col-6 mt-2">
-            <button 
-              type="submit" 
-              class="btn btn-success w-100 position-relative" 
+            <button
+              type="submit"
+              class="btn btn-success w-100 position-relative"
               [disabled]="isSubmitted || !InitialFrom.valid"
-              (click)="onSubmit()">
-              <span *ngIf="isLoading" class="spinner-container">
-                <div class="spinner"></div>
-              </span>
-              <span *ngIf="!isLoading">SUBMIT</span>
+              (click)="onSubmit()"
+            >
+              <!-- <span *ngIf="isLoading" class="spinner-container">
+                <div class="spinner"> *ngIf="!isLoading"</div>
+              </span> -->
+              <span>SUBMIT</span>
             </button>
           </div>
         </div>
       </form>
-      
     </div>
   </div>
   <div class="col md">
-    <router-outlet/>
+    <router-outlet />
   </div>
 </div>

@@ -20,7 +20,12 @@
                 </div>
                 <div class="col-3 mb-3">
                   <div class="form-group mt-2 position-relative">
-                    <select id="userSelect" class="form-control pr-5">
+                    <select
+                      id="userSelect"
+                      class="form-control pr-5"
+                      [(ngModel)]="selectedCashier"
+                      (change)="filterByCashier()"
+                    >
                       <option value="" selected>Select Cashier</option>
                       <option
                         *ngFor="let c of staff"
@@ -42,10 +47,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="loader-container" *ngIf="isLoading">
-              <div class="spinner"></div>
             </div>
 
             <!-- Search Input -->
@@ -83,6 +84,14 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Placeholder Rows -->
+                <tr *ngIf="isLoading">
+                  <td colspan="6" class="text-center">
+                    <div class="placeholder-row"></div>
+                  </td>
+                </tr>
+
+                <!-- Transactions Data -->
                 <ng-container
                   *ngFor="let t of trans | searchfilter : keyword; trackTrans"
                 >

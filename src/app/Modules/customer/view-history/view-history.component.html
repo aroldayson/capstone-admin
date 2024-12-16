@@ -13,7 +13,7 @@
           <div class="row mb-4">
             <div class="col-md-12">
               <h3 class="fw-bold">Customer Transactions Record</h3>
-              
+
               <div class="row">
                 <div class="col-md-3 mt-3">
                   <img
@@ -24,10 +24,7 @@
                 </div>
                 <div class="col-md">
                   <div class="row mt-5">
-                    <h5>Customer Name:
-                    <div class="loader-container" *ngIf="isLoading">
-                      <div class="spinner"></div>
-                    </div></h5>
+                    <h5>Customer Name:</h5>
                     <h2 class="mt-1">
                       {{ cust.Cust_fname }} {{ cust.Cust_mname }}
                       {{ cust.Cust_lname }}
@@ -54,9 +51,6 @@
           <div class="table-responsive table-wrapper">
             <table class="table table-bordered table-hover">
               <thead class="table-light sticky-thead">
-                <div class="loader-container" *ngIf="isLoading">
-                  <div class="spinner"></div>
-                </div>
                 <tr class="text-center">
                   <th>No.</th>
                   <th>Trans. Number</th>
@@ -70,8 +64,18 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Placeholder Rows -->
+                <tr *ngIf="isLoading">
+                  <td colspan="9" class="text-center">
+                    <div class="placeholder-row"></div>
+                  </td>
+                </tr>
                 @for (c of histo; track c.Transac_ID) {
-                <tr class="text-center" *ngIf="!isLoading"  (click)="history(c.Transac_ID)">
+                <tr
+                  class="text-center"
+                  *ngIf="!isLoading"
+                  (click)="history(c.Transac_ID)"
+                >
                   <td>{{ $index + 1 }}</td>
                   <td>{{ c.Tracking_number | slice : 0 : 10 }}...</td>
                   <td>{{ c.Transac_datetime }}</td>

@@ -22,7 +22,12 @@
                 </div>
                 <div class="col-3 mb-3">
                   <div class="form-group mt-2 position-relative">
-                    <select id="userSelect" class="form-control pr-5">
+                    <select
+                      id="userSelect"
+                      class="form-control pr-5"
+                      [(ngModel)]="selectedCashier"
+                      (change)="filterByCashier()"
+                    >
                       <option value="" selected>Select Cashier</option>
                       <option
                         *ngFor="let c of staff"
@@ -74,9 +79,6 @@
           >
             <table class="table table-bordered table-hover rounded">
               <thead class="sticky-top bg-light">
-                <div class="loader-container" *ngIf="isLoading">
-                  <div class="spinner"></div>
-                </div>
                 <tr class="text-center">
                   <th>Transaction Number</th>
                   <th>Cashier in Charge</th>
@@ -87,7 +89,13 @@
                 </tr>
               </thead>
               <tbody>
-                @for (t of trans | searchfilter: keyword; track t.Transac_ID) {
+                <tr *ngIf="isLoading">
+                  <td colspan="6" class="text-center">
+                    <div class="placeholder-row"></div>
+                  </td>
+                </tr>
+                @for (t of filteredTrans | searchfilter: keyword; track
+                t.Transac_ID) {
                 <tr class="text-center" *ngIf="!isLoading">
                   <td>{{ t.Tracking_number }}</td>
                   <td>{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
@@ -102,15 +110,6 @@
                 </tr>
                 }
               </tbody>
-              <!-- <tfoot>
-                  <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th class="text-right">Total Price</th>
-                    <th class="text-right">{{ totalprice }}</th>
-                  </tr>
-                </tfoot> -->
             </table>
           </div>
         </div>
