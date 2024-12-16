@@ -19,6 +19,7 @@ export class ViewRemitComponent implements OnInit{
   payment: any;
   remittance: any;
   totalprice: any;
+  isLoading: boolean = false;
 
 
   constructor(
@@ -27,6 +28,7 @@ export class ViewRemitComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.spinner();
     this.admin.remittanceapproved().subscribe((result: any) => {
       this.remit = result;
       if (this.remit && this.remit.length > 0) {
@@ -44,6 +46,14 @@ export class ViewRemitComponent implements OnInit{
       }
       console.log(this.remit);
     });
+  }
+
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
   }
 
   getAbsoluteProfit(profit: number): number {

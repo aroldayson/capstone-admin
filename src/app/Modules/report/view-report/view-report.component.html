@@ -1,9 +1,9 @@
 <div class="mt-4 mb-4">
-  <div class="row justify-content-start">
-    <div class="col-6 col-sm-4 col-md-2 mb-3">
+  <div class="row justify-content-center gap-3">
+    <div class="col-6 col-sm-4 col-md-2">
       <button
         type="submit"
-        class="btn btn-nav btn-block"
+        class="btn btn-nav btn-block shadow"
         [routerLink]="['/main/reportpage/reportmain/reportview/income']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
@@ -11,10 +11,10 @@
         INCOME
       </button>
     </div>
-    <div class="col-6 col-sm-4 col-md-2 mb-3">
+    <div class="col-6 col-sm-4 col-md-2">
       <button
         type="submit"
-        class="btn btn-nav btn-block"
+        class="btn btn-nav btn-block shadow"
         [routerLink]="['/main/reportpage/reportmain/reportview/expenditure']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
@@ -22,10 +22,10 @@
         EXPENDITURE
       </button>
     </div>
-    <div class="col-6 col-sm-4 col-md-2 mb-3">
+    <div class="col-6 col-sm-4 col-md-2">
       <button
         type="submit"
-        class="btn btn-nav btn-block"
+        class="btn btn-nav btn-block shadow"
         [routerLink]="['/main/reportpage/reportmain/reportview/disrepancy']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
@@ -33,10 +33,10 @@
         DISCREPANCY
       </button>
     </div>
-    <div class="col-6 col-sm-4 col-md-2 mb-3">
+    <div class="col-6 col-sm-4 col-md-2">
       <button
         type="submit"
-        class="btn btn-nav btn-block"
+        class="btn btn-nav btn-block shadow"
         [routerLink]="['/main/reportpage/reportmain/reportview/collectable']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
@@ -46,7 +46,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mt-4">
   <div class="col-md-12">
     <router-outlet></router-outlet>
   </div>

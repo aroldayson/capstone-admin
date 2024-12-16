@@ -19,6 +19,18 @@
                   </div>
                   <div class="col-md-3 mb-3">
                     <div class="form-group mt-2">
+                      <select id="userSelect" class="form-control custom-select" [(ngModel)]="keyword">
+                        <option value="" selected>Select Cashier</option>
+                        <ng-container *ngFor="let c of staff">
+                          <option [value]="c.Admin_fname + ' ' + c.Admin_lname">
+                            {{ c.Admin_fname }} {{ c.Admin_lname }}
+                          </option>
+                        </ng-container>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-3 mb-3">
+                    <div class="form-group mt-2">
                       <select
                         id="userSelect"
                         class="form-control"
@@ -32,7 +44,7 @@
                         </ng-container>
                       </select>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
   
@@ -62,6 +74,9 @@
             >
               <table class="table table-bordered table-hover rounded">
                 <thead class="sticky-top bg-light">
+                  <div class="loader-container" *ngIf="isLoading">
+                    <div class="spinner"></div>
+                  </div>
                   <tr class="text-center">
                     <th>Transaction Number</th>
                     <th>Cashier in Charge</th>
@@ -73,7 +88,7 @@
                 </thead>
                 <tbody>
                   @for (t of trans | searchfilter: keyword; track t.Transac_ID) {
-                  <tr class="text-center">
+                  <tr class="text-center" *ngIf="!isLoading">
                     <td>{{ t.Tracking_number }}</td>
                     <td>{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
                     <td>{{ t.Customers }}</td>

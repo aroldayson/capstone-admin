@@ -1,6 +1,9 @@
 <div class="container mt-5 mb-5"  id="print-section">
   <div class="receipt-main" >
     <div class="receipt-header" >
+      <div class="loader-container" *ngIf="isLoading">
+        <div class="spinner"></div>
+      </div>
       <div class="receipt-left">
         <img
           class="img-responsive"
@@ -17,7 +20,7 @@
     </div>
     
     <div class="receipt-header-mid">
-      <div class="">
+      <div class="" *ngIf="!isLoading">
         <h5>{{cust.Cust_fname}} {{cust.Cust_mname}} {{cust.Cust_lname}}</h5>
         <p><b>Mobile :</b> {{cust.Cust_phoneno}}</p>
         <p><b>Email :</b> {{cust.Cust_email}}</p>
@@ -135,6 +138,7 @@
             <p><strong>Additional Services: </strong></p>
             <p><strong>Amount Received: </strong></p>
             <p><strong>Change: </strong></p>
+            <!-- <p><strong>Shipping fee: </strong></p> -->
             <p><strong>Balance: </strong></p>
           </td>
           <td>
@@ -151,6 +155,9 @@
                 <p> 
                   {{ (payment != null && totalpayment != null) ? ((payment - totalpayment - addservices) > 0 ? (payment - totalpayment - addservices) : 0) : 0 | currency: ' ' : 'symbol'  }}
                 </p>
+                <!-- <p> 
+                  {{ (payment != null && totalpayment != null) ? ((payment - totalpayment - addservices) > 0 ? (payment - totalpayment - addservices) : 0) : 0 | currency: ' ' : 'symbol'  }}
+                </p> -->
                 <p class="text-danger">
                   {{ (payment - totalpayment - addservices) < 0 ? (0 - (payment - totalpayment - addservices)) : 0 | currency: ' ' : 'symbol' }}
               </p>
@@ -180,7 +187,7 @@
 
     <div class="receipt-footer">
       <div class="footer-left">
-        <!-- <p><b>Date :</b> 15 Aug 2016</p> -->
+        <p><b>Date :</b> 15 Aug 2016</p>
         <h5 style="color: rgb(140, 140, 140)">Thanks for Patient!</h5>
       </div>
       <div class="footer-right">

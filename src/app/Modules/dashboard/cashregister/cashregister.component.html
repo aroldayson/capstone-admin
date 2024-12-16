@@ -1,56 +1,61 @@
-<div class="row align-items-center">
+<form [formGroup]="cashRegistryForm" (submit)="onSubmit()">
+  <div class="row align-items-center">
     <div class="col-md-8 col-sm-12 mt-2">
       <h5 class="mb-4 fw-bold text-center text-md-start">CASH REGISTRY DETAILS</h5>
     </div>
 
+    <!-- Date and Time -->
     <div class="row">
-      <div class="col md text-left">
+      <div class="col-md text-left">
         <h6>Date</h6>
-        <p>Nov 29, 2024</p>
+        <input formControlName="date" type="date" class="form-control" />
       </div>
-      <div class="col md text-left">
+      <div class="col-md text-left">
         <h6>Time</h6>
-        <p>10:50 AM</p>
+        <input formControlName="time" type="time" class="form-control" />
       </div>
     </div>
 
+    <!-- Cashier in Charge -->
     <div class="row">
       <div class="col-md-8 text-left">
         <h6>Cashier in Charge:</h6>
       </div>
-      <div class="col md text-right">
-       Staff1
+      <div class="col-md text-right">
+        <input formControlName="cashier" type="text" class="form-control" />
       </div>
     </div>
 
+    <!-- Initial Amount -->
     <div class="row">
       <div class="col-md-8 text-left">
         <h6>Initial Amount:</h6>
       </div>
-      <div class="col md text-right">
-        700.00
+      <div class="col-md text-right">
+        <input formControlName="initialAmount" type="number" class="form-control" />
       </div>
     </div>
 
+    <!-- Received By and Received Date -->
     <div class="row">
       <div class="col-md-6 text-left">
-        <h6>Received by: </h6>
-        <p>Staff2</p>
+        <h6>Received by:</h6>
+        <input formControlName="receivedBy" type="text" class="form-control" />
       </div>
       <div class="col-md-6 text-left">
-        <h6>Received Date: </h6>
-        <p>7:00 PM</p>
+        <h6>Received Date:</h6>
+        <input formControlName="receivedDate" type="time" class="form-control" />
       </div>
     </div>
 
+    <!-- Buttons -->
     <div class="row mt-3">
-      <div class="col md">
-        <button type="button" class="btn btn-primary w-100" >
-          CANCEL
-        </button>
+      <div class="col-md">
+        <button type="button" class="btn btn-primary w-100" (click)="onCancel()">CANCEL</button>
       </div>
-      <div class="col md">
-        <button type="submit" class="btn btn-success w-100">UPDATE</button>
+      <div class="col-md">
+        <button type="submit" class="btn btn-success w-100" [disabled]="cashRegistryForm.invalid">UPDATE</button>
       </div>
     </div>
-</div>
+  </div>
+</form>

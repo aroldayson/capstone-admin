@@ -11,6 +11,9 @@
           <div class="table-responsive table-wrapper">
             <table class="table table-bordered table-hover rounded">
               <thead class="sticky-thead">
+                <div class="loader-container" *ngIf="isLoading">
+                  <div class="spinner"></div>
+                </div>
                 <tr class="text-center">
                   <th>DateTime</th>
                   <th>Cashier in Charge</th>
@@ -23,7 +26,7 @@
               </thead>
               <tbody>
                 @for(d of remit; track d.Cash_ID){
-                  <tr class="text-center" (click)="print(d.Cash_ID)">
+                  <tr class="text-center"*ngIf="!isLoading && remit.length > 0" (click)="print(d.Cash_ID)">
                     <td>{{ d.remitYear }}-{{d.remitMonth }}-{{ d.remitDay }}</td>
                     <td>{{d.name}}</td>
                     <td class="text-right">{{d.initialAmount | currency: ' ':'symbol'}}</td>
@@ -56,6 +59,9 @@
                 </tr>
               </tfoot> -->
             </table>
+            <div *ngIf="!isLoading && remit.length === 0" class="text-center">
+              <p>No remittances have been approved.</p>
+            </div>
           </div>
         </div>
       </div>

@@ -33,15 +33,17 @@
             </div>
           </div>
           <!-- End Header Section -->
-
+          <div class="loader-container" *ngIf="isLoading">
+            <div class="spinner"></div>
+          </div>
           <!-- Scrollable Cards -->
           <div class="card-container">
             <!-- Use @for to iterate over filteredCategories -->
             @for (c of filteredCategories | searchfilter: keyword; track
             c.Categ_ID) {
-            <div class="price-card">
+            <div  class="price-card">
               <div class="price-card-body">
-                <div class="details" (click)="updatebtn(c.Categ_ID)">
+                <div class="details" *ngIf="!isLoading" (click)="updatebtn(c.Categ_ID)">
                   <h5 class="fw-bold">{{ c.Category }}</h5>
                   <p>
                     Price per Kilogram:

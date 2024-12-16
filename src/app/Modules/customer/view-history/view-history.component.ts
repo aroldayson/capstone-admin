@@ -26,12 +26,14 @@ export class ViewHistoryComponent implements OnInit {
   message: string = '';
   existingImageUrl: string | null = null;
   intervalId: any;
+  isLoading: boolean = false;
 
   constructor(private admin: AdminService, private route: Router) {
     this.loadExistingImage();
     this.startPolling();
   }
   ngOnInit(): void {
+    this.spinner();
     this.admin.findcustomer(this.cust_id.id).subscribe((result: any) => {
       this.cust = result;
       console.log(result);
@@ -58,6 +60,15 @@ export class ViewHistoryComponent implements OnInit {
       }
     }, 300);
   }
+
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
+  }
+
 
   loadExistingImage() {
     if (this.cust_id.id) {

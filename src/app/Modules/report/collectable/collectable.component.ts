@@ -23,12 +23,14 @@ export class CollectableComponent implements OnInit{
   toDate: string = '';   
   data: any[] = [];      
   filteredData: any[] = [];
+  isLoading: boolean = false;
   
   constructor(
     private admin: AdminService,
     private route: Router
   ){}
   ngOnInit(): void {
+    this.spinner();
     this.admin.collectable().subscribe((result: any) => {
       this.income = result.trans;
       // this.filteredData = this.income; 
@@ -62,6 +64,13 @@ export class CollectableComponent implements OnInit{
     });
   }
 
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
+  }
 
 
 

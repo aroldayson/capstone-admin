@@ -3,7 +3,7 @@
   font-size: calc(0.85rem + 0.5vw);
   padding: 10px 15px;
   border-radius: 8px;
-  background-color: #007bff;
+  background-color: #5998e2;
   color: #fff;
   border: none;
   transition: all 0.3s ease;
@@ -11,14 +11,15 @@
 
 .btn-nav:hover {
   background-color: #0056b3;
+  color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px #1c638f;
 }
 
 /* Active Button Styles */
 .btn-nav.active {
   background-color: #0056b3; /* Darker blue to indicate active */
-  border: 2px solid #004085; /* Border to highlight active state */
+  border: 2px solid #1c638f; /* Border to highlight active state */
   color: #fff; /* Ensure text remains readable */
   transform: none; /* Remove hover transform for active state */
   box-shadow: none; /* Remove shadow to keep the active button distinct */

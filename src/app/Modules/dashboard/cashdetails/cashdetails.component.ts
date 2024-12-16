@@ -52,6 +52,7 @@ export class CashdetailsComponent {
 
   save(): void {
     console.log(this.InitialFrom.value);
+    localStorage.setItem('initialFormData', JSON.stringify(this.InitialFrom.value));
     this.route.navigate(['/main/dashboardpage/dashboardmain/dashboardview/cashregister']);
     // this.admin.cashinitial(this.InitialFrom.value).subscribe(
     //   (result: any) => {

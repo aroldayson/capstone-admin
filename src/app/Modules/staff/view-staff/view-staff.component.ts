@@ -23,12 +23,14 @@ export class ViewStaffComponent implements OnInit {
   imagePreview: string | ArrayBuffer | null = null;
   existingImageUrl: string | null = null;
   message: string = '';
+  isLoading: boolean = false;
 
   constructor(private admin: AdminService, private route: Router) {}
 
   ngOnInit(): void {
     this.getdatastaff();
     this.startPolling();
+    this. spinner();
     // this.loadExistingImage();
   }
 
@@ -46,6 +48,14 @@ export class ViewStaffComponent implements OnInit {
         }
       });
     });
+  }
+
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
   }
   
   getdatastaff() {

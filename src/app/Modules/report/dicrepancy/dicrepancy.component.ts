@@ -17,6 +17,7 @@ export class DicrepancyComponent implements OnInit {
   fromDate: string = '';       
   toDate: string = '';         
   filteredData: any[] = [];    
+  isLoading: boolean = false;
 
   constructor(
     private admin: AdminService,
@@ -36,6 +37,7 @@ export class DicrepancyComponent implements OnInit {
 
       //     console.log('Remit Data:', this.filteredData);
       // });
+      this.spinner();
       this.admin.displayDisrepancy().subscribe((result: any) => {
         this.remit = result;
         this.filteredData = this.remit;
@@ -64,6 +66,14 @@ export class DicrepancyComponent implements OnInit {
       } else {
           this.filteredData = this.remit.filter(transaction => transaction.Fund_status === 'Approve');
       }
+  }
+
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
   }
 
   discrepany(id: any){

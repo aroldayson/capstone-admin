@@ -5,23 +5,34 @@
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-wallet fa-2x mb-2 text-primary"></i>
         <h4>Today's Received Payment</h4>
-        <h1>{{ totalAmount | currency: 'PHP':'symbol' }}</h1>
+        <div class="loader-container" *ngIf="isLoading">
+          <div class="spinner"></div>
+        </div>
+        <h1 *ngIf="!isLoading">{{ totalAmount | currency: 'PHP':'symbol' }}</h1>
       </div>
     </div>
     <div class="col-md-4 mb-3" routerLink="/main/tansactionpage/main/view-tran">
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-exchange-alt fa-2x mb-2 text-success"></i>
         <h4>Today's Received Transactions</h4>
-        <h1>{{count}}</h1>
+        <div class="loader-container" *ngIf="isLoading">
+          <div class="spinner"></div>
+        </div>
+        <h1 *ngIf="!isLoading">{{count}}</h1>
       </div>
     </div>
-    <div class="col-md-4 mb-3" >
+    <div class="col-md-4 mb-3">
       <div class="card hover-card p-3 text-center">
         <i class="fas fa-money-bill-wave fa-2x mb-2 text-danger"></i>
         <h4>Today's Expenses</h4>
-        <h1>{{ expenses.total_amount | currency: 'PHP':'symbol' }}</h1>
+        <div class="loader-container" *ngIf="isLoading">
+          <div class="spinner"></div>
+        </div>
+        <h1 *ngIf="!isLoading">{{ expenses.total_amount | currency: 'PHP':'symbol' }}</h1>
       </div>
     </div>
+    
+    
 
 
     <!-- Received Payment and Chart Section -->

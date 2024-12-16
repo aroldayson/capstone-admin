@@ -23,12 +23,14 @@ export class IncomeComponent implements OnInit{
   toDate: string = '';   
   data: any[] = [];      
   filteredData: any[] = [];
+  isLoading: boolean = false;
   
   constructor(
     private admin: AdminService,
     private route: Router
   ){}
   ngOnInit(): void {
+    this.spinner();
     this.admin.displayincome().subscribe((result: any) => {
       this.income = result.transactions;
       this.filteredData = this.income; 
@@ -89,6 +91,12 @@ export class IncomeComponent implements OnInit{
     console.log(data);
   }
   
-  
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
+  }
 
 }

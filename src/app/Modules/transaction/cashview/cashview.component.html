@@ -1,0 +1,43 @@
+<div class="container bg-light p-4 rounded shadow-sm">
+    <div class="row">
+      <div class="col-12 text-center mt-2">
+        <h5 class="mb-4 mx-2 fw-bold">VIEW DETAILS</h5>
+      </div>
+    </div>
+  
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th class="text-center">No.</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">Staff in Charge</th>
+            <th class="text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(c of details; track c.Cash_ID) {
+          <tr>
+            <td class="text-center">{{ $index + 1 }}</td>
+            <td class="text-center">{{ c.Datetime_InitialAmo | date : "shortDate" }}</td>
+            <td>{{ c.name }}</td>
+            <td class="text-right">₱{{ c.Initial_amount | number : "1.2-2" }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="row mt-3">
+      <div class="col-12 col-md-4 ms-auto">
+        <button
+          type="button"
+          class="btn btn-secondary w-100"
+          routerLink="/main/tansactionpage/main/view-tran/cashdetails"
+        >
+          BACK
+        </button>
+      </div>
+    </div>
+  </div>
+  

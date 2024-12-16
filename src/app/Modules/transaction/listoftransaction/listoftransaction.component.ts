@@ -17,10 +17,13 @@ export class ListoftransactionComponent implements OnInit{
   keyword: any
   staff: any;
   totalprice: any;
+  isLoading: boolean = false;
+  
   constructor(
     private admin: AdminService
   ){}
   ngOnInit(): void {
+    this.spinner();
     this.admin.displaystaff().subscribe(
       (result: any) => {
         this.staff = result; 
@@ -35,5 +38,13 @@ export class ListoftransactionComponent implements OnInit{
       this.totalprice = result.totalsprice;
       console.log(this.trans)
     });
+  }
+
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
   }
 }

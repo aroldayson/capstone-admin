@@ -13,6 +13,8 @@ import { AlltransactionComponent } from './alltransaction/alltransaction.compone
 import { CashdetailsComponent } from './cashdetails/cashdetails.component';
 import { RemittanceComponent } from './remittance/remittance.component';
 import { ListoftransactionComponent } from './listoftransaction/listoftransaction.component';
+import { CashviewComponent } from './cashview/cashview.component';
+import { CashregisterComponent } from './cashregister/cashregister.component';
 export const transactionRoute: Routes = [
   {
     path: 'main',
@@ -26,6 +28,8 @@ export const transactionRoute: Routes = [
           { path: 'cashdetails', component: CashdetailsComponent,
             children:[
               {path: 'remit', component: RemittanceComponent },
+              {path: 'cashview', component: CashviewComponent },
+              {path: 'cashregister', component: CashregisterComponent },
               {path: '', redirectTo: 'remit', pathMatch: 'full' },
             ]
            },

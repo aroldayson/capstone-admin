@@ -35,6 +35,7 @@ export class ViewaddressComponent implements OnInit {
   filteredCategories: any[] = []; // Filtered list of categories for display
   keyword: any;
   intervalId: any;
+  isLoading: boolean = false;
   private pollingSubscription: Subscription | null = null;
 
   constructor(
@@ -46,7 +47,16 @@ export class ViewaddressComponent implements OnInit {
   ngOnInit(): void {
     this.getdatastaff();
     this.startPolling();
+    this.spinner();
   }
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
+  }
+  
   startPolling() {
     const pollingInterval = interval(5000);
 

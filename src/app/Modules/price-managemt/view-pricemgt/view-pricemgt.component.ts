@@ -35,6 +35,7 @@ export class ViewPricemgtComponent implements OnInit {
   filteredCategories: any[] = []; // Filtered list of categories for display
   keyword: any;
   intervalId: any;
+  isLoading: boolean = false;
   private pollingSubscription: Subscription | null = null;
 
   constructor(
@@ -46,6 +47,7 @@ export class ViewPricemgtComponent implements OnInit {
   ngOnInit(): void {
     this.getdatastaff();
     this.startPolling();
+    this. spinner();
   }
   startPolling() {
     const pollingInterval = interval(5000);
@@ -58,6 +60,14 @@ export class ViewPricemgtComponent implements OnInit {
       this.fetchStaffData();
     });
   }
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
+  }
+  
 
   fetchStaffData() {
     this.admin.displayprice().subscribe((result: any) => {

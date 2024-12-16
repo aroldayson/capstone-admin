@@ -32,10 +32,12 @@ export class ViewCustomerComponent implements OnInit {
   cust: any[] = [];
   filteredCustomers: any[] = [];
   searchTerm: string = '';
+  isLoading: boolean = false;
 
   constructor(private admin: AdminService, private router: Router) {}
 
   ngOnInit(): void {
+    this.spinner();
     this.admin.customerdisplay().subscribe((result: any) => {
       this.cust = result;
       this.filteredCustomers = result;
@@ -45,6 +47,14 @@ export class ViewCustomerComponent implements OnInit {
   history(id: any) {
     localStorage.setItem('Cust_ID', id);
     this.router.navigate(['/main/customertpage/main/view-history']);
+  }
+
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
   }
 
   dltbtn(id: any): void {

@@ -91,6 +91,7 @@ export class ViewDashComponent implements OnInit {
       maintainAspectRatio: false,
     },
   };
+  isLoading: boolean = false;
 
   constructor(private admin: AdminService) {
     // const now = new Date();
@@ -107,6 +108,7 @@ export class ViewDashComponent implements OnInit {
     this.loadPaymentData();
     this.loadExpensesData();
     this.loadCountData();
+    this.spinner();
   
     // Pass the selected month in the correct format
     this.onMonthChange(this.currentDate);
@@ -159,6 +161,14 @@ export class ViewDashComponent implements OnInit {
     } else {
       console.error('Invalid month selected.');
     }
+  }
+
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
   }
 
   getCurrentMonth(): string {

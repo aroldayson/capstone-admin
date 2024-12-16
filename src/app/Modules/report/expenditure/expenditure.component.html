@@ -1,73 +1,63 @@
-<div class="container my-3" >
+<div class="container my-3">
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
+      <div class="card shadow-lg border-0">
         <div class="card-body">
-          <div class="row mb-4">
+          <!-- Header -->
+          <div class="row mb-4 align-items-center">
             <div class="col-md-6">
-              <h3 class="fw-bold">LIST OF EXPENDITURE</h3>
+              <h3 class="fw-bold text-primary">List of Expenditure</h3>
             </div>
-            <div class="col-md-6">
-              <div class="d-flex justify-content-end">
-                <button
-                  class="btn btn-success pri mb-3"
-                  [useExistingCss]="true"
-                  printSectionId="print-section"
-                  ngxPrint
-                >
-                  <i class="fas fa-print"></i> Print
-                </button>
-              </div>
+            <div class="col-md-6 d-flex justify-content-end">
+              <button
+                class="btn btn-success btn-icon mb-3"
+                [useExistingCss]="true"
+                printSectionId="print-section"
+                ngxPrint
+              >
+                <i class="fas fa-print"></i> Print
+              </button>
             </div>
           </div>
-          <div class="row mb-4">
+
+          <!-- Date Filters -->
+          <div class="row g-3 mb-4">
             <div class="col-md-6 col-lg-3">
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-2 mt-2">
-                    <label for="search-from">From:</label>
-                  </div>
-                  <div class="col">
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="search-from"
-                      name="search-from"
-                      placeholder="MM/DD/YYYY HH:MM"
-                      (change)="onDateChange()"
-                      [(ngModel)]="fromDate"
-                    />
-                  </div>
-                </div>
+              <div class="input-group">
+                <label class="input-group-text bg-primary text-white">From</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="search-from"
+                  [(ngModel)]="fromDate"
+                  (change)="onDateChange()"
+                />
               </div>
             </div>
             <div class="col-md-6 col-lg-3">
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-1 mt-2">
-                    <label for="search-from">To:</label>
-                  </div>
-                  <div class="col">
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="search-to"
-                      name="search-to"
-                      placeholder="MM/DD/YYYY HH:MM"
-                      (change)="onDateChange()"
-                      [(ngModel)]="toDate"
-                    />
-                  </div>
-                </div>
+              <div class="input-group">
+                <label class="input-group-text bg-primary text-white">To</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="search-to"
+                  [(ngModel)]="toDate"
+                  (change)="onDateChange()"
+                />
               </div>
             </div>
           </div>
-          <div class="table-responsive table-wrapper" id="print-section">
-              <table class="table table-bordered table-hover rounded">
-                <thead class="sticky-thead">
+
+          <!-- Table Section -->
+          <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <table class="table table-bordered table-striped table-hover align-middle">
+              <thead class="sticky-top bg-primary text-white">
+                <div class="loader-container" *ngIf="isLoading">
+                  <div class="spinner"></div>
+                </div>
                 <tr class="text-center">
                   <th>Date</th>
-                  <th>Proof of Purchased</th>
+                  <th>Proof of Purchase</th>
                   <th>Cashier in Charge</th>
                   <th>Description</th>
                   <th class="text-right">Total Purchased</th>
@@ -75,22 +65,22 @@
               </thead>
               <tbody>
                 @for(e of filteredData; track e.transactionDate){
-                <tr class="text-center" (click)="expenses(e.transactionDate)">
-                  <td>{{e.transactionDate}}</td>
-                  <td>{{e.image}}</td>
-                  <td>{{e.adminNames}}</td>
-                  <td>{{e.reason}}</td>
-                  <td class="text-danger text-right">{{e.totalExpenses | currency: ' ':'symbol'}}</td>
+                <tr *ngIf="!isLoading" class="text-center align-middle"  (click)="expenses(e.transactionDate)">
+                  <td>{{ e.transactionDate }}</td>
+                  <td>
+                    <img src="{{ e.image }}" alt="Proof" class="proof-thumbnail" />
+                  </td>
+                  <td class="text-left">{{ e.adminNames }}</td>
+                  <td class="text-left">{{ e.reason }}</td>
+                  <td class="text-danger text-right">{{ e.totalExpenses | currency: ' ':'symbol' }}</td>
                 </tr>
-              }
+                }
               </tbody>
-              <tfoot class="text-center">
-                <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th>TOTAL</th>
-                  <th id="total-amount" class="text-danger text-right">{{amount | currency: ' ':'symbol'}}</th>
+              <tfoot class="bg-light">
+                <tr class="text-center fw-bold">
+                  <th colspan="3"></th>
+                  <th>Total</th>
+                  <th class="text-danger text-right">{{ amount | currency: ' ':'symbol' }}</th>
                 </tr>
               </tfoot>
             </table>

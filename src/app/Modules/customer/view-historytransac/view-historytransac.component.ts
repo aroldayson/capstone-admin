@@ -30,11 +30,13 @@ export class ViewHistorytransacComponent implements OnInit{
   totalamount: any;
   addservices: any;
   service: any;
+  isLoading: boolean = false;
 
   constructor(
     private admin: AdminService
   ){}
   ngOnInit(): void {
+    this.spinner();
     this.admin.findcustomer(this.cust_id.id).subscribe(
       (result: any) => {
         this.cust = result; 
@@ -55,5 +57,12 @@ export class ViewHistorytransacComponent implements OnInit{
       }
     );
     
+  }
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
   }
 }

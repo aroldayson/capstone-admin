@@ -1,114 +1,90 @@
-<div class="container my-3" id="print-section">
+<div class="container my-4" id="print-section">
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
+      <div class="card shadow-sm border-0 rounded">
         <div class="card-body">
-          <div class="row mb-4">
+          <!-- Header Section -->
+          <div class="row align-items-center mb-4">
             <div class="col-md-6">
-              <h3 class="fw-bold">LIST OF DISCREPANCY</h3>
+              <h3 class="fw-bold text-primary">List of Discrepancy</h3>
             </div>
-            <div class="col-md-6">
-              <div class="d-flex justify-content-end">
-                <button
-                  class="btn btn-success pri mb-3"
-                  [useExistingCss]="true"
-                  printSectionId="print-section"
-                  ngxPrint
-                >
-                  <i class="fas fa-print"></i> Print
-                </button>
+            <div class="col-md-6 text-end">
+              <button
+                class="btn btn-success btn-lg px-4 py-2"
+                [useExistingCss]="true"
+                printSectionId="print-section"
+                ngxPrint
+              >
+                <i class="fas fa-print"></i> Print
+              </button>
+            </div>
+          </div>
+
+          <!-- Filters Section -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-6 col-lg-3">
+              <div class="input-group">
+                <label class="input-group-text bg-primary text-white">From</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="search-from"
+                  [(ngModel)]="fromDate"
+                  (change)="onDateChange()"
+                />
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="input-group">
+                <label class="input-group-text bg-primary text-white">To</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="search-to"
+                  [(ngModel)]="toDate"
+                  (change)="onDateChange()"
+                />
               </div>
             </div>
           </div>
 
-          <div class="row mb-4">
-            <div class="col-md-6 col-lg-3">
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-2 mt-2">
-                    <label for="search-from">From:</label>
-                  </div>
-                  <div class="col">
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="search-from"
-                      name="search-from"
-                      placeholder="MM/DD/YYYY HH:MM"
-                      (change)="onDateChange()"
-                      [(ngModel)]="fromDate"
-                    />
-                  </div>
+          <!-- Table Section -->
+          <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <table class="table table-bordered table-striped table-hover align-middle">
+              <thead class="sticky-top bg-primary text-white">
+                <div class="loader-container" *ngIf="isLoading">
+                  <div class="spinner"></div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-1 mt-2">
-                    <label for="search-from">To:</label>
-                  </div>
-                  <div class="col">
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="search-to"
-                      name="search-to"
-                      placeholder="MM/DD/YYYY HH:MM"
-                      (change)="onDateChange()"
-                      [(ngModel)]="toDate"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          <div class="table-responsive table-wrapper" id="print-section">
-            <table class="table table-bordered table-hover rounded">
-              <thead class="sticky-thead">
                 <tr class="text-center">
                   <th>DateTime</th>
                   <th>Cashier in Charge</th>
-                  <th class="text-right">Initial Amount</th>
-                  <th class="text-right">Total Collection</th>
-                  <th class="text-right">Expenditure</th>
-                  <th class="text-right">Remittance</th>
-                  <th class="text-right">Net Profit/<span class="text-danger">Loss</span></th>
+                  <th class="text-end">Initial Amount</th>
+                  <th class="text-end">Total Collection</th>
+                  <th class="text-end">Expenditure</th>
+                  <th class="text-end">Remittance</th>
+                  <th class="text-end">Net Profit/<span class="text-danger">Loss</span></th>
                 </tr>
               </thead>
               <tbody>
-                @for(d of filteredData; track d.Staff_ID){
-                  <tr class="text-center" (click)="discrepany(d.transactionDate)">
+                @for (d of filteredData; track d.Staff_ID) {
+                  <tr
+                    class="text-center table-row-hover"
+                    *ngIf="!isLoading" 
+                    (click)="discrepany(d.transactionDate)"
+                  >
                     <td>{{ d.transactionDate }}</td>
-                    <td>{{d.name}}</td>
-                    <td class="text-right">{{d.initialAmount | currency: ' ':'symbol'}}</td>
-                    <td class="text-success text-right">{{d.paymentAmount | currency: ' ':'symbol'}}</td>
-                    <td class="text-danger text-right">{{d.ExpensesAmount | currency: ' ':'symbol'}}</td>
-                    <td class="text-primary text-right">{{d.remitAmount | currency: ' ':'symbol'}}</td>
-                    <!-- <td class="text-primary">{{ (d.totalpayment - d.Initial_amount) - d.totalexpense - d.Remitance}}</td> -->
-                    <!-- <td class="text-right"
-                        [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">
-                        {{d.totalprofit | currency: ' ':'symbol'}}
-                    </td> -->
+                    <td>{{ d.name }}</td>
+                    <td class="text-end">{{ d.initialAmount | currency: ' ' }}</td>
+                    <td class="text-success text-end">{{ d.paymentAmount | currency: ' ' }}</td>
+                    <td class="text-danger text-end">{{ d.ExpensesAmount | currency: ' ' }}</td>
+                    <td class="text-primary text-end">{{ d.remitAmount | currency: ' ' }}</td>
                     <th class="text-right" 
                         [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'">
                       {{ (d.totalprofit < 0 ? (d.totalprofit * -1 | number:'1.2-2') : (d.totalprofit | number:'1.2-2')) }}
                     </th>
-                    <!-- <td class="text-danger">
-                      <button class="btn btn-primary" (click)="approved()">Approved</button>
-                    </td> -->
                   </tr>
                 }
               </tbody>
-              <!-- <tfoot class="text-center">
-                <tr>
-                  <th>Total</th>
-                  <th></th>
-                  <th id="total-amount">12,400.00</th>
-                  <th id="total-amount" class="text-success">12,400.00</th>
-                  <th id="total-amount" class="text-danger">340.00</th>
-                  <th id="total-amount" class="text-primary">12,060.00</th>
-                </tr>
-              </tfoot> -->
             </table>
           </div>
         </div>

@@ -30,12 +30,15 @@
             </div>
           </div>
           <!-- End Header Section -->
-
+          <div class="loader-container" *ngIf="isLoading">
+            <div class="spinner"></div>
+          </div>
           <!-- Scrollable Cards -->
           <div class="card-container">
             <!-- Loop through staff data -->
             @for (staff of filteredStaff | searchfilter: searchTerm; track
             staff.Admin_ID) {
+            
             <div class="staff-card">
               <div
                 class="staff-card-body d-flex align-items-center justify-content-between"
@@ -44,6 +47,7 @@
                 <div class="d-flex align-items-center">
                   <div
                     class="image-container me-3"
+                    *ngIf="!isLoading"
                     (click)="upload(staff.Admin_ID)"
                   >
                     <img

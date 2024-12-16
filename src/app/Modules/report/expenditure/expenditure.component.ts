@@ -20,19 +20,28 @@ export class ExpenditureComponent implements OnInit{
   data: any[] = [];      
   filteredData: any[] = [];
   totalexpense: any;
-
+  isLoading: boolean = false;
 
   constructor(
     private admin: AdminService,
     private route: Router
   ){}
   ngOnInit(): void {
+    this.spinner();
     this.admin.displayexpenses().subscribe((result: any) => {
       this.expen = result.price;
       this.filteredData = this.expen; 
       this.amount = result.totalAmount;
       console.log(this.expen,this.amount);
     });
+  }
+
+  spinner(){
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false;
+    },3000);
   }
 
   onDateChange() {

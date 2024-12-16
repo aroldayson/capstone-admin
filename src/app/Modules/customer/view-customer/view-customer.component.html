@@ -27,13 +27,16 @@
             </div>
           </div>
           <!-- End Header Section -->
+          <div class="loader-container" *ngIf="isLoading">
+            <div class="spinner"></div>
+          </div>
 
           <!-- Scrollable Cards -->
           <div class="card-container">
             <!-- Loop through customer data -->
             @for (c of filteredCustomers | searchfilter: searchTerm; track
             c.Cust_ID) {
-            <div class="customer-card">
+            <div class="customer-card" *ngIf="!isLoading">
               <div class="customer-card-body">
                 <div class="details" (click)="history(c.Cust_ID)">
                   <h5 class="fw-bold">
