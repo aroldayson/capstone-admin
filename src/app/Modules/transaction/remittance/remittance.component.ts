@@ -53,13 +53,13 @@ export class RemittanceComponent implements OnInit {
             position: 'center',
             icon: 'success',
             title: 'Your work has been saved',
-            showConfirmButton: true,
+            showConfirmButton: false,  // Hide the OK button
+            timer: 1500  // Auto-close after 1.5 seconds
           }).then(() => {
-            location.reload();
+            this.route.navigate([
+              '/main/tansactionpage/main/view-tran/cashdetails',
+            ]);
           });
-          this.route.navigate([
-            '/main/tansactionpage/main/view-tran/cashdetails',
-          ]);
         } else {
           console.error('Error occurred during save:', result);
         }
@@ -69,4 +69,4 @@ export class RemittanceComponent implements OnInit {
       }
     );
   }
-}
+}  

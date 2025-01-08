@@ -55,7 +55,7 @@ export class ViewStaffComponent implements OnInit {
 
     setTimeout(() => {
       this.isLoading = false;
-    },3000);
+    },1000);
   }
   
   getdatastaff() {
@@ -95,11 +95,11 @@ export class ViewStaffComponent implements OnInit {
       },
       buttonsStyling: false,
     });
-
+  
     swalWithBootstrapButtons
       .fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        // title: 'Are you sure?',
+        text: "Are you sure? You won't be able to delete the staff.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
@@ -114,14 +114,17 @@ export class ViewStaffComponent implements OnInit {
                 title: 'Deleted!',
                 text: 'The staff member has been deleted.',
                 icon: 'success',
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                timer: 1500,
               });
               this.route.navigate([
                 '/main/staffpage/staffmain/staffview/addstaff',
               ]);
               this.staff = this.staff.filter(
                 (staff: any) => staff.Admin_ID !== id
-              ); // Remove deleted staff from the list
-              this.filteredStaff = this.staff; // Update the filtered list
+              );
+              this.filteredStaff = this.staff; 
             },
             (error) => {
               console.error('Delete failed', error);
@@ -129,18 +132,27 @@ export class ViewStaffComponent implements OnInit {
                 title: 'Error!',
                 text: 'There was an error deleting the staff member.',
                 icon: 'error',
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                timer: 1500,
               });
             }
           );
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire({
-            title: 'Cancelled',
-            text: 'Your staff member is safe :)',
-            icon: 'error',
-          });
+          setTimeout(() => {
+            swalWithBootstrapButtons.fire({
+              title: 'Cancelled',
+              text: 'Your staff member is safe',
+              icon: 'error',
+              showConfirmButton: false,
+              allowOutsideClick: false,
+              timer: 1500,
+            });
+          }, 500);
         }
       });
   }
+  
 
   update(id: any): void {
     localStorage.setItem('Admin_ID', id);

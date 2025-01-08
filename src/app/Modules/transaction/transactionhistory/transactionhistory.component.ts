@@ -16,7 +16,7 @@ export class TransactionhistoryComponent implements OnInit{
   dateincome: any;
   amount: any;
 
-
+ 
   constructor(
     private admin: AdminService,
     private route: Router

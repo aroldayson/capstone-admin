@@ -112,11 +112,11 @@ export class ViewPricemgtComponent implements OnInit {
       },
       buttonsStyling: false,
     });
-
+  
     swalWithBootstrapButtons
       .fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        // title: 'Are you sure?',
+        text: "Are you sure you want to delete this category?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
@@ -127,11 +127,15 @@ export class ViewPricemgtComponent implements OnInit {
         if (result.isConfirmed) {
           this.admin.deletecateg(id).subscribe(
             () => {
-              swalWithBootstrapButtons.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              );
+              swalWithBootstrapButtons.fire({
+                title: 'Deleted!',
+                text: 'Your file has been deleted.',
+                icon: 'success',
+                showConfirmButton: false, // Removes the "OK" button
+                timer: 1500, // Automatically closes after 1.5 seconds
+              });
+  
+              // Update the view by removing the deleted category
               this.categ = this.categ.filter(
                 (category) => category.Categ_ID !== id
               );
@@ -149,14 +153,17 @@ export class ViewPricemgtComponent implements OnInit {
             }
           );
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your category is safe :)',
-            'error'
-          );
+          swalWithBootstrapButtons.fire({
+            title: 'Cancelled',
+            text: 'Your category is safe.',
+            icon: 'error',
+            showConfirmButton: false, // Removes the "OK" button
+            timer: 1500, // Automatically closes after 1.5 seconds
+          });
         }
       });
   }
+  
 
   history(id: any) {
     localStorage.setItem('Categ_ID', id);

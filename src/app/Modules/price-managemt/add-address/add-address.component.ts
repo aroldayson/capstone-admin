@@ -20,7 +20,7 @@ import { AdminService } from '../../../admin.service';
 })
 export class AddAddressComponent implements OnInit {
   categoryForm = new FormGroup({
-    City_Address: new FormControl(null, Validators.required),
+    ShipServ_Town: new FormControl(null, Validators.required),
     ShipServ_price: new FormControl(0.0, [
       Validators.required,
       Validators.min(0),
@@ -48,11 +48,13 @@ export class AddAddressComponent implements OnInit {
     this.admin.addpricedestination(this.categoryForm.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {
-          Swal.fire(
-            'Success!',
-            'Your data has been saved.',
-            'success'
-          );
+          Swal.fire({
+            title: 'Success!',
+            text: 'Your data has been saved.',
+            icon: 'success',
+            showConfirmButton: false, // Removes the "OK" button
+            timer: 1500, // Automatically closes after 1.5 seconds
+          });
           this.clear();
           this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/view-address']);
         } else {
@@ -66,9 +68,9 @@ export class AddAddressComponent implements OnInit {
           'Duplicated City_Address.',
           'error'
         );
-    
       }
     );
+    
   }
 
   clear(): void {

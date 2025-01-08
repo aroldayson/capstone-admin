@@ -1,20 +1,15 @@
-<div class="container bg-white mb-3">
-    <div class="row justify-content-center">
+<div class="container bg-white mb-3"  id="print-section">
+    <div class="row justify-content-center" >
       <div class="col-lg-12">
         <div class="table-responsive mt-2 mb-2">
           <div class="card">
-            <div class="card-body" id="print-section">
+            <div class="card-body" >
               <div class="invoice-title">
-                <!-- <h4 class="float-end font-size-15">Invoice #DS0204 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4> -->
                 <div class="mb-">
                   <h2 class="mb- text-muted">History of Income Within The Day</h2>
                 </div>
                 <div class="text-muted">
-                  <p class="mb-">Date of Income Transaction: <b>{{dateincome}}</b></p>
-                  <!-- <p class="mb-">Cashier in Charge: <b>{{staff}}</b></p> -->
-                  <!-- <p class="mb-"><i class="uil uil-envelope-alt me-"></i> </p>
-                  <p><i class="uil uil-phone me-"></i> FB Account: S2K Laundry Services</p>
-                  <p><i class="uil uil-phone me-"></i> Income Date 2024</p> -->
+                  <p class="mb-">Date of Income Transaction: <b>{{dateincome | date: 'MMM dd, yyyy'   }}</b></p>
                 </div>
               </div>
               <hr class="my-4">
@@ -23,12 +18,10 @@
                     <h5 class="font-size-15 mb-1">Payment Transaction</h5>
                 </div>
                 <div class="col md">
-                    <!-- <h5 class="font-size-15 mb-1 ">Amount:</h5> -->
                 </div>
               </div>
 
               <div class="row mt-3 mx-2">
-                <!-- Header Row -->
                 <div class="col-md-3">
                   <p><b>Tracking Number</b></p>
                 </div>
@@ -47,7 +40,6 @@
               </div>
               
               <div class="row mx-2">
-                <!-- Loop through payments -->
                 @for (p of payments; track p.Tracking_number) {
                   <div class="col-12 col-sm-6 col-md-3">
                     <p>{{ p.Tracking_number }}</p>
@@ -62,7 +54,6 @@
                     <p>{{ p.AmountPayments | currency: 'PHP':'symbol' }}</p>
                   </div>
                   <div class="col-12 col-sm-6 col-md-2 text-end">
-                    <!-- <p>{{ p.AmountPayments | currency: 'PHP':'symbol' }}</p> -->
                   </div>
                 }
               </div>
@@ -70,33 +61,26 @@
               
               <hr>
               <div class="row ">
-                <!-- <div class="col-8 text-right">
-                  <div class="">
-                    <h5 class="font-size-15 mb-1"></h5>
-                    <p>9000</p>
-                  </div>
-                </div> -->
                 <div class="col-12 text-right">
                   <div class="">
                     <h5 class="font-size-15 mb-1"></h5>
-                    <!-- <p><b>Total Payments: {{totalpayments | currency: 'PHP':'symbol'}}</b></p> -->
                     <p><b>{{totalpayments | currency: 'PHP':'symbol'}}</b></p>
                   </div>
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row  mx-2">
                 <h5 class="font-size-15">Expenses Transaction</h5>
               
                 <div class="col-md-3">
                   <div class="">
-                    <p><b>Cashier in Charge</b></p>
+                    <p class=""><b>Cashier in Charge</b></p>
                   </div>
                 </div>
 
                 <div class="col-md-3">
                   <div class="">
-                    <p class="mx-4"><b>Description Reason</b></p>
+                    <p class=""><b>Description Reason</b></p>
                   </div>
                 </div>
                 
@@ -137,20 +121,16 @@
 
                 <div class="col-md-2">
                   <div class="">
-                    <!-- <p>{{e.adminNames}}</p> -->
                   </div>
                 </div>
                 
                 <div class="col-md-2 text-right">
                   <div class="">
-                    <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
                     <p>{{ e.AmountExpenses | currency: 'PHP':'symbol' }}</p>
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="">
-                    <!-- <h5 class="font-size-15 mb-1">Amount:</h5> -->
-                    <!-- <p>{{ e.AmountExpenses | currency: 'PHP':'symbol' }}</p> -->
                   </div>
                 </div>
                 }
@@ -158,16 +138,9 @@
 
               <hr>
               <div class="row">
-                <!-- <div class="col-8 text-right">
-                  <div class="">
-                    <h5 class="font-size-15 mb-1"></h5>
-                    <p>9000</p>
-                  </div>
-                </div> -->
                 <div class="col-12 text-right">
                   <div class="">
                     <h5 class="font-size-15 mb-1"></h5>
-                    <!-- <p><b>Total Expenses: {{totalexpenses | currency: 'PHP':'symbol'}}</b></p> -->
                     <p><b>{{totalexpenses | currency: 'PHP':'symbol'}}</b></p>
                   </div>
                 </div>
@@ -183,23 +156,14 @@
                 </div>
                 <div class="col-md-12">
                   <div class="mt-4 text-left">
-                    <!-- <h5 class="font-size-15 mb-1 text-right">Total Payments: {{totalpayments | currency: 'PHP':'symbol'}}</h5>
-                    <h5 class="font-size-15 mb-1 text-right">Total Expenses: {{totalexpenses | currency: 'PHP':'symbol'}}</h5> -->
-                    <!-- <hr> -->
                     <h5 class="font-size-15 mb-1 text-right">Total Income: {{overalltotal | currency: 'PHP':'symbol'}}</h5>
-                    <!-- <p>₱ 500</p>
-                    <p>₱ 700</p> -->
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="tal">
-                <h5></h5>
-              </div> -->
               <div class="py-2">
                 <div class="d-print-none mt-2">
                   <div class="float-end">
-                    <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
+                    <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>
                     <a class="btn btn-primary w-md" [routerLink]="['/main/reportpage/reportmain/reportview/income']">Back</a> 
                   </div>
                 </div>

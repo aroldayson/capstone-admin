@@ -1,0 +1,57 @@
+@media print {
+    body {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+    }
+  
+    .container {
+      margin: 0 auto;
+      padding: 0 15px;
+      width: 100%;
+    }
+  
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .col-md-2,
+    .col-md-3,
+    .col-md-6,
+    .col-md-8,
+    .col-md-12 {
+      box-sizing: border-box;
+      padding: 5px;
+    }
+  
+    .text-end {
+      text-align: right;
+    }
+  
+    .text-right {
+      text-align: right;
+    }
+  
+    .d-print-none {
+      display: none !important;
+    }
+  
+    .card {
+      border: none;
+      box-shadow: none;
+    }
+  
+    .table-responsive {
+      overflow: visible !important;
+    }
+  
+    .font-size-15 {
+      font-size: 15px !important;
+    }
+  
+    .mb-1 {
+      margin-bottom: 10px !important;
+    }
+  }
+  

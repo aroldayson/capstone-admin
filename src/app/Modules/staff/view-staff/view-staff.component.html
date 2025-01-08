@@ -1,4 +1,13 @@
-<div class="container my-3">
+<div class="row mb-3 mt-3">
+  <div class="col-12">
+    <h3 class="text-center styled-heading">
+      <!-- laundry-icon -->
+      <i class="fa-solid fa-people-group laundry-icon"></i>
+      LIST OF STAFFS
+    </h3>
+  </div>
+</div>
+<div class="my-3">
   <div class="row" id="staff-management-section">
     <div class="col-12">
       <div class="card">
@@ -7,28 +16,33 @@
           <div class="row align-items-center mb-4">
             <div class="col-12 col-md-8 mb-2 mb-md-0">
               <h3 class="fw-bold text-center text-md-start">
-               LIST OF STAFFS
+               ADD NEW STAFF
                 <button class="btn btn-primary btn-sm ms-2" (click)="add()">
                   + ADD
                 </button>
               </h3>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-8 col-md-4">
               <div class="form-group">
-                <div class="search-bar">
+                <div class="input-group">
                   <input
+                    class="form-control"
                     type="text"
-                    class="search-input"
                     placeholder="Search staff..."
                     [(ngModel)]="searchTerm"
+                    aria-label="Search staff..."
                   />
-                  <span class="search-icon">
-                    <i class="bx bx-search"></i>
-                  </span>
+                  <div class="input-group-append">
+                    <span class="input-group-text bg-primary text-white">
+                      <i class="bx bx-search"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          
           <!-- End Header Section -->
           <div class="loader-container" *ngIf="isLoading">
             <div class="spinner"></div>

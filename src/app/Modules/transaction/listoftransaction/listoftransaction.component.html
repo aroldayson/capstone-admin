@@ -1,4 +1,4 @@
-<div class="container my-3" id="print-section">
+<div class="my-3" id="print-section">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -7,7 +7,7 @@
           <div class="row mb-4">
             <div class="col-9">
               <div class="row">
-                <div class="col-5 mt-2">
+                <div class="col-4 mt-2">
                   <h3 class="fw-bold text-primary">ALL TRANSACTIONS</h3>
                 </div>
                 <div class="col-3 mt-2">
@@ -75,10 +75,10 @@
           <!-- Responsive Scrollable Table -->
           <div
             class="table-responsive"
-            style="max-height: 450px; overflow-y: auto; overflow-x: auto"
+            style="max-height: 400px; overflow-y: auto; overflow-x: auto"
           >
             <table class="table table-bordered table-hover rounded">
-              <thead class="sticky-top bg-light">
+              <thead class="sticky-top bg-light sticky-header">
                 <tr class="text-center">
                   <th>Transaction Number</th>
                   <th>Cashier in Charge</th>
@@ -96,15 +96,21 @@
                 </tr>
                 @for (t of filteredTrans | searchfilter: keyword; track
                 t.Transac_ID) {
-                <tr class="text-center" *ngIf="!isLoading">
+                <tr class="text-center" *ngIf="!isLoading"  (click)="history(t.Transac_ID)">
                   <td>{{ t.Tracking_number }}</td>
                   <td>{{ t.Admin_fname }} {{ t.Admin_lname }}</td>
                   <td>{{ t.Customers }}</td>
-                  <td>{{ t.Transac_datetime }}</td>
-                  <td class="text-right text-success">
+                  <td>{{ t.Transac_datetime | date: 'MMM dd, yyyy' }}</td>
+                  <td
+                    class="text-right text-success"
+                    *ngIf="t.Amount !== 0"
+                  >
                     {{ t.Amount | currency : " " : "symbol" }}
                   </td>
-                  <td class="text-right text-danger">
+                  <td
+                    class="text-right text-danger"
+                    *ngIf="t.totalprice !== 0"
+                  >
                     {{ t.totalprice | currency : " " : "symbol" }}
                   </td>
                 </tr>

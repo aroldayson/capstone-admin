@@ -15,6 +15,7 @@ import { RemittanceComponent } from './remittance/remittance.component';
 import { ListoftransactionComponent } from './listoftransaction/listoftransaction.component';
 import { CashviewComponent } from './cashview/cashview.component';
 import { CashregisterComponent } from './cashregister/cashregister.component';
+import { ViewdetailscustomerComponent } from './viewdetailscustomer/viewdetailscustomer.component';
 export const transactionRoute: Routes = [
   {
     path: 'main',
@@ -34,6 +35,7 @@ export const transactionRoute: Routes = [
             ]
            },
           { path: 'remit', component: RemittanceComponent},
+          { path: 'viewdetails', component: ViewdetailscustomerComponent},
           // { path: 'view-paid', component: TransacPaidComponent },
           // { path: 'view-unpaid', component: TransacUnpaidComponent },
           // { path: 'view-receipt', component: ViewReceiptComponent },

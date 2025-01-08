@@ -120,9 +120,9 @@ canvas {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.placeholder {
+/* .placeholder {
   font-size: 1.5rem;
-  color: #ccc; /* Light gray to simulate loading state */
+  color: #ccc;
   animation: pulse 1.5s infinite;
 }
 
@@ -136,4 +136,27 @@ canvas {
   100% {
     opacity: 0.8;
   }
+} */
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;  */
 }
+
+.spin-icon {
+  font-size: 2rem; /* Adjust icon size */
+  color: #ccc; /* Icon color */
+  animation: spin 1s linear infinite; /* Spinning animation */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

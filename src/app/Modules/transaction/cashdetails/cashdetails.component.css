@@ -1,27 +1,24 @@
-.spinner-container {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;  */
+}
+
+.spin-icon {
+  font-size: 1.5rem; /* Adjust icon size */
+  color: #ccc; /* Icon color */
+  animation: spin 1s linear infinite; /* Spinning animation */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .spinner {
-    border: 8px solid white;
-    border-top: 8px solid blue;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 0.5s linear infinite;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+}
   
   button:disabled {
     opacity: 0.6;

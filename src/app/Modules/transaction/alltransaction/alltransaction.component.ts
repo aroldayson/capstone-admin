@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../admin.service';
 import { SearchfilterPipe } from '../../../searchfilter.pipe';
-import { RouterLink } from '@angular/router';
+import { Route, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -27,7 +27,7 @@ export class AlltransactionComponent implements OnInit {
   selectedCashier: string = '';
   filteredTrans: any[] = [];
 
-  constructor(private admin: AdminService) {}
+  constructor(private admin: AdminService, private route: Router) {}
   ngOnInit(): void {
     this.spinner();
     this.admin.displaystaff().subscribe(
@@ -64,5 +64,11 @@ export class AlltransactionComponent implements OnInit {
     } else {
       this.filteredTrans = this.trans; // Reset to all transactions
     }
+  }
+
+  history(id: any) {
+    console.log(id);
+    localStorage.setItem('Transac_ID', id);
+    this.route.navigate(['/main/tansactionpage/main/view-tran/viewdetails']);
   }
 }

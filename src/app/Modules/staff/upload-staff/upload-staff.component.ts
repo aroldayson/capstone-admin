@@ -92,7 +92,8 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
               title: 'Success!',
               text: 'Image uploaded successfully!',
               icon: 'success',
-              confirmButtonText: 'OK'
+              showConfirmButton: false, // Removes the "OK" button
+              timer: 1500,
             }).then(() => {
               this.loadExistingImage();
               this.startPolling();
@@ -104,7 +105,8 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
               title: 'Error!',
               text: 'Duplicate image name detected. Upload a file with a different name.',
               icon: 'error',
-              confirmButtonText: 'OK'
+              showConfirmButton: false, // Removes the "OK" button
+              timer: 1500,
             });
             console.error('Error:', error);
           }
@@ -114,7 +116,8 @@ export class UploadStaffComponent implements OnInit, OnDestroy {
         title: 'Warning!',
         text: 'Please select an image first.',
         icon: 'warning',
-        confirmButtonText: 'OK'
+        showConfirmButton: false, // Removes the "OK" button
+        timer: 1500,
       });
     }
     

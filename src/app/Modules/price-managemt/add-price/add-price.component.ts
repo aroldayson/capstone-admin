@@ -52,11 +52,13 @@ export class AddPriceComponent implements OnInit {
     this.admin.addprice(this.categoryForm.value).subscribe(
       (result: any) => {
         if (result.message === 'Success') {
-          Swal.fire(
-            'Success!',
-            'Your data has been saved.',
-            'success'
-          );
+          Swal.fire({
+            title: 'Success!',
+            text: 'Your data has been saved.',
+            icon: 'success',
+            showConfirmButton: false, // Removes the "OK" button
+            timer: 1500, // Automatically closes after 1.5 seconds
+          });
           this.clear();
           this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/pricemgtview']);
         } else {

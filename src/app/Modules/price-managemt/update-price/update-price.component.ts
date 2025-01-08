@@ -76,11 +76,13 @@ export class UpdatePriceComponent implements OnInit {
       this.admin.updateprice(updatedData).subscribe(
         (response: any) => {
           console.log('Update successful', response);
-          Swal.fire(
-            'Success!',
-            'Laundry Category Price details updated successfully.',
-            'success'
-          ).then(() => {});
+           Swal.fire({
+            title: 'Success!',
+            text: 'Laundry Category Price details updated successfully.',
+            icon: 'success',
+            showConfirmButton: false, // Removes the "OK" button
+            timer: 1500, // Automatically closes after 1.5 seconds
+          }).then(() => {});
           this.clear();
           this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/pricemgtview']);
         },

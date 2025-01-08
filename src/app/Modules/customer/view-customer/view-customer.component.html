@@ -1,4 +1,13 @@
-<div class="container my-3" id="customer-management-section">
+<div class="row mb-3 mt-3">
+  <div class="col-12">
+    <h3 class="text-center styled-heading">
+      <!-- laundry-icon -->
+      <i class="fa-solid fa-users-line laundry-icon"></i>
+      CUSTOMERS
+    </h3>
+  </div>
+</div>
+<div class="my-3" id="customer-management-section">
   <div class="row">
     <div class="col-12">
       <div class="card">
@@ -6,25 +15,29 @@
           <!-- Header Section -->
           <div class="row align-items-center mb-4">
             <div class="col-12 col-md-8 mb-2 mb-md-0">
-              <h3 class="fw-bold text-center text-md-start">
+              <!-- <h3 class="fw-bold text-center text-md-start">
                 LIST OF CUSTOMERS
-              </h3>
+              </h3> -->
             </div>
             <div class="col-12 col-md-4">
               <div class="form-group">
-                <div class="search-bar">
+                <div class="input-group">
                   <input
+                    class="form-control"
                     type="text"
-                    class="search-input"
                     placeholder="Search customer..."
                     [(ngModel)]="searchTerm"
+                    aria-label="Search Transaction"
                   />
-                  <span class="search-icon">
-                    <i class="bx bx-search"></i>
-                  </span>
+                  <div class="input-group-append">
+                    <span class="input-group-text bg-primary text-white">
+                      <i class="bx bx-search"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
+            
           </div>
           <!-- End Header Section -->
           <div class="loader-container" *ngIf="isLoading">
@@ -43,7 +56,7 @@
                     {{ c.Cust_fname }} {{ c.Cust_mname }} {{ c.Cust_lname }}
                   </h5>
                   <p>
-                    <b>Address:</b> {{ c.Cust_address }}<br />
+                    <!-- <b>Address:</b> {{ c.Cust_address }}<br /> -->
                     <b>Phone:</b> {{ c.Cust_phoneno }}<br />
 
                     <b>Email:</b> {{ c.Cust_email }}

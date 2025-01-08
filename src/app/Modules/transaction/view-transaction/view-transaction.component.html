@@ -1,20 +1,30 @@
+<div class="row mb-3 mt-3">
+  <div class="col-12">
+    <h3 class="text-center styled-heading">
+      <!-- laundry-icon -->
+      <i class="fa-solid fa-clipboard laundry-icon"></i>
+      Transactions
+    </h3>
+  </div>
+</div>
+
 <div class="mt-4 mb-1">
-  <div class="row justify-content-start">
-    <div class="col-6 col-sm-4 col-md-2 m-1">
+  <div class="row justify-content-center justify-content-md-start">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2 mb-2">
       <button
         type="submit"
-        class="btn btn-nav btn-block active"
+        class="btn btn-nav w-100 text-nowrap active"
         [routerLink]="['/main/tansactionpage/main/view-tran/viewtransac']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
       >
-        DAILY 
+        DAILY
       </button>
     </div>
-    <div class="col-6 col-sm-4 col-md-2 m-1">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2 mb-2">
       <button
         type="submit"
-        class="btn btn-nav btn-block active"
+        class="btn btn-nav w-100 text-nowrap active"
         [routerLink]="['/main/tansactionpage/main/view-tran/cashdetails/remit']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
@@ -22,32 +32,10 @@
         CASH DETAILS
       </button>
     </div>
-    <!-- <div class="col-6 col-sm-4 col-md-2 mb-">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2 mb-2">
       <button
         type="submit"
-        class="btn btn-nav btn-block active"
-        [routerLink]="['/main/tansactionpage/main/view-tran/view-paid']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        PAID
-      </button>
-    </div> -->
-    <!-- <div class="col-6 col-sm-4 col-md-2 mb-3">
-      <button
-        type="submit"
-        class="btn btn-nav btn-block"
-        [routerLink]="['/main/tansactionpage/main/view-tran/view-unpaid']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        UNPAID
-      </button>
-    </div> -->
-    <div class="col-7 col-sm-7 col-md-3 m-1">
-      <button
-        type="submit"
-        class="btn btn-nav btn-block"
+        class="btn btn-nav w-100 text-nowrap"
         [routerLink]="['/main/tansactionpage/main/view-tran/remittanceview']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
@@ -55,21 +43,11 @@
         CASH REMITTED
       </button>
     </div>
-    <!-- <div class="col-6 col-sm-4 col-md-2 mb-3">
-      <button
-        type="submit"
-        class="btn btn-nav btn-block"
-        [routerLink]="['/main/tansactionpage/main/view-tran/expensesview']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        EXPENSES
-      </button>
-    </div> -->
   </div>
 </div>
+
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-12">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -1,16 +1,16 @@
-/* General Styling */
+General Styling
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #f5f7fa;
 }
 
-/* Card Styling */
+
 .card {
   border-radius: 12px;
   background: #ffffff;
 }
 
-/* Table Styles */
+
 .table {
   font-size: 0.95rem;
   border-collapse: separate;
@@ -47,7 +47,7 @@ body {
   background-color: #f9f9f9;
 }
 
-/* Buttons */
+
 .btn-icon {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Table Wrapper */
+
 .table-wrapper {
   max-height: 60vh;
   overflow-y: auto;
@@ -81,5 +81,13 @@ body {
 
 .table-wrapper::-webkit-scrollbar-track {
   background-color: #f5f5f5;
+}
+
+.sticky-header th {
+  position: sticky;
+  top: 0;
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #ddd;
 }
 

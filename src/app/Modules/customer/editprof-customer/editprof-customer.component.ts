@@ -54,7 +54,7 @@ export class EditprofCustomerComponent implements OnInit {
     Cust_fname: new FormControl(null),
     Cust_mname: new FormControl(null),
     Cust_email: new FormControl(null),
-    Cust_address: new FormControl(null),
+    // Cust_address: new FormControl(null),
     Cust_phoneno: new FormControl(null),
     Cust_OldPassword: new FormControl(null),
     Cust_password: new FormControl(null),
@@ -72,7 +72,7 @@ export class EditprofCustomerComponent implements OnInit {
   
       // Use existing values to populate form controls
       this.updateaccount.setValue({
-        Cust_address: this.cust.Cust_address || '',
+        // Cust_address: this.cust.Cust_address || '',
         Cust_phoneno: this.cust.Cust_phoneno || '',
         Cust_OldPassword: null, // Do not prepopulate password fields for security
         Cust_lname: this.cust.Cust_lname || '',
@@ -135,11 +135,13 @@ export class EditprofCustomerComponent implements OnInit {
       this.admin.updateprofilecus(updatedData).subscribe(
         (response) => {
           console.log('Update successful', response);
-          Swal.fire(
-            'Success!',
-            'Staff details updated successfully.',
-            'success'
-          ).then(() => {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Staff details updated successfully.',
+            icon: 'success',
+            showConfirmButton: false, // Removes the "OK" button
+            timer: 1500, // Automatically closes after 1.5 seconds
+          }).then(() => {
             // location.reload();
           });
           this.route.navigate(['/main/customertpage/main/view-history']);

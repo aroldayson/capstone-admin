@@ -7,7 +7,7 @@
             <div class="invoice-title mb-4">
               <h2 class="text-muted">History of Discrepancy Within The Day</h2>
               <div class="text-muted mt-3">
-                <p>Date of Discrepancy Transaction: <b>{{ dateincome }}</b></p>
+                <p>Date of Discrepancy Transaction: <b>{{ dateincome | date: 'MMM dd, yyyy' }}</b></p>
                 <!-- <p>Cashier in Charge: <b>{{ staff }}</b></p> -->
               </div>
             </div>
@@ -151,7 +151,7 @@
 
             <!-- Section: Net Profit/Loss -->
             <div class="text-end">
-              <h5>Net Profit/<span class="text-danger">Loss</span></h5>
+              <h5><span class="text-success">Net Profit/</span><span class="text-danger">Loss</span></h5>
               <h5 class="fw-bold"
                   [ngClass]="overalltotal > 0 ? 'text-success' : 'text-danger'">
                   {{ overalltotal < 0 ? (overalltotal * -1) : overalltotal | currency: ' ':'symbol' }}

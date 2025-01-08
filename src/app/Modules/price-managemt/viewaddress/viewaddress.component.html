@@ -1,4 +1,4 @@
-<div class="container my-3">
+<div class="my">
   <div class="row" id="price-management-section">
     <div class="col-12">
       <div class="card">
@@ -20,20 +20,24 @@
             </div>
             <div class="col-12 col-md-4">
               <div class="form-group">
-                <div class="search-bar">
+                <div class="input-group">
                   <input
+                    class="form-control"
                     type="text"
-                    class="search-input"
-                    placeholder="Search category..."
+                    placeholder="Search Address..."
                     [(ngModel)]="keyword"
+                    aria-label="Search Address..."
                   />
-                  <span class="search-icon">
-                    <i class="bx bx-search"></i>
-                  </span>
+                  <div class="input-group-append">
+                    <span class="input-group-text bg-primary text-white">
+                      <i class="bx bx-search"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          
           <!-- End Header Section -->
           <!-- <div class="loader-container" *ngIf="isLoading">
               <div class="spinner"></div>
@@ -54,7 +58,7 @@
                   <!-- <h5 class="fw-bold">{{ c.City_Address }}</h5> -->
                   <p>
                     Destination Address:
-                    <span class="fw-bold">{{ c.City_Address }}</span>
+                    <span class="fw-bold">{{ c.ShipServ_Town }}</span>
                     <br />
                     Destination Price:
                     <span class="fw-bold">{{ c.ShipServ_price }}</span>

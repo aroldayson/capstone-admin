@@ -24,6 +24,7 @@ export class IncomeComponent implements OnInit{
   data: any[] = [];      
   filteredData: any[] = [];
   isLoading: boolean = false;
+  totalexpenses: any;
   
   constructor(
     private admin: AdminService,
@@ -35,7 +36,7 @@ export class IncomeComponent implements OnInit{
       this.income = result.transactions;
       this.filteredData = this.income; 
       this.totalpayment = result.totalPayments;
-      this.totalexpense = result.totalExpenses;
+      this.totalexpense = result.totalExpense;
       this.totalincome = result.total;
       this.totalcash = result.transactions;
       

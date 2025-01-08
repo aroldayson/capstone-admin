@@ -41,32 +41,40 @@ export class DicrepancyComponent implements OnInit {
       this.admin.displayDisrepancy().subscribe((result: any) => {
         this.remit = result;
         this.filteredData = this.remit;
+        // this.filteredData = this.remit.filter(transaction => transaction.Fund_status === 'Approve'); 
         console.log('Remit Data:', this.filteredData);
     });
   }
 
-  onDateChange() {
-      if (this.fromDate && this.toDate) {
-          const fromDateStart = new Date(this.fromDate);
-          fromDateStart.setHours(0, 0, 0, 0);
+  onDateChange(): void {
+    if (this.fromDate && this.toDate) {
+      const fromDateStart = new Date(this.fromDate);
+      fromDateStart.setHours(0, 0, 0, 0); 
+  
+      const toDateEnd = new Date(this.toDate);
+      toDateEnd.setHours(23, 59, 59, 999);
+  
+      this.filteredData = this.remit.filter(i => {
+        const itemDateTime = new Date(i.transactionDate).getTime(); 
+        return itemDateTime >= fromDateStart.getTime() && itemDateTime <= toDateEnd.getTime();
+      });
 
-          const toDateEnd = new Date(this.toDate);
-          toDateEnd.setHours(23, 59, 59, 999);
+  
+      console.log('Filtered Data:', this.filteredData);
+    }  else {
+      this.filteredData = this.remit;
 
-          this.filteredData = this.remit.filter(transaction => {
-              const transactionDate = new Date(transaction.remitYear, transaction.remitMonth - 1, transaction.remitDay).getTime();
-              return (
-                  transactionDate >= fromDateStart.getTime() &&
-                  transactionDate <= toDateEnd.getTime() &&
-                  transaction.Fund_status === 'Approve'
-              );
-          });
-
-          console.log('Filtered Data:', this.filteredData);
-      } else {
-          this.filteredData = this.remit.filter(transaction => transaction.Fund_status === 'Approve');
-      }
+    }
+  
+    console.log('Filtered Data:', this.filteredData);
   }
+  
+
+  trackById(index: number, item: any): any {
+    return item.id; // Replace `id` with your actual unique identifier field
+  }
+  
+  
 
   spinner(){
     this.isLoading = true

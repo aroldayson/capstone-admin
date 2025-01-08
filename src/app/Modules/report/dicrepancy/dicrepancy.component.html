@@ -1,4 +1,4 @@
-<div class="container my-4" id="print-section">
+<div class="my" id="print-section">
   <div class="row">
     <div class="col-md-12">
       <div class="card shadow-sm border-0 rounded">
@@ -24,9 +24,7 @@
           <div class="row g-3 mb-4">
             <div class="col-md-6 col-lg-3">
               <div class="input-group">
-                <label class="input-group-text bg-primary text-white"
-                  >From</label
-                >
+                <label class="input-group-text bg-primary text-white">From</label>
                 <input
                   type="date"
                   class="form-control"
@@ -48,6 +46,35 @@
                 />
               </div>
             </div>
+
+            <div class="col-md-6 col-lg-3">
+              <div class="input-group">
+                <!-- <input
+                  type="search"
+                  class="form-control"
+                  id="search-to"
+                /> -->
+                <!-- <label class="input-group-text bg-primary text-white">Search</label> -->
+              </div>
+            </div>
+          
+            <div class="col-md-6 col-lg-3">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Search discrepany..."
+                    aria-label="Search discrepany..."
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text bg-primary text-white">
+                      <i class="bx bx-search"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Table Section -->
@@ -58,7 +85,7 @@
             <table
               class="table table-bordered table-striped table-hover align-middle"
             >
-              <thead class="sticky-top bg-primary text-white">
+              <thead class="sticky-top bg-primary text-white sticky-header">
                 <div class="loader-container" *ngIf="isLoading">
                   <div class="spinner"></div>
                 </div>
@@ -70,46 +97,43 @@
                   <th class="text-end">Expenditure</th>
                   <th class="text-end">Remittance</th>
                   <th class="text-end">
-                    Net Profit/<span class="text-danger">Loss</span>
+                   <span class="text-white"> Net Profit/</span><span class="text-danger">Loss</span>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                @for (d of filteredData; track d.Staff_ID) {
+                @for(d of filteredData; track d.transactionDate){
                 <tr
                   class="text-center table-row-hover"
-                  *ngIf="!isLoading"
                   (click)="discrepany(d.transactionDate)"
                 >
-                  <td>{{ d.transactionDate }}</td>
-                  <td>{{ d.name }}</td>
+                  <td class="text-left">{{ d.transactionDate | date: 'MMM dd, yyyy' }}</td>
+                  <td class="text-left">{{ d.name }}</td>
                   <td class="text-end">
-                    {{ d.initialAmount | currency : " " }}
+                    {{ d.initialAmount | currency: ' ': 'symbol' }}
                   </td>
                   <td class="text-success text-end">
-                    {{ d.paymentAmount | currency : " " }}
+                    {{ d.paymentAmount | currency: ' ': 'symbol' }}
                   </td>
                   <td class="text-danger text-end">
-                    {{ d.ExpensesAmount | currency : " " }}
+                    {{ d.ExpensesAmount | currency: ' ': 'symbol' }}
                   </td>
                   <td class="text-primary text-end">
-                    {{ d.remitAmount | currency : " " }}
+                    {{ d.remitAmount | currency: ' ': 'symbol' }}
                   </td>
-                  <th
-                    class="text-right"
-                    [ngClass]="
-                      d.totalprofit > 0 ? 'text-success' : 'text-danger'
-                    "
+                  <td
+                    class="text-end"
+                    [ngClass]="d.totalprofit > 0 ? 'text-success' : 'text-danger'"
                   >
                     {{
                       d.totalprofit < 0
-                        ? (d.totalprofit * -1 | number : "1.2-2")
-                        : (d.totalprofit | number : "1.2-2")
+                        ? (d.totalprofit * -1 | number: '1.2-2')
+                        : (d.totalprofit | number: '1.2-2')
                     }}
-                  </th>
+                  </td>
                 </tr>
-                }
-              </tbody>
+              }
+              </tbody>              
             </table>
           </div>
         </div>

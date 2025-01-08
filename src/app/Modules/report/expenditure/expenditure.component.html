@@ -1,4 +1,4 @@
-<div class="container my-4">
+<div class="my">
   <div class="row">
     <div class="col-md-12">
       <div class="card shadow-lg border-0">
@@ -48,6 +48,35 @@
                 />
               </div>
             </div>
+
+            <div class="col-md-6 col-lg-3">
+              <div class="input-group">
+                <!-- <input
+                  type="search"
+                  class="form-control"
+                  id="search-to"
+                /> -->
+                <!-- <label class="input-group-text bg-primary text-white">Search</label> -->
+              </div>
+            </div>
+          
+            <div class="col-md-6 col-lg-3">
+              <div class="form-group">
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Search expenditure..."
+                    aria-label="Search expenditure..."
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text bg-primary text-white">
+                      <i class="bx bx-search"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Table Section -->
@@ -58,14 +87,11 @@
             <table
               class="table table-bordered table-striped table-hover align-middle"
             >
-              <thead class="sticky-top bg-primary text-white">
-                <!-- <div class="loader-container" *ngIf="isLoading">
-                  <div class="spinner"></div>
-                </div> -->
+              <thead class="sticky-top bg-primary text-white sticky-header">
                 <tr class="text-center">
                   <th>Date</th>
-                  <th>Proof of Purchase</th>
                   <th>Cashier in Charge</th>
+                  <th>Proof of Purchase</th>
                   <th>Description</th>
                   <th class="text-right">Total Purchased</th>
                 </tr>
@@ -77,7 +103,8 @@
                   class="text-center align-middle"
                   (click)="expenses(e.transactionDate)"
                 >
-                  <td>{{ e.transactionDate }}</td>
+                  <td class="text-left">{{ e.transactionDate | date: 'MMM dd, yyyy' }}</td>
+                  <td class="text-left">{{ e.adminNames }}</td>
                   <td>
                     <img
                       src="{{ e.image }}"
@@ -85,7 +112,6 @@
                       class="proof-thumbnail"
                     />
                   </td>
-                  <td class="text-left">{{ e.adminNames }}</td>
                   <td class="text-left">{{ e.reason }}</td>
                   <td class="text-danger text-right">
                     {{ e.totalExpenses | currency : " " : "symbol" }}

@@ -17,6 +17,7 @@ export class CashregisterComponent implements OnInit {
   savedData: any = {}; // Empty object for fallback
   cashRegistryForm: any;
   isDisabled: boolean = false; 
+  isLoading: boolean = false;
   
   constructor(
     private fb: FormBuilder,
@@ -38,6 +39,13 @@ export class CashregisterComponent implements OnInit {
     this.isDisabled = true;
   }
 
+  saveData() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+  }
+
   getCurrentDate(): string {
     const today = new Date();
     const year = today.getFullYear();
@@ -54,15 +62,18 @@ export class CashregisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.saveData();
     if (this.cashRegistryForm.valid) {
       this.admin.cashinitial(this.cashRegistryForm.value).subscribe(
         (result: any) => {
           if (result.message === 'Success') {
+           
             Swal.fire({
               position: 'center',
               icon: 'success',
               title: 'Your work has been saved',
-              showConfirmButton: true,
+              showConfirmButton: false,  // Hides the "OK" button
+              timer: 1500,  // Automatically closes after 1.5 seconds
             }).then(() => {
               // Reload the page after the popup is dismissed
               location.reload();
@@ -101,7 +112,8 @@ export class CashregisterComponent implements OnInit {
         position: 'center',
         icon: 'info',
         title: 'Form has been cleared!',
-        showConfirmButton: false,
+        showConfirmButton: false,  // Hides the "OK" button
+        timer: 1500, 
       }).then(() => {
         // Reload the page after the popup is dismissed
         location.reload();

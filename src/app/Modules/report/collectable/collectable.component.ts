@@ -83,7 +83,7 @@ export class CollectableComponent implements OnInit{
       toDateEnd.setHours(23, 59, 59, 999);
   
       this.filteredData = this.income.filter(i => {
-        const itemDateTime = new Date(i.transactionDate).getTime(); 
+        const itemDateTime = new Date(i.Transac_datetime).getTime(); 
         return itemDateTime >= fromDateStart.getTime() && itemDateTime <= toDateEnd.getTime();
       });
   

@@ -103,7 +103,6 @@ export class ViewaddressComponent implements OnInit {
     localStorage.setItem('Categ_ID', item);
     this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/update-address']);
   }
-
   dltbtn(id: any): void {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -112,11 +111,11 @@ export class ViewaddressComponent implements OnInit {
       },
       buttonsStyling: false,
     });
-
+  
     swalWithBootstrapButtons
       .fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        // title: 'Are you sure?',
+        text: "Are you sure you want to delete this address?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
@@ -127,17 +126,24 @@ export class ViewaddressComponent implements OnInit {
         if (result.isConfirmed) {
           this.admin.deletedestination(id).subscribe(
             () => {
-              swalWithBootstrapButtons.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              );
+              swalWithBootstrapButtons.fire({
+                title: 'Deleted!',
+                text: 'This address has been deleted.',
+                icon: 'success',
+                showConfirmButton: false, // Removes the "OK" button
+                timer: 1000, // Automatically closes after 1.5 seconds
+              });
+  
+              // Update the view by removing the deleted category
               this.categ = this.categ.filter(
                 (category) => category.Categ_ID !== id
               );
               this.filteredCategories = this.filteredCategories.filter(
                 (category) => category.Categ_ID !== id
               );
+  
+              // Refresh other parts of the UI if needed
+              this.refreshTableData();
             },
             (error) => {
               console.error('Delete failed', error);
@@ -149,13 +155,20 @@ export class ViewaddressComponent implements OnInit {
             }
           );
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your category is safe :)',
-            'error'
-          );
+          swalWithBootstrapButtons.fire({
+            title: 'Cancelled',
+            text: 'Your destination address is safe.',
+            icon: 'error',
+            showConfirmButton: false, // Removes the "OK" button
+            timer: 1500, // Automatically closes after 1.5 seconds
+          });
         }
       });
+  }
+  
+
+  refreshTableData(): void {
+    this.fetchStaffData(); // Call your API again to fetch the updated list of categories
   }
 
   history(id: any) {

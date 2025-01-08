@@ -65,11 +65,11 @@ export class ViewCustomerComponent implements OnInit {
       },
       buttonsStyling: false,
     });
-
+  
     swalWithBootstrapButtons
       .fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        // title: 'Are you sure?',
+        text: "Are you sure? You won't be able to revert this action for the customer.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
@@ -80,11 +80,13 @@ export class ViewCustomerComponent implements OnInit {
         if (result.isConfirmed) {
           this.admin.deletecustomer(id).subscribe(
             () => {
-              swalWithBootstrapButtons.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              );
+              swalWithBootstrapButtons.fire({
+                title: 'Deleted!',
+                text: 'Your file has been deleted.',
+                icon: 'success',
+                showConfirmButton: false,  // Hides the "OK" button
+                timer: 1500,  // Automatically closes after 1.5 seconds
+              });
               this.cust = this.cust.filter(
                 (category) => category.Cust_ID !== id
               );
@@ -102,12 +104,15 @@ export class ViewCustomerComponent implements OnInit {
             }
           );
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your category is safe :)',
-            'error'
-          );
+          swalWithBootstrapButtons.fire({
+                title: 'Cancelled',
+                text: 'Your category is safe',
+                icon: 'error',
+                showConfirmButton: false,  // Hides the "OK" button
+                timer: 1500,  
+          });
         }
       });
   }
+  
 }

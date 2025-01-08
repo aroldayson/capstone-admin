@@ -25,7 +25,7 @@ export class UpdateAddressComponent implements OnInit {
   // category = {category:localStorage.getItem('category')}
   constructor(private admin: AdminService, private route: Router) {}
   categoryForm = new FormGroup({
-    City_Address: new FormControl(null, Validators.required),
+    ShipServ_Town: new FormControl(null, Validators.required),
     ShipServ_price: new FormControl(1.0, [
       Validators.required,
       Validators.min(1),
@@ -56,7 +56,7 @@ export class UpdateAddressComponent implements OnInit {
     this.admin.findpricedestination(this.category_id.id).subscribe((result: any) => {
       this.categ = result;
       if (this.categ) {
-        this.categoryForm.controls['City_Address'].setValue(this.categ.City_Address);
+        this.categoryForm.controls['ShipServ_Town'].setValue(this.categ.ShipServ_Town);
         this.categoryForm.controls['ShipServ_price'].setValue(this.categ.ShipServ_price);
       }
     });
@@ -64,7 +64,7 @@ export class UpdateAddressComponent implements OnInit {
 
   update() {
     console.log(this.categoryForm.value);
-
+  
     if (this.categoryForm.valid) {
       const updatedData = {
         id: this.category_id.id,
@@ -73,11 +73,13 @@ export class UpdateAddressComponent implements OnInit {
       this.admin.updatepricedestination(updatedData).subscribe(
         (response: any) => {
           console.log('Update successful', response);
-          Swal.fire(
-            'Success!',
-            'Laundry Category Price details updated successfully.',
-            'success'
-          ).then(() => {});
+          Swal.fire({
+            title: 'Success!',
+            text: 'This address destination details have been updated successfully.',
+            icon: 'success',
+            showConfirmButton: false, // Removes the "OK" button
+            timer: 1500, // Automatically closes after 1.5 seconds
+          });
           this.clear();
           this.route.navigate(['/main/pricemanagementpage/pricemgtmain/viewcateg/view-address']);
         },
@@ -94,6 +96,7 @@ export class UpdateAddressComponent implements OnInit {
       Swal.fire('Warning!', 'Please fill in all required fields.', 'warning');
     }
   }
+  
 
   onNumberInput(event: Event) {
     const inputElement = event.target as HTMLInputElement;

@@ -32,7 +32,7 @@ export class ViewRemitComponent implements OnInit{
     this.admin.remittanceapproved().subscribe((result: any) => {
       this.remit = result;
       if (this.remit && this.remit.length > 0) {
-          const pendingTransactions = this.remit.filter((transaction: any) => transaction.Fund_status === 'Pending');
+          const pendingTransactions = this.remit.filter((transaction: any) => transaction.Cash_status === 'Pending' || transaction.Cash_status === 'Remitted');
 
           if (pendingTransactions.length > 0) {
               this.remit = pendingTransactions;
@@ -72,7 +72,8 @@ export class ViewRemitComponent implements OnInit{
       confirmButtonColor: "#3085d6",
       confirmButtonText: "Yes, approved it!",
       cancelButtonColor: "#d33",
-      showCancelButton: true
+      showConfirmButton: false,  // Hides the "OK" button
+      timer: 1500,  // Automatically closes after 1.5 seconds
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({

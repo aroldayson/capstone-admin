@@ -21,21 +21,21 @@
           
   
         <!-- Cashier in Charge -->
-        <div class="row">
-          <div class="col-md-8 text-left">
+        <div class="row mt-4">
+          <div class="col-md-6 text-left">
             <h6>Cashier in Charge:</h6>
           </div>
-          <div class="col-md text-right">
-            <input formControlName="Staff_ID" type="text" class="form-control" />
+          <div class="col-md text-left">
+            <input formControlName="Staff_ID" type="text" class="form-control" readonly />
           </div>
         </div>
   
         <!-- Initial Amount -->
         <div class="row">
-          <div class="col-md-8 text-left">
+          <div class="col-md-6 text-left">
             <h6>Initial Funds:</h6>
           </div>
-          <div class="col-md text-right">
+          <div class="col-md text-left">
             <input formControlName="Initial_amount" type="number" class="form-control" />
           </div>
         </div>
@@ -58,8 +58,14 @@
             <button type="button" class="btn btn-primary w-100" (click)="onCancel()">CANCEL</button>
           </div>
           <div class="col-md">
-            <button type="submit" class="btn btn-success w-100" [disabled]="cashRegistryForm.invalid">SAVE</button>
+            <button  type="submit" class="btn btn-success w-100">
+              <span *ngIf="isLoading" class="loader-container">
+                <i class="fas fa-spinner spin-icon"></i>
+              </span>
+              <span *ngIf="!isLoading">SAVE</span>
+            </button>
           </div>
+          
         </div>
       </div>
     </div>

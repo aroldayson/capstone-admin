@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../admin.service';
 import { SearchfilterPipe } from '../../../searchfilter.pipe';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -27,7 +27,7 @@ export class ListoftransactionComponent implements OnInit {
   totalprice: any;
   isLoading: boolean = false;
 
-  constructor(private admin: AdminService) {}
+  constructor(private admin: AdminService, private route: Router) {}
 
   ngOnInit(): void {
     this.spinner();
@@ -66,5 +66,11 @@ export class ListoftransactionComponent implements OnInit {
     } else {
       this.filteredTrans = this.trans; // Reset to all transactions
     }
+  }
+
+  history(id: any) {
+    console.log(id);
+    localStorage.setItem('Transac_ID', id);
+    this.route.navigate(['/main/tansactionpage/main/view-tran/viewdetails']);
   }
 }

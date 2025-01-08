@@ -100,11 +100,14 @@ export class UpdateStaffComponent implements OnInit {
         this.admin.updateStaff(updatedData).subscribe(
           (response) => {
             console.log('Update successful', response);
-            Swal.fire(
-              'Success!',
-              'Staff details updated successfully.',
-              'success'
-            ).then(() => {});
+
+            Swal.fire({
+              title: 'Success!',
+              text: 'Staff details updated successfully.',
+              icon: 'success',
+              showConfirmButton: false, // Removes the "OK" button
+              timer: 1500, // Automatically closes after 1.5 seconds
+            }).then(() => {});
             this.route.navigate(['/main/staffpage/staffview']);
           },
           (error) => {

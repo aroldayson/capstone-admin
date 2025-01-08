@@ -108,8 +108,12 @@ export class ViewAccountComponent implements OnInit {
       this.adminService.updateaccount(updatedData).subscribe(
         response => {
           console.log('Update successful', response);
-          Swal.fire('Success!', 'Staff details updated successfully.', 'success').then(() => {
-          });
+          Swal.fire({
+            icon: 'success',
+            title: 'Admin details updated successfully.',
+            showConfirmButton: false,  // Hides the "OK" button
+            timer: 1500,  // Automatically closes after 1.5 seconds
+          }).then(() => {});
           this.route.navigate(['/main/accountpage/accountmain']);
         },
         error => {

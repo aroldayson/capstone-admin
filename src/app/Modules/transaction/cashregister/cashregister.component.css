@@ -17,3 +17,25 @@
     border-radius: 5px; /* Rounded buttons */
   }
   
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh;  */
+  }
+  
+  .spin-icon {
+    font-size: 1.5rem; /* Adjust icon size */
+    color: #ccc; /* Icon color */
+    animation: spin 1s linear infinite; /* Spinning animation */
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

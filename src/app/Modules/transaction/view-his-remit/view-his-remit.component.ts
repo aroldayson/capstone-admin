@@ -29,6 +29,7 @@ export class ViewHisRemitComponent implements OnInit{
   month: any;
   year: any;
 
+
   constructor(
     private admin: AdminService,
     private route: Router
@@ -90,7 +91,9 @@ export class ViewHisRemitComponent implements OnInit{
             Swal.fire({
               title: "Approved!",
               text: "The transaction has been approved.",
-              icon: "success"
+              icon: "success",
+              showConfirmButton: false, 
+              timer: 1500,  
             }).then(() => {
               this.route.navigate(['/main/tansactionpage/main/view-tran/remittanceview']);
             });

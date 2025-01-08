@@ -96,6 +96,13 @@ export class AddStaffComponent implements OnInit {
       this.admin.insertData(payload).subscribe(
         (result: any) => {
           console.log('Staff added successfully:', result);
+          Swal.fire({
+            title: 'Success!',
+            text: 'Your data has been saved.',
+            icon: 'success',
+            showConfirmButton: false, // Removes the "OK" button
+            timer: 1500, // Automatically closes after 1.5 seconds
+          });
           this.router.navigate(['/main/staffpage/staffview'])
           this.clear();
         },
