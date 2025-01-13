@@ -7,7 +7,8 @@
           <div class="invoice-title mb-4">
             <h2 class="text-muted">History of Expenses Within The Day</h2>
             <p class="text-muted mb-0">
-              Date of Expenses Transaction: <b>{{ dateincome | date: 'MMM dd, yyyy' }}</b>
+              Date of Expenses Transaction:
+              <b>{{ dateincome | date : "MMM dd, yyyy" }}</b>
             </p>
           </div>
           <hr />
@@ -66,7 +67,14 @@
           <div class="py-2">
             <div class="d-print-none mt-2">
               <div class="float-end">
-                <!-- <button [useExistingCss]="true" printSectionId="print-section" ngxPrint class="btn btn-success me-1"><i class="fa fa-print"></i></button>-->
+                <button
+                  [useExistingCss]="true"
+                  printSectionId="print-section"
+                  ngxPrint
+                  class="btn btn-success me-1"
+                >
+                  <i class="fa fa-print"></i>
+                </button>
                 <a
                   class="btn btn-primary w-md"
                   [routerLink]="[

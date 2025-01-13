@@ -4,91 +4,95 @@ import { NgxPrintModule } from 'ngx-print';
 import { AdminService } from '../../../admin.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchfilterPipe } from '../../../searchfilter.pipe';
 
 @Component({
   selector: 'app-dicrepancy',
   standalone: true,
-  imports: [RouterLink, NgxPrintModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    RouterLink,
+    NgxPrintModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SearchfilterPipe,
+  ],
   templateUrl: './dicrepancy.component.html',
-  styleUrls: ['./dicrepancy.component.css']  
+  styleUrls: ['./dicrepancy.component.css'],
 })
 export class DicrepancyComponent implements OnInit {
-  remit: any[] = [];           
-  fromDate: string = '';       
-  toDate: string = '';         
-  filteredData: any[] = [];    
+  remit: any[] = [];
+  fromDate: string = '';
+  toDate: string = '';
+  filteredData: any[] = [];
   isLoading: boolean = false;
+  searchTerm: string = '';
 
-  constructor(
-    private admin: AdminService,
-    private route: Router
-) {}
+  constructor(private admin: AdminService, private route: Router) {}
 
   ngOnInit(): void {
-      // this.admin.remittanceapproved().subscribe((result: any) => {
-      //     this.remit = result;
-      //     this.filteredData = this.remit;
+    // this.admin.remittanceapproved().subscribe((result: any) => {
+    //     this.remit = result;
+    //     this.filteredData = this.remit;
 
-      //     this.filteredData = this.filteredData.filter((transaction: any) => transaction.Fund_status === 'Approve');
+    //     this.filteredData = this.filteredData.filter((transaction: any) => transaction.Fund_status === 'Approve');
 
-      //     if (this.filteredData.length === 0) {
-      //         console.log('No approved transactions found');
-      //     }
+    //     if (this.filteredData.length === 0) {
+    //         console.log('No approved transactions found');
+    //     }
 
-      //     console.log('Remit Data:', this.filteredData);
-      // });
-      this.spinner();
-      this.admin.displayDisrepancy().subscribe((result: any) => {
-        this.remit = result;
-        this.filteredData = this.remit;
-        // this.filteredData = this.remit.filter(transaction => transaction.Fund_status === 'Approve'); 
-        console.log('Remit Data:', this.filteredData);
+    //     console.log('Remit Data:', this.filteredData);
+    // });
+    this.spinner();
+    this.admin.displayDisrepancy().subscribe((result: any) => {
+      this.remit = result;
+      this.filteredData = this.remit;
+      // this.filteredData = this.remit.filter(transaction => transaction.Fund_status === 'Approve');
+      console.log('Remit Data:', this.filteredData);
     });
   }
 
   onDateChange(): void {
     if (this.fromDate && this.toDate) {
       const fromDateStart = new Date(this.fromDate);
-      fromDateStart.setHours(0, 0, 0, 0); 
-  
+      fromDateStart.setHours(0, 0, 0, 0);
+
       const toDateEnd = new Date(this.toDate);
       toDateEnd.setHours(23, 59, 59, 999);
-  
-      this.filteredData = this.remit.filter(i => {
-        const itemDateTime = new Date(i.transactionDate).getTime(); 
-        return itemDateTime >= fromDateStart.getTime() && itemDateTime <= toDateEnd.getTime();
+
+      this.filteredData = this.remit.filter((i) => {
+        const itemDateTime = new Date(i.transactionDate).getTime();
+        return (
+          itemDateTime >= fromDateStart.getTime() &&
+          itemDateTime <= toDateEnd.getTime()
+        );
       });
 
-  
       console.log('Filtered Data:', this.filteredData);
-    }  else {
+    } else {
       this.filteredData = this.remit;
-
     }
-  
+
     console.log('Filtered Data:', this.filteredData);
   }
-  
 
   trackById(index: number, item: any): any {
     return item.id; // Replace `id` with your actual unique identifier field
   }
-  
-  
 
-  spinner(){
-    this.isLoading = true
+  spinner() {
+    this.isLoading = true;
 
     setTimeout(() => {
       this.isLoading = false;
-    },3000);
+    }, 3000);
   }
 
-  discrepany(id: any){
+  discrepany(id: any) {
     localStorage.setItem('datetimeincome', id);
     this.route.navigate([
       '/main/reportpage/reportmain/reportview/listdisrepancy',
     ]);
-    console.log(id)
+    console.log(id);
   }
 }

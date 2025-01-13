@@ -7,11 +7,14 @@
             <div class="invoice-title mb-4">
               <h2 class="text-muted">History of Discrepancy Within The Day</h2>
               <div class="text-muted mt-3">
-                <p>Date of Discrepancy Transaction: <b>{{ dateincome | date: 'MMM dd, yyyy' }}</b></p>
+                <p>
+                  Date of Discrepancy Transaction:
+                  <b>{{ dateincome | date : "MMM dd, yyyy" }}</b>
+                </p>
                 <!-- <p>Cashier in Charge: <b>{{ staff }}</b></p> -->
               </div>
             </div>
-            <hr class="my-4">
+            <hr class="my-4" />
 
             <!-- Section: Initial Amount -->
             <div class="mb-4">
@@ -31,9 +34,11 @@
                     @for (i of initial; track i.initial) {
                     <tr>
                       <td></td>
-                      <td>{{ i?.adminNames}}</td>
+                      <td>{{ i?.adminNames }}</td>
                       <td></td>
-                      <td class="text-end">{{ i?.AmountInitial | currency: ' ':'symbol' }}</td>
+                      <td class="text-end">
+                        {{ i?.AmountInitial | currency : " " : "symbol" }}
+                      </td>
                       <td></td>
                     </tr>
                     }
@@ -41,11 +46,13 @@
                 </table>
               </div>
               <div class="text-end mt-2">
-                <h5 class="fw-bold">{{ totalinitial | currency: ' ':'symbol' }}</h5>
+                <h5 class="fw-bold">
+                  {{ totalinitial | currency : " " : "symbol" }}
+                </h5>
               </div>
             </div>
 
-            <hr class="my-4">
+            <hr class="my-4" />
 
             <!-- Section: Payment Transaction -->
             <div class="mb-4">
@@ -67,7 +74,9 @@
                       <td></td>
                       <td>{{ p?.Tracking_number }}</td>
                       <td>{{ p?.Mode_of_Payment }}</td>
-                      <td class="text-end">{{ p?.AmountPayments | currency: ' ':'symbol' }}</td>
+                      <td class="text-end">
+                        {{ p?.AmountPayments | currency : " " : "symbol" }}
+                      </td>
                       <td class="col-md-1"></td>
                     </tr>
                     }
@@ -75,11 +84,13 @@
                 </table>
               </div>
               <div class="text-end mt-2">
-                <h5 class="fw-bold">{{ totalpayments | currency: ' ':'symbol' }}</h5>
+                <h5 class="fw-bold">
+                  {{ totalpayments | currency : " " : "symbol" }}
+                </h5>
               </div>
             </div>
 
-            <hr class="my-4">
+            <hr class="my-4" />
 
             <!-- Section: Expenses Transaction -->
             <div class="mb-4">
@@ -101,7 +112,9 @@
                       <td></td>
                       <td>{{ e?.adminNames }}</td>
                       <td>{{ e?.Desc_reason }}</td>
-                      <td class="text-end">{{ e?.AmountExpenses | currency: ' ':'symbol' }}</td>
+                      <td class="text-end">
+                        {{ e?.AmountExpenses | currency : " " : "symbol" }}
+                      </td>
                       <td class="col-md-1"></td>
                     </tr>
                     }
@@ -109,11 +122,13 @@
                 </table>
               </div>
               <div class="text-end mt-2">
-                <h5 class="fw-bold">{{ totalexpenses | currency: ' ':'symbol' }}</h5>
+                <h5 class="fw-bold">
+                  {{ totalexpenses | currency : " " : "symbol" }}
+                </h5>
               </div>
             </div>
 
-            <hr class="my-4">
+            <hr class="my-4" />
 
             <!-- Section: Remittance -->
             <div class="mb-4">
@@ -133,9 +148,11 @@
                     @for (r of remit; track r.remit) {
                     <tr>
                       <td></td>
-                      <td>{{r.adminNames}}</td>
+                      <td>{{ r.adminNames }}</td>
                       <td></td>
-                      <td class="text-end">{{ r?.AmountRemittance | currency: ' ':'symbol' }}</td>
+                      <td class="text-end">
+                        {{ r?.AmountRemittance | currency : " " : "symbol" }}
+                      </td>
                       <td class="col-md-1"></td>
                     </tr>
                     }
@@ -143,24 +160,49 @@
                 </table>
               </div>
               <div class="text-end mt-2">
-                <h5 class="fw-bold">{{ totalremit | currency: ' ':'symbol' }}</h5>
+                <h5 class="fw-bold">
+                  {{ totalremit | currency : " " : "symbol" }}
+                </h5>
               </div>
             </div>
 
-            <hr class="my-4">
+            <hr class="my-4" />
 
             <!-- Section: Net Profit/Loss -->
             <div class="text-end">
-              <h5><span class="text-success">Net Profit/</span><span class="text-danger">Loss</span></h5>
-              <h5 class="fw-bold"
-                  [ngClass]="overalltotal > 0 ? 'text-success' : 'text-danger'">
-                  {{ overalltotal < 0 ? (overalltotal * -1) : overalltotal | currency: ' ':'symbol' }}
+              <h5>
+                <span class="text-success">Net Profit/</span
+                ><span class="text-danger">Loss</span>
+              </h5>
+              <h5
+                class="fw-bold"
+                [ngClass]="overalltotal > 0 ? 'text-success' : 'text-danger'"
+              >
+                {{
+                  overalltotal < 0
+                    ? overalltotal * -1
+                    : (overalltotal | currency : " " : "symbol")
+                }}
               </h5>
             </div>
 
             <!-- Footer -->
             <div class="d-print-none mt-4 text-end">
-              <a class="btn btn-primary" [routerLink]="['/main/reportpage/reportmain/reportview/disrepancy']">Back</a>
+              <button
+                [useExistingCss]="true"
+                printSectionId="print-section"
+                ngxPrint
+                class="btn btn-success me-1"
+              >
+                <i class="fa fa-print"></i>
+              </button>
+              <a
+                class="btn btn-primary"
+                [routerLink]="[
+                  '/main/reportpage/reportmain/reportview/disrepancy'
+                ]"
+                >Back</a
+              >
             </div>
           </div>
         </div>

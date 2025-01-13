@@ -66,6 +66,7 @@
                     type="text"
                     placeholder="Search discrepany..."
                     aria-label="Search discrepany..."
+                    [(ngModel)]="searchTerm"
                   />
                   <div class="input-group-append">
                     <span class="input-group-text bg-primary text-white">
@@ -80,7 +81,7 @@
           <!-- Table Section -->
           <div
             class="table-responsive"
-            style="max-height: 350px; overflow-y: auto"
+            style="max-height: 300px; overflow-y: auto"
           >
             <table
               class="table table-bordered table-striped table-hover align-middle"
@@ -102,7 +103,7 @@
                 </tr>
               </thead>
               <tbody>
-                @for(d of filteredData; track d.transactionDate){
+                @for(d of filteredData | searchfilter: searchTerm; track d.transactionDate){
                 <tr
                   class="text-center table-row-hover"
                   (click)="discrepany(d.transactionDate)"

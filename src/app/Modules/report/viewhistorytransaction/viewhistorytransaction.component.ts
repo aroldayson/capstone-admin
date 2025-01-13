@@ -6,13 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPrintModule } from 'ngx-print';
 
 @Component({
-  selector: 'app-view-historytransac',
+  selector: 'app-viewhistorytransaction',
   standalone: true,
   imports: [RouterLink, CommonModule, ReactiveFormsModule, NgxPrintModule],
-  templateUrl: './view-historytransac.component.html',
-  styleUrl: './view-historytransac.component.css',
+  templateUrl: './viewhistorytransaction.component.html',
+  styleUrl: './viewhistorytransaction.component.css',
 })
-export class ViewHistorytransacComponent implements OnInit {
+export class ViewhistorytransactionComponent implements OnInit {
   cust_id = { id: localStorage.getItem('Cust_ID') };
   his_id = { id: localStorage.getItem('Transac_ID') };
   custs: any;
@@ -66,6 +66,7 @@ export class ViewHistorytransacComponent implements OnInit {
       );
     });
   }
+
   spinner() {
     this.isLoading = true;
 

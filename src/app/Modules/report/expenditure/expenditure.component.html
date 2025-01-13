@@ -68,6 +68,7 @@
                     type="text"
                     placeholder="Search expenditure..."
                     aria-label="Search expenditure..."
+                    [(ngModel)]="searchTerm"
                   />
                   <div class="input-group-append">
                     <span class="input-group-text bg-primary text-white">
@@ -82,7 +83,7 @@
           <!-- Table Section -->
           <div
             class="table-responsive"
-            style="max-height: 350px; overflow-y: auto"
+            style="max-height: 300px; overflow-y: auto"
           >
             <table
               class="table table-bordered table-striped table-hover align-middle"
@@ -97,7 +98,7 @@
                 </tr>
               </thead>
               <tbody>
-                @for(e of filteredData; track e.transactionDate){
+                @for(e of filteredData | searchfilter: searchTerm; track e.transactionDate){
                 <tr
                   *ngIf="!isLoading"
                   class="text-center align-middle"

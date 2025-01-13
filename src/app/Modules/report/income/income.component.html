@@ -24,7 +24,9 @@
           <div class="row g-3 mb-4">
             <div class="col-md-6 col-lg-3">
               <div class="input-group">
-                <label class="input-group-text bg-primary text-white">From</label>
+                <label class="input-group-text bg-primary text-white"
+                  >From</label
+                >
                 <input
                   type="date"
                   class="form-control"
@@ -34,7 +36,7 @@
                 />
               </div>
             </div>
-          
+
             <div class="col-md-6 col-lg-3">
               <div class="input-group">
                 <label class="input-group-text bg-primary text-white">To</label>
@@ -58,7 +60,7 @@
                 <!-- <label class="input-group-text bg-primary text-white">Search</label> -->
               </div>
             </div>
-          
+
             <div class="col-md-6 col-lg-3">
               <div class="form-group">
                 <div class="input-group">
@@ -67,6 +69,7 @@
                     type="text"
                     placeholder="Search income..."
                     aria-label="Search category..."
+                    [(ngModel)]="searchTerm"
                   />
                   <div class="input-group-append">
                     <span class="input-group-text bg-primary text-white">
@@ -77,11 +80,16 @@
               </div>
             </div>
           </div>
-          
 
           <!-- Table Section -->
-          <div class="table-responsive" id="print-section" style="max-height: 350px; overflow-y: auto">
-            <table class="table table-bordered table-striped table-hover rounded  align-middle">
+          <div
+            class="table-responsive"
+            id="print-section"
+            style="max-height: 300px; overflow-y: auto"
+          >
+            <table
+              class="table table-bordered table-striped table-hover rounded align-middle"
+            >
               <thead class="sticky-thead bg-primary text-white sticky-header">
                 <tr class="text-center">
                   <th>Date</th>
@@ -93,13 +101,16 @@
               </thead>
 
               <tbody>
-                @for(i of filteredData; track i.Staff_ID){
+                @for(i of filteredData | searchfilter: searchTerm; track
+                i.Staff_ID){
                 <tr
                   class="text-center align-middle"
                   *ngIf="!isLoading"
                   (click)="incomes(i.transactionDate)"
                 >
-                  <td class="text-left">{{ i.transactionDate | date: 'MMM dd, yyyy' }}</td>
+                  <td class="text-left">
+                    {{ i.transactionDate | date : "MMM dd, yyyy" }}
+                  </td>
                   <td class="text-left">{{ i.adminNames }}</td>
                   <td class="text-right">
                     {{ i.totalPayments | currency : " " : "symbol" }}
